@@ -9,9 +9,9 @@ This file provides strict guidance and architectural rules for Claude Code (clau
 
 ```bash
 pnpm install       # Install dependencies
-pnpm dev           # Start dev server (Turbopack) — decodes FIREBASE_SERVICE_ACCOUNT_BASE64 first
-pnpm build         # Production build — decodes FIREBASE_SERVICE_ACCOUNT_BASE64 first
-pnpm start         # Serve production build
+pnpm dev           # Start Vite dev server
+pnpm build         # Production build (outputs to /dist)
+pnpm preview       # Serve production build locally
 pnpm lint          # Biome check (lint + format check)
 pnpm format        # Biome format with auto-write
 ```
