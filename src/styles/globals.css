@@ -1,0 +1,38 @@
+@import "./tokens.css";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: var(--surface);
+	color: var(--on-surface);
+	font-family: var(--font-sans);
+	font-size: var(--typescale-body-medium-size);
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+:focus {
+	outline: none;
+}
+
+:focus-visible {
+	outline: 2px solid var(--focus-ring);
+	outline-offset: 2px;
+	border-radius: var(--shape-corner-small);
+}
+
+::selection {
+	background: var(--primary-container);
+	color: var(--on-primary-container);
+}

@@ -1,0 +1,212 @@
+/* Ninoverse HMI — Material Design 3 token system
+   Color naming follows the MD3 color role spec; values are the warm
+   "Nino" palette (soft, friendly, cream-and-coral). Light scheme only. */
+
+:root {
+	/* ── Color · Primary ─────────────────────────────────────── */
+	--primary: #e87a5d;
+	--on-primary: #ffffff;
+	--primary-container: #fbe4db;
+	--on-primary-container: #8c3a20;
+	--primary-fixed-dim: #c25636;
+
+	/* ── Color · Secondary (tonal accent) ────────────────────── */
+	--secondary: #7a6f64;
+	--on-secondary: #ffffff;
+	--secondary-container: #f4ede1;
+	--on-secondary-container: #4a413a;
+
+	/* ── Color · Tertiary (success-leaning) ──────────────────── */
+	--tertiary: #5c9a6a;
+	--on-tertiary: #ffffff;
+	--tertiary-container: #dfeedd;
+	--on-tertiary-container: #2c5b36;
+
+	/* ── Color · Error ───────────────────────────────────────── */
+	--error: #c0524c;
+	--on-error: #ffffff;
+	--error-container: #f4dad6;
+	--on-error-container: #7a2a26;
+
+	/* ── Color · Warning (MD3 extension) ─────────────────────── */
+	--warning: #d49a3f;
+	--on-warning: #ffffff;
+	--warning-container: #f7e9c8;
+	--on-warning-container: #6f4e13;
+
+	/* ── Color · Info (MD3 extension) ────────────────────────── */
+	--info: #6b86b3;
+	--on-info: #ffffff;
+	--info-container: #dee5f2;
+	--on-info-container: #2e446b;
+
+	/* ── Color · Surface ─────────────────────────────────────── */
+	--surface: #fbf6ee;
+	--on-surface: #2b2520;
+	--on-surface-variant: #4a413a;
+	--surface-dim: #f4ede1;
+	--surface-bright: #ffffff;
+	--surface-container-lowest: #ffffff;
+	--surface-container-low: #f7f0e4;
+	--surface-container: #f4ede1;
+	--surface-container-high: #ece2d1;
+	--surface-container-highest: #ddd0b9;
+
+	/* ── Color · Inverse ─────────────────────────────────────── */
+	--inverse-surface: #2b2520;
+	--inverse-on-surface: #fbf6ee;
+	--inverse-primary: #fbe4db;
+
+	/* ── Color · Outline ─────────────────────────────────────── */
+	--outline: #a89c8e;
+	--outline-variant: #ddd0b9;
+
+	/* ── Color · Scrim & shadow tint ─────────────────────────── */
+	--scrim: rgba(43, 38, 32, 0.32);
+	--shadow-tint: rgba(43, 38, 32, 1);
+
+	/* ── Focus ring (derived) ────────────────────────────────── */
+	--focus-ring: color-mix(in oklab, var(--primary) 50%, transparent);
+
+	/* ── Shape · Corner radius (MD3 shape scale) ─────────────── */
+	--shape-corner-none: 0;
+	--shape-corner-extra-small: 4px;
+	--shape-corner-small: 8px;
+	--shape-corner-medium: 10px;
+	--shape-corner-large: 14px;
+	--shape-corner-extra-large: 18px;
+	--shape-corner-full: 9999px;
+
+	/* ── Elevation (warm-tinted) ─────────────────────────────── */
+	--elevation-level0: none;
+	--elevation-level1: 0 1px 0 rgba(43, 38, 32, 0.04), 0 1px 2px rgba(43, 38, 32, 0.06);
+	--elevation-level2: 0 1px 0 rgba(43, 38, 32, 0.04), 0 4px 12px rgba(43, 38, 32, 0.08);
+	--elevation-level3: 0 4px 16px rgba(43, 38, 32, 0.1), 0 12px 40px rgba(43, 38, 32, 0.12);
+	--elevation-level4: 0 12px 32px rgba(43, 38, 32, 0.14), 0 2px 6px rgba(43, 38, 32, 0.08);
+	--elevation-ridge: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+	/* ── Spacing scale ───────────────────────────────────────── */
+	--spacing-1: 4px;
+	--spacing-2: 8px;
+	--spacing-3: 12px;
+	--spacing-4: 16px;
+	--spacing-5: 20px;
+	--spacing-6: 24px;
+	--spacing-7: 32px;
+	--spacing-8: 40px;
+	--spacing-9: 56px;
+
+	/* ── Density · component heights & padding ───────────────── */
+	--density-height-sm: 32px;
+	--density-height-md: 40px;
+	--density-height-lg: 48px;
+	--density-padding-x-sm: 12px;
+	--density-padding-x-md: 16px;
+	--density-padding-x-lg: 20px;
+
+	/* ── Typography · Family ─────────────────────────────────── */
+	--font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+	--font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+	/* ── Typography · MD3 scale (size / line-height / weight) ── */
+	--typescale-display-large-size: 48px;
+	--typescale-display-large-line: 56px;
+	--typescale-display-large-weight: 700;
+	--typescale-display-large-tracking: -0.02em;
+
+	--typescale-display-medium-size: 36px;
+	--typescale-display-medium-line: 44px;
+	--typescale-display-medium-weight: 700;
+	--typescale-display-medium-tracking: -0.015em;
+
+	--typescale-display-small-size: 28px;
+	--typescale-display-small-line: 36px;
+	--typescale-display-small-weight: 700;
+	--typescale-display-small-tracking: -0.015em;
+
+	--typescale-headline-large-size: 22px;
+	--typescale-headline-large-line: 28px;
+	--typescale-headline-large-weight: 700;
+	--typescale-headline-large-tracking: -0.01em;
+
+	--typescale-headline-medium-size: 18px;
+	--typescale-headline-medium-line: 24px;
+	--typescale-headline-medium-weight: 700;
+	--typescale-headline-medium-tracking: -0.01em;
+
+	--typescale-headline-small-size: 16px;
+	--typescale-headline-small-line: 22px;
+	--typescale-headline-small-weight: 700;
+	--typescale-headline-small-tracking: -0.005em;
+
+	--typescale-title-large-size: 16px;
+	--typescale-title-large-line: 22px;
+	--typescale-title-large-weight: 600;
+	--typescale-title-large-tracking: -0.005em;
+
+	--typescale-title-medium-size: 15px;
+	--typescale-title-medium-line: 20px;
+	--typescale-title-medium-weight: 600;
+	--typescale-title-medium-tracking: -0.005em;
+
+	--typescale-title-small-size: 13px;
+	--typescale-title-small-line: 18px;
+	--typescale-title-small-weight: 600;
+	--typescale-title-small-tracking: 0;
+
+	--typescale-body-large-size: 16px;
+	--typescale-body-large-line: 24px;
+	--typescale-body-large-weight: 400;
+	--typescale-body-large-tracking: 0;
+
+	--typescale-body-medium-size: 15px;
+	--typescale-body-medium-line: 22px;
+	--typescale-body-medium-weight: 400;
+	--typescale-body-medium-tracking: 0;
+
+	--typescale-body-small-size: 13px;
+	--typescale-body-small-line: 18px;
+	--typescale-body-small-weight: 400;
+	--typescale-body-small-tracking: 0;
+
+	--typescale-label-large-size: 13px;
+	--typescale-label-large-line: 18px;
+	--typescale-label-large-weight: 600;
+	--typescale-label-large-tracking: -0.005em;
+
+	--typescale-label-medium-size: 12px;
+	--typescale-label-medium-line: 16px;
+	--typescale-label-medium-weight: 600;
+	--typescale-label-medium-tracking: 0;
+
+	--typescale-label-small-size: 11px;
+	--typescale-label-small-line: 14px;
+	--typescale-label-small-weight: 600;
+	--typescale-label-small-tracking: 0.04em;
+
+	/* ── Motion · Easing & duration ──────────────────────────── */
+	--motion-easing-standard: cubic-bezier(0.32, 0.72, 0, 1);
+	--motion-easing-emphasized: cubic-bezier(0.34, 1.56, 0.64, 1);
+	--motion-duration-short: 120ms;
+	--motion-duration-medium: 180ms;
+	--motion-duration-long: 260ms;
+}
+
+/* ── Density override ──────────────────────────────────────── */
+:root[data-density="compact"] {
+	--density-height-sm: 28px;
+	--density-height-md: 34px;
+	--density-height-lg: 40px;
+	--density-padding-x-sm: 10px;
+	--density-padding-x-md: 12px;
+	--density-padding-x-lg: 16px;
+}
+
+/* ── Reduced motion ────────────────────────────────────────── */
+:root[data-motion="none"] *,
+:root[data-motion="none"] *::before,
+:root[data-motion="none"] *::after {
+	transition-duration: 0ms !important;
+	animation-duration: 0ms !important;
+}

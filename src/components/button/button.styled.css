@@ -1,0 +1,128 @@
+.nv-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--spacing-2);
+	height: var(--density-height-md);
+	padding: 0 var(--density-padding-x-md);
+	border-radius: var(--shape-corner-medium);
+	border: 1px solid transparent;
+	background: transparent;
+	color: var(--on-surface);
+	font-family: var(--font-sans);
+	font-size: var(--typescale-label-large-size);
+	font-weight: var(--typescale-label-large-weight);
+	letter-spacing: var(--typescale-label-large-tracking);
+	cursor: pointer;
+	user-select: none;
+	white-space: nowrap;
+	transition:
+		transform var(--motion-duration-short) var(--motion-easing-standard),
+		background var(--motion-duration-medium) var(--motion-easing-standard),
+		box-shadow var(--motion-duration-medium) var(--motion-easing-standard),
+		border-color var(--motion-duration-medium) var(--motion-easing-standard),
+		color var(--motion-duration-medium) var(--motion-easing-standard);
+}
+
+.nv-btn:active {
+	transform: translateY(1px) scale(0.985);
+}
+
+.nv-btn svg {
+	width: 16px;
+	height: 16px;
+	flex: none;
+}
+
+.nv-btn[disabled],
+.nv-btn[aria-disabled="true"] {
+	opacity: 0.5;
+	cursor: not-allowed;
+	transform: none !important;
+}
+
+/* Variants */
+.nv-btn--primary {
+	background: var(--primary);
+	color: var(--on-primary);
+	box-shadow: var(--elevation-level1), var(--elevation-ridge), 0 0 0 1px
+		color-mix(in oklab, var(--primary) 60%, #000) inset;
+}
+.nv-btn--primary:hover {
+	background: color-mix(in oklab, var(--primary) 92%, #000 8%);
+	box-shadow: var(--elevation-level2), var(--elevation-ridge);
+}
+
+.nv-btn--secondary {
+	background: var(--surface-container-lowest);
+	color: var(--on-surface);
+	border-color: var(--outline-variant);
+	box-shadow: var(--elevation-level1);
+}
+.nv-btn--secondary:hover {
+	background: var(--surface-container-low);
+	border-color: var(--outline);
+}
+
+.nv-btn--ghost {
+	color: var(--on-surface);
+}
+.nv-btn--ghost:hover {
+	background: var(--surface-container);
+}
+
+.nv-btn--soft {
+	background: var(--primary-container);
+	color: var(--on-primary-container);
+}
+.nv-btn--soft:hover {
+	background: color-mix(in oklab, var(--primary-container) 80%, var(--primary) 20%);
+}
+
+.nv-btn--danger {
+	background: var(--error);
+	color: var(--on-error);
+	box-shadow: var(--elevation-level1), var(--elevation-ridge);
+}
+.nv-btn--danger:hover {
+	background: color-mix(in oklab, var(--error) 92%, #000 8%);
+}
+
+.nv-btn--link {
+	height: auto;
+	padding: 0;
+	color: var(--primary-fixed-dim);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+	text-decoration-color: color-mix(in oklab, var(--primary-fixed-dim) 40%, transparent);
+}
+.nv-btn--link:hover {
+	text-decoration-color: var(--primary-fixed-dim);
+}
+
+/* Sizes */
+.nv-btn--sm {
+	height: var(--density-height-sm);
+	padding: 0 var(--density-padding-x-sm);
+	font-size: var(--typescale-label-medium-size);
+	border-radius: calc(var(--shape-corner-medium) - 2px);
+}
+.nv-btn--lg {
+	height: var(--density-height-lg);
+	padding: 0 var(--density-padding-x-lg);
+	font-size: var(--typescale-title-large-size);
+	border-radius: calc(var(--shape-corner-medium) + 2px);
+}
+
+/* Icon-only */
+.nv-btn--icon-only {
+	width: var(--density-height-md);
+	padding: 0;
+}
+.nv-btn--icon-only.nv-btn--sm {
+	width: var(--density-height-sm);
+}
+.nv-btn--icon-only.nv-btn--lg {
+	width: var(--density-height-lg);
+}

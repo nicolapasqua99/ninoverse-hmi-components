@@ -1,0 +1,19 @@
+.nv-icon {
+	display: inline-block;
+	flex: none;
+	color: currentColor;
+	vertical-align: middle;
+}
+
+.nv-icon--sm {
+	width: 12px;
+	height: 12px;
+}
+.nv-icon--md {
+	width: 16px;
+	height: 16px;
+}
+.nv-icon--lg {
+	width: 20px;
+	height: 20px;
+}

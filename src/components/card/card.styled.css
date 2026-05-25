@@ -1,0 +1,61 @@
+.nv-card {
+	background: var(--surface-container-lowest);
+	border: 1px solid var(--outline-variant);
+	border-radius: var(--shape-corner-large);
+	padding: var(--spacing-5);
+	box-shadow: var(--elevation-level1);
+	color: var(--on-surface);
+}
+
+.nv-card--flat {
+	box-shadow: none;
+}
+
+.nv-card--ink {
+	background: var(--inverse-surface);
+	color: var(--inverse-on-surface);
+	border-color: transparent;
+}
+
+.nv-card--accent {
+	background: var(--primary-container);
+	color: var(--on-primary-container);
+	border-color: color-mix(in oklab, var(--primary) 18%, var(--outline-variant));
+}
+
+.nv-card__title {
+	font-family: var(--font-sans);
+	font-size: var(--typescale-title-large-size);
+	line-height: var(--typescale-title-large-line);
+	font-weight: var(--typescale-title-large-weight);
+	letter-spacing: var(--typescale-title-large-tracking);
+	margin: 0 0 var(--spacing-1);
+}
+
+.nv-card__description {
+	font-family: var(--font-sans);
+	font-size: var(--typescale-body-medium-size);
+	line-height: var(--typescale-body-medium-line);
+	color: var(--on-surface-variant);
+	margin: 0;
+}
+
+.nv-card--ink .nv-card__description,
+.nv-card--accent .nv-card__description {
+	color: inherit;
+	opacity: 0.85;
+}
+
+.nv-card__footer {
+	margin-top: var(--spacing-4);
+	padding-top: var(--spacing-4);
+	border-top: 1px solid var(--outline-variant);
+	display: flex;
+	gap: var(--spacing-2);
+	justify-content: flex-end;
+}
+
+.nv-card--ink .nv-card__footer,
+.nv-card--accent .nv-card__footer {
+	border-top-color: color-mix(in oklab, currentColor 18%, transparent);
+}
