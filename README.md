@@ -4,7 +4,7 @@ A React component library providing Human-Machine Interface (HMI) UI components 
 
 ## Tech Stack
 
-- **Framework:** Next.js (React + TypeScript)
+- **Framework:** React + Vite (TypeScript)
 - **Styling:** Material Design 3 color tokens + Google Fonts
 - **Linter / Formatter:** Biome
 - **Package Manager:** pnpm (required — do not use npm or yarn)
