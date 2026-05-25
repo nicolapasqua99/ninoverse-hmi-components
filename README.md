@@ -13,9 +13,9 @@ A React component library providing Human-Machine Interface (HMI) UI components 
 
 ```bash
 pnpm install   # install dependencies
-pnpm dev       # start dev server (Turbopack)
-pnpm build     # production build
-pnpm start     # serve production build
+pnpm dev       # start Vite dev server
+pnpm build     # production build (outputs to /dist)
+pnpm preview   # serve production build locally
 pnpm lint      # lint and format check
 pnpm format    # auto-fix formatting
 ```
