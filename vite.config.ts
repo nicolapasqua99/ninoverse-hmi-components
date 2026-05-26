@@ -30,8 +30,13 @@ export default defineConfig({
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
+                passwordInput: resolve(
+                    dirname,
+                    'src/components/passwordInput.tsx',
+                ),
                 radio: resolve(dirname, 'src/components/radio.tsx'),
                 radioGroup: resolve(dirname, 'src/components/radioGroup.tsx'),
+                searchInput: resolve(dirname, 'src/components/searchInput.tsx'),
                 switch: resolve(dirname, 'src/components/switch.tsx'),
                 textarea: resolve(dirname, 'src/components/textarea.tsx'),
             },
