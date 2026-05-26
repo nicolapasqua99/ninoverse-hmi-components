@@ -29,6 +29,7 @@ export default defineConfig({
                 alert: resolve(dirname, 'src/components/alert.tsx'),
                 badge: resolve(dirname, 'src/components/badge.tsx'),
                 button: resolve(dirname, 'src/components/button.tsx'),
+                card: resolve(dirname, 'src/components/card.tsx'),
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
                 chip: resolve(dirname, 'src/components/chip.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),

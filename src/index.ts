@@ -16,6 +16,11 @@ export {
     type ButtonSize,
     type ButtonVariant,
 } from './components/button';
+export {
+    Card,
+    type CardProps,
+    type CardVariant,
+} from './components/card';
 export { Checkbox, type CheckboxProps } from './components/checkbox';
 export { Chip, type ChipProps } from './components/chip';
 export { Field, type FieldProps } from './components/field';
