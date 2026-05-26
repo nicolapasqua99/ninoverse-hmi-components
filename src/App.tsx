@@ -8,6 +8,7 @@ import { Chip } from './components/chip';
 import { Field } from './components/field';
 import { Input } from './components/input';
 import { PasswordInput } from './components/passwordInput';
+import { Popover } from './components/popover';
 import { Progress } from './components/progress';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
@@ -50,6 +51,8 @@ export default function App() {
             else next.add(key);
             return next;
         });
+    const [popoverStartOpen, setPopoverStartOpen] = useState(false);
+    const [popoverEndOpen, setPopoverEndOpen] = useState(false);
     return (
         <div
             style={{
@@ -700,6 +703,77 @@ export default function App() {
                     <Tooltip label="Snappy (0ms delay)" delay={0}>
                         <Button>Instant</Button>
                     </Tooltip>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Popover</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '2rem 0 12rem',
+                    }}
+                >
+                    <Popover
+                        open={popoverStartOpen}
+                        onOpenChange={setPopoverStartOpen}
+                        trigger={
+                            <Button variant="secondary">Open (start)</Button>
+                        }
+                    >
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.75rem',
+                                fontSize: '1.75rem',
+                            }}
+                        >
+                            <strong>Start aligned</strong>
+                            <span
+                                style={{ color: 'var(--on-surface-variant)' }}
+                            >
+                                Anchored to the trigger's left edge. Click
+                                outside or press Escape to dismiss.
+                            </span>
+                        </div>
+                    </Popover>
+                    <Popover
+                        open={popoverEndOpen}
+                        onOpenChange={setPopoverEndOpen}
+                        align="end"
+                        width={320}
+                        trigger={
+                            <Button variant="secondary">Open (end)</Button>
+                        }
+                    >
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.75rem',
+                                fontSize: '1.75rem',
+                            }}
+                        >
+                            <strong>End aligned</strong>
+                            <span
+                                style={{ color: 'var(--on-surface-variant)' }}
+                            >
+                                Anchored to the trigger's right edge, with a
+                                fixed width.
+                            </span>
+                        </div>
+                    </Popover>
                 </div>
             </section>
         </div>
