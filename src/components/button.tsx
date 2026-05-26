@@ -9,37 +9,37 @@ export type ButtonVariant =
     | 'danger'
     | 'link';
 
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonSize = 'small' | 'medium' | 'large';
 
 export type ButtonProps = ComponentPropsWithRef<'button'> & {
     variant?: ButtonVariant;
     size?: ButtonSize;
-    icon?: ReactNode;
-    iconRight?: ReactNode;
+    leftIcon?: ReactNode;
+    rightIcon?: ReactNode;
     asIcon?: boolean;
 };
 
 export function Button({
     variant = 'primary',
-    size = 'md',
-    icon,
-    iconRight,
+    size = 'medium',
+    leftIcon,
+    rightIcon,
     asIcon = false,
     className,
     children,
     type = 'button',
     ...rest
 }: ButtonProps) {
-    const tokens: string[] = ['btn', `btn--${variant}`];
-    if (size !== 'md') tokens.push(`btn--${size}`);
-    if (asIcon) tokens.push('btn--icon');
+    const tokens: string[] = ['button', `button--${variant}`];
+    if (size !== 'medium') tokens.push(`button--${size}`);
+    if (asIcon) tokens.push('button--icon');
     if (className) tokens.push(className);
 
     return (
         <button type={type} className={tokens.join(' ')} {...rest}>
-            {icon}
+            {leftIcon}
             {children}
-            {iconRight}
+            {rightIcon}
         </button>
     );
 }

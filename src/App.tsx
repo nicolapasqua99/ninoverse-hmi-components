@@ -52,9 +52,9 @@ export default function App() {
                         alignItems: 'center',
                     }}
                 >
-                    <Button size="sm">Small</Button>
-                    <Button size="md">Medium</Button>
-                    <Button size="lg">Large</Button>
+                    <Button size="small">Small</Button>
+                    <Button size="medium">Medium</Button>
+                    <Button size="large">Large</Button>
                 </div>
             </section>
 

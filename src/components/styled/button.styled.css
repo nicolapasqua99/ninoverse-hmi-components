@@ -2,7 +2,7 @@
    Rest: elevation-1 → hover: elevation-3 → active: elevation-0 + 1px nudge.
    All numeric values are rem (1rem = 8px per globals.css). */
 
-.btn {
+.button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -31,69 +31,69 @@
     position: relative;
 }
 
-.btn:hover {
+.button:hover {
     box-shadow: var(--elevation-3);
 }
 
-.btn:not([disabled]):not([aria-disabled="true"]):active {
+.button:not([disabled]):not([aria-disabled="true"]):active {
     box-shadow: var(--elevation-0);
     transform: translateY(0.125rem);
     transition-duration: var(--duration-short-1);
 }
 
-.btn svg {
+.button svg {
     width: 2rem;
     height: 2rem;
     flex: none;
 }
 
-.btn[disabled],
-.btn[aria-disabled="true"] {
+.button[disabled],
+.button[aria-disabled="true"] {
     opacity: var(--state-disabled-opacity);
     cursor: not-allowed;
 }
 
-.btn:focus-visible {
+.button:focus-visible {
     outline: none;
     box-shadow: 0 0 0 0.375rem var(--ring);
 }
 
 /* Variants */
-.btn--primary {
+.button--primary {
     background: var(--primary);
     color: var(--on-primary);
 }
-.btn--primary:hover {
+.button--primary:hover {
     background: color-mix(in oklab, var(--primary) 92%, #000 8%);
 }
 
-.btn--secondary {
+.button--secondary {
     background: var(--surface-container-lowest);
     color: var(--on-background);
     border-color: var(--outline-variant);
 }
-.btn--secondary:hover {
+.button--secondary:hover {
     background: var(--surface-container);
     border-color: var(--outline);
 }
 
-.btn--ghost {
+.button--ghost {
     color: var(--on-background);
     box-shadow: none;
 }
-.btn--ghost:hover {
+.button--ghost:hover {
     background: var(--surface-container-high);
     box-shadow: none;
 }
-.btn--ghost:active {
+.button--ghost:active {
     box-shadow: none;
 }
 
-.btn--soft {
+.button--soft {
     background: var(--primary-container);
     color: var(--on-primary-container);
 }
-.btn--soft:hover {
+.button--soft:hover {
     background: color-mix(
         in oklab,
         var(--primary-container) 80%,
@@ -101,15 +101,15 @@
     );
 }
 
-.btn--danger {
+.button--danger {
     background: var(--error);
     color: var(--on-error);
 }
-.btn--danger:hover {
+.button--danger:hover {
     background: color-mix(in oklab, var(--error) 92%, #000 8%);
 }
 
-.btn--link {
+.button--link {
     height: auto;
     padding: 0;
     color: var(--ref-primary-40);
@@ -123,35 +123,35 @@
     );
     box-shadow: none;
 }
-.btn--link:hover {
+.button--link:hover {
     text-decoration-color: var(--ref-primary-40);
     box-shadow: none;
 }
-.btn--link:active {
+.button--link:active {
     box-shadow: none;
     transform: none;
 }
 
 /* Sizes */
-.btn--sm {
+.button--small {
     height: 4rem;
     padding: 0 1.5rem;
     font-size: 1.5rem;
 }
 
-.btn--lg {
+.button--large {
     height: 6rem;
     padding: 0 2.5rem;
     font-size: 2rem;
 }
 
-.btn--icon {
+.button--icon {
     width: 5rem;
     padding: 0;
 }
-.btn--icon.btn--sm {
+.button--icon.button--small {
     width: 4rem;
 }
-.btn--icon.btn--lg {
+.button--icon.button--large {
     width: 6rem;
 }
