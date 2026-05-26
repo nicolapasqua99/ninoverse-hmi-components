@@ -12,6 +12,7 @@ export {
     type ButtonVariant,
 } from './components/button';
 export { Checkbox, type CheckboxProps } from './components/checkbox';
+export { Chip, type ChipProps } from './components/chip';
 export { Field, type FieldProps } from './components/field';
 export { Input, type InputProps } from './components/input';
 export {

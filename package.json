@@ -28,6 +28,10 @@
             "types": "./dist/components/checkbox.d.ts",
             "import": "./dist/checkbox.js"
         },
+        "./chip": {
+            "types": "./dist/components/chip.d.ts",
+            "import": "./dist/chip.js"
+        },
         "./field": {
             "types": "./dist/components/field.d.ts",
             "import": "./dist/field.js"

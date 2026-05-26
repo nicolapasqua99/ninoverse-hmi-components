@@ -1,0 +1,103 @@
+/* Chip — pill tag, optionally toggleable and/or closable. The outer
+   .chip is a structural <div>; .chip__toggle is the interactive surface
+   (a <button> when onSelect is provided, a <span> otherwise) and
+   .chip__close is always a real <button> when present. This keeps the
+   visual pill look while satisfying "no nested buttons" HTML rules and
+   avoiding role="button" on a static <span>. */
+
+.chip {
+    display: inline-flex;
+    align-items: stretch;
+    height: 3.75rem;
+    border-radius: var(--corner-full);
+    background: var(--surface-container-lowest);
+    color: var(--on-background);
+    border: 0.125rem solid var(--outline-variant);
+    font-family: var(--font-quicksand);
+    font-size: 1.75rem;
+    font-weight: 500;
+    user-select: none;
+    overflow: hidden;
+    transition:
+        background var(--duration-short-3) var(--easing-standard),
+        border-color var(--duration-short-3) var(--easing-standard),
+        color var(--duration-short-3) var(--easing-standard);
+}
+
+.chip__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 1.5rem;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    cursor: default;
+    transition: background var(--duration-short-3) var(--easing-standard);
+}
+
+.chip--interactive .chip__toggle:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.chip--interactive .chip__toggle:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 0.375rem var(--ring);
+}
+
+.chip--selected {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+    border-color: color-mix(
+        in oklab,
+        var(--primary) 35%,
+        var(--outline-variant)
+    );
+}
+
+.chip--interactive.chip--selected .chip__toggle:hover {
+    background: color-mix(in oklab, var(--primary) 12%, transparent);
+}
+
+.chip__icon {
+    display: inline-flex;
+    color: inherit;
+}
+
+.chip__icon svg {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.chip__label {
+    line-height: 1;
+}
+
+.chip__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    margin: 0;
+    padding: 0 0.75rem 0 0.25rem;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: default;
+    transition: background var(--duration-short-3) var(--easing-standard);
+}
+
+.chip__close:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.chip__close:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 0.375rem var(--ring);
+}
+
+.chip__close svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
