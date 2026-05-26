@@ -92,6 +92,10 @@
             "types": "./dist/components/switch.d.ts",
             "import": "./dist/switch.js"
         },
+        "./tabs": {
+            "types": "./dist/components/tabs.d.ts",
+            "import": "./dist/tabs.js"
+        },
         "./textarea": {
             "types": "./dist/components/textarea.d.ts",
             "import": "./dist/textarea.js"

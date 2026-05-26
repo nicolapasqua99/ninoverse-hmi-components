@@ -18,6 +18,7 @@ import { SearchInput } from './components/searchInput';
 import { Select } from './components/select';
 import { Spinner } from './components/spinner';
 import { Switch } from './components/switch';
+import { Tabs } from './components/tabs';
 import { Textarea } from './components/textarea';
 import { ToastHost, toast } from './components/toast';
 import { Tooltip } from './components/tooltip';
@@ -64,6 +65,12 @@ export default function App() {
     >('react');
     const [modalMedium, setModalMedium] = useState(false);
     const [modalLarge, setModalLarge] = useState(false);
+    const [pillTab, setPillTab] = useState<'inbox' | 'sent' | 'archive'>(
+        'inbox',
+    );
+    const [underlineTab, setUnderlineTab] = useState<
+        'overview' | 'usage' | 'billing'
+    >('overview');
     return (
         <div
             style={{
@@ -1078,6 +1085,77 @@ export default function App() {
                     >
                         Sticky
                     </Button>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Tabs</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '3rem',
+                    }}
+                >
+                    <div>
+                        <Tabs
+                            value={pillTab}
+                            onChange={setPillTab}
+                            options={[
+                                {
+                                    value: 'inbox',
+                                    label: 'Inbox',
+                                    count: 12,
+                                },
+                                { value: 'sent', label: 'Sent' },
+                                {
+                                    value: 'archive',
+                                    label: 'Archive',
+                                    count: 3,
+                                },
+                            ]}
+                        />
+                        <p
+                            style={{
+                                margin: '1rem 0 0',
+                                fontSize: '1.625rem',
+                                color: 'var(--on-surface-variant)',
+                            }}
+                        >
+                            Active: <strong>{pillTab}</strong>
+                        </p>
+                    </div>
+                    <div>
+                        <Tabs
+                            variant="underline"
+                            value={underlineTab}
+                            onChange={setUnderlineTab}
+                            options={[
+                                { value: 'overview', label: 'Overview' },
+                                {
+                                    value: 'usage',
+                                    label: 'Usage',
+                                    count: 24,
+                                },
+                                { value: 'billing', label: 'Billing' },
+                            ]}
+                        />
+                        <p
+                            style={{
+                                margin: '1rem 0 0',
+                                fontSize: '1.625rem',
+                                color: 'var(--on-surface-variant)',
+                            }}
+                        >
+                            Active: <strong>{underlineTab}</strong>
+                        </p>
+                    </div>
                 </div>
             </section>
             <ToastHost />
