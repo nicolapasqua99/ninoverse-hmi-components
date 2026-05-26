@@ -1,0 +1,84 @@
+/* Checkbox — boxed toggle with a check glyph that scales in on check.
+   The native input is visually hidden but kept in flow so it remains
+   focusable, keyboard-operable, and announced by screen readers. */
+
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.25rem;
+    cursor: default;
+    user-select: none;
+    font-family: var(--font-quicksand);
+    font-size: 1.75rem;
+    color: var(--on-background);
+}
+
+.checkbox__input {
+    position: absolute;
+    width: 0.125rem;
+    height: 0.125rem;
+    margin: -0.125rem;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.checkbox__box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: none;
+    background: var(--surface-container-lowest);
+    border: 0.25rem solid var(--outline);
+    border-radius: var(--corner-extra-small);
+    transition:
+        background var(--duration-short-3) var(--easing-standard),
+        border-color var(--duration-short-3) var(--easing-standard),
+        box-shadow var(--duration-short-3) var(--easing-standard);
+}
+
+.checkbox__box svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--on-primary);
+    opacity: 0;
+    transform: scale(0.6);
+    transition:
+        opacity var(--duration-short-3) var(--easing-spring),
+        transform var(--duration-short-3) var(--easing-spring);
+}
+
+.checkbox:hover .checkbox__box {
+    border-color: var(--primary);
+}
+
+.checkbox__input:checked ~ .checkbox__box {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.checkbox__input:checked ~ .checkbox__box svg {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.checkbox__input:focus-visible ~ .checkbox__box {
+    box-shadow: 0 0 0 0.5rem var(--ring);
+}
+
+.checkbox:has(.checkbox__input:disabled) {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.checkbox:has(.checkbox__input:disabled):hover .checkbox__box {
+    border-color: var(--outline);
+}
+
+.checkbox__label {
+    line-height: 1.4;
+}
