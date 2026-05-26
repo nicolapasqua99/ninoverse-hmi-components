@@ -47,5 +47,10 @@ export {
 } from './components/spinner';
 export { Switch, type SwitchProps } from './components/switch';
 export { Textarea, type TextareaProps } from './components/textarea';
+export {
+    Tooltip,
+    type TooltipProps,
+    type TooltipSide,
+} from './components/tooltip';
 export { type ColorToken, colors } from './configs/colors';
 export { type FontToken, fonts, googleFontsHref } from './configs/fonts';
