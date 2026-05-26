@@ -8,5 +8,6 @@ export {
 } from './components/button';
 export { Field, type FieldProps } from './components/field';
 export { Input, type InputProps } from './components/input';
+export { Textarea, type TextareaProps } from './components/textarea';
 export { type ColorToken, colors } from './configs/colors';
 export { type FontToken, fonts, googleFontsHref } from './configs/fonts';

@@ -29,6 +29,7 @@ export default defineConfig({
                 button: resolve(dirname, 'src/components/button.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
+                textarea: resolve(dirname, 'src/components/textarea.tsx'),
             },
             formats: ['es'],
             cssFileName: 'style',

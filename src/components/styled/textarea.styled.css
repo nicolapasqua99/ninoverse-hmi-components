@@ -1,0 +1,52 @@
+/* Textarea — multi-line text input sharing the leaf-corner and focus ring
+   with Input. Resize handle is enabled vertically only. */
+
+.textarea {
+    display: block;
+    width: 100%;
+    min-height: 12rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--surface-container-lowest);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    font-family: var(--font-quicksand);
+    font-size: 1.75rem;
+    color: var(--on-background);
+    outline: none;
+    resize: vertical;
+    transition:
+        border-color var(--duration-short-3) var(--easing-standard),
+        box-shadow var(--duration-short-3) var(--easing-standard),
+        background var(--duration-short-3) var(--easing-standard);
+}
+
+.textarea::placeholder {
+    color: var(--ref-neutral-60);
+}
+
+.textarea:hover {
+    border-color: var(--outline);
+}
+
+.textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.5rem var(--ring);
+}
+
+.textarea--error {
+    border-color: var(--error);
+}
+
+.textarea--error:focus {
+    box-shadow: 0 0 0 0.5rem color-mix(in oklab, var(--error) 35%, transparent);
+}
+
+.textarea:disabled {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.textarea:disabled:hover {
+    border-color: var(--outline-variant);
+}
