@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Accordion } from './components/accordion';
 import { Alert } from './components/alert';
 import { Badge } from './components/badge';
 import { Button } from './components/button';
@@ -1155,6 +1156,82 @@ export default function App() {
                         >
                             Active: <strong>{underlineTab}</strong>
                         </p>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Accordion</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, minmax(0, 50rem))',
+                        gap: '4rem',
+                    }}
+                >
+                    <div>
+                        <p
+                            style={{
+                                margin: '0 0 1rem',
+                                fontSize: '1.625rem',
+                                fontWeight: 700,
+                            }}
+                        >
+                            Single (default)
+                        </p>
+                        <Accordion
+                            defaultOpen={[0]}
+                            items={[
+                                {
+                                    title: 'How do I install the library?',
+                                    body: 'Run pnpm add @ninoverse/hmi-components, then import the components and the stylesheet.',
+                                },
+                                {
+                                    title: 'What about the theme?',
+                                    body: 'Drop the default.css file into your public dir and link it in your HTML. All components read its tokens at runtime.',
+                                },
+                                {
+                                    title: 'Can I disable a section?',
+                                    body: 'Yes — pass disabled: true on the AccordionItem.',
+                                    disabled: true,
+                                },
+                            ]}
+                        />
+                    </div>
+                    <div>
+                        <p
+                            style={{
+                                margin: '0 0 1rem',
+                                fontSize: '1.625rem',
+                                fontWeight: 700,
+                            }}
+                        >
+                            Multiple
+                        </p>
+                        <Accordion
+                            multiple
+                            defaultOpen={[0, 1]}
+                            items={[
+                                {
+                                    title: 'Keyboard shortcuts',
+                                    body: 'Tab moves between triggers; Enter or Space toggles a section.',
+                                },
+                                {
+                                    title: 'Animation',
+                                    body: 'Panels use the grid-template-rows 0fr → 1fr trick so content height isn’t measured.',
+                                },
+                                {
+                                    title: 'Reduced motion',
+                                    body: 'Honors prefers-reduced-motion by zeroing the transition duration.',
+                                },
+                            ]}
+                        />
                     </div>
                 </div>
             </section>

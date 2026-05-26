@@ -16,6 +16,10 @@
             "types": "./dist/index.d.ts",
             "import": "./dist/index.js"
         },
+        "./accordion": {
+            "types": "./dist/components/accordion.d.ts",
+            "import": "./dist/accordion.js"
+        },
         "./alert": {
             "types": "./dist/components/alert.d.ts",
             "import": "./dist/alert.js"

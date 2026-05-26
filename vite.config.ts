@@ -26,6 +26,7 @@ export default defineConfig({
         lib: {
             entry: {
                 index: resolve(dirname, 'src/index.ts'),
+                accordion: resolve(dirname, 'src/components/accordion.tsx'),
                 alert: resolve(dirname, 'src/components/alert.tsx'),
                 badge: resolve(dirname, 'src/components/badge.tsx'),
                 button: resolve(dirname, 'src/components/button.tsx'),
