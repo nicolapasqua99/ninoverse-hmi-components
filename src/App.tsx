@@ -11,6 +11,7 @@ import { Field } from './components/field';
 import { Input } from './components/input';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
 import { Modal } from './components/modal';
+import { Pagination } from './components/pagination';
 import { PasswordInput } from './components/passwordInput';
 import { Popover } from './components/popover';
 import { Progress } from './components/progress';
@@ -71,6 +72,8 @@ export default function App() {
         'inbox',
     );
     const [crumbsCurrent, setCrumbsCurrent] = useState<string>('Components');
+    const [pageShort, setPageShort] = useState(3);
+    const [pageLong, setPageLong] = useState(8);
     const [underlineTab, setUnderlineTab] = useState<
         'overview' | 'usage' | 'billing'
     >('overview');
@@ -1271,6 +1274,57 @@ export default function App() {
                         { label: 'Getting started' },
                     ]}
                 />
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Pagination</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2rem',
+                    }}
+                >
+                    <div>
+                        <p
+                            style={{
+                                margin: '0 0 1rem',
+                                fontSize: '1.625rem',
+                                color: 'var(--on-surface-variant)',
+                            }}
+                        >
+                            Short (5 pages, all shown):
+                        </p>
+                        <Pagination
+                            page={pageShort}
+                            total={5}
+                            onChange={setPageShort}
+                        />
+                    </div>
+                    <div>
+                        <p
+                            style={{
+                                margin: '0 0 1rem',
+                                fontSize: '1.625rem',
+                                color: 'var(--on-surface-variant)',
+                            }}
+                        >
+                            Long (20 pages, windowed). Current:{' '}
+                            <strong>{pageLong}</strong>
+                        </p>
+                        <Pagination
+                            page={pageLong}
+                            total={20}
+                            onChange={setPageLong}
+                        />
+                    </div>
+                </div>
             </section>
             <ToastHost />
         </div>

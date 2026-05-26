@@ -51,6 +51,10 @@ export {
     type ModalSize,
 } from './components/modal';
 export {
+    Pagination,
+    type PaginationProps,
+} from './components/pagination';
+export {
     PasswordInput,
     type PasswordInputProps,
 } from './components/passwordInput';

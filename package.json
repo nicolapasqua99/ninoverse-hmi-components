@@ -64,6 +64,10 @@
             "types": "./dist/components/modal.d.ts",
             "import": "./dist/modal.js"
         },
+        "./pagination": {
+            "types": "./dist/components/pagination.d.ts",
+            "import": "./dist/pagination.js"
+        },
         "./password-input": {
             "types": "./dist/components/passwordInput.d.ts",
             "import": "./dist/passwordInput.js"
