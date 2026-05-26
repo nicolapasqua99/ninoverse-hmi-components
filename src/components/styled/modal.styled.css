@@ -1,0 +1,86 @@
+/* Modal — full-page scrim + centred dialog. Body scroll is locked while
+   open. Escape closes; clicking the scrim (but not the dialog) closes.
+   Focus is moved into the dialog on open and restored to the trigger
+   on close. */
+
+.modal-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    background: rgba(43, 38, 32, 0.32);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    animation: modal-scrim-in var(--duration-short-3) var(--easing-standard);
+}
+
+.modal {
+    width: 100%;
+    max-width: 55rem;
+    padding: 3rem;
+    background: var(--surface-container-low);
+    color: var(--on-background);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    box-shadow: var(--elevation-4);
+    animation: modal-in var(--duration-medium-2) var(--easing-spring) both;
+    outline: none;
+}
+
+.modal--large {
+    max-width: 75rem;
+}
+
+.modal__title {
+    margin: 0 0 0.75rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    font-family: var(--font-quicksand);
+    line-height: 1.2;
+}
+
+.modal__description {
+    margin: 0 0 2.5rem;
+    color: var(--on-surface-variant);
+    font-size: 1.75rem;
+    line-height: 1.4;
+}
+
+.modal__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 3rem;
+}
+
+@keyframes modal-scrim-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modal-in {
+    from {
+        opacity: 0;
+        transform: translateY(2.5rem) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal-scrim,
+    .modal {
+        animation-duration: 0ms;
+    }
+}

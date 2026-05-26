@@ -35,6 +35,7 @@ export default defineConfig({
                 field: resolve(dirname, 'src/components/field.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 menu: resolve(dirname, 'src/components/menu.tsx'),
+                modal: resolve(dirname, 'src/components/modal.tsx'),
                 passwordInput: resolve(
                     dirname,
                     'src/components/passwordInput.tsx',

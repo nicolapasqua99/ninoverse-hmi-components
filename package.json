@@ -52,6 +52,10 @@
             "types": "./dist/components/menu.d.ts",
             "import": "./dist/menu.js"
         },
+        "./modal": {
+            "types": "./dist/components/modal.d.ts",
+            "import": "./dist/modal.js"
+        },
         "./password-input": {
             "types": "./dist/components/passwordInput.d.ts",
             "import": "./dist/passwordInput.js"

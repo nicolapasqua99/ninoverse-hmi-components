@@ -8,6 +8,7 @@ import { Chip } from './components/chip';
 import { Field } from './components/field';
 import { Input } from './components/input';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
+import { Modal } from './components/modal';
 import { PasswordInput } from './components/passwordInput';
 import { Popover } from './components/popover';
 import { Progress } from './components/progress';
@@ -60,6 +61,8 @@ export default function App() {
     const [framework, setFramework] = useState<
         'react' | 'vue' | 'svelte' | 'solid'
     >('react');
+    const [modalMedium, setModalMedium] = useState(false);
+    const [modalLarge, setModalLarge] = useState(false);
     return (
         <div
             style={{
@@ -906,6 +909,98 @@ export default function App() {
                         />
                     </Field>
                 </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Modal</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '2rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Button onClick={() => setModalMedium(true)}>
+                        Open medium modal
+                    </Button>
+                    <Button
+                        variant="secondary"
+                        onClick={() => setModalLarge(true)}
+                    >
+                        Open large modal
+                    </Button>
+                </div>
+                <Modal
+                    open={modalMedium}
+                    onClose={() => setModalMedium(false)}
+                    title="Confirm publish"
+                    description="This will make the post visible to anyone with the link."
+                    actions={
+                        <>
+                            <Button
+                                variant="ghost"
+                                onClick={() => setModalMedium(false)}
+                            >
+                                Cancel
+                            </Button>
+                            <Button
+                                variant="primary"
+                                onClick={() => setModalMedium(false)}
+                            >
+                                Publish
+                            </Button>
+                        </>
+                    }
+                >
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.75rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        You can change visibility back to private at any time
+                        from the post's settings menu.
+                    </p>
+                </Modal>
+                <Modal
+                    open={modalLarge}
+                    onClose={() => setModalLarge(false)}
+                    size="large"
+                    title="Workspace settings"
+                    description="Long-form content lives comfortably in the large variant."
+                    actions={
+                        <Button
+                            variant="primary"
+                            onClick={() => setModalLarge(false)}
+                        >
+                            Done
+                        </Button>
+                    }
+                >
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '2rem',
+                            fontSize: '1.75rem',
+                        }}
+                    >
+                        <Field label="Display name">
+                            <Input defaultValue="Ninoverse" />
+                        </Field>
+                        <Field label="Notes">
+                            <Textarea defaultValue="Anything you'd like to remember about this workspace." />
+                        </Field>
+                    </div>
+                </Modal>
             </section>
         </div>
     );
