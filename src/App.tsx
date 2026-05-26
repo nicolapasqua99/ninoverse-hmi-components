@@ -15,6 +15,7 @@ import { SearchInput } from './components/searchInput';
 import { Spinner } from './components/spinner';
 import { Switch } from './components/switch';
 import { Textarea } from './components/textarea';
+import { Tooltip } from './components/tooltip';
 
 const SearchIcon = () => (
     <svg
@@ -663,6 +664,42 @@ export default function App() {
                             primary variants.
                         </p>
                     </Card>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Tooltip</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        padding: '6rem 3rem',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <Tooltip label="On top" side="top">
+                        <Button variant="secondary">Top</Button>
+                    </Tooltip>
+                    <Tooltip label="Below" side="bottom">
+                        <Button variant="secondary">Bottom</Button>
+                    </Tooltip>
+                    <Tooltip label="To the left" side="left">
+                        <Button variant="secondary">Left</Button>
+                    </Tooltip>
+                    <Tooltip label="To the right" side="right">
+                        <Button variant="secondary">Right</Button>
+                    </Tooltip>
+                    <Tooltip label="Snappy (0ms delay)" delay={0}>
+                        <Button>Instant</Button>
+                    </Tooltip>
                 </div>
             </section>
         </div>
