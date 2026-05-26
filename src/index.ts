@@ -1,6 +1,11 @@
 /* Public library barrel — components will be re-exported here as they land. */
 
 export {
+    Alert,
+    type AlertProps,
+    type AlertVariant,
+} from './components/alert';
+export {
     Badge,
     type BadgeProps,
     type BadgeVariant,

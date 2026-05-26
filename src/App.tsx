@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Alert } from './components/alert';
 import { Badge } from './components/badge';
 import { Button } from './components/button';
 import { Checkbox } from './components/checkbox';
@@ -512,6 +513,55 @@ export default function App() {
                     <Field label="Indeterminate">
                         <Progress indeterminate label="Syncing" />
                     </Field>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Alert</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'minmax(0, 80rem)',
+                        gap: '2rem',
+                    }}
+                >
+                    <Alert variant="info" title="Heads up">
+                        A new theme is available. Reload to pick it up.
+                    </Alert>
+                    <Alert variant="success" title="Saved">
+                        Your changes have been written to the cloud.
+                    </Alert>
+                    <Alert
+                        variant="warning"
+                        title="Low storage"
+                        action={
+                            <Button size="small" variant="soft">
+                                Manage
+                            </Button>
+                        }
+                    >
+                        You have 1.2 GB free on this device.
+                    </Alert>
+                    <Alert
+                        variant="danger"
+                        title="Sync failed"
+                        action={
+                            <Button size="small" variant="danger">
+                                Retry
+                            </Button>
+                        }
+                    >
+                        Could not reach the server. Will retry in 30 seconds.
+                    </Alert>
+                    <Alert variant="info">
+                        Body-only alert with no title — works too.
+                    </Alert>
                 </div>
             </section>
         </div>
