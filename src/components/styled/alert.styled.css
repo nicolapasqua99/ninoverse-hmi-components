@@ -1,0 +1,114 @@
+/* Alert — banner with a variant icon, title/body stack, and an optional
+   action slot pinned right. Uses the same asymmetric corner shape as
+   Button so a stacked alert reads as part of the warm surface family. */
+
+.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.75rem 2rem;
+    background: var(--surface-container-low);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    font-family: var(--font-quicksand);
+    color: var(--on-background);
+}
+
+.alert__icon {
+    display: inline-flex;
+    flex: none;
+    margin-top: 0.125rem;
+}
+
+.alert__icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.alert__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.alert__title {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.alert__body {
+    margin: 0;
+    font-size: 1.625rem;
+    line-height: 1.4;
+    color: var(--on-surface-variant);
+}
+
+.alert__action {
+    align-self: center;
+    flex: none;
+}
+
+.alert--info {
+    background: var(--tertiary-container);
+    color: var(--on-tertiary-container);
+    border-color: color-mix(
+        in oklab,
+        var(--tertiary) 30%,
+        var(--outline-variant)
+    );
+}
+.alert--info .alert__icon {
+    color: var(--tertiary);
+}
+.alert--info .alert__body {
+    color: var(--on-tertiary-container);
+}
+
+.alert--success {
+    background: var(--success-container);
+    color: var(--on-success-container);
+    border-color: color-mix(
+        in oklab,
+        var(--success) 30%,
+        var(--outline-variant)
+    );
+}
+.alert--success .alert__icon {
+    color: var(--success);
+}
+.alert--success .alert__body {
+    color: var(--on-success-container);
+}
+
+.alert--warning {
+    background: var(--warning-container);
+    color: var(--on-warning-container);
+    border-color: color-mix(
+        in oklab,
+        var(--warning) 30%,
+        var(--outline-variant)
+    );
+}
+.alert--warning .alert__icon {
+    color: var(--warning);
+}
+.alert--warning .alert__body {
+    color: var(--on-warning-container);
+}
+
+.alert--danger {
+    background: var(--error-container);
+    color: var(--on-error-container);
+    border-color: color-mix(in oklab, var(--error) 30%, var(--outline-variant));
+}
+.alert--danger .alert__icon {
+    color: var(--error);
+}
+.alert--danger .alert__body {
+    color: var(--on-error-container);
+}
