@@ -40,6 +40,10 @@
             "types": "./dist/components/radioGroup.d.ts",
             "import": "./dist/radioGroup.js"
         },
+        "./switch": {
+            "types": "./dist/components/switch.d.ts",
+            "import": "./dist/switch.js"
+        },
         "./textarea": {
             "types": "./dist/components/textarea.d.ts",
             "import": "./dist/textarea.js"

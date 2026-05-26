@@ -5,6 +5,7 @@ import { Field } from './components/field';
 import { Input } from './components/input';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
+import { Switch } from './components/switch';
 import { Textarea } from './components/textarea';
 
 const SearchIcon = () => (
@@ -231,6 +232,16 @@ export default function App() {
                             ]}
                         />
                     </Field>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
                 <h2 style={{ margin: 0, fontSize: '3rem' }}>Checkbox</h2>
                 <div
                     style={{
@@ -245,6 +256,33 @@ export default function App() {
                     <Checkbox label="Disabled" disabled />
                     <Checkbox
                         label="Disabled checked"
+                        disabled
+                        defaultChecked
+                    />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Switch</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Switch label="Notifications" defaultChecked />
+                    <Switch label="Email digest" />
+                    <Switch label="Beta features (disabled)" disabled />
+                    <Switch
+                        label="Auto-save (disabled, on)"
                         disabled
                         defaultChecked
                     />
