@@ -29,6 +29,8 @@ export default defineConfig({
                 button: resolve(dirname, 'src/components/button.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
+                radio: resolve(dirname, 'src/components/radio.tsx'),
+                radioGroup: resolve(dirname, 'src/components/radioGroup.tsx'),
                 textarea: resolve(dirname, 'src/components/textarea.tsx'),
             },
             formats: ['es'],

@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { Button } from './components/button';
 import { Field } from './components/field';
 import { Input } from './components/input';
+import { Radio } from './components/radio';
+import { RadioGroup } from './components/radioGroup';
 import { Textarea } from './components/textarea';
 
 const SearchIcon = () => (
@@ -19,6 +22,7 @@ const SearchIcon = () => (
 );
 
 export default function App() {
+    const [plan, setPlan] = useState<'free' | 'pro' | 'team'>('pro');
     return (
         <div
             style={{
@@ -161,6 +165,70 @@ export default function App() {
                     </Field>
                     <Field label="Feedback" error="Please describe the issue.">
                         <Textarea error defaultValue="" />
+                    </Field>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Radio</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, minmax(0, 40rem))',
+                        gap: '3rem',
+                    }}
+                >
+                    <Field
+                        label="Single radios (shared name)"
+                        hint="Native browser handles mutual exclusion."
+                    >
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '1.25rem',
+                            }}
+                        >
+                            <Radio
+                                name="size"
+                                value="sm"
+                                label="Small"
+                                defaultChecked
+                            />
+                            <Radio name="size" value="md" label="Medium" />
+                            <Radio name="size" value="lg" label="Large" />
+                            <Radio
+                                name="size"
+                                value="xl"
+                                label="Extra large (disabled)"
+                                disabled
+                            />
+                        </div>
+                    </Field>
+                    <Field
+                        label="Controlled RadioGroup"
+                        hint={`Selected: ${plan}`}
+                    >
+                        <RadioGroup
+                            name="plan"
+                            value={plan}
+                            onChange={setPlan}
+                            options={[
+                                { value: 'free', label: 'Free' },
+                                { value: 'pro', label: 'Pro' },
+                                {
+                                    value: 'team',
+                                    label: 'Team (disabled)',
+                                    disabled: true,
+                                },
+                            ]}
+                        />
                     </Field>
                 </div>
             </section>
