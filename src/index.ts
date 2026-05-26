@@ -15,6 +15,7 @@ export {
     type RadioGroupProps,
     type RadioOption,
 } from './components/radioGroup';
+export { Switch, type SwitchProps } from './components/switch';
 export { Textarea, type TextareaProps } from './components/textarea';
 export { type ColorToken, colors } from './configs/colors';
 export { type FontToken, fonts, googleFontsHref } from './configs/fonts';

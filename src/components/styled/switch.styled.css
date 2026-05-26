@@ -1,0 +1,85 @@
+/* Switch — pill-shaped track with a thumb that slides on toggle. Under
+   the hood this is a checkbox: same native input, same Space-to-toggle
+   keyboard behaviour, same form-submission semantics. The visual is
+   the only thing that's different. */
+
+.switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.25rem;
+    cursor: default;
+    user-select: none;
+    font-family: var(--font-quicksand);
+    font-size: 1.75rem;
+    color: var(--on-background);
+}
+
+.switch__input {
+    position: absolute;
+    width: 0.125rem;
+    height: 0.125rem;
+    margin: -0.125rem;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.switch__track {
+    position: relative;
+    width: 4.5rem;
+    height: 2.75rem;
+    flex: none;
+    background: var(--outline);
+    border-radius: var(--corner-full);
+    transition:
+        background var(--duration-short-3) var(--easing-standard),
+        box-shadow var(--duration-short-3) var(--easing-standard);
+}
+
+.switch__thumb {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: var(--surface-container-lowest);
+    border-radius: var(--corner-full);
+    box-shadow:
+        0 0.125rem 0.25rem rgba(0, 0, 0, 0.2),
+        0 0.125rem 0 rgba(0, 0, 0, 0.05);
+    transition:
+        left var(--duration-short-3) var(--easing-spring),
+        width var(--duration-short-1) var(--easing-standard);
+}
+
+.switch__input:checked ~ .switch__track {
+    background: var(--primary);
+}
+
+.switch__input:checked ~ .switch__track .switch__thumb {
+    left: 2rem;
+}
+
+.switch:active .switch__thumb {
+    width: 2.75rem;
+}
+
+.switch__input:checked ~ .switch__track:active .switch__thumb,
+.switch:active .switch__input:checked ~ .switch__track .switch__thumb {
+    left: 1.5rem;
+}
+
+.switch__input:focus-visible ~ .switch__track {
+    box-shadow: 0 0 0 0.5rem var(--ring);
+}
+
+.switch:has(.switch__input:disabled) {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.switch__label {
+    line-height: 1.4;
+}
