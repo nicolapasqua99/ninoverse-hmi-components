@@ -9,6 +9,7 @@ import { PasswordInput } from './components/passwordInput';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
 import { SearchInput } from './components/searchInput';
+import { Spinner } from './components/spinner';
 import { Switch } from './components/switch';
 import { Textarea } from './components/textarea';
 
@@ -454,6 +455,30 @@ export default function App() {
                         ))}
                     </div>
                 </Field>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Spinner</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Spinner size="small" />
+                    <Spinner />
+                    <Spinner size="large" />
+                    <Button leftIcon={<Spinner size="small" />} disabled>
+                        Loading
+                    </Button>
+                </div>
             </section>
         </div>
     );

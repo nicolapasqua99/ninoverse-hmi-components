@@ -56,6 +56,10 @@
             "types": "./dist/components/searchInput.d.ts",
             "import": "./dist/searchInput.js"
         },
+        "./spinner": {
+            "types": "./dist/components/spinner.d.ts",
+            "import": "./dist/spinner.js"
+        },
         "./switch": {
             "types": "./dist/components/switch.d.ts",
             "import": "./dist/switch.js"

@@ -29,6 +29,11 @@ export {
     SearchInput,
     type SearchInputProps,
 } from './components/searchInput';
+export {
+    Spinner,
+    type SpinnerProps,
+    type SpinnerSize,
+} from './components/spinner';
 export { Switch, type SwitchProps } from './components/switch';
 export { Textarea, type TextareaProps } from './components/textarea';
 export { type ColorToken, colors } from './configs/colors';

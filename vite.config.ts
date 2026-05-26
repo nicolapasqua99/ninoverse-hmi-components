@@ -39,6 +39,7 @@ export default defineConfig({
                 radio: resolve(dirname, 'src/components/radio.tsx'),
                 radioGroup: resolve(dirname, 'src/components/radioGroup.tsx'),
                 searchInput: resolve(dirname, 'src/components/searchInput.tsx'),
+                spinner: resolve(dirname, 'src/components/spinner.tsx'),
                 switch: resolve(dirname, 'src/components/switch.tsx'),
                 textarea: resolve(dirname, 'src/components/textarea.tsx'),
             },
