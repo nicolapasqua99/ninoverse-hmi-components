@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Badge } from './components/badge';
 import { Button } from './components/button';
 import { Checkbox } from './components/checkbox';
 import { Field } from './components/field';
@@ -326,6 +327,56 @@ export default function App() {
                     <Field label="Search (custom placeholder)">
                         <SearchInput placeholder="Find a component…" />
                     </Field>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Badge</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '1.5rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Badge>Default</Badge>
+                    <Badge variant="primary">Primary</Badge>
+                    <Badge variant="success">Success</Badge>
+                    <Badge variant="warning">Warning</Badge>
+                    <Badge variant="danger">Danger</Badge>
+                    <Badge variant="info">Info</Badge>
+                </div>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '1.5rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Badge dot>Live</Badge>
+                    <Badge variant="primary" dot>
+                        New
+                    </Badge>
+                    <Badge variant="success" dot>
+                        Online
+                    </Badge>
+                    <Badge variant="warning" dot>
+                        Pending
+                    </Badge>
+                    <Badge variant="danger" dot>
+                        Offline
+                    </Badge>
+                    <Badge variant="info" dot>
+                        Beta
+                    </Badge>
                 </div>
             </section>
         </div>

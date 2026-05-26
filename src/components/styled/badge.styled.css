@@ -1,0 +1,76 @@
+/* Badge — small pill for counts, statuses, and inline labels. The dot
+   slot uses currentColor at 70% opacity so it always sits on top of the
+   variant text colour. */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 2.75rem;
+    padding: 0 1rem;
+    border-radius: var(--corner-full);
+    background: var(--surface-container);
+    color: var(--on-surface-variant);
+    border: 0.125rem solid var(--outline-variant);
+    font-family: var(--font-quicksand);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.badge--primary {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+    border-color: color-mix(
+        in oklab,
+        var(--primary) 20%,
+        var(--outline-variant)
+    );
+}
+
+.badge--success {
+    background: var(--success-container);
+    color: var(--on-success-container);
+    border-color: color-mix(
+        in oklab,
+        var(--success) 30%,
+        var(--outline-variant)
+    );
+}
+
+.badge--warning {
+    background: var(--warning-container);
+    color: var(--on-warning-container);
+    border-color: color-mix(
+        in oklab,
+        var(--warning) 30%,
+        var(--outline-variant)
+    );
+}
+
+.badge--danger {
+    background: var(--error-container);
+    color: var(--on-error-container);
+    border-color: color-mix(in oklab, var(--error) 30%, var(--outline-variant));
+}
+
+.badge--info {
+    background: var(--tertiary-container);
+    color: var(--on-tertiary-container);
+    border-color: color-mix(
+        in oklab,
+        var(--tertiary) 30%,
+        var(--outline-variant)
+    );
+}
+
+.badge__dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.7;
+    flex: none;
+}
