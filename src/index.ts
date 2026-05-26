@@ -1,6 +1,11 @@
 /* Public library barrel — components will be re-exported here as they land. */
 
 export {
+    Badge,
+    type BadgeProps,
+    type BadgeVariant,
+} from './components/badge';
+export {
     Button,
     type ButtonProps,
     type ButtonSize,
