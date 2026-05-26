@@ -38,6 +38,7 @@ export default defineConfig({
                 input: resolve(dirname, 'src/components/input.tsx'),
                 menu: resolve(dirname, 'src/components/menu.tsx'),
                 modal: resolve(dirname, 'src/components/modal.tsx'),
+                pagination: resolve(dirname, 'src/components/pagination.tsx'),
                 passwordInput: resolve(
                     dirname,
                     'src/components/passwordInput.tsx',
