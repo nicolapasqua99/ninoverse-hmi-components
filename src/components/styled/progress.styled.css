@@ -1,0 +1,38 @@
+/* Progress — pill-shaped track with a coral bar. In determinate mode
+   the bar's width follows the value prop. In indeterminate mode it's
+   pinned at 40% width and slides across the track. */
+
+.progress {
+    position: relative;
+    height: 1rem;
+    background: var(--surface-container-high);
+    border-radius: var(--corner-full);
+    overflow: hidden;
+}
+
+.progress__bar {
+    height: 100%;
+    background: var(--primary);
+    border-radius: var(--corner-full);
+    transition: width var(--duration-long-1) var(--easing-standard);
+}
+
+.progress--indeterminate .progress__bar {
+    width: 40%;
+    animation: progress-indet 1400ms var(--easing-standard) infinite;
+}
+
+@keyframes progress-indet {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(250%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .progress--indeterminate .progress__bar {
+        animation-duration: 4200ms;
+    }
+}

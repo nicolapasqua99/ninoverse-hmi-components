@@ -6,6 +6,7 @@ import { Chip } from './components/chip';
 import { Field } from './components/field';
 import { Input } from './components/input';
 import { PasswordInput } from './components/passwordInput';
+import { Progress } from './components/progress';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
 import { SearchInput } from './components/searchInput';
@@ -478,6 +479,39 @@ export default function App() {
                     <Button leftIcon={<Spinner size="small" />} disabled>
                         Loading
                     </Button>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Progress</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'minmax(0, 60rem)',
+                        gap: '3rem',
+                    }}
+                >
+                    <Field label="Determinate (0%)">
+                        <Progress value={0} />
+                    </Field>
+                    <Field label="Determinate (35%)">
+                        <Progress value={35} />
+                    </Field>
+                    <Field label="Determinate (80%)">
+                        <Progress value={80} />
+                    </Field>
+                    <Field label="Determinate (100%)">
+                        <Progress value={100} />
+                    </Field>
+                    <Field label="Indeterminate">
+                        <Progress indeterminate label="Syncing" />
+                    </Field>
                 </div>
             </section>
         </div>
