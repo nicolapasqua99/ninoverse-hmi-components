@@ -1,6 +1,11 @@
 /* Public library barrel — components will be re-exported here as they land. */
 
 export {
+    Accordion,
+    type AccordionItem,
+    type AccordionProps,
+} from './components/accordion';
+export {
     Alert,
     type AlertProps,
     type AlertVariant,
