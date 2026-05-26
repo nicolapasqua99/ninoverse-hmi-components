@@ -1,0 +1,36 @@
+/* Popover — portal-rendered container anchored under a trigger. The
+   left/right offset depends on align (start anchors to trigger's left
+   edge, end to its right). Min-width defaults to the trigger's width
+   so dropdowns line up cleanly. */
+
+.popover {
+    position: absolute;
+    z-index: 1000;
+    min-width: 20rem;
+    padding: 1rem;
+    background: var(--surface-container-low);
+    color: var(--on-background);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    box-shadow: var(--elevation-3);
+    transform-origin: top;
+    animation: popover-in var(--duration-short-4) var(--easing-spring) both;
+}
+
+@keyframes popover-in {
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(-0.75rem);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .popover {
+        animation-duration: 0ms;
+    }
+}

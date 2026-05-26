@@ -52,6 +52,10 @@
             "types": "./dist/components/passwordInput.d.ts",
             "import": "./dist/passwordInput.js"
         },
+        "./popover": {
+            "types": "./dist/components/popover.d.ts",
+            "import": "./dist/popover.js"
+        },
         "./progress": {
             "types": "./dist/components/progress.d.ts",
             "import": "./dist/progress.js"

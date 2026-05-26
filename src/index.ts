@@ -29,6 +29,11 @@ export {
     PasswordInput,
     type PasswordInputProps,
 } from './components/passwordInput';
+export {
+    Popover,
+    type PopoverAlign,
+    type PopoverProps,
+} from './components/popover';
 export { Progress, type ProgressProps } from './components/progress';
 export { Radio, type RadioProps } from './components/radio';
 export {
