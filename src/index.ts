@@ -9,12 +9,20 @@ export {
 export { Checkbox, type CheckboxProps } from './components/checkbox';
 export { Field, type FieldProps } from './components/field';
 export { Input, type InputProps } from './components/input';
+export {
+    PasswordInput,
+    type PasswordInputProps,
+} from './components/passwordInput';
 export { Radio, type RadioProps } from './components/radio';
 export {
     RadioGroup,
     type RadioGroupProps,
     type RadioOption,
 } from './components/radioGroup';
+export {
+    SearchInput,
+    type SearchInputProps,
+} from './components/searchInput';
 export { Switch, type SwitchProps } from './components/switch';
 export { Textarea, type TextareaProps } from './components/textarea';
 export { type ColorToken, colors } from './configs/colors';

@@ -3,8 +3,10 @@ import { Button } from './components/button';
 import { Checkbox } from './components/checkbox';
 import { Field } from './components/field';
 import { Input } from './components/input';
+import { PasswordInput } from './components/passwordInput';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
+import { SearchInput } from './components/searchInput';
 import { Switch } from './components/switch';
 import { Textarea } from './components/textarea';
 
@@ -286,6 +288,44 @@ export default function App() {
                         disabled
                         defaultChecked
                     />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>
+                    Password & Search
+                </h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, minmax(0, 40rem))',
+                        gap: '3rem',
+                    }}
+                >
+                    <Field label="Password" hint="Click the eye to reveal.">
+                        <PasswordInput
+                            placeholder="••••••••"
+                            defaultValue="super-secret"
+                        />
+                    </Field>
+                    <Field label="Search">
+                        <SearchInput />
+                    </Field>
+                    <Field
+                        label="Password (error)"
+                        error="Must include a number."
+                    >
+                        <PasswordInput defaultValue="letters-only" error />
+                    </Field>
+                    <Field label="Search (custom placeholder)">
+                        <SearchInput placeholder="Find a component…" />
+                    </Field>
                 </div>
             </section>
         </div>
