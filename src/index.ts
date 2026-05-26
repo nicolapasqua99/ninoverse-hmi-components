@@ -19,6 +19,7 @@ export {
     PasswordInput,
     type PasswordInputProps,
 } from './components/passwordInput';
+export { Progress, type ProgressProps } from './components/progress';
 export { Radio, type RadioProps } from './components/radio';
 export {
     RadioGroup,

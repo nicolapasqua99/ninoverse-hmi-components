@@ -36,6 +36,7 @@ export default defineConfig({
                     dirname,
                     'src/components/passwordInput.tsx',
                 ),
+                progress: resolve(dirname, 'src/components/progress.tsx'),
                 radio: resolve(dirname, 'src/components/radio.tsx'),
                 radioGroup: resolve(dirname, 'src/components/radioGroup.tsx'),
                 searchInput: resolve(dirname, 'src/components/searchInput.tsx'),

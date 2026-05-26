@@ -44,6 +44,10 @@
             "types": "./dist/components/passwordInput.d.ts",
             "import": "./dist/passwordInput.js"
         },
+        "./progress": {
+            "types": "./dist/components/progress.d.ts",
+            "import": "./dist/progress.js"
+        },
         "./radio": {
             "types": "./dist/components/radio.d.ts",
             "import": "./dist/radio.js"
