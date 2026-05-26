@@ -15,7 +15,12 @@
         ".": {
             "types": "./dist/index.d.ts",
             "import": "./dist/index.js"
-        }
+        },
+        "./button": {
+            "types": "./dist/components/button.d.ts",
+            "import": "./dist/button.js"
+        },
+        "./style.css": "./dist/style.css"
     },
     "scripts": {
         "dev": "vite",
