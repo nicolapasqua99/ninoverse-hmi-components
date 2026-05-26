@@ -29,6 +29,7 @@ export default defineConfig({
                 accordion: resolve(dirname, 'src/components/accordion.tsx'),
                 alert: resolve(dirname, 'src/components/alert.tsx'),
                 badge: resolve(dirname, 'src/components/badge.tsx'),
+                breadcrumbs: resolve(dirname, 'src/components/breadcrumbs.tsx'),
                 button: resolve(dirname, 'src/components/button.tsx'),
                 card: resolve(dirname, 'src/components/card.tsx'),
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
