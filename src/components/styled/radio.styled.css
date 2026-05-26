@@ -1,0 +1,85 @@
+/* Radio — circular boxed toggle with a dot that scales in on select.
+   Native input visually hidden but kept in flow so the browser handles
+   mutual exclusion across the group (shared `name`), keyboard arrow-key
+   navigation, focus, and screen-reader announcement. */
+
+.radio {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.25rem;
+    cursor: default;
+    user-select: none;
+    font-family: var(--font-quicksand);
+    font-size: 1.75rem;
+    color: var(--on-background);
+}
+
+.radio__input {
+    position: absolute;
+    width: 0.125rem;
+    height: 0.125rem;
+    margin: -0.125rem;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.radio__box {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: none;
+    background: var(--surface-container-lowest);
+    border: 0.25rem solid var(--outline);
+    border-radius: 50%;
+    transition:
+        border-color var(--duration-short-3) var(--easing-standard),
+        box-shadow var(--duration-short-3) var(--easing-standard);
+}
+
+.radio__box::after {
+    content: "";
+    position: absolute;
+    inset: 0.5rem;
+    border-radius: 50%;
+    background: var(--primary);
+    transform: scale(0);
+    transition: transform var(--duration-short-3) var(--easing-spring);
+}
+
+.radio:hover .radio__box {
+    border-color: var(--primary);
+}
+
+.radio__input:checked ~ .radio__box {
+    border-color: var(--primary);
+}
+
+.radio__input:checked ~ .radio__box::after {
+    transform: scale(1);
+}
+
+.radio__input:focus-visible ~ .radio__box {
+    box-shadow: 0 0 0 0.5rem var(--ring);
+}
+
+.radio:has(.radio__input:disabled) {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.radio:has(.radio__input:disabled):hover .radio__box {
+    border-color: var(--outline);
+}
+
+.radio__label {
+    line-height: 1.4;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}

@@ -32,6 +32,14 @@
             "types": "./dist/components/input.d.ts",
             "import": "./dist/input.js"
         },
+        "./radio": {
+            "types": "./dist/components/radio.d.ts",
+            "import": "./dist/radio.js"
+        },
+        "./radio-group": {
+            "types": "./dist/components/radioGroup.d.ts",
+            "import": "./dist/radioGroup.js"
+        },
         "./textarea": {
             "types": "./dist/components/textarea.d.ts",
             "import": "./dist/textarea.js"
