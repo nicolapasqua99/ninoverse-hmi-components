@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Badge } from './components/badge';
 import { Button } from './components/button';
 import { Checkbox } from './components/checkbox';
+import { Chip } from './components/chip';
 import { Field } from './components/field';
 import { Input } from './components/input';
 import { PasswordInput } from './components/passwordInput';
@@ -28,6 +29,22 @@ const SearchIcon = () => (
 
 export default function App() {
     const [plan, setPlan] = useState<'free' | 'pro' | 'team'>('pro');
+    const [filters, setFilters] = useState<Set<string>>(
+        () => new Set(['react', 'typescript']),
+    );
+    const [tags, setTags] = useState<string[]>([
+        'design',
+        'tokens',
+        'a11y',
+        'docs',
+    ]);
+    const toggleFilter = (key: string) =>
+        setFilters((prev) => {
+            const next = new Set(prev);
+            if (next.has(key)) next.delete(key);
+            else next.add(key);
+            return next;
+        });
     return (
         <div
             style={{
@@ -378,6 +395,65 @@ export default function App() {
                         Beta
                     </Badge>
                 </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Chip</h2>
+                <Field
+                    label="Filters (toggle to select)"
+                    hint={`Active: ${[...filters].join(', ') || 'none'}`}
+                >
+                    <div
+                        style={{
+                            display: 'flex',
+                            gap: '1rem',
+                            flexWrap: 'wrap',
+                        }}
+                    >
+                        {['react', 'typescript', 'vite', 'biome', 'figma'].map(
+                            (key) => (
+                                <Chip
+                                    key={key}
+                                    selected={filters.has(key)}
+                                    onSelect={() => toggleFilter(key)}
+                                >
+                                    {key}
+                                </Chip>
+                            ),
+                        )}
+                    </div>
+                </Field>
+                <Field
+                    label="Removable tags"
+                    hint={`Tags: ${tags.join(', ') || 'none'}`}
+                >
+                    <div
+                        style={{
+                            display: 'flex',
+                            gap: '1rem',
+                            flexWrap: 'wrap',
+                        }}
+                    >
+                        {tags.map((tag) => (
+                            <Chip
+                                key={tag}
+                                onClose={() =>
+                                    setTags((prev) =>
+                                        prev.filter((t) => t !== tag),
+                                    )
+                                }
+                            >
+                                {tag}
+                            </Chip>
+                        ))}
+                    </div>
+                </Field>
             </section>
         </div>
     );

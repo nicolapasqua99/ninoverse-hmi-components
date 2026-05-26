@@ -29,6 +29,7 @@ export default defineConfig({
                 badge: resolve(dirname, 'src/components/badge.tsx'),
                 button: resolve(dirname, 'src/components/button.tsx'),
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
+                chip: resolve(dirname, 'src/components/chip.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 passwordInput: resolve(
