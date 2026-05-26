@@ -76,6 +76,10 @@
             "types": "./dist/components/searchInput.d.ts",
             "import": "./dist/searchInput.js"
         },
+        "./select": {
+            "types": "./dist/components/select.d.ts",
+            "import": "./dist/select.js"
+        },
         "./spinner": {
             "types": "./dist/components/spinner.d.ts",
             "import": "./dist/spinner.js"

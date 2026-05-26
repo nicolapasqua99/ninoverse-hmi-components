@@ -56,6 +56,11 @@ export {
     type SearchInputProps,
 } from './components/searchInput';
 export {
+    Select,
+    type SelectOption,
+    type SelectProps,
+} from './components/select';
+export {
     Spinner,
     type SpinnerProps,
     type SpinnerSize,
