@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from './components/button';
+import { Checkbox } from './components/checkbox';
 import { Field } from './components/field';
 import { Input } from './components/input';
 import { Radio } from './components/radio';
@@ -230,6 +231,23 @@ export default function App() {
                             ]}
                         />
                     </Field>
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Checkbox</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Checkbox label="Accept terms" defaultChecked />
+                    <Checkbox label="Subscribe to updates" />
+                    <Checkbox label="Disabled" disabled />
+                    <Checkbox
+                        label="Disabled checked"
+                        disabled
+                        defaultChecked
+                    />
                 </div>
             </section>
         </div>

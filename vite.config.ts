@@ -27,6 +27,7 @@ export default defineConfig({
             entry: {
                 index: resolve(dirname, 'src/index.ts'),
                 button: resolve(dirname, 'src/components/button.tsx'),
+                checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 radio: resolve(dirname, 'src/components/radio.tsx'),
