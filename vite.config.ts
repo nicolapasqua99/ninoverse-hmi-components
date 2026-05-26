@@ -26,18 +26,22 @@ export default defineConfig({
         lib: {
             entry: {
                 index: resolve(dirname, 'src/index.ts'),
+                button: resolve(dirname, 'src/components/button.tsx'),
             },
             formats: ['es'],
+            cssFileName: 'style',
         },
         rollupOptions: {
             external: ['react', 'react-dom', 'react/jsx-runtime'],
             output: {
                 preserveModules: false,
                 entryFileNames: '[name].js',
-                assetFileNames: (assetInfo) =>
-                    assetInfo.name === 'style.css'
-                        ? 'style.css'
-                        : 'assets/[name]-[hash][extname]',
+                assetFileNames: (assetInfo) => {
+                    const name = assetInfo.names?.[0] ?? '';
+                    return name.endsWith('.css')
+                        ? '[name][extname]'
+                        : 'assets/[name]-[hash][extname]';
+                },
             },
         },
         sourcemap: true,
