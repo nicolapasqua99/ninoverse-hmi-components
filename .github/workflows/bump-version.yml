@@ -34,15 +34,19 @@ jobs:
         env:
           COMMIT_MSG: ${{ github.event.head_commit.message }}
         run: |
-          msg="$COMMIT_MSG"
+          msg=$(echo "$COMMIT_MSG" | head -n 1)
           bump="skip"
           
-          # Check the commit message for Conventional Commits
-          if [[ "$msg" =~ ^[a-z]+(\([a-z0-9_-]+\))?!: ]] || [[ "$msg" == *"BREAKING CHANGE"* ]]; then
+          echo "Analyzing commit subject: $msg"
+          
+          # 1. Major (Breaking Change: explicit ! or BREAKING CHANGE anywhere in the message)
+          if [[ "$msg" =~ ^[a-z]+(\([a-z0-9_-]+\))?!: ]] || [[ "$COMMIT_MSG" == *"BREAKING CHANGE"* ]]; then
             bump="major"
+          # 2. Minor (New features)
           elif [[ "$msg" =~ ^feat(\([a-z0-9_-]+\))?: ]]; then
             bump="minor"
-          elif [[ "$msg" =~ ^(fix|perf|refactor)(\([a-z0-9_-]+\))?: ]]; then
+          # 3. Patch (Fixes, Perf, Refactor, and other changes that don't alter user behavior but merit a version bump)
+          elif [[ "$msg" =~ ^(fix|perf|refactor|revert|style|chore|docs)(\([a-z0-9_-]+\))?: ]]; then
             bump="patch"
           fi
           
