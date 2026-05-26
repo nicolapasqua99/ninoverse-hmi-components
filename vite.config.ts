@@ -27,6 +27,8 @@ export default defineConfig({
             entry: {
                 index: resolve(dirname, 'src/index.ts'),
                 alert: resolve(dirname, 'src/components/alert.tsx'),
+                avatar: resolve(dirname, 'src/components/avatar.tsx'),
+                avatarStack: resolve(dirname, 'src/components/avatarStack.tsx'),
                 badge: resolve(dirname, 'src/components/badge.tsx'),
                 button: resolve(dirname, 'src/components/button.tsx'),
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
