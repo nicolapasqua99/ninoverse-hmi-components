@@ -28,6 +28,10 @@
             "types": "./dist/components/input.d.ts",
             "import": "./dist/input.js"
         },
+        "./textarea": {
+            "types": "./dist/components/textarea.d.ts",
+            "import": "./dist/textarea.js"
+        },
         "./style.css": "./dist/style.css"
     },
     "scripts": {

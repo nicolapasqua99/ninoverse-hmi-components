@@ -1,6 +1,7 @@
 import { Button } from './components/button';
 import { Field } from './components/field';
 import { Input } from './components/input';
+import { Textarea } from './components/textarea';
 
 const SearchIcon = () => (
     <svg
@@ -136,6 +137,30 @@ export default function App() {
                             defaultValue="Already filled"
                             disabled
                         />
+                    </Field>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Textarea</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, minmax(0, 40rem))',
+                        gap: '3rem',
+                    }}
+                >
+                    <Field label="About you" hint="A short bio, 240 chars max">
+                        <Textarea placeholder="Tell us a bit about yourself…" />
+                    </Field>
+                    <Field label="Feedback" error="Please describe the issue.">
+                        <Textarea error defaultValue="" />
                     </Field>
                 </div>
             </section>
