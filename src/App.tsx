@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Accordion } from './components/accordion';
 import { Alert } from './components/alert';
 import { Badge } from './components/badge';
+import { Breadcrumbs } from './components/breadcrumbs';
 import { Button } from './components/button';
 import { Card } from './components/card';
 import { Checkbox } from './components/checkbox';
@@ -69,6 +70,7 @@ export default function App() {
     const [pillTab, setPillTab] = useState<'inbox' | 'sent' | 'archive'>(
         'inbox',
     );
+    const [crumbsCurrent, setCrumbsCurrent] = useState<string>('Components');
     const [underlineTab, setUnderlineTab] = useState<
         'overview' | 'usage' | 'billing'
     >('overview');
@@ -1234,6 +1236,41 @@ export default function App() {
                         />
                     </div>
                 </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Breadcrumbs</h2>
+                <Breadcrumbs
+                    items={[
+                        {
+                            label: 'Home',
+                            onClick: () => setCrumbsCurrent('Home'),
+                        },
+                        {
+                            label: 'Library',
+                            onClick: () => setCrumbsCurrent('Library'),
+                        },
+                        {
+                            label: 'Components',
+                            onClick: () => setCrumbsCurrent('Components'),
+                        },
+                        { label: crumbsCurrent },
+                    ]}
+                />
+                <Breadcrumbs
+                    separator="›"
+                    items={[
+                        { label: 'Docs', href: '#' },
+                        { label: 'Guides', href: '#' },
+                        { label: 'Getting started' },
+                    ]}
+                />
             </section>
             <ToastHost />
         </div>

@@ -16,6 +16,11 @@ export {
     type BadgeVariant,
 } from './components/badge';
 export {
+    type BreadcrumbItem,
+    Breadcrumbs,
+    type BreadcrumbsProps,
+} from './components/breadcrumbs';
+export {
     Button,
     type ButtonProps,
     type ButtonSize,
