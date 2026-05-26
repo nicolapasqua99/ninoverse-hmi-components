@@ -71,6 +71,12 @@ export {
     type SpinnerSize,
 } from './components/spinner';
 export { Switch, type SwitchProps } from './components/switch';
+export {
+    type TabOption,
+    Tabs,
+    type TabsProps,
+    type TabsVariant,
+} from './components/tabs';
 export { Textarea, type TextareaProps } from './components/textarea';
 export {
     ToastHost,
