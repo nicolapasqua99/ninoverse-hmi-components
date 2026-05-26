@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Alert } from './components/alert';
 import { Badge } from './components/badge';
 import { Button } from './components/button';
+import { Card } from './components/card';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
 import { Field } from './components/field';
@@ -562,6 +563,106 @@ export default function App() {
                     <Alert variant="info">
                         Body-only alert with no title — works too.
                     </Alert>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Card</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, minmax(0, 45rem))',
+                        gap: '2.5rem',
+                    }}
+                >
+                    <Card>
+                        <h3
+                            style={{
+                                margin: 0,
+                                fontSize: '2.25rem',
+                                fontWeight: 700,
+                            }}
+                        >
+                            Default
+                        </h3>
+                        <p
+                            style={{
+                                margin: '0.75rem 0 0',
+                                fontSize: '1.75rem',
+                                color: 'var(--on-surface-variant)',
+                            }}
+                        >
+                            Elevated warm surface with the asymmetric leaf
+                            corner shape.
+                        </p>
+                    </Card>
+                    <Card variant="flat">
+                        <h3
+                            style={{
+                                margin: 0,
+                                fontSize: '2.25rem',
+                                fontWeight: 700,
+                            }}
+                        >
+                            Flat
+                        </h3>
+                        <p
+                            style={{
+                                margin: '0.75rem 0 0',
+                                fontSize: '1.75rem',
+                                color: 'var(--on-surface-variant)',
+                            }}
+                        >
+                            Same shape, no shadow — for cards inside a scrolling
+                            list or grid.
+                        </p>
+                    </Card>
+                    <Card variant="ink">
+                        <h3
+                            style={{
+                                margin: 0,
+                                fontSize: '2.25rem',
+                                fontWeight: 700,
+                            }}
+                        >
+                            Ink
+                        </h3>
+                        <p
+                            style={{
+                                margin: '0.75rem 0 0',
+                                fontSize: '1.75rem',
+                            }}
+                        >
+                            High-contrast dark surface for callouts and hero
+                            sections.
+                        </p>
+                    </Card>
+                    <Card variant="accent">
+                        <h3
+                            style={{
+                                margin: 0,
+                                fontSize: '2.25rem',
+                                fontWeight: 700,
+                            }}
+                        >
+                            Accent
+                        </h3>
+                        <p
+                            style={{
+                                margin: '0.75rem 0 0',
+                                fontSize: '1.75rem',
+                            }}
+                        >
+                            Primary tonal fill — pairs with the Badge / Chip
+                            primary variants.
+                        </p>
+                    </Card>
                 </div>
             </section>
         </div>
