@@ -7,6 +7,7 @@ import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
 import { Field } from './components/field';
 import { Input } from './components/input';
+import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
 import { PasswordInput } from './components/passwordInput';
 import { Popover } from './components/popover';
 import { Progress } from './components/progress';
@@ -53,6 +54,8 @@ export default function App() {
         });
     const [popoverStartOpen, setPopoverStartOpen] = useState(false);
     const [popoverEndOpen, setPopoverEndOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [lastMenuAction, setLastMenuAction] = useState<string>('none');
     return (
         <div
             style={{
@@ -774,6 +777,82 @@ export default function App() {
                             </span>
                         </div>
                     </Popover>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Menu</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        alignItems: 'center',
+                        padding: '2rem 0 24rem',
+                    }}
+                >
+                    <Popover
+                        open={menuOpen}
+                        onOpenChange={setMenuOpen}
+                        width={260}
+                        trigger={<Button variant="secondary">Actions ▾</Button>}
+                    >
+                        <Menu>
+                            <MenuLabel>Workspace</MenuLabel>
+                            <MenuItem
+                                onClick={() => {
+                                    setLastMenuAction('new-file');
+                                    setMenuOpen(false);
+                                }}
+                                shortcut="⌘N"
+                            >
+                                New file
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setLastMenuAction('open');
+                                    setMenuOpen(false);
+                                }}
+                                shortcut="⌘O"
+                            >
+                                Open…
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setLastMenuAction('save');
+                                    setMenuOpen(false);
+                                }}
+                                shortcut="⌘S"
+                            >
+                                Save
+                            </MenuItem>
+                            <MenuSeparator />
+                            <MenuLabel>Danger zone</MenuLabel>
+                            <MenuItem
+                                danger
+                                onClick={() => {
+                                    setLastMenuAction('delete');
+                                    setMenuOpen(false);
+                                }}
+                                shortcut="⌫"
+                            >
+                                Delete file
+                            </MenuItem>
+                        </Menu>
+                    </Popover>
+                    <span
+                        style={{
+                            fontSize: '1.75rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Last action: <strong>{lastMenuAction}</strong>
+                    </span>
                 </div>
             </section>
         </div>

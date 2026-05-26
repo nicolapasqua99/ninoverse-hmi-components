@@ -26,6 +26,16 @@ export { Chip, type ChipProps } from './components/chip';
 export { Field, type FieldProps } from './components/field';
 export { Input, type InputProps } from './components/input';
 export {
+    Menu,
+    MenuItem,
+    type MenuItemProps,
+    MenuLabel,
+    type MenuLabelProps,
+    type MenuProps,
+    MenuSeparator,
+    type MenuSeparatorProps,
+} from './components/menu';
+export {
     PasswordInput,
     type PasswordInputProps,
 } from './components/passwordInput';

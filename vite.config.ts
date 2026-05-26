@@ -34,6 +34,7 @@ export default defineConfig({
                 chip: resolve(dirname, 'src/components/chip.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
+                menu: resolve(dirname, 'src/components/menu.tsx'),
                 passwordInput: resolve(
                     dirname,
                     'src/components/passwordInput.tsx',
