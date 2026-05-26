@@ -12,11 +12,20 @@ jobs:
     if: "!startsWith(github.event.head_commit.message, 'chore: release v')"
     runs-on: ubuntu-latest
     steps:
+      # 1. Generate an installation token using your GitHub App credentials
+      - name: Generate Token from GitHub App
+        id: get_workflow_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      # 2. Checkout the repository using the App Token instead of GITHUB_TOKEN
       - name: Checkout main
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.get_workflow_token.outputs.token }}
 
       - name: Check package.json exists
         id: pkg
@@ -76,17 +85,18 @@ jobs:
       - name: Commit, Tag, and Push
         if: steps.pkg.outputs.skip == 'false' && steps.bump.outputs.type != 'skip'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "ninoverse-bump-version-app[bot]"
+          git config user.email "ninoverse-bump-version-app[bot]@users.noreply.github.com"
           git add package.json
           git commit -m "chore: release v${{ steps.ver.outputs.version }}"
           git tag "v${{ steps.ver.outputs.version }}"
           git push origin main --tags
 
+      # 3. Create the GitHub Release using the App Token to authorization constraints
       - name: Create GitHub Release
         if: steps.pkg.outputs.skip == 'false' && steps.bump.outputs.type != 'skip'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
           gh release create "v${{ steps.ver.outputs.version }}" \
             --title "Release v${{ steps.ver.outputs.version }}" \
