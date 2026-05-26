@@ -36,6 +36,11 @@ export {
     type MenuSeparatorProps,
 } from './components/menu';
 export {
+    Modal,
+    type ModalProps,
+    type ModalSize,
+} from './components/modal';
+export {
     PasswordInput,
     type PasswordInputProps,
 } from './components/passwordInput';
