@@ -19,6 +19,7 @@ import { Select } from './components/select';
 import { Spinner } from './components/spinner';
 import { Switch } from './components/switch';
 import { Textarea } from './components/textarea';
+import { ToastHost, toast } from './components/toast';
 import { Tooltip } from './components/tooltip';
 
 const SearchIcon = () => (
@@ -1002,6 +1003,84 @@ export default function App() {
                     </div>
                 </Modal>
             </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Toast</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '2rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Button
+                        variant="soft"
+                        onClick={() =>
+                            toast.info(
+                                'New version available',
+                                'Reload to pick up the latest build.',
+                            )
+                        }
+                    >
+                        Info
+                    </Button>
+                    <Button
+                        variant="primary"
+                        onClick={() =>
+                            toast.success(
+                                'Saved',
+                                'Changes synced to the cloud.',
+                            )
+                        }
+                    >
+                        Success
+                    </Button>
+                    <Button
+                        variant="secondary"
+                        onClick={() =>
+                            toast.warning(
+                                'Low storage',
+                                '1.2 GB free on this device.',
+                            )
+                        }
+                    >
+                        Warning
+                    </Button>
+                    <Button
+                        variant="danger"
+                        onClick={() =>
+                            toast.danger(
+                                'Upload failed',
+                                'Could not reach the server.',
+                            )
+                        }
+                    >
+                        Danger
+                    </Button>
+                    <Button
+                        variant="ghost"
+                        onClick={() =>
+                            toast.info(
+                                'Sticky toast',
+                                'Stays until dismissed.',
+                                {
+                                    duration: 0,
+                                },
+                            )
+                        }
+                    >
+                        Sticky
+                    </Button>
+                </div>
+            </section>
+            <ToastHost />
         </div>
     );
 }
