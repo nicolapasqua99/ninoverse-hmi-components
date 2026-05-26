@@ -14,6 +14,7 @@ import { Progress } from './components/progress';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
 import { SearchInput } from './components/searchInput';
+import { Select } from './components/select';
 import { Spinner } from './components/spinner';
 import { Switch } from './components/switch';
 import { Textarea } from './components/textarea';
@@ -56,6 +57,9 @@ export default function App() {
     const [popoverEndOpen, setPopoverEndOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [lastMenuAction, setLastMenuAction] = useState<string>('none');
+    const [framework, setFramework] = useState<
+        'react' | 'vue' | 'svelte' | 'solid'
+    >('react');
     return (
         <div
             style={{
@@ -853,6 +857,54 @@ export default function App() {
                     >
                         Last action: <strong>{lastMenuAction}</strong>
                     </span>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Select</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, minmax(0, 40rem))',
+                        gap: '3rem',
+                        paddingBottom: '24rem',
+                    }}
+                >
+                    <Field label="Framework" hint={`Picked: ${framework}`}>
+                        <Select
+                            value={framework}
+                            onChange={setFramework}
+                            options={[
+                                { value: 'react', label: 'React' },
+                                { value: 'vue', label: 'Vue' },
+                                { value: 'svelte', label: 'Svelte' },
+                                { value: 'solid', label: 'Solid' },
+                            ]}
+                        />
+                    </Field>
+                    <Field label="Uncontrolled (with placeholder)">
+                        <Select
+                            placeholder="Pick a region…"
+                            options={[
+                                { value: 'eu-west', label: 'EU West' },
+                                { value: 'us-east', label: 'US East' },
+                                { value: 'ap-south', label: 'AP South' },
+                            ]}
+                        />
+                    </Field>
+                    <Field label="Disabled">
+                        <Select
+                            disabled
+                            defaultValue="locked"
+                            options={[{ value: 'locked', label: 'Locked' }]}
+                        />
+                    </Field>
                 </div>
             </section>
         </div>
