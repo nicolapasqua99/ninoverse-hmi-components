@@ -32,6 +32,10 @@
             "types": "./dist/components/input.d.ts",
             "import": "./dist/input.js"
         },
+        "./password-input": {
+            "types": "./dist/components/passwordInput.d.ts",
+            "import": "./dist/passwordInput.js"
+        },
         "./radio": {
             "types": "./dist/components/radio.d.ts",
             "import": "./dist/radio.js"
@@ -39,6 +43,10 @@
         "./radio-group": {
             "types": "./dist/components/radioGroup.d.ts",
             "import": "./dist/radioGroup.js"
+        },
+        "./search-input": {
+            "types": "./dist/components/searchInput.d.ts",
+            "import": "./dist/searchInput.js"
         },
         "./switch": {
             "types": "./dist/components/switch.d.ts",
