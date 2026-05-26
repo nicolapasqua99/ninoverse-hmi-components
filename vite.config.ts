@@ -27,6 +27,8 @@ export default defineConfig({
             entry: {
                 index: resolve(dirname, 'src/index.ts'),
                 button: resolve(dirname, 'src/components/button.tsx'),
+                field: resolve(dirname, 'src/components/field.tsx'),
+                input: resolve(dirname, 'src/components/input.tsx'),
             },
             formats: ['es'],
             cssFileName: 'style',

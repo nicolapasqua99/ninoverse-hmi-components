@@ -1,4 +1,21 @@
 import { Button } from './components/button';
+import { Field } from './components/field';
+import { Input } from './components/input';
+
+const SearchIcon = () => (
+    <svg
+        viewBox="0 0 16 16"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        aria-hidden="true"
+    >
+        <title>Search</title>
+        <circle cx="7" cy="7" r="4.5" />
+        <path d="M10.5 10.5L13.5 13.5" />
+    </svg>
+);
 
 export default function App() {
     return (
@@ -78,6 +95,48 @@ export default function App() {
                     <Button variant="secondary" disabled>
                         Disabled
                     </Button>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Text inputs</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, minmax(0, 40rem))',
+                        gap: '3rem',
+                    }}
+                >
+                    <Field label="Full name" hint="As it appears on documents">
+                        <Input placeholder="Alex Morgan" />
+                    </Field>
+                    <Field label="Email" error="Hmm, that doesn't look right.">
+                        <Input
+                            type="email"
+                            placeholder="you@studio.co"
+                            defaultValue="not-an-email"
+                            error
+                        />
+                    </Field>
+                    <Field label="Search">
+                        <Input
+                            placeholder="Search…"
+                            leftIcon={<SearchIcon />}
+                        />
+                    </Field>
+                    <Field label="Disabled">
+                        <Input
+                            placeholder="Read-only"
+                            defaultValue="Already filled"
+                            disabled
+                        />
+                    </Field>
                 </div>
             </section>
         </div>

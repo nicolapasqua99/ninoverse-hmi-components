@@ -1,0 +1,76 @@
+/* Input — text field with optional left/right icon slots and an error state.
+   BEM: .input (root wrapper) → .input__field (the <input>), .input__icon. */
+
+.input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 5rem;
+    padding: 0 1.5rem;
+    background: var(--surface-container-lowest);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    transition:
+        border-color var(--duration-short-3) var(--easing-standard),
+        box-shadow var(--duration-short-3) var(--easing-standard),
+        background var(--duration-short-3) var(--easing-standard);
+}
+
+.input:hover {
+    border-color: var(--outline);
+}
+
+.input:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.5rem var(--ring);
+}
+
+.input--error {
+    border-color: var(--error);
+}
+
+.input--error:focus-within {
+    box-shadow: 0 0 0 0.5rem color-mix(in oklab, var(--error) 35%, transparent);
+}
+
+.input__icon {
+    display: flex;
+    color: var(--on-surface-variant);
+}
+
+.input__icon svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.input__field {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-family: var(--font-quicksand);
+    font-size: 1.75rem;
+    color: var(--on-background);
+    height: 100%;
+    padding: 0 0.5rem;
+    outline: none;
+}
+
+.input__field::placeholder {
+    color: var(--ref-neutral-60);
+}
+
+.input:has(.input__field:disabled) {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.input:has(.input__field:disabled):hover {
+    border-color: var(--outline-variant);
+}
+
+.input__field:disabled {
+    cursor: not-allowed;
+}
