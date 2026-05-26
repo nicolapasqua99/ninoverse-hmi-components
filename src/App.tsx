@@ -1,4 +1,5 @@
 import { Button } from './components/button';
+import { Checkbox } from './components/checkbox';
 import { Field } from './components/field';
 import { Input } from './components/input';
 import { Textarea } from './components/textarea';
@@ -162,6 +163,33 @@ export default function App() {
                     <Field label="Feedback" error="Please describe the issue.">
                         <Textarea error defaultValue="" />
                     </Field>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Checkbox</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Checkbox label="Accept terms" defaultChecked />
+                    <Checkbox label="Subscribe to updates" />
+                    <Checkbox label="Disabled" disabled />
+                    <Checkbox
+                        label="Disabled checked"
+                        disabled
+                        defaultChecked
+                    />
                 </div>
             </section>
         </div>
