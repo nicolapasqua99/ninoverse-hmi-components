@@ -49,6 +49,7 @@ export default defineConfig({
                 spinner: resolve(dirname, 'src/components/spinner.tsx'),
                 switch: resolve(dirname, 'src/components/switch.tsx'),
                 textarea: resolve(dirname, 'src/components/textarea.tsx'),
+                toast: resolve(dirname, 'src/components/toast.tsx'),
                 tooltip: resolve(dirname, 'src/components/tooltip.tsx'),
             },
             formats: ['es'],
