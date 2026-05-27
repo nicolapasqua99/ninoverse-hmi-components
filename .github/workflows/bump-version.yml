@@ -1,4 +1,4 @@
-name: Bump Version, Tag, and Release on Push
+name: Bump Version and Tag
 
 on:
   push:
@@ -8,7 +8,7 @@ permissions:
   contents: write
 
 jobs:
-  bump-and-release:
+  bump-and-tag:
     if: "!startsWith(github.event.head_commit.message, 'chore: release v')"
     runs-on: ubuntu-latest
     steps:
@@ -91,13 +91,3 @@ jobs:
           git commit -m "chore: release v${{ steps.ver.outputs.version }}"
           git tag "v${{ steps.ver.outputs.version }}"
           git push origin main --tags
-
-      # 3. Create the GitHub Release using the App Token to authorization constraints
-      - name: Create GitHub Release
-        if: steps.pkg.outputs.skip == 'false' && steps.bump.outputs.type != 'skip'
-        env:
-          GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-        run: |
-          gh release create "v${{ steps.ver.outputs.version }}" \
-            --title "Release v${{ steps.ver.outputs.version }}" \
-            --generate-notes
