@@ -10,7 +10,7 @@
     height: 7.5rem;
     padding: 0 2.5rem;
     gap: 2.5rem;
-    background: var(--surface-container-low);
+    background: var(--surface-container-high);
     border: 0.125rem solid var(--outline-variant);
     border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
         var(--corner-bl);

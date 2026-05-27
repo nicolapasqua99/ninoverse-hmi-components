@@ -7,7 +7,7 @@
     align-items: flex-start;
     gap: 1.5rem;
     padding: 1.75rem 2rem;
-    background: var(--surface-container-low);
+    background: var(--surface-container-high);
     border: 0.125rem solid var(--outline-variant);
     border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
         var(--corner-bl);
