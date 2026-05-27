@@ -25,7 +25,6 @@ permissions:
 
 jobs:
   release:
-    if: "startsWith(github.event.head_commit.message, 'chore: release v')"
     runs-on: ubuntu-latest
     steps:
       - name: Validate tag format
