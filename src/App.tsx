@@ -28,6 +28,7 @@ import { SearchInput } from './components/searchInput';
 import { Select } from './components/select';
 import { Sidebar } from './components/sidebar';
 import { Skeleton } from './components/skeleton';
+import { Slider } from './components/slider';
 import { Spinner } from './components/spinner';
 import { Switch } from './components/switch';
 import { Table } from './components/table';
@@ -119,6 +120,8 @@ export default function App() {
     const [underlineTab, setUnderlineTab] = useState<
         'overview' | 'usage' | 'billing'
     >('overview');
+    const [volume, setVolume] = useState(64);
+    const [contrast, setContrast] = useState(50);
     return (
         <div
             style={{
@@ -2042,6 +2045,51 @@ export default function App() {
                             </>
                         }
                     />
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Slider</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2rem',
+                        maxWidth: '60rem',
+                    }}
+                >
+                    <Field label="Volume">
+                        <Slider
+                            value={volume}
+                            onChange={setVolume}
+                            showValue
+                            aria-label="Volume"
+                            formatValue={(v) => `${v}%`}
+                        />
+                    </Field>
+                    <Field label="Contrast">
+                        <Slider
+                            value={contrast}
+                            onChange={setContrast}
+                            min={0}
+                            max={100}
+                            step={5}
+                            aria-label="Contrast"
+                        />
+                    </Field>
+                    <Field label="Disabled">
+                        <Slider
+                            defaultValue={30}
+                            disabled
+                            showValue
+                            aria-label="Disabled slider"
+                        />
+                    </Field>
                 </div>
             </section>
             <ToastHost />

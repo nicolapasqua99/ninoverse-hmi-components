@@ -58,6 +58,7 @@ export default defineConfig({
                 select: resolve(dirname, 'src/components/select.tsx'),
                 sidebar: resolve(dirname, 'src/components/sidebar.tsx'),
                 skeleton: resolve(dirname, 'src/components/skeleton.tsx'),
+                slider: resolve(dirname, 'src/components/slider.tsx'),
                 spinner: resolve(dirname, 'src/components/spinner.tsx'),
                 switch: resolve(dirname, 'src/components/switch.tsx'),
                 table: resolve(dirname, 'src/components/table.tsx'),

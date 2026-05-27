@@ -121,6 +121,7 @@ export {
     type SkeletonProps,
     type SkeletonVariant,
 } from './components/skeleton';
+export { Slider, type SliderProps } from './components/slider';
 export {
     Spinner,
     type SpinnerProps,
