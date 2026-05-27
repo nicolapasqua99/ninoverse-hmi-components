@@ -1,0 +1,106 @@
+/* Table — wrapped in a surface card with asymmetric leaf corners.
+   Sortable headers become <button>s so keyboard works natively; the
+   active sort column gets the primary-coloured arrow icon (rotated
+   180deg for descending). */
+
+.table-wrap {
+    overflow: hidden;
+    background: var(--surface-container-low);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-quicksand);
+    font-size: 1.625rem;
+    color: var(--on-background);
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 1.5rem 2rem;
+    border-bottom: 0.125rem solid var(--outline-variant);
+}
+
+.table th {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    background: var(--surface-container);
+    user-select: none;
+}
+
+.table__sort {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+    cursor: default;
+    border-radius: var(--corner-extra-small);
+    transition:
+        color var(--duration-short-3) var(--easing-standard),
+        box-shadow var(--duration-short-3) var(--easing-standard);
+}
+
+.table__sort:hover {
+    color: var(--on-background);
+}
+
+.table__sort:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.375rem var(--ring);
+}
+
+.table__sort-icon {
+    display: inline-flex;
+    color: inherit;
+    opacity: 0.4;
+    transition:
+        opacity var(--duration-short-3) var(--easing-standard),
+        color var(--duration-short-3) var(--easing-standard),
+        transform var(--duration-short-3) var(--easing-spring);
+}
+
+.table__sort-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.table th[data-sort="asc"] .table__sort-icon,
+.table th[data-sort="desc"] .table__sort-icon {
+    opacity: 1;
+    color: var(--primary);
+}
+
+.table th[data-sort="desc"] .table__sort-icon {
+    transform: rotate(180deg);
+}
+
+.table tbody tr {
+    transition: background var(--duration-short-3) var(--easing-standard);
+}
+
+.table tbody tr:hover {
+    background: var(--surface-container);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.table__label {
+    line-height: 1.2;
+}

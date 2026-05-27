@@ -24,6 +24,7 @@ import { SearchInput } from './components/searchInput';
 import { Select } from './components/select';
 import { Spinner } from './components/spinner';
 import { Switch } from './components/switch';
+import { Table } from './components/table';
 import { Tabs } from './components/tabs';
 import { Textarea } from './components/textarea';
 import { ToastHost, toast } from './components/toast';
@@ -1530,6 +1531,80 @@ export default function App() {
                         />
                     </div>
                 </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Table</h2>
+                <Table
+                    columns={[
+                        { key: 'name', label: 'Name' },
+                        {
+                            key: 'role',
+                            label: 'Role',
+                        },
+                        {
+                            key: 'commits',
+                            label: 'Commits',
+                            style: { textAlign: 'right' },
+                        },
+                        {
+                            key: 'status',
+                            label: 'Status',
+                            sortable: false,
+                            render: (row) => (
+                                <Badge
+                                    variant={
+                                        row.status === 'active'
+                                            ? 'success'
+                                            : row.status === 'pending'
+                                              ? 'warning'
+                                              : 'default'
+                                    }
+                                    dot
+                                >
+                                    {String(row.status)}
+                                </Badge>
+                            ),
+                        },
+                    ]}
+                    rows={[
+                        {
+                            id: 'ada',
+                            name: 'Ada Lovelace',
+                            role: 'Analyst',
+                            commits: 142,
+                            status: 'active',
+                        },
+                        {
+                            id: 'alan',
+                            name: 'Alan Turing',
+                            role: 'Theoretician',
+                            commits: 87,
+                            status: 'pending',
+                        },
+                        {
+                            id: 'grace',
+                            name: 'Grace Hopper',
+                            role: 'Compiler engineer',
+                            commits: 254,
+                            status: 'active',
+                        },
+                        {
+                            id: 'linus',
+                            name: 'Linus Torvalds',
+                            role: 'Maintainer',
+                            commits: 1024,
+                            status: 'archived',
+                        },
+                    ]}
+                    getRowKey={(row) => String(row.id)}
+                />
             </section>
             <ToastHost />
         </div>
