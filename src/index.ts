@@ -120,6 +120,11 @@ export {
     type RadioOption,
 } from './components/radioGroup';
 export {
+    Rating,
+    type RatingProps,
+    type RatingSize,
+} from './components/rating';
+export {
     SearchInput,
     type SearchInputProps,
 } from './components/searchInput';

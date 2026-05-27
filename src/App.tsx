@@ -28,6 +28,7 @@ import { Popover } from './components/popover';
 import { Progress } from './components/progress';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
+import { Rating } from './components/rating';
 import { SearchInput } from './components/searchInput';
 import { Select } from './components/select';
 import { Sidebar } from './components/sidebar';
@@ -134,6 +135,8 @@ export default function App() {
     );
     const [pickedRange, setPickedRange] = useState<DateRange | null>(null);
     const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+    const [productRating, setProductRating] = useState(3);
+    const [halfRating, setHalfRating] = useState(2.5);
     const cityOptions: ComboboxOption[] = [
         { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
         { value: 'berlin', label: 'Berlin', description: 'Germany' },
@@ -2251,6 +2254,80 @@ export default function App() {
                         hint="PNG, JPG, or PDF up to 10 MB each"
                         aria-label="Project attachments"
                     />
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Rating</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2rem',
+                    }}
+                >
+                    <Field label="Integer (default)">
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '2rem',
+                            }}
+                        >
+                            <Rating
+                                value={productRating}
+                                onChange={setProductRating}
+                                aria-label="Product rating"
+                            />
+                            <span
+                                style={{
+                                    fontSize: '1.625rem',
+                                    color: 'var(--on-surface-variant)',
+                                }}
+                            >
+                                {productRating} / 5
+                            </span>
+                        </div>
+                    </Field>
+                    <Field label="Half-star steps">
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '2rem',
+                            }}
+                        >
+                            <Rating
+                                value={halfRating}
+                                onChange={setHalfRating}
+                                allowHalf
+                                size="large"
+                                aria-label="Half-star rating"
+                            />
+                            <span
+                                style={{
+                                    fontSize: '1.625rem',
+                                    color: 'var(--on-surface-variant)',
+                                }}
+                            >
+                                {halfRating} / 5
+                            </span>
+                        </div>
+                    </Field>
+                    <Field label="Read-only">
+                        <Rating
+                            value={4.5}
+                            allowHalf
+                            readOnly
+                            size="small"
+                            aria-label="Read-only rating"
+                        />
+                    </Field>
                 </div>
             </section>
             <ToastHost />
