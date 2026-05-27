@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Accordion } from './components/accordion';
 import { Alert } from './components/alert';
+import { Avatar } from './components/avatar';
+import { AvatarStack } from './components/avatarStack';
 import { Badge } from './components/badge';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { Button } from './components/button';
@@ -601,6 +603,7 @@ export default function App() {
                     gap: '2rem',
                 }}
             >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Avatar</h2>
                 <h2 style={{ margin: 0, fontSize: '3rem' }}>Card</h2>
                 <div
                     style={{
@@ -937,6 +940,14 @@ export default function App() {
                     style={{
                         display: 'flex',
                         gap: '2rem',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Avatar name="Ada Lovelace" size="small" />
+                    <Avatar name="Alan Turing" />
+                    <Avatar name="Grace Hopper" size="large" />
+                    <Avatar name="Linus Torvalds" size="xlarge" />
+                </div>
                         flexWrap: 'wrap',
                         alignItems: 'center',
                     }}
@@ -1029,6 +1040,42 @@ export default function App() {
                     style={{
                         display: 'flex',
                         gap: '2rem',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Avatar name="Ada Lovelace" status="online" />
+                    <Avatar name="Alan Turing" status="away" />
+                    <Avatar name="Grace Hopper" status="offline" />
+                </div>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        alignItems: 'center',
+                    }}
+                >
+                    <AvatarStack
+                        names={[
+                            'Ada Lovelace',
+                            'Alan Turing',
+                            'Grace Hopper',
+                            'Linus Torvalds',
+                        ]}
+                    />
+                    <AvatarStack
+                        names={[
+                            'Ada Lovelace',
+                            'Alan Turing',
+                            'Grace Hopper',
+                            'Linus Torvalds',
+                            'Margaret Hamilton',
+                            'Donald Knuth',
+                            'Edsger Dijkstra',
+                        ]}
+                        max={4}
+                    />
+                </div>
+            </section>
                         flexWrap: 'wrap',
                         alignItems: 'center',
                     }}

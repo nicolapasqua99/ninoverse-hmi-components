@@ -24,6 +24,14 @@
             "types": "./dist/components/alert.d.ts",
             "import": "./dist/alert.js"
         },
+        "./avatar": {
+            "types": "./dist/components/avatar.d.ts",
+            "import": "./dist/avatar.js"
+        },
+        "./avatar-stack": {
+            "types": "./dist/components/avatarStack.d.ts",
+            "import": "./dist/avatarStack.js"
+        },
         "./badge": {
             "types": "./dist/components/badge.d.ts",
             "import": "./dist/badge.js"

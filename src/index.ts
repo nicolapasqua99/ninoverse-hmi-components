@@ -11,6 +11,16 @@ export {
     type AlertVariant,
 } from './components/alert';
 export {
+    Avatar,
+    type AvatarProps,
+    type AvatarSize,
+    type AvatarStatus,
+} from './components/avatar';
+export {
+    AvatarStack,
+    type AvatarStackProps,
+} from './components/avatarStack';
+export {
     Badge,
     type BadgeProps,
     type BadgeVariant,

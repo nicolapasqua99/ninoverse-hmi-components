@@ -28,6 +28,8 @@ export default defineConfig({
                 index: resolve(dirname, 'src/index.ts'),
                 accordion: resolve(dirname, 'src/components/accordion.tsx'),
                 alert: resolve(dirname, 'src/components/alert.tsx'),
+                avatar: resolve(dirname, 'src/components/avatar.tsx'),
+                avatarStack: resolve(dirname, 'src/components/avatarStack.tsx'),
                 badge: resolve(dirname, 'src/components/badge.tsx'),
                 breadcrumbs: resolve(dirname, 'src/components/breadcrumbs.tsx'),
                 button: resolve(dirname, 'src/components/button.tsx'),
