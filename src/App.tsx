@@ -9,6 +9,7 @@ import { Button } from './components/button';
 import { Card } from './components/card';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
+import { Divider } from './components/divider';
 import { Field } from './components/field';
 import { Input } from './components/input';
 import { List, type ListItem } from './components/list';
@@ -1877,6 +1878,41 @@ export default function App() {
                                 width="80%"
                             />
                         </div>
+                    </div>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Divider</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2rem',
+                    }}
+                >
+                    <Divider />
+                    <Divider>OR</Divider>
+                    <Divider align="start">Recent</Divider>
+                    <Divider align="end">2 of 4</Divider>
+                    <div
+                        style={{
+                            display: 'flex',
+                            gap: '2rem',
+                            alignItems: 'center',
+                            height: '4rem',
+                        }}
+                    >
+                        <span style={{ fontSize: '1.625rem' }}>Left</span>
+                        <Divider orientation="vertical" />
+                        <span style={{ fontSize: '1.625rem' }}>Middle</span>
+                        <Divider orientation="vertical" />
+                        <span style={{ fontSize: '1.625rem' }}>Right</span>
                     </div>
                 </div>
             </section>

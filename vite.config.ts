@@ -36,6 +36,7 @@ export default defineConfig({
                 card: resolve(dirname, 'src/components/card.tsx'),
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
                 chip: resolve(dirname, 'src/components/chip.tsx'),
+                divider: resolve(dirname, 'src/components/divider.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 list: resolve(dirname, 'src/components/list.tsx'),

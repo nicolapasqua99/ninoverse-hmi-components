@@ -43,6 +43,12 @@ export {
 } from './components/card';
 export { Checkbox, type CheckboxProps } from './components/checkbox';
 export { Chip, type ChipProps } from './components/chip';
+export {
+    Divider,
+    type DividerAlign,
+    type DividerOrientation,
+    type DividerProps,
+} from './components/divider';
 export { Field, type FieldProps } from './components/field';
 export { Input, type InputProps } from './components/input';
 export {
