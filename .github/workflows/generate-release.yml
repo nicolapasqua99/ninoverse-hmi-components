@@ -17,7 +17,7 @@ on:
       deploy_tarball:
         description: 'Attach tarball to GitHub Release'
         type: boolean
-        default: false
+        default: true
 
 permissions:
   contents: write
