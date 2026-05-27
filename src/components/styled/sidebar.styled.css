@@ -1,0 +1,85 @@
+/* Sidebar — vertical app navigation panel grouped by section. Each
+   group has an optional uppercase label and a stack of icon+label
+   links. Active link uses primary tonal pair so it pops against the
+   neutral surface. */
+
+.sidebar {
+    width: 30rem;
+    padding: 2rem;
+    background: var(--surface-container-low);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-family: var(--font-quicksand);
+}
+
+.sidebar__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.sidebar__label {
+    padding: 0 1rem 0.5rem;
+    font-size: 1.375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--on-surface-variant);
+}
+
+.sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--corner-extra-small);
+    font-size: 1.625rem;
+    font-weight: 500;
+    color: var(--on-surface-variant);
+    text-decoration: none;
+    transition:
+        background var(--duration-short-3) var(--easing-standard),
+        color var(--duration-short-3) var(--easing-standard),
+        box-shadow var(--duration-short-3) var(--easing-standard);
+}
+
+.sidebar__link:hover {
+    background: var(--surface-container);
+    color: var(--on-background);
+}
+
+.sidebar__link:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.375rem var(--ring);
+}
+
+.sidebar__link[data-active="true"] {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+    font-weight: 600;
+}
+
+.sidebar__icon {
+    display: inline-flex;
+    flex: none;
+    color: var(--on-surface-variant);
+}
+
+.sidebar__icon svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.sidebar__link[data-active="true"] .sidebar__icon {
+    color: var(--on-primary-container);
+}
+
+.sidebar__label-text {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.2;
+}

@@ -53,6 +53,7 @@ export default defineConfig({
                 radioGroup: resolve(dirname, 'src/components/radioGroup.tsx'),
                 searchInput: resolve(dirname, 'src/components/searchInput.tsx'),
                 select: resolve(dirname, 'src/components/select.tsx'),
+                sidebar: resolve(dirname, 'src/components/sidebar.tsx'),
                 spinner: resolve(dirname, 'src/components/spinner.tsx'),
                 switch: resolve(dirname, 'src/components/switch.tsx'),
                 table: resolve(dirname, 'src/components/table.tsx'),

@@ -100,6 +100,12 @@ export {
     type SelectProps,
 } from './components/select';
 export {
+    Sidebar,
+    type SidebarGroup,
+    type SidebarItem,
+    type SidebarProps,
+} from './components/sidebar';
+export {
     Spinner,
     type SpinnerProps,
     type SpinnerSize,
