@@ -4,7 +4,7 @@
    for high-contrast callouts), accent (primary tonal fill). */
 
 .card {
-    background: var(--surface-container-low);
+    background: var(--surface-container-high);
     color: var(--on-background);
     border: 0.125rem solid var(--outline-variant);
     border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
