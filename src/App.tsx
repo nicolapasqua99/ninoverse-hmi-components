@@ -14,6 +14,7 @@ import { Input } from './components/input';
 import { List, type ListItem } from './components/list';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
 import { Modal } from './components/modal';
+import { Navbar } from './components/navbar';
 import { Pagination } from './components/pagination';
 import { PasswordInput } from './components/passwordInput';
 import { Popover } from './components/popover';
@@ -76,6 +77,9 @@ export default function App() {
         'inbox',
     );
     const [crumbsCurrent, setCrumbsCurrent] = useState<string>('Components');
+    const [navTab, setNavTab] = useState<
+        'overview' | 'reports' | 'people' | 'settings'
+    >('reports');
     const [pageShort, setPageShort] = useState(3);
     const [pageLong, setPageLong] = useState(8);
     const [reorderable, setReorderable] = useState<ListItem[]>([
@@ -1605,6 +1609,46 @@ export default function App() {
                     ]}
                     getRowKey={(row) => String(row.id)}
                 />
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Navbar</h2>
+                <Navbar
+                    brand="Ninoverse"
+                    current={navTab}
+                    onNav={setNavTab}
+                    links={[
+                        { value: 'overview', label: 'Overview' },
+                        { value: 'reports', label: 'Reports' },
+                        { value: 'people', label: 'People' },
+                        { value: 'settings', label: 'Settings' },
+                    ]}
+                    right={
+                        <>
+                            <Button size="small" variant="ghost">
+                                Sign in
+                            </Button>
+                            <Button size="small" variant="primary">
+                                Get started
+                            </Button>
+                        </>
+                    }
+                />
+                <p
+                    style={{
+                        margin: 0,
+                        fontSize: '1.625rem',
+                        color: 'var(--on-surface-variant)',
+                    }}
+                >
+                    Active: <strong>{navTab}</strong>
+                </p>
             </section>
             <ToastHost />
         </div>

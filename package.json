@@ -76,6 +76,10 @@
             "types": "./dist/components/modal.d.ts",
             "import": "./dist/modal.js"
         },
+        "./navbar": {
+            "types": "./dist/components/navbar.d.ts",
+            "import": "./dist/navbar.js"
+        },
         "./pagination": {
             "types": "./dist/components/pagination.d.ts",
             "import": "./dist/pagination.js"
