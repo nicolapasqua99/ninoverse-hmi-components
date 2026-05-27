@@ -23,6 +23,7 @@ import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
 import { SearchInput } from './components/searchInput';
 import { Select } from './components/select';
+import { Sidebar } from './components/sidebar';
 import { Spinner } from './components/spinner';
 import { Switch } from './components/switch';
 import { Table } from './components/table';
@@ -80,6 +81,9 @@ export default function App() {
     const [navTab, setNavTab] = useState<
         'overview' | 'reports' | 'people' | 'settings'
     >('reports');
+    const [sideNav, setSideNav] = useState<
+        'inbox' | 'starred' | 'sent' | 'team' | 'settings' | 'logout'
+    >('inbox');
     const [pageShort, setPageShort] = useState(3);
     const [pageLong, setPageLong] = useState(8);
     const [reorderable, setReorderable] = useState<ListItem[]>([
@@ -1649,6 +1653,168 @@ export default function App() {
                 >
                     Active: <strong>{navTab}</strong>
                 </p>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Sidebar</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        alignItems: 'flex-start',
+                    }}
+                >
+                    <Sidebar
+                        current={sideNav}
+                        onNav={setSideNav}
+                        groups={[
+                            {
+                                label: 'Mail',
+                                items: [
+                                    {
+                                        value: 'inbox',
+                                        label: 'Inbox',
+                                        icon: (
+                                            <svg
+                                                viewBox="0 0 16 16"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="1.6"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                aria-hidden="true"
+                                            >
+                                                <title>Inbox</title>
+                                                <path d="M2 9l1.5-5.5A1 1 0 014.5 3h7a1 1 0 011 .5L14 9v3.5a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5V9z" />
+                                                <path d="M2 9h3l1 2h4l1-2h3" />
+                                            </svg>
+                                        ),
+                                        badge: 12,
+                                        badgeVariant: 'primary',
+                                    },
+                                    {
+                                        value: 'starred',
+                                        label: 'Starred',
+                                        icon: (
+                                            <svg
+                                                viewBox="0 0 16 16"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="1.6"
+                                                strokeLinejoin="round"
+                                                aria-hidden="true"
+                                            >
+                                                <title>Starred</title>
+                                                <path d="M8 2l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 11.8 4.2 13.8l.7-4.3-3.1-3 4.3-.6L8 2z" />
+                                            </svg>
+                                        ),
+                                    },
+                                    {
+                                        value: 'sent',
+                                        label: 'Sent',
+                                        icon: (
+                                            <svg
+                                                viewBox="0 0 16 16"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="1.6"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                aria-hidden="true"
+                                            >
+                                                <title>Sent</title>
+                                                <path d="M14 2L7 9M14 2L9.5 14 7 9 2 6.5 14 2z" />
+                                            </svg>
+                                        ),
+                                    },
+                                ],
+                            },
+                            {
+                                label: 'Workspace',
+                                items: [
+                                    {
+                                        value: 'team',
+                                        label: 'Team',
+                                        icon: (
+                                            <svg
+                                                viewBox="0 0 16 16"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="1.6"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                aria-hidden="true"
+                                            >
+                                                <title>Team</title>
+                                                <circle
+                                                    cx="8"
+                                                    cy="5.5"
+                                                    r="2.5"
+                                                />
+                                                <path d="M3 13.5c0-2.5 2.2-4.5 5-4.5s5 2 5 4.5" />
+                                            </svg>
+                                        ),
+                                        badge: 'New',
+                                        badgeVariant: 'success',
+                                    },
+                                    {
+                                        value: 'settings',
+                                        label: 'Settings',
+                                        icon: (
+                                            <svg
+                                                viewBox="0 0 16 16"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="1.5"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                aria-hidden="true"
+                                            >
+                                                <title>Settings</title>
+                                                <circle cx="8" cy="8" r="2" />
+                                                <path d="M13 8c0-.4 0-.7-.1-1l1.2-.9-1-1.7L11.7 5c-.5-.5-1.1-.8-1.7-1l-.2-1.5h-2L7.6 4c-.6.2-1.2.5-1.7 1l-1.4-.6-1 1.7 1.2.9c0 .3-.1.6-.1 1s0 .7.1 1l-1.2.9 1 1.7L5.9 11c.5.5 1.1.8 1.7 1l.2 1.5h2l.2-1.5c.6-.2 1.2-.5 1.7-1l1.4.6 1-1.7-1.2-.9c.1-.3.1-.6.1-1z" />
+                                            </svg>
+                                        ),
+                                    },
+                                    {
+                                        value: 'logout',
+                                        label: 'Log out',
+                                        icon: (
+                                            <svg
+                                                viewBox="0 0 16 16"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="1.6"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                aria-hidden="true"
+                                            >
+                                                <title>Log out</title>
+                                                <path d="M9 3.5H4a1 1 0 00-1 1v7a1 1 0 001 1h5" />
+                                                <path d="M11 5l3 3-3 3M14 8H7" />
+                                            </svg>
+                                        ),
+                                    },
+                                ],
+                            },
+                        ]}
+                    />
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Active: <strong>{sideNav}</strong>
+                    </p>
+                </div>
             </section>
             <ToastHost />
         </div>

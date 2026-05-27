@@ -112,6 +112,10 @@
             "types": "./dist/components/select.d.ts",
             "import": "./dist/select.js"
         },
+        "./sidebar": {
+            "types": "./dist/components/sidebar.d.ts",
+            "import": "./dist/sidebar.js"
+        },
         "./spinner": {
             "types": "./dist/components/spinner.d.ts",
             "import": "./dist/spinner.js"
