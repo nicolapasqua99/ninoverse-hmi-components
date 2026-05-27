@@ -38,6 +38,7 @@ export default defineConfig({
                 chip: resolve(dirname, 'src/components/chip.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
+                list: resolve(dirname, 'src/components/list.tsx'),
                 menu: resolve(dirname, 'src/components/menu.tsx'),
                 modal: resolve(dirname, 'src/components/modal.tsx'),
                 pagination: resolve(dirname, 'src/components/pagination.tsx'),

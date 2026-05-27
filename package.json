@@ -64,6 +64,10 @@
             "types": "./dist/components/input.d.ts",
             "import": "./dist/input.js"
         },
+        "./list": {
+            "types": "./dist/components/list.d.ts",
+            "import": "./dist/list.js"
+        },
         "./menu": {
             "types": "./dist/components/menu.d.ts",
             "import": "./dist/menu.js"
