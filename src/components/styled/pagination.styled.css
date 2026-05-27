@@ -1,0 +1,61 @@
+/* Pagination — <nav aria-label="Pagination"> with prev/next chevrons
+   flanking a windowed list of page buttons. The active page carries
+   aria-current="page" and gets the primary tonal pair. */
+
+.pager {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.pager__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 4rem;
+    height: 4rem;
+    padding: 0 1.25rem;
+    background: transparent;
+    border: 0;
+    border-radius: var(--corner-extra-small);
+    color: var(--on-surface-variant);
+    font-family: var(--font-quicksand);
+    font-size: 1.625rem;
+    font-weight: 600;
+    cursor: default;
+    transition:
+        background var(--duration-short-3) var(--easing-standard),
+        color var(--duration-short-3) var(--easing-standard),
+        box-shadow var(--duration-short-3) var(--easing-standard);
+}
+
+.pager__btn:hover:not(:disabled):not([data-active="true"]) {
+    background: var(--surface-container);
+    color: var(--on-background);
+}
+
+.pager__btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.375rem var(--ring);
+}
+
+.pager__btn[data-active="true"] {
+    background: var(--primary);
+    color: var(--on-primary);
+}
+
+.pager__btn:disabled {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.pager__btn svg {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.pager__ellipsis {
+    padding: 0 0.5rem;
+    color: var(--ref-neutral-60);
+    user-select: none;
+}

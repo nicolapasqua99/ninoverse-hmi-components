@@ -1,0 +1,110 @@
+/* Accordion — stack of collapsible sections. Each trigger is a real
+   <button> with aria-expanded, and each panel is a region labelled
+   by its trigger. Height animation uses the grid-template-rows
+   0fr → 1fr trick so the panel collapses smoothly to its content's
+   natural height without measuring it. */
+
+.acc {
+    display: flex;
+    flex-direction: column;
+}
+
+.acc__item {
+    border-bottom: 0.125rem solid var(--outline-variant);
+}
+
+.acc__item:first-child {
+    border-top: 0.125rem solid var(--outline-variant);
+}
+
+.acc__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2.25rem 0.5rem;
+    background: transparent;
+    border: 0;
+    font-family: var(--font-quicksand);
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--on-background);
+    text-align: left;
+    cursor: default;
+    transition: color var(--duration-short-3) var(--easing-standard);
+}
+
+.acc__trigger:hover {
+    color: var(--primary);
+}
+
+.acc__trigger:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.375rem var(--ring);
+    border-radius: var(--corner-extra-small);
+}
+
+.acc__trigger:disabled {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.acc__trigger:disabled:hover {
+    color: var(--on-background);
+}
+
+.acc__title {
+    flex: 1;
+    min-width: 0;
+}
+
+.acc__chev {
+    display: inline-flex;
+    flex: none;
+    color: var(--on-surface-variant);
+    transition:
+        transform var(--duration-medium-1) var(--easing-spring),
+        color var(--duration-short-3) var(--easing-standard);
+}
+
+.acc__chev svg {
+    width: 2.25rem;
+    height: 2.25rem;
+}
+
+.acc__trigger[aria-expanded="true"] .acc__chev {
+    transform: rotate(180deg);
+    color: var(--primary);
+}
+
+.acc__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--duration-medium-1)
+        var(--easing-standard);
+}
+
+.acc__panel[data-open="true"] {
+    grid-template-rows: 1fr;
+}
+
+.acc__panel-inner {
+    overflow: hidden;
+}
+
+.acc__panel-body {
+    padding: 0 0.5rem 2.25rem;
+    font-family: var(--font-quicksand);
+    font-size: 1.75rem;
+    line-height: 1.5;
+    color: var(--on-surface-variant);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .acc__panel,
+    .acc__chev {
+        transition-duration: 0ms;
+    }
+}

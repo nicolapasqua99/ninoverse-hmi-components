@@ -1,0 +1,58 @@
+/* Breadcrumbs — semantic <nav><ol> with a decorative separator
+   between items. Links have a soft hover background; the current
+   item carries aria-current="page" and a heavier weight. */
+
+.crumbs {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-quicksand);
+    font-size: 1.625rem;
+}
+
+.crumbs__list {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.crumbs__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.crumbs__link {
+    padding: 0.5rem 1rem;
+    border-radius: var(--corner-extra-small);
+    color: var(--on-surface-variant);
+    text-decoration: none;
+    transition:
+        background var(--duration-short-3) var(--easing-standard),
+        color var(--duration-short-3) var(--easing-standard),
+        box-shadow var(--duration-short-3) var(--easing-standard);
+}
+
+.crumbs__link:hover {
+    background: var(--surface-container);
+    color: var(--on-background);
+}
+
+.crumbs__link:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.375rem var(--ring);
+}
+
+.crumbs__sep {
+    color: var(--ref-neutral-60);
+    user-select: none;
+}
+
+.crumbs__current {
+    padding: 0.5rem 1rem;
+    color: var(--on-background);
+    font-weight: 600;
+}
