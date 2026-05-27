@@ -224,8 +224,9 @@ export function Combobox<T extends string = string>({
                             viewBox="0 0 16 16"
                             fill="none"
                             stroke="currentColor"
-                            strokeWidth="2"
+                            strokeWidth="3"
                             strokeLinecap="round"
+                            strokeLinejoin="round"
                             aria-hidden="true"
                         >
                             <title>Clear</title>
