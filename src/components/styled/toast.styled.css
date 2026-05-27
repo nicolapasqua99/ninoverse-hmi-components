@@ -23,7 +23,7 @@
     min-width: 40rem;
     max-width: 47.5rem;
     padding: 1.75rem 2rem;
-    background: var(--surface-container-low);
+    background: var(--surface-container-high);
     color: var(--on-background);
     border: 0.125rem solid var(--outline-variant);
     border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
@@ -112,7 +112,7 @@
 }
 
 .toast__close:hover {
-    background: var(--surface-container-high);
+    background: var(--surface-container-highest);
     color: var(--on-background);
 }
 

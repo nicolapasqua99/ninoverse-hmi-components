@@ -8,7 +8,7 @@
     z-index: 1000;
     min-width: 20rem;
     padding: 1rem;
-    background: var(--surface-container-low);
+    background: var(--surface-container-high);
     color: var(--on-background);
     border: 0.125rem solid var(--outline-variant);
     border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
