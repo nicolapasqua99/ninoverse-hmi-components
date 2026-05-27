@@ -1,0 +1,59 @@
+/* EmptyState — placeholder shown when a list/table/search has no data
+   to display. Stacks icon, title, description, and an optional action
+   slot, centered on a soft surface with the library's asymmetric notch. */
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 4rem 3rem;
+    background: var(--surface-container);
+    border: 1px dashed var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    color: var(--on-surface);
+}
+
+.empty-state__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 6rem;
+    color: var(--on-surface-variant);
+    background: var(--surface-container-high);
+    border-radius: 50%;
+}
+
+.empty-state__icon > svg {
+    width: 3rem;
+    height: 3rem;
+}
+
+.empty-state__title {
+    margin: 0;
+    font-family: var(--font-oxanium);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--on-surface);
+}
+
+.empty-state__description {
+    margin: 0;
+    max-width: 48rem;
+    font-family: var(--font-quicksand);
+    font-size: 1.75rem;
+    line-height: 1.5;
+    color: var(--on-surface-variant);
+}
+
+.empty-state__action {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}

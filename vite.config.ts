@@ -37,6 +37,7 @@ export default defineConfig({
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
                 chip: resolve(dirname, 'src/components/chip.tsx'),
                 divider: resolve(dirname, 'src/components/divider.tsx'),
+                emptyState: resolve(dirname, 'src/components/emptyState.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 kbd: resolve(dirname, 'src/components/kbd.tsx'),

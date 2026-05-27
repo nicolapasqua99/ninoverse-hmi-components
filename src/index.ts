@@ -49,6 +49,10 @@ export {
     type DividerOrientation,
     type DividerProps,
 } from './components/divider';
+export {
+    EmptyState,
+    type EmptyStateProps,
+} from './components/emptyState';
 export { Field, type FieldProps } from './components/field';
 export { Input, type InputProps } from './components/input';
 export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
