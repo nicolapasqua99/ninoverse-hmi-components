@@ -11,6 +11,7 @@ import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
 import { Field } from './components/field';
 import { Input } from './components/input';
+import { List, type ListItem } from './components/list';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
 import { Modal } from './components/modal';
 import { Pagination } from './components/pagination';
@@ -76,6 +77,32 @@ export default function App() {
     const [crumbsCurrent, setCrumbsCurrent] = useState<string>('Components');
     const [pageShort, setPageShort] = useState(3);
     const [pageLong, setPageLong] = useState(8);
+    const [reorderable, setReorderable] = useState<ListItem[]>([
+        {
+            id: 'ada',
+            avatar: 'Ada Lovelace',
+            title: 'Ada Lovelace',
+            subtitle: 'Computing pioneer',
+        },
+        {
+            id: 'alan',
+            avatar: 'Alan Turing',
+            title: 'Alan Turing',
+            subtitle: 'Theoretical foundation',
+        },
+        {
+            id: 'grace',
+            avatar: 'Grace Hopper',
+            title: 'Grace Hopper',
+            subtitle: 'Compiler genealogy',
+        },
+        {
+            id: 'linus',
+            avatar: 'Linus Torvalds',
+            title: 'Linus Torvalds',
+            subtitle: 'Kernel maintainer',
+        },
+    ]);
     const [underlineTab, setUnderlineTab] = useState<
         'overview' | 'usage' | 'billing'
     >('overview');
@@ -603,7 +630,6 @@ export default function App() {
                     gap: '2rem',
                 }}
             >
-                <h2 style={{ margin: 0, fontSize: '3rem' }}>Avatar</h2>
                 <h2 style={{ margin: 0, fontSize: '3rem' }}>Card</h2>
                 <div
                     style={{
@@ -694,6 +720,67 @@ export default function App() {
                             primary variants.
                         </p>
                     </Card>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Avatar</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '2rem',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Avatar name="Ada Lovelace" size="small" />
+                    <Avatar name="Alan Turing" />
+                    <Avatar name="Grace Hopper" size="large" />
+                    <Avatar name="Linus Torvalds" size="xlarge" />
+                </div>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '2rem',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Avatar name="Ada Lovelace" status="online" />
+                    <Avatar name="Alan Turing" status="away" />
+                    <Avatar name="Grace Hopper" status="offline" />
+                </div>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        alignItems: 'center',
+                    }}
+                >
+                    <AvatarStack
+                        names={[
+                            'Ada Lovelace',
+                            'Alan Turing',
+                            'Grace Hopper',
+                            'Linus Torvalds',
+                        ]}
+                    />
+                    <AvatarStack
+                        names={[
+                            'Ada Lovelace',
+                            'Alan Turing',
+                            'Grace Hopper',
+                            'Linus Torvalds',
+                            'Margaret Hamilton',
+                            'Donald Knuth',
+                            'Edsger Dijkstra',
+                        ]}
+                        max={4}
+                    />
                 </div>
             </section>
 
@@ -940,14 +1027,6 @@ export default function App() {
                     style={{
                         display: 'flex',
                         gap: '2rem',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Avatar name="Ada Lovelace" size="small" />
-                    <Avatar name="Alan Turing" />
-                    <Avatar name="Grace Hopper" size="large" />
-                    <Avatar name="Linus Torvalds" size="xlarge" />
-                </div>
                         flexWrap: 'wrap',
                         alignItems: 'center',
                     }}
@@ -1076,6 +1155,19 @@ export default function App() {
                     />
                 </div>
             </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Toast</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '2rem',
                         flexWrap: 'wrap',
                         alignItems: 'center',
                     }}
@@ -1369,6 +1461,72 @@ export default function App() {
                             page={pageLong}
                             total={20}
                             onChange={setPageLong}
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>List</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, minmax(0, 50rem))',
+                        gap: '3rem',
+                    }}
+                >
+                    <div>
+                        <p
+                            style={{
+                                margin: '0 0 1rem',
+                                fontSize: '1.625rem',
+                                fontWeight: 700,
+                            }}
+                        >
+                            Simple list
+                        </p>
+                        <List
+                            items={[
+                                {
+                                    id: 1,
+                                    title: 'Inbox',
+                                    subtitle: '12 unread messages',
+                                    right: <Badge dot>Live</Badge>,
+                                },
+                                {
+                                    id: 2,
+                                    title: 'Drafts',
+                                    subtitle: '3 unsent',
+                                },
+                                {
+                                    id: 3,
+                                    title: 'Archive',
+                                    subtitle: 'Older than 30 days',
+                                    right: <Badge>312</Badge>,
+                                },
+                            ]}
+                        />
+                    </div>
+                    <div>
+                        <p
+                            style={{
+                                margin: '0 0 1rem',
+                                fontSize: '1.625rem',
+                                fontWeight: 700,
+                            }}
+                        >
+                            Draggable (drag handle visible)
+                        </p>
+                        <List
+                            draggable
+                            items={reorderable}
+                            onReorder={setReorderable}
                         />
                     </div>
                 </div>
