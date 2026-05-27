@@ -54,6 +54,7 @@ export default defineConfig({
                 select: resolve(dirname, 'src/components/select.tsx'),
                 spinner: resolve(dirname, 'src/components/spinner.tsx'),
                 switch: resolve(dirname, 'src/components/switch.tsx'),
+                table: resolve(dirname, 'src/components/table.tsx'),
                 tabs: resolve(dirname, 'src/components/tabs.tsx'),
                 textarea: resolve(dirname, 'src/components/textarea.tsx'),
                 toast: resolve(dirname, 'src/components/toast.tsx'),

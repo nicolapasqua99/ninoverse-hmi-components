@@ -101,6 +101,11 @@ export {
 } from './components/spinner';
 export { Switch, type SwitchProps } from './components/switch';
 export {
+    Table,
+    type TableColumn,
+    type TableProps,
+} from './components/table';
+export {
     type TabOption,
     Tabs,
     type TabsProps,

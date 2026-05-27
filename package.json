@@ -116,6 +116,10 @@
             "types": "./dist/components/switch.d.ts",
             "import": "./dist/switch.js"
         },
+        "./table": {
+            "types": "./dist/components/table.d.ts",
+            "import": "./dist/table.js"
+        },
         "./tabs": {
             "types": "./dist/components/tabs.d.ts",
             "import": "./dist/tabs.js"
