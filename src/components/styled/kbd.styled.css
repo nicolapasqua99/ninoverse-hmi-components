@@ -1,0 +1,28 @@
+/* Kbd — a styled <kbd> element that renders one keyboard key as a small
+   key cap. Uses the Oxanium display font to feel tactile. Combos are
+   composed by the consumer: <Kbd>Ctrl</Kbd> + <Kbd>K</Kbd>. */
+
+.kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    padding: 0.25rem 0.75rem;
+    font-family: var(--font-oxanium);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--on-surface);
+    background: var(--surface-container-high);
+    border: 1px solid var(--outline-variant);
+    border-bottom-width: 2px;
+    border-radius: var(--corner-extra-small);
+    box-shadow: 0 1px 0 0 var(--outline-variant);
+    white-space: nowrap;
+}
+
+.kbd--small {
+    min-width: 2rem;
+    padding: 0.125rem 0.5rem;
+    font-size: 1.25rem;
+}
