@@ -39,6 +39,7 @@ export default defineConfig({
                 divider: resolve(dirname, 'src/components/divider.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
+                kbd: resolve(dirname, 'src/components/kbd.tsx'),
                 list: resolve(dirname, 'src/components/list.tsx'),
                 menu: resolve(dirname, 'src/components/menu.tsx'),
                 modal: resolve(dirname, 'src/components/modal.tsx'),

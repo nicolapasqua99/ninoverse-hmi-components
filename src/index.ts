@@ -51,6 +51,7 @@ export {
 } from './components/divider';
 export { Field, type FieldProps } from './components/field';
 export { Input, type InputProps } from './components/input';
+export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
 export {
     List,
     type ListItem,

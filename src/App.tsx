@@ -12,6 +12,7 @@ import { Chip } from './components/chip';
 import { Divider } from './components/divider';
 import { Field } from './components/field';
 import { Input } from './components/input';
+import { Kbd } from './components/kbd';
 import { List, type ListItem } from './components/list';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
 import { Modal } from './components/modal';
@@ -1913,6 +1914,63 @@ export default function App() {
                         <span style={{ fontSize: '1.625rem' }}>Middle</span>
                         <Divider orientation="vertical" />
                         <span style={{ fontSize: '1.625rem' }}>Right</span>
+                    </div>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Kbd</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '1.5rem',
+                    }}
+                >
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '1rem',
+                            fontSize: '1.625rem',
+                        }}
+                    >
+                        <span>Open command palette:</span>
+                        <Kbd>Ctrl</Kbd>
+                        <span>+</span>
+                        <Kbd>K</Kbd>
+                    </div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '1rem',
+                            fontSize: '1.625rem',
+                        }}
+                    >
+                        <span>Save:</span>
+                        <Kbd size="small">⌘</Kbd>
+                        <span>+</span>
+                        <Kbd size="small">S</Kbd>
+                    </div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            fontSize: '1.625rem',
+                        }}
+                    >
+                        <span>Navigate:</span>
+                        <Kbd>↑</Kbd>
+                        <Kbd>↓</Kbd>
+                        <Kbd>←</Kbd>
+                        <Kbd>→</Kbd>
                     </div>
                 </div>
             </section>
