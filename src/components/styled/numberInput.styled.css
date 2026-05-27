@@ -49,6 +49,10 @@
     font-variant-numeric: tabular-nums;
 }
 
+.number-input__field:focus-visible {
+    outline: none;
+}
+
 /* Hide native browser spinners — we provide our own */
 .number-input__field::-webkit-outer-spin-button,
 .number-input__field::-webkit-inner-spin-button {

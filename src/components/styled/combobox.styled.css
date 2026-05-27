@@ -46,6 +46,10 @@
     outline: none;
 }
 
+.combobox__input:focus-visible {
+    outline: none;
+}
+
 .combobox__input::placeholder {
     color: var(--ref-neutral-60);
 }

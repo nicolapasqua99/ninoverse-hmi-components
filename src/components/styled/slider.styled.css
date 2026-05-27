@@ -29,6 +29,7 @@
 }
 
 .slider__input:focus-visible {
+    outline: none;
     box-shadow: 0 0 0 0.375rem var(--ring);
 }
 
