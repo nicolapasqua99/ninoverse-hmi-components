@@ -1,0 +1,153 @@
+/* FileUpload — dashed drop zone backed by a hidden <input type="file">.
+   Clicking or focusing+Enter on the zone opens the native picker;
+   dropping files on it adds them. Below the zone, a list of currently
+   selected files renders with a per-item remove button. */
+
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.file-upload__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.file-upload__zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 4rem 2rem;
+    background: var(--surface-container);
+    border: 0.25rem dashed var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    color: var(--on-surface);
+    cursor: pointer;
+    text-align: center;
+    transition:
+        border-color var(--duration-short-3) var(--easing-standard),
+        background var(--duration-short-3) var(--easing-standard);
+}
+
+.file-upload__zone:hover:not(:disabled) {
+    border-color: var(--primary);
+    background: var(--surface-container-high);
+}
+
+.file-upload--drag-over .file-upload__zone {
+    border-color: var(--primary);
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+}
+
+.file-upload__zone:disabled {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.file-upload__icon {
+    display: inline-flex;
+    color: var(--primary);
+}
+
+.file-upload__icon svg {
+    width: 4rem;
+    height: 4rem;
+}
+
+.file-upload__label {
+    font-family: var(--font-quicksand);
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: var(--on-surface);
+}
+
+.file-upload__hint {
+    font-family: var(--font-quicksand);
+    font-size: 1.5rem;
+    color: var(--on-surface-variant);
+}
+
+.file-upload__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.file-upload__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--surface-container-lowest);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-extra-small);
+    font-family: var(--font-quicksand);
+    color: var(--on-surface);
+}
+
+.file-upload__file-icon {
+    display: inline-flex;
+    color: var(--on-surface-variant);
+    flex-shrink: 0;
+}
+
+.file-upload__file-icon svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.file-upload__name {
+    flex: 1;
+    font-size: 1.625rem;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-upload__size {
+    font-size: 1.5rem;
+    color: var(--on-surface-variant);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+}
+
+.file-upload__remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--on-surface-variant);
+    transition: background var(--duration-short-2) var(--easing-standard);
+}
+
+.file-upload__remove:hover:not(:disabled) {
+    background: var(--surface-container-high);
+    color: var(--error);
+}
+
+.file-upload__remove svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}

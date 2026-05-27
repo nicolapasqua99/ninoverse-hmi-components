@@ -14,6 +14,7 @@ import { DatePicker, type DateRange } from './components/datePicker';
 import { Divider } from './components/divider';
 import { EmptyState } from './components/emptyState';
 import { Field } from './components/field';
+import { FileUpload } from './components/fileUpload';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
 import { List, type ListItem } from './components/list';
@@ -132,6 +133,7 @@ export default function App() {
         new Date(2026, 4, 15),
     );
     const [pickedRange, setPickedRange] = useState<DateRange | null>(null);
+    const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
     const cityOptions: ComboboxOption[] = [
         { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
         { value: 'berlin', label: 'Berlin', description: 'Germany' },
@@ -2231,6 +2233,24 @@ export default function App() {
                             />
                         </div>
                     </Field>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>File upload</h2>
+                <div style={{ maxWidth: '60rem' }}>
+                    <FileUpload
+                        value={uploadedFiles}
+                        onChange={setUploadedFiles}
+                        multiple
+                        hint="PNG, JPG, or PDF up to 10 MB each"
+                        aria-label="Project attachments"
+                    />
                 </div>
             </section>
             <ToastHost />

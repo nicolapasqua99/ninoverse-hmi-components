@@ -41,6 +41,7 @@ export default defineConfig({
                 divider: resolve(dirname, 'src/components/divider.tsx'),
                 emptyState: resolve(dirname, 'src/components/emptyState.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
+                fileUpload: resolve(dirname, 'src/components/fileUpload.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 kbd: resolve(dirname, 'src/components/kbd.tsx'),
                 list: resolve(dirname, 'src/components/list.tsx'),
