@@ -49,6 +49,11 @@ export {
     type ComboboxProps,
 } from './components/combobox';
 export {
+    DatePicker,
+    type DatePickerProps,
+    type DateRange,
+} from './components/datePicker';
+export {
     Divider,
     type DividerAlign,
     type DividerOrientation,

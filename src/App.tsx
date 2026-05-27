@@ -10,6 +10,7 @@ import { Card } from './components/card';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
 import { Combobox, type ComboboxOption } from './components/combobox';
+import { DatePicker, type DateRange } from './components/datePicker';
 import { Divider } from './components/divider';
 import { EmptyState } from './components/emptyState';
 import { Field } from './components/field';
@@ -127,6 +128,10 @@ export default function App() {
     const [quantity, setQuantity] = useState<number | null>(1);
     const [age, setAge] = useState<number | null>(28);
     const [city, setCity] = useState<string | null>('paris');
+    const [pickedDate, setPickedDate] = useState<Date | null>(
+        new Date(2026, 4, 15),
+    );
+    const [pickedRange, setPickedRange] = useState<DateRange | null>(null);
     const cityOptions: ComboboxOption[] = [
         { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
         { value: 'berlin', label: 'Berlin', description: 'Germany' },
@@ -2189,6 +2194,43 @@ export default function App() {
                     >
                         Selected: <strong>{city ?? 'none'}</strong>
                     </p>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Date picker</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        flexWrap: 'wrap',
+                    }}
+                >
+                    <Field label="Single date">
+                        <div style={{ width: '32rem' }}>
+                            <DatePicker
+                                value={pickedDate}
+                                onChange={setPickedDate}
+                                aria-label="Pick a date"
+                            />
+                        </div>
+                    </Field>
+                    <Field label="Date range">
+                        <div style={{ width: '40rem' }}>
+                            <DatePicker
+                                mode="range"
+                                value={pickedRange}
+                                onChange={setPickedRange}
+                                placeholder="Pick a range"
+                                aria-label="Pick a date range"
+                            />
+                        </div>
+                    </Field>
                 </div>
             </section>
             <ToastHost />
