@@ -22,6 +22,7 @@ import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
 import { Modal } from './components/modal';
 import { Navbar } from './components/navbar';
 import { NumberInput } from './components/numberInput';
+import { OTPInput } from './components/otpInput';
 import { Pagination } from './components/pagination';
 import { PasswordInput } from './components/passwordInput';
 import { Popover } from './components/popover';
@@ -137,6 +138,7 @@ export default function App() {
     const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
     const [productRating, setProductRating] = useState(3);
     const [halfRating, setHalfRating] = useState(2.5);
+    const [otpCode, setOtpCode] = useState('');
     const cityOptions: ComboboxOption[] = [
         { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
         { value: 'berlin', label: 'Berlin', description: 'Germany' },
@@ -2326,6 +2328,55 @@ export default function App() {
                             readOnly
                             size="small"
                             aria-label="Read-only rating"
+                        />
+                    </Field>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>OTP input</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2rem',
+                    }}
+                >
+                    <Field label="6-digit verification code">
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '2rem',
+                            }}
+                        >
+                            <OTPInput
+                                value={otpCode}
+                                onChange={setOtpCode}
+                                length={6}
+                                aria-label="Verification code"
+                            />
+                            <span
+                                style={{
+                                    fontSize: '1.625rem',
+                                    color: 'var(--on-surface-variant)',
+                                }}
+                            >
+                                Value: <strong>{otpCode || '(empty)'}</strong>
+                            </span>
+                        </div>
+                    </Field>
+                    <Field label="4-digit PIN (masked)">
+                        <OTPInput
+                            length={4}
+                            mask
+                            defaultValue="1234"
+                            aria-label="PIN"
                         />
                     </Field>
                 </div>

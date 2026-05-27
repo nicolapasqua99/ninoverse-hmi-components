@@ -100,6 +100,11 @@ export {
     type NumberInputProps,
 } from './components/numberInput';
 export {
+    OTPInput,
+    type OTPInputProps,
+    type OTPInputType,
+} from './components/otpInput';
+export {
     Pagination,
     type PaginationProps,
 } from './components/pagination';

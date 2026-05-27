@@ -49,6 +49,7 @@ export default defineConfig({
                 modal: resolve(dirname, 'src/components/modal.tsx'),
                 navbar: resolve(dirname, 'src/components/navbar.tsx'),
                 numberInput: resolve(dirname, 'src/components/numberInput.tsx'),
+                otpInput: resolve(dirname, 'src/components/otpInput.tsx'),
                 pagination: resolve(dirname, 'src/components/pagination.tsx'),
                 passwordInput: resolve(
                     dirname,
