@@ -66,6 +66,11 @@ export {
     type ModalSize,
 } from './components/modal';
 export {
+    Navbar,
+    type NavbarLink,
+    type NavbarProps,
+} from './components/navbar';
+export {
     Pagination,
     type PaginationProps,
 } from './components/pagination';

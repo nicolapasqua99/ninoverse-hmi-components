@@ -1,0 +1,85 @@
+/* Navbar — horizontal app chrome: brand on the left, a row of nav
+   links in the middle (which take the remaining flex space), and an
+   optional right slot for actions / CTA. Wraps to a card-like
+   asymmetric leaf-corner surface so it can sit at the top of a page
+   without a hard edge against the canvas. */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    height: 7.5rem;
+    padding: 0 2.5rem;
+    gap: 2.5rem;
+    background: var(--surface-container-low);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    font-family: var(--font-quicksand);
+}
+
+.navbar__brand {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: -0.01em;
+    color: var(--on-background);
+}
+
+.navbar__brand-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--corner-extra-small);
+    background: var(--inverse-surface);
+    color: var(--inverse-on-surface);
+    font-family: var(--font-oxanium);
+    font-size: 1.625rem;
+    font-weight: 700;
+    text-transform: lowercase;
+}
+
+.navbar__links {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex: 1;
+}
+
+.navbar__link {
+    padding: 1rem 1.75rem;
+    border-radius: var(--corner-extra-small);
+    font-size: 1.625rem;
+    font-weight: 500;
+    color: var(--on-surface-variant);
+    text-decoration: none;
+    transition:
+        background var(--duration-short-3) var(--easing-standard),
+        color var(--duration-short-3) var(--easing-standard),
+        box-shadow var(--duration-short-3) var(--easing-standard);
+}
+
+.navbar__link:hover {
+    background: var(--surface-container);
+    color: var(--on-background);
+}
+
+.navbar__link:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.375rem var(--ring);
+}
+
+.navbar__link[data-active="true"] {
+    background: var(--surface-container);
+    color: var(--on-background);
+    font-weight: 600;
+}
+
+.navbar__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+}
