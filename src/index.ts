@@ -44,6 +44,11 @@ export {
 export { Checkbox, type CheckboxProps } from './components/checkbox';
 export { Chip, type ChipProps } from './components/chip';
 export {
+    Combobox,
+    type ComboboxOption,
+    type ComboboxProps,
+} from './components/combobox';
+export {
     Divider,
     type DividerAlign,
     type DividerOrientation,

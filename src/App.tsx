@@ -9,6 +9,7 @@ import { Button } from './components/button';
 import { Card } from './components/card';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
+import { Combobox, type ComboboxOption } from './components/combobox';
 import { Divider } from './components/divider';
 import { EmptyState } from './components/emptyState';
 import { Field } from './components/field';
@@ -125,6 +126,19 @@ export default function App() {
     const [contrast, setContrast] = useState(50);
     const [quantity, setQuantity] = useState<number | null>(1);
     const [age, setAge] = useState<number | null>(28);
+    const [city, setCity] = useState<string | null>('paris');
+    const cityOptions: ComboboxOption[] = [
+        { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
+        { value: 'berlin', label: 'Berlin', description: 'Germany' },
+        { value: 'lisbon', label: 'Lisbon', description: 'Portugal' },
+        { value: 'london', label: 'London', description: 'United Kingdom' },
+        { value: 'madrid', label: 'Madrid', description: 'Spain' },
+        { value: 'milan', label: 'Milan', description: 'Italy' },
+        { value: 'paris', label: 'Paris', description: 'France' },
+        { value: 'rome', label: 'Rome', description: 'Italy' },
+        { value: 'vienna', label: 'Vienna', description: 'Austria' },
+        { value: 'warsaw', label: 'Warsaw', description: 'Poland' },
+    ];
     return (
         <div
             style={{
@@ -2137,6 +2151,44 @@ export default function App() {
                             aria-label="Disabled number"
                         />
                     </Field>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Combobox</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'flex-end',
+                    }}
+                >
+                    <Field label="City">
+                        <div style={{ width: '36rem' }}>
+                            <Combobox
+                                value={city}
+                                onChange={setCity}
+                                options={cityOptions}
+                                placeholder="Search cities…"
+                                aria-label="City"
+                            />
+                        </div>
+                    </Field>
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Selected: <strong>{city ?? 'none'}</strong>
+                    </p>
                 </div>
             </section>
             <ToastHost />

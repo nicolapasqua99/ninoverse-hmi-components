@@ -36,6 +36,7 @@ export default defineConfig({
                 card: resolve(dirname, 'src/components/card.tsx'),
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
                 chip: resolve(dirname, 'src/components/chip.tsx'),
+                combobox: resolve(dirname, 'src/components/combobox.tsx'),
                 divider: resolve(dirname, 'src/components/divider.tsx'),
                 emptyState: resolve(dirname, 'src/components/emptyState.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
