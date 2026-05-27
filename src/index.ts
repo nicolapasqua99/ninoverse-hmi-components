@@ -82,6 +82,10 @@ export {
     type NavbarProps,
 } from './components/navbar';
 export {
+    NumberInput,
+    type NumberInputProps,
+} from './components/numberInput';
+export {
     Pagination,
     type PaginationProps,
 } from './components/pagination';

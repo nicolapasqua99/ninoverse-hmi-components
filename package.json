@@ -1,6 +1,6 @@
 {
     "name": "@ninoverse/hmi-components",
-    "version": "0.34.0",
+    "version": "0.35.0",
     "type": "module",
     "license": "MIT",
     "description": "React HMI component library with Material Design 3 token system and warm asymmetric styling.",
@@ -90,6 +90,10 @@
         "./navbar": {
             "types": "./dist/components/navbar.d.ts",
             "import": "./dist/navbar.js"
+        },
+        "./number-input": {
+            "types": "./dist/components/numberInput.d.ts",
+            "import": "./dist/numberInput.js"
         },
         "./pagination": {
             "types": "./dist/components/pagination.d.ts",

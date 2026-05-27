@@ -18,6 +18,7 @@ import { List, type ListItem } from './components/list';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
 import { Modal } from './components/modal';
 import { Navbar } from './components/navbar';
+import { NumberInput } from './components/numberInput';
 import { Pagination } from './components/pagination';
 import { PasswordInput } from './components/passwordInput';
 import { Popover } from './components/popover';
@@ -122,6 +123,8 @@ export default function App() {
     >('overview');
     const [volume, setVolume] = useState(64);
     const [contrast, setContrast] = useState(50);
+    const [quantity, setQuantity] = useState<number | null>(1);
+    const [age, setAge] = useState<number | null>(28);
     return (
         <div
             style={{
@@ -2088,6 +2091,50 @@ export default function App() {
                             disabled
                             showValue
                             aria-label="Disabled slider"
+                        />
+                    </Field>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Number input</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+                        gap: '2rem',
+                        maxWidth: '90rem',
+                    }}
+                >
+                    <Field label="Quantity">
+                        <NumberInput
+                            value={quantity}
+                            onChange={setQuantity}
+                            min={1}
+                            max={99}
+                            aria-label="Quantity"
+                        />
+                    </Field>
+                    <Field label="Age">
+                        <NumberInput
+                            value={age}
+                            onChange={setAge}
+                            min={0}
+                            max={120}
+                            step={1}
+                            aria-label="Age"
+                        />
+                    </Field>
+                    <Field label="Disabled">
+                        <NumberInput
+                            defaultValue={5}
+                            disabled
+                            aria-label="Disabled number"
                         />
                     </Field>
                 </div>
