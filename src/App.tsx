@@ -24,6 +24,7 @@ import { RadioGroup } from './components/radioGroup';
 import { SearchInput } from './components/searchInput';
 import { Select } from './components/select';
 import { Sidebar } from './components/sidebar';
+import { Skeleton } from './components/skeleton';
 import { Spinner } from './components/spinner';
 import { Switch } from './components/switch';
 import { Table } from './components/table';
@@ -1814,6 +1815,69 @@ export default function App() {
                     >
                         Active: <strong>{sideNav}</strong>
                     </p>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Skeleton</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                        gap: '3rem',
+                        alignItems: 'flex-start',
+                    }}
+                >
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '1rem',
+                        }}
+                    >
+                        <p
+                            style={{
+                                margin: 0,
+                                fontSize: '1.625rem',
+                                color: 'var(--on-surface-variant)',
+                            }}
+                        >
+                            Text lines
+                        </p>
+                        <Skeleton variant="text" width="80%" />
+                        <Skeleton variant="text" width="100%" />
+                        <Skeleton variant="text" width="60%" />
+                    </div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '2rem',
+                        }}
+                    >
+                        <Skeleton variant="circle" width="6rem" height="6rem" />
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.75rem',
+                                flex: 1,
+                            }}
+                        >
+                            <Skeleton variant="text" width="50%" />
+                            <Skeleton variant="rect" height="1.5rem" />
+                            <Skeleton
+                                variant="rect"
+                                height="1.5rem"
+                                width="80%"
+                            />
+                        </div>
+                    </div>
                 </div>
             </section>
             <ToastHost />

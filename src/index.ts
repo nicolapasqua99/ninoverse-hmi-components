@@ -106,6 +106,11 @@ export {
     type SidebarProps,
 } from './components/sidebar';
 export {
+    Skeleton,
+    type SkeletonProps,
+    type SkeletonVariant,
+} from './components/skeleton';
+export {
     Spinner,
     type SpinnerProps,
     type SpinnerSize,
