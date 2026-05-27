@@ -17,7 +17,7 @@ on:
       deploy_tarball:
         description: 'Attach tarball to GitHub Release'
         type: boolean
-        default: true
+        default: false
 
 permissions:
   contents: write
@@ -27,6 +27,19 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      - name: Resolve deploy targets
+        id: targets
+        run: |
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            echo "deploy_gcp=false"      >> $GITHUB_OUTPUT
+            echo "deploy_npm=false"      >> $GITHUB_OUTPUT
+            echo "deploy_tarball=true"  >> $GITHUB_OUTPUT
+          else
+            echo "deploy_gcp=${{ inputs.deploy_gcp }}"         >> $GITHUB_OUTPUT
+            echo "deploy_npm=${{ inputs.deploy_npm }}"         >> $GITHUB_OUTPUT
+            echo "deploy_tarball=${{ inputs.deploy_tarball }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Validate tag format
         if: github.event_name == 'workflow_dispatch'
         run: |
@@ -66,44 +79,44 @@ jobs:
 
       # For now commented, release will be saved on releases page for now
       - name: Setup Node for npm publish
-        if: inputs.deploy_npm == 'true'
+        if: steps.targets.outputs.deploy_npm == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
       - name: Publish to npm
-        if: inputs.deploy_npm == 'true'
+        if: steps.targets.outputs.deploy_npm == 'true'
         run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Authenticate to GCP
-        if: inputs.deploy_gcp == 'true'
+        if: steps.targets.outputs.deploy_gcp == 'true'
         uses: google-github-actions/auth@v2
         with:
           workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
           service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
 
       - name: Configure npm registry for Artifact Registry
-        if: inputs.deploy_gcp == 'true'
+        if: steps.targets.outputs.deploy_gcp == 'true'
         run: |
           echo "@ninoverse:registry=https://${{ vars.GCP_REGION }}-npm.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.ARTIFACT_REGISTRY_REPO }}/" >> .npmrc
           npx google-artifactregistry-auth --repo-config .npmrc
 
       - name: Publish to Artifact Registry
-        if: inputs.deploy_gcp == 'true'
+        if: steps.targets.outputs.deploy_gcp == 'true'
         run: pnpm publish --no-git-checks
 
       - name: Pack tarball
-        if: inputs.deploy_tarball == 'true'
+        if: steps.targets.outputs.deploy_tarball == 'true'
         run: pnpm pack
 
       - name: Create GitHub Release
         env:
           GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
-          if [[ "${{ inputs.deploy_tarball }}" == "true" ]]; then
+          if [[ "${{ steps.targets.outputs.deploy_tarball }}" == "true" ]]; then
             gh release create "${{ github.ref_name }}" \
               --title "Release ${{ github.ref_name }}" \
               --generate-notes \
