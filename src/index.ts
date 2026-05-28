@@ -49,6 +49,11 @@ export {
     type ComboboxProps,
 } from './components/combobox';
 export {
+    CommandPalette,
+    type CommandPaletteCommand,
+    type CommandPaletteProps,
+} from './components/commandPalette';
+export {
     DatePicker,
     type DatePickerProps,
     type DateRange,
@@ -59,6 +64,11 @@ export {
     type DividerOrientation,
     type DividerProps,
 } from './components/divider';
+export {
+    Drawer,
+    type DrawerProps,
+    type DrawerSide,
+} from './components/drawer';
 export {
     EmptyState,
     type EmptyStateProps,
@@ -129,6 +139,12 @@ export {
     type SearchInputProps,
 } from './components/searchInput';
 export {
+    SegmentedControl,
+    type SegmentedControlOption,
+    type SegmentedControlProps,
+    type SegmentedControlSize,
+} from './components/segmentedControl';
+export {
     Select,
     type SelectOption,
     type SelectProps,
@@ -150,6 +166,12 @@ export {
     type SpinnerProps,
     type SpinnerSize,
 } from './components/spinner';
+export {
+    Stepper,
+    type StepperItem,
+    type StepperOrientation,
+    type StepperProps,
+} from './components/stepper';
 export { Switch, type SwitchProps } from './components/switch';
 export {
     Table,

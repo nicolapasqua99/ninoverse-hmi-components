@@ -10,8 +10,13 @@ import { Card } from './components/card';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
 import { Combobox, type ComboboxOption } from './components/combobox';
+import {
+    CommandPalette,
+    type CommandPaletteCommand,
+} from './components/commandPalette';
 import { DatePicker, type DateRange } from './components/datePicker';
 import { Divider } from './components/divider';
+import { Drawer } from './components/drawer';
 import { EmptyState } from './components/emptyState';
 import { Field } from './components/field';
 import { FileUpload } from './components/fileUpload';
@@ -30,11 +35,13 @@ import { Progress } from './components/progress';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
 import { SearchInput } from './components/searchInput';
+import { SegmentedControl } from './components/segmentedControl';
 import { Select } from './components/select';
 import { Sidebar } from './components/sidebar';
 import { Skeleton } from './components/skeleton';
 import { Slider } from './components/slider';
 import { Spinner } from './components/spinner';
+import { Stepper } from './components/stepper';
 import { Switch } from './components/switch';
 import { Table } from './components/table';
 import { Tabs } from './components/tabs';
@@ -139,6 +146,18 @@ export default function App() {
     const [productRating, setProductRating] = useState(3);
     const [halfRating, setHalfRating] = useState(2.5);
     const [otpCode, setOtpCode] = useState('');
+    const [drawerRight, setDrawerRight] = useState(false);
+    const [drawerLeft, setDrawerLeft] = useState(false);
+    const [drawerBottom, setDrawerBottom] = useState(false);
+    const [checkoutStep, setCheckoutStep] = useState<
+        'cart' | 'address' | 'payment' | 'review'
+    >('payment');
+    const [paletteOpen, setPaletteOpen] = useState(false);
+    const [paletteResult, setPaletteResult] = useState<string>('none');
+    const [view, setView] = useState<'list' | 'board' | 'calendar'>('list');
+    const [density, setDensity] = useState<'compact' | 'cozy' | 'spacious'>(
+        'cozy',
+    );
     const cityOptions: ComboboxOption[] = [
         { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
         { value: 'berlin', label: 'Berlin', description: 'Germany' },
@@ -2400,6 +2419,299 @@ export default function App() {
                         />
                     </Field>
                 </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Drawer</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '1rem',
+                        flexWrap: 'wrap',
+                    }}
+                >
+                    <Button onClick={() => setDrawerRight(true)}>
+                        Open right
+                    </Button>
+                    <Button
+                        variant="secondary"
+                        onClick={() => setDrawerLeft(true)}
+                    >
+                        Open left
+                    </Button>
+                    <Button
+                        variant="soft"
+                        onClick={() => setDrawerBottom(true)}
+                    >
+                        Open bottom
+                    </Button>
+                </div>
+                <Drawer
+                    open={drawerRight}
+                    onClose={() => setDrawerRight(false)}
+                    side="right"
+                    title="Filters"
+                    description="Tune the result set on the fly."
+                    actions={
+                        <>
+                            <Button
+                                variant="ghost"
+                                onClick={() => setDrawerRight(false)}
+                            >
+                                Cancel
+                            </Button>
+                            <Button onClick={() => setDrawerRight(false)}>
+                                Apply
+                            </Button>
+                        </>
+                    }
+                >
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Right-side drawer — Escape or scrim click closes it.
+                    </p>
+                </Drawer>
+                <Drawer
+                    open={drawerLeft}
+                    onClose={() => setDrawerLeft(false)}
+                    side="left"
+                    title="Workspace"
+                    description="Sample left drawer for navigation context."
+                >
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Left-side drawer.
+                    </p>
+                </Drawer>
+                <Drawer
+                    open={drawerBottom}
+                    onClose={() => setDrawerBottom(false)}
+                    side="bottom"
+                    title="Quick actions"
+                >
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Bottom-anchored drawer — common on mobile.
+                    </p>
+                </Drawer>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Stepper</h2>
+                <Stepper
+                    steps={[
+                        {
+                            value: 'cart',
+                            label: 'Cart',
+                            description: '3 items',
+                        },
+                        {
+                            value: 'address',
+                            label: 'Address',
+                            description: 'Delivery details',
+                        },
+                        {
+                            value: 'payment',
+                            label: 'Payment',
+                            description: 'Choose method',
+                        },
+                        { value: 'review', label: 'Review' },
+                    ]}
+                    current={checkoutStep}
+                    onChange={setCheckoutStep}
+                    aria-label="Checkout progress"
+                />
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '1rem',
+                    }}
+                >
+                    <Button
+                        variant="secondary"
+                        onClick={() => {
+                            const order = [
+                                'cart',
+                                'address',
+                                'payment',
+                                'review',
+                            ] as const;
+                            const i = order.indexOf(checkoutStep);
+                            if (i > 0)
+                                setCheckoutStep(
+                                    order[i - 1] as typeof checkoutStep,
+                                );
+                        }}
+                    >
+                        Back
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            const order = [
+                                'cart',
+                                'address',
+                                'payment',
+                                'review',
+                            ] as const;
+                            const i = order.indexOf(checkoutStep);
+                            if (i < order.length - 1)
+                                setCheckoutStep(
+                                    order[i + 1] as typeof checkoutStep,
+                                );
+                        }}
+                    >
+                        Next
+                    </Button>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Command palette</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '2rem',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                    }}
+                >
+                    <Button onClick={() => setPaletteOpen(true)}>
+                        Open command palette
+                    </Button>
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Last action: <strong>{paletteResult}</strong>
+                    </p>
+                </div>
+                <CommandPalette
+                    open={paletteOpen}
+                    onOpenChange={setPaletteOpen}
+                    commands={
+                        [
+                            {
+                                id: 'new-doc',
+                                label: 'New document',
+                                description: 'Start a blank page',
+                                group: 'Create',
+                                keywords: ['create', 'blank'],
+                                onSelect: () =>
+                                    setPaletteResult('New document'),
+                            },
+                            {
+                                id: 'new-folder',
+                                label: 'New folder',
+                                group: 'Create',
+                                keywords: ['directory'],
+                                onSelect: () => setPaletteResult('New folder'),
+                            },
+                            {
+                                id: 'open-recent',
+                                label: 'Open recent',
+                                description: 'Browse the last 20 files',
+                                group: 'Navigation',
+                                onSelect: () => setPaletteResult('Open recent'),
+                            },
+                            {
+                                id: 'go-settings',
+                                label: 'Go to settings',
+                                group: 'Navigation',
+                                onSelect: () =>
+                                    setPaletteResult('Go to settings'),
+                            },
+                            {
+                                id: 'toggle-theme',
+                                label: 'Toggle theme',
+                                description: 'Switch between light and dark',
+                                group: 'Preferences',
+                                onSelect: () =>
+                                    setPaletteResult('Toggle theme'),
+                            },
+                            {
+                                id: 'sign-out',
+                                label: 'Sign out',
+                                group: 'Account',
+                                keywords: ['logout', 'leave'],
+                                onSelect: () => setPaletteResult('Sign out'),
+                            },
+                        ] satisfies CommandPaletteCommand[]
+                    }
+                />
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>
+                    Segmented control
+                </h2>
+                <Field label="View">
+                    <SegmentedControl
+                        value={view}
+                        onChange={setView}
+                        aria-label="View"
+                        options={[
+                            { value: 'list', label: 'List' },
+                            { value: 'board', label: 'Board' },
+                            { value: 'calendar', label: 'Calendar' },
+                        ]}
+                    />
+                </Field>
+                <Field label="Density (full width, small)">
+                    <SegmentedControl
+                        value={density}
+                        onChange={setDensity}
+                        size="small"
+                        fullWidth
+                        aria-label="Density"
+                        options={[
+                            { value: 'compact', label: 'Compact' },
+                            { value: 'cozy', label: 'Cozy' },
+                            {
+                                value: 'spacious',
+                                label: 'Spacious',
+                                disabled: true,
+                            },
+                        ]}
+                    />
+                </Field>
             </section>
             <ToastHost />
         </div>

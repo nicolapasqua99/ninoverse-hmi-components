@@ -1,6 +1,6 @@
 {
     "name": "@ninoverse/hmi-components",
-    "version": "0.43.0",
+    "version": "0.47.0",
     "type": "module",
     "license": "MIT",
     "description": "React HMI component library with Material Design 3 token system and warm asymmetric styling.",
@@ -59,6 +59,10 @@
             "types": "./dist/components/combobox.d.ts",
             "import": "./dist/combobox.js"
         },
+        "./command-palette": {
+            "types": "./dist/components/commandPalette.d.ts",
+            "import": "./dist/commandPalette.js"
+        },
         "./date-picker": {
             "types": "./dist/components/datePicker.d.ts",
             "import": "./dist/datePicker.js"
@@ -66,6 +70,10 @@
         "./divider": {
             "types": "./dist/components/divider.d.ts",
             "import": "./dist/divider.js"
+        },
+        "./drawer": {
+            "types": "./dist/components/drawer.d.ts",
+            "import": "./dist/drawer.js"
         },
         "./empty-state": {
             "types": "./dist/components/emptyState.d.ts",
@@ -139,6 +147,10 @@
             "types": "./dist/components/searchInput.d.ts",
             "import": "./dist/searchInput.js"
         },
+        "./segmented-control": {
+            "types": "./dist/components/segmentedControl.d.ts",
+            "import": "./dist/segmentedControl.js"
+        },
         "./select": {
             "types": "./dist/components/select.d.ts",
             "import": "./dist/select.js"
@@ -158,6 +170,10 @@
         "./spinner": {
             "types": "./dist/components/spinner.d.ts",
             "import": "./dist/spinner.js"
+        },
+        "./stepper": {
+            "types": "./dist/components/stepper.d.ts",
+            "import": "./dist/stepper.js"
         },
         "./switch": {
             "types": "./dist/components/switch.d.ts",

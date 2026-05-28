@@ -1,0 +1,179 @@
+/* Stepper — ordered list rendering completed / active / upcoming
+   steps with circular indicators connected by lines. Each step is a
+   <li> with data-status driving the visual state. Steps already
+   completed become buttons that the consumer can wire to revisit
+   earlier stages. */
+
+.stepper {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0;
+    font-family: var(--font-quicksand);
+}
+
+.stepper--horizontal {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.stepper--vertical {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.stepper__item {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    color: var(--on-surface-variant);
+}
+
+.stepper--horizontal .stepper__item {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.stepper--horizontal .stepper__item:last-child {
+    flex: 0 0 auto;
+}
+
+.stepper--vertical .stepper__item {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.stepper__button {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    font-family: inherit;
+    color: inherit;
+    flex-shrink: 0;
+}
+
+.stepper--vertical .stepper__button {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+}
+
+button.stepper__button {
+    cursor: pointer;
+}
+
+.stepper__indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--surface-container-high);
+    color: var(--on-surface-variant);
+    border: 0.125rem solid var(--outline-variant);
+    transition:
+        background var(--duration-short-3) var(--easing-standard),
+        border-color var(--duration-short-3) var(--easing-standard),
+        color var(--duration-short-3) var(--easing-standard);
+}
+
+.stepper__indicator svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.stepper__number {
+    font-family: var(--font-oxanium);
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.stepper__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.stepper__label {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--on-surface-variant);
+}
+
+.stepper__description {
+    font-size: 1.5rem;
+    color: var(--on-surface-variant);
+}
+
+.stepper__item[data-status="active"] .stepper__indicator {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--on-primary);
+    box-shadow: 0 0 0 0.375rem var(--ring);
+}
+
+.stepper__item[data-status="active"] .stepper__label {
+    color: var(--on-surface);
+    font-weight: 700;
+}
+
+.stepper__item[data-status="completed"] .stepper__indicator {
+    background: var(--primary-container);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.stepper__item[data-status="completed"] .stepper__label {
+    color: var(--on-surface);
+}
+
+button.stepper__button:hover .stepper__label {
+    color: var(--primary);
+}
+
+.stepper__connector {
+    background: var(--outline-variant);
+    transition: background var(--duration-medium-2) var(--easing-standard);
+}
+
+/* Horizontal: connector sits to the right of each step (except the
+   last), at a top margin that puts it at the vertical center of the
+   indicator. */
+.stepper--horizontal .stepper__connector {
+    flex: 1;
+    height: 0.125rem;
+    margin: 1.9375rem 1rem 0;
+}
+
+/* Vertical: connector hangs below each indicator. */
+.stepper--vertical .stepper__connector {
+    width: 0.125rem;
+    position: absolute;
+    top: 4.25rem;
+    bottom: 0;
+    left: 1.9375rem;
+}
+
+.stepper__item[data-status="completed"] .stepper__connector,
+.stepper__item[data-status="active"] .stepper__connector {
+    background: var(--primary);
+}
+
+.stepper--vertical .stepper__item {
+    padding-bottom: 2rem;
+}
+
+.stepper--vertical .stepper__item:last-child {
+    padding-bottom: 0;
+}
