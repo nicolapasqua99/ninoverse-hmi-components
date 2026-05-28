@@ -39,6 +39,7 @@ export default defineConfig({
                 combobox: resolve(dirname, 'src/components/combobox.tsx'),
                 datePicker: resolve(dirname, 'src/components/datePicker.tsx'),
                 divider: resolve(dirname, 'src/components/divider.tsx'),
+                drawer: resolve(dirname, 'src/components/drawer.tsx'),
                 emptyState: resolve(dirname, 'src/components/emptyState.tsx'),
                 field: resolve(dirname, 'src/components/field.tsx'),
                 fileUpload: resolve(dirname, 'src/components/fileUpload.tsx'),

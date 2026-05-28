@@ -12,6 +12,7 @@ import { Chip } from './components/chip';
 import { Combobox, type ComboboxOption } from './components/combobox';
 import { DatePicker, type DateRange } from './components/datePicker';
 import { Divider } from './components/divider';
+import { Drawer } from './components/drawer';
 import { EmptyState } from './components/emptyState';
 import { Field } from './components/field';
 import { FileUpload } from './components/fileUpload';
@@ -139,6 +140,9 @@ export default function App() {
     const [productRating, setProductRating] = useState(3);
     const [halfRating, setHalfRating] = useState(2.5);
     const [otpCode, setOtpCode] = useState('');
+    const [drawerRight, setDrawerRight] = useState(false);
+    const [drawerLeft, setDrawerLeft] = useState(false);
+    const [drawerBottom, setDrawerBottom] = useState(false);
     const cityOptions: ComboboxOption[] = [
         { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
         { value: 'berlin', label: 'Berlin', description: 'Germany' },
@@ -2400,6 +2404,101 @@ export default function App() {
                         />
                     </Field>
                 </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Drawer</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '1rem',
+                        flexWrap: 'wrap',
+                    }}
+                >
+                    <Button onClick={() => setDrawerRight(true)}>
+                        Open right
+                    </Button>
+                    <Button
+                        variant="secondary"
+                        onClick={() => setDrawerLeft(true)}
+                    >
+                        Open left
+                    </Button>
+                    <Button
+                        variant="soft"
+                        onClick={() => setDrawerBottom(true)}
+                    >
+                        Open bottom
+                    </Button>
+                </div>
+                <Drawer
+                    open={drawerRight}
+                    onClose={() => setDrawerRight(false)}
+                    side="right"
+                    title="Filters"
+                    description="Tune the result set on the fly."
+                    actions={
+                        <>
+                            <Button
+                                variant="ghost"
+                                onClick={() => setDrawerRight(false)}
+                            >
+                                Cancel
+                            </Button>
+                            <Button onClick={() => setDrawerRight(false)}>
+                                Apply
+                            </Button>
+                        </>
+                    }
+                >
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Right-side drawer — Escape or scrim click closes it.
+                    </p>
+                </Drawer>
+                <Drawer
+                    open={drawerLeft}
+                    onClose={() => setDrawerLeft(false)}
+                    side="left"
+                    title="Workspace"
+                    description="Sample left drawer for navigation context."
+                >
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Left-side drawer.
+                    </p>
+                </Drawer>
+                <Drawer
+                    open={drawerBottom}
+                    onClose={() => setDrawerBottom(false)}
+                    side="bottom"
+                    title="Quick actions"
+                >
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Bottom-anchored drawer — common on mobile.
+                    </p>
+                </Drawer>
             </section>
             <ToastHost />
         </div>

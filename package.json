@@ -1,6 +1,6 @@
 {
     "name": "@ninoverse/hmi-components",
-    "version": "0.43.0",
+    "version": "0.44.0",
     "type": "module",
     "license": "MIT",
     "description": "React HMI component library with Material Design 3 token system and warm asymmetric styling.",
@@ -66,6 +66,10 @@
         "./divider": {
             "types": "./dist/components/divider.d.ts",
             "import": "./dist/divider.js"
+        },
+        "./drawer": {
+            "types": "./dist/components/drawer.d.ts",
+            "import": "./dist/drawer.js"
         },
         "./empty-state": {
             "types": "./dist/components/emptyState.d.ts",

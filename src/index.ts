@@ -60,6 +60,11 @@ export {
     type DividerProps,
 } from './components/divider';
 export {
+    Drawer,
+    type DrawerProps,
+    type DrawerSide,
+} from './components/drawer';
+export {
     EmptyState,
     type EmptyStateProps,
 } from './components/emptyState';

@@ -1,0 +1,162 @@
+/* Drawer — full-height (or full-width) panel that slides in from a
+   side, on top of a dimmed scrim. Escape and scrim-click close it.
+   The slide-in animation is keyframed per side; prefers-reduced-motion
+   shortens it dramatically. */
+
+.drawer-scrim {
+    position: fixed;
+    inset: 0;
+    background: var(--scrim);
+    z-index: 1000;
+    display: flex;
+    animation: drawer-scrim-fade var(--duration-medium-2) var(--easing-standard);
+}
+
+.drawer-scrim[data-side="left"] {
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.drawer-scrim[data-side="right"] {
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+.drawer-scrim[data-side="top"] {
+    align-items: flex-start;
+    justify-content: stretch;
+}
+
+.drawer-scrim[data-side="bottom"] {
+    align-items: flex-end;
+    justify-content: stretch;
+}
+
+.drawer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2.5rem;
+    background: var(--surface-container-lowest);
+    box-shadow: var(--elevation-4);
+    color: var(--on-surface);
+    outline: none;
+    overflow-y: auto;
+}
+
+.drawer--left,
+.drawer--right {
+    width: 40rem;
+    max-width: 90vw;
+    height: 100%;
+}
+
+.drawer--top,
+.drawer--bottom {
+    width: 100%;
+    height: 36rem;
+    max-height: 90vh;
+}
+
+.drawer--left {
+    border-radius: 0 var(--corner-tr) var(--corner-br) 0;
+    animation: drawer-slide-left var(--duration-medium-3)
+        var(--easing-emphasized-decelerate);
+}
+
+.drawer--right {
+    border-radius: var(--corner-tl) 0 0 var(--corner-bl);
+    animation: drawer-slide-right var(--duration-medium-3)
+        var(--easing-emphasized-decelerate);
+}
+
+.drawer--top {
+    border-radius: 0 0 var(--corner-br) var(--corner-bl);
+    animation: drawer-slide-top var(--duration-medium-3)
+        var(--easing-emphasized-decelerate);
+}
+
+.drawer--bottom {
+    border-radius: var(--corner-tl) var(--corner-tr) 0 0;
+    animation: drawer-slide-bottom var(--duration-medium-3)
+        var(--easing-emphasized-decelerate);
+}
+
+.drawer__title {
+    margin: 0;
+    font-family: var(--font-oxanium);
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.drawer__description {
+    margin: 0;
+    font-size: 1.75rem;
+    color: var(--on-surface-variant);
+}
+
+.drawer__body {
+    flex: 1;
+    min-height: 0;
+}
+
+.drawer__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    border-top: 0.0625rem solid var(--outline-variant);
+}
+
+@keyframes drawer-scrim-fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes drawer-slide-left {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes drawer-slide-right {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes drawer-slide-top {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes drawer-slide-bottom {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .drawer-scrim,
+    .drawer {
+        animation-duration: 1ms;
+    }
+}
