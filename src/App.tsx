@@ -4,6 +4,7 @@ import { Alert } from './components/alert';
 import { Avatar } from './components/avatar';
 import { AvatarStack } from './components/avatarStack';
 import { Badge } from './components/badge';
+import { Banner } from './components/banner';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { Button } from './components/button';
 import { Card } from './components/card';
@@ -158,6 +159,7 @@ export default function App() {
     const [density, setDensity] = useState<'compact' | 'cozy' | 'spacious'>(
         'cozy',
     );
+    const [maintenanceVisible, setMaintenanceVisible] = useState(true);
     const cityOptions: ComboboxOption[] = [
         { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
         { value: 'berlin', label: 'Berlin', description: 'Germany' },
@@ -2712,6 +2714,43 @@ export default function App() {
                         ]}
                     />
                 </Field>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1.5rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Banner</h2>
+                {maintenanceVisible && (
+                    <Banner
+                        variant="warning"
+                        title="Scheduled maintenance"
+                        action={
+                            <Button variant="secondary">View status</Button>
+                        }
+                        onDismiss={() => setMaintenanceVisible(false)}
+                    >
+                        We'll be applying database upgrades on Saturday from
+                        02:00 to 04:00 UTC. Expect brief read-only windows.
+                    </Banner>
+                )}
+                <Banner variant="info" title="New release">
+                    v0.49 ships Banner and ConfirmDialog. Read the changelog for
+                    the full list.
+                </Banner>
+                <Banner variant="success" title="Backup completed">
+                    Last snapshot finished 3 minutes ago — 1.2 GB synced.
+                </Banner>
+                <Banner
+                    variant="danger"
+                    title="Payment failed"
+                    action={<Button variant="danger">Retry</Button>}
+                >
+                    Your card was declined. Please verify your billing details
+                    and try again.
+                </Banner>
             </section>
             <ToastHost />
         </div>

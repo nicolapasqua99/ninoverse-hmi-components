@@ -26,6 +26,11 @@ export {
     type BadgeVariant,
 } from './components/badge';
 export {
+    Banner,
+    type BannerProps,
+    type BannerVariant,
+} from './components/banner';
+export {
     type BreadcrumbItem,
     Breadcrumbs,
     type BreadcrumbsProps,
