@@ -48,6 +48,11 @@
     align-items: baseline;
     gap: 1rem;
     flex-wrap: wrap;
+    /* Absorb free vertical height so the value stays centered when the
+       card is taller than its content (e.g. a stat without a description
+       sitting in an equal-height grid). Label stays pinned at the top,
+       so labels remain aligned across a row of cards. */
+    margin-block: auto;
 }
 
 .stat__value {
