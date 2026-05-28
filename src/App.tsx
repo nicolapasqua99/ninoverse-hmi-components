@@ -4,6 +4,7 @@ import { Alert } from './components/alert';
 import { Avatar } from './components/avatar';
 import { AvatarStack } from './components/avatarStack';
 import { Badge } from './components/badge';
+import { Banner } from './components/banner';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { Button } from './components/button';
 import { Card } from './components/card';
@@ -14,6 +15,7 @@ import {
     CommandPalette,
     type CommandPaletteCommand,
 } from './components/commandPalette';
+import { ConfirmDialog } from './components/confirmDialog';
 import { DatePicker, type DateRange } from './components/datePicker';
 import { Divider } from './components/divider';
 import { Drawer } from './components/drawer';
@@ -158,6 +160,11 @@ export default function App() {
     const [density, setDensity] = useState<'compact' | 'cozy' | 'spacious'>(
         'cozy',
     );
+    const [maintenanceVisible, setMaintenanceVisible] = useState(true);
+    const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
+    const [confirmLeaveOpen, setConfirmLeaveOpen] = useState(false);
+    const [deleteLoading, setDeleteLoading] = useState(false);
+    const [confirmResult, setConfirmResult] = useState<string>('none');
     const cityOptions: ComboboxOption[] = [
         { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
         { value: 'berlin', label: 'Berlin', description: 'Germany' },
@@ -2712,6 +2719,118 @@ export default function App() {
                         ]}
                     />
                 </Field>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1.5rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Banner</h2>
+                {maintenanceVisible && (
+                    <Banner
+                        variant="warning"
+                        title="Scheduled maintenance"
+                        action={
+                            <Button variant="secondary">View status</Button>
+                        }
+                        onDismiss={() => setMaintenanceVisible(false)}
+                    >
+                        We'll be applying database upgrades on Saturday from
+                        02:00 to 04:00 UTC. Expect brief read-only windows.
+                    </Banner>
+                )}
+                <Banner variant="info" title="New release">
+                    v0.49 ships Banner and ConfirmDialog. Read the changelog for
+                    the full list.
+                </Banner>
+                <Banner variant="success" title="Backup completed">
+                    Last snapshot finished 3 minutes ago — 1.2 GB synced.
+                </Banner>
+                <Banner
+                    variant="danger"
+                    title="Payment failed"
+                    action={<Button variant="danger">Retry</Button>}
+                >
+                    Your card was declined. Please verify your billing details
+                    and try again.
+                </Banner>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1.5rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Confirm dialog</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '1rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Button
+                        variant="danger"
+                        onClick={() => setConfirmDeleteOpen(true)}
+                    >
+                        Delete project
+                    </Button>
+                    <Button
+                        variant="secondary"
+                        onClick={() => setConfirmLeaveOpen(true)}
+                    >
+                        Leave without saving
+                    </Button>
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Last result: <strong>{confirmResult}</strong>
+                    </p>
+                </div>
+                <ConfirmDialog
+                    open={confirmDeleteOpen}
+                    onCancel={() => {
+                        setConfirmDeleteOpen(false);
+                        setConfirmResult('Delete cancelled');
+                    }}
+                    onConfirm={() => {
+                        setDeleteLoading(true);
+                        window.setTimeout(() => {
+                            setDeleteLoading(false);
+                            setConfirmDeleteOpen(false);
+                            setConfirmResult('Project deleted');
+                        }, 900);
+                    }}
+                    title="Delete project?"
+                    description="This will permanently remove the project, its files, and 14 collaborator invitations. This action cannot be undone."
+                    confirmLabel={
+                        deleteLoading ? 'Deleting…' : 'Delete project'
+                    }
+                    variant="danger"
+                    loading={deleteLoading}
+                />
+                <ConfirmDialog
+                    open={confirmLeaveOpen}
+                    onCancel={() => {
+                        setConfirmLeaveOpen(false);
+                        setConfirmResult('Leave cancelled');
+                    }}
+                    onConfirm={() => {
+                        setConfirmLeaveOpen(false);
+                        setConfirmResult('Left without saving');
+                    }}
+                    title="Leave without saving?"
+                    description="Your unsaved changes will be discarded."
+                    confirmLabel="Leave"
+                />
             </section>
             <ToastHost />
         </div>

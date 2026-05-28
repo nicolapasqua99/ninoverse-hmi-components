@@ -1,0 +1,111 @@
+/* Banner — full-width persistent notification that spans the layout it
+   sits in (unlike Alert, which fits its content). One variant per
+   semantic tone; danger and warning use role=alert so AT announces
+   immediately, info/success use role=status (polite). Optional action
+   slot on the right and optional dismiss button at the far right. */
+
+.banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    width: 100%;
+    padding: 1.5rem 1.75rem;
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    border-left: 0.5rem solid var(--outline-variant);
+    font-family: var(--font-quicksand);
+}
+
+.banner--info {
+    background: var(--tertiary-container);
+    color: var(--on-tertiary-container);
+    border-left-color: var(--tertiary);
+}
+
+.banner--success {
+    background: var(--success-container);
+    color: var(--on-success-container);
+    border-left-color: var(--success);
+}
+
+.banner--warning {
+    background: var(--warning-container);
+    color: var(--on-warning-container);
+    border-left-color: var(--warning);
+}
+
+.banner--danger {
+    background: var(--error-container);
+    color: var(--on-error-container);
+    border-left-color: var(--error);
+}
+
+.banner__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: inherit;
+    margin-top: 0.25rem;
+}
+
+.banner__icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.banner__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.banner__title {
+    margin: 0;
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: inherit;
+}
+
+.banner__body {
+    margin: 0;
+    font-size: 1.625rem;
+    line-height: 1.5;
+    color: inherit;
+}
+
+.banner__action {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.banner__dismiss {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.65;
+    transition:
+        background var(--duration-short-2) var(--easing-standard),
+        opacity var(--duration-short-2) var(--easing-standard);
+}
+
+.banner__dismiss:hover {
+    background: color-mix(in oklab, currentColor 12%, transparent);
+    opacity: 1;
+}
+
+.banner__dismiss svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}

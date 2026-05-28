@@ -26,6 +26,11 @@ export {
     type BadgeVariant,
 } from './components/badge';
 export {
+    Banner,
+    type BannerProps,
+    type BannerVariant,
+} from './components/banner';
+export {
     type BreadcrumbItem,
     Breadcrumbs,
     type BreadcrumbsProps,
@@ -53,6 +58,11 @@ export {
     type CommandPaletteCommand,
     type CommandPaletteProps,
 } from './components/commandPalette';
+export {
+    ConfirmDialog,
+    type ConfirmDialogProps,
+    type ConfirmDialogVariant,
+} from './components/confirmDialog';
 export {
     DatePicker,
     type DatePickerProps,
