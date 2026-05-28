@@ -36,6 +36,7 @@ import { Sidebar } from './components/sidebar';
 import { Skeleton } from './components/skeleton';
 import { Slider } from './components/slider';
 import { Spinner } from './components/spinner';
+import { Stepper } from './components/stepper';
 import { Switch } from './components/switch';
 import { Table } from './components/table';
 import { Tabs } from './components/tabs';
@@ -143,6 +144,9 @@ export default function App() {
     const [drawerRight, setDrawerRight] = useState(false);
     const [drawerLeft, setDrawerLeft] = useState(false);
     const [drawerBottom, setDrawerBottom] = useState(false);
+    const [checkoutStep, setCheckoutStep] = useState<
+        'cart' | 'address' | 'payment' | 'review'
+    >('payment');
     const cityOptions: ComboboxOption[] = [
         { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
         { value: 'berlin', label: 'Berlin', description: 'Germany' },
@@ -2499,6 +2503,80 @@ export default function App() {
                         Bottom-anchored drawer — common on mobile.
                     </p>
                 </Drawer>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Stepper</h2>
+                <Stepper
+                    steps={[
+                        {
+                            value: 'cart',
+                            label: 'Cart',
+                            description: '3 items',
+                        },
+                        {
+                            value: 'address',
+                            label: 'Address',
+                            description: 'Delivery details',
+                        },
+                        {
+                            value: 'payment',
+                            label: 'Payment',
+                            description: 'Choose method',
+                        },
+                        { value: 'review', label: 'Review' },
+                    ]}
+                    current={checkoutStep}
+                    onChange={setCheckoutStep}
+                    aria-label="Checkout progress"
+                />
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '1rem',
+                    }}
+                >
+                    <Button
+                        variant="secondary"
+                        onClick={() => {
+                            const order = [
+                                'cart',
+                                'address',
+                                'payment',
+                                'review',
+                            ] as const;
+                            const i = order.indexOf(checkoutStep);
+                            if (i > 0)
+                                setCheckoutStep(
+                                    order[i - 1] as typeof checkoutStep,
+                                );
+                        }}
+                    >
+                        Back
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            const order = [
+                                'cart',
+                                'address',
+                                'payment',
+                                'review',
+                            ] as const;
+                            const i = order.indexOf(checkoutStep);
+                            if (i < order.length - 1)
+                                setCheckoutStep(
+                                    order[i + 1] as typeof checkoutStep,
+                                );
+                        }}
+                    >
+                        Next
+                    </Button>
+                </div>
             </section>
             <ToastHost />
         </div>

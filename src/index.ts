@@ -155,6 +155,12 @@ export {
     type SpinnerProps,
     type SpinnerSize,
 } from './components/spinner';
+export {
+    Stepper,
+    type StepperItem,
+    type StepperOrientation,
+    type StepperProps,
+} from './components/stepper';
 export { Switch, type SwitchProps } from './components/switch';
 export {
     Table,
