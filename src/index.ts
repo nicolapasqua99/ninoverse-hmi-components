@@ -49,6 +49,11 @@ export {
     type ComboboxProps,
 } from './components/combobox';
 export {
+    CommandPalette,
+    type CommandPaletteCommand,
+    type CommandPaletteProps,
+} from './components/commandPalette';
+export {
     DatePicker,
     type DatePickerProps,
     type DateRange,

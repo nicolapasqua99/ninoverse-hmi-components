@@ -37,6 +37,10 @@ export default defineConfig({
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
                 chip: resolve(dirname, 'src/components/chip.tsx'),
                 combobox: resolve(dirname, 'src/components/combobox.tsx'),
+                commandPalette: resolve(
+                    dirname,
+                    'src/components/commandPalette.tsx',
+                ),
                 datePicker: resolve(dirname, 'src/components/datePicker.tsx'),
                 divider: resolve(dirname, 'src/components/divider.tsx'),
                 drawer: resolve(dirname, 'src/components/drawer.tsx'),

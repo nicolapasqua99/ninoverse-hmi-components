@@ -10,6 +10,10 @@ import { Card } from './components/card';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
 import { Combobox, type ComboboxOption } from './components/combobox';
+import {
+    CommandPalette,
+    type CommandPaletteCommand,
+} from './components/commandPalette';
 import { DatePicker, type DateRange } from './components/datePicker';
 import { Divider } from './components/divider';
 import { Drawer } from './components/drawer';
@@ -147,6 +151,8 @@ export default function App() {
     const [checkoutStep, setCheckoutStep] = useState<
         'cart' | 'address' | 'payment' | 'review'
     >('payment');
+    const [paletteOpen, setPaletteOpen] = useState(false);
+    const [paletteResult, setPaletteResult] = useState<string>('none');
     const cityOptions: ComboboxOption[] = [
         { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
         { value: 'berlin', label: 'Berlin', description: 'Germany' },
@@ -2577,6 +2583,89 @@ export default function App() {
                         Next
                     </Button>
                 </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Command palette</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '2rem',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                    }}
+                >
+                    <Button onClick={() => setPaletteOpen(true)}>
+                        Open command palette
+                    </Button>
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Last action: <strong>{paletteResult}</strong>
+                    </p>
+                </div>
+                <CommandPalette
+                    open={paletteOpen}
+                    onOpenChange={setPaletteOpen}
+                    commands={
+                        [
+                            {
+                                id: 'new-doc',
+                                label: 'New document',
+                                description: 'Start a blank page',
+                                group: 'Create',
+                                keywords: ['create', 'blank'],
+                                onSelect: () =>
+                                    setPaletteResult('New document'),
+                            },
+                            {
+                                id: 'new-folder',
+                                label: 'New folder',
+                                group: 'Create',
+                                keywords: ['directory'],
+                                onSelect: () => setPaletteResult('New folder'),
+                            },
+                            {
+                                id: 'open-recent',
+                                label: 'Open recent',
+                                description: 'Browse the last 20 files',
+                                group: 'Navigation',
+                                onSelect: () => setPaletteResult('Open recent'),
+                            },
+                            {
+                                id: 'go-settings',
+                                label: 'Go to settings',
+                                group: 'Navigation',
+                                onSelect: () =>
+                                    setPaletteResult('Go to settings'),
+                            },
+                            {
+                                id: 'toggle-theme',
+                                label: 'Toggle theme',
+                                description: 'Switch between light and dark',
+                                group: 'Preferences',
+                                onSelect: () =>
+                                    setPaletteResult('Toggle theme'),
+                            },
+                            {
+                                id: 'sign-out',
+                                label: 'Sign out',
+                                group: 'Account',
+                                keywords: ['logout', 'leave'],
+                                onSelect: () => setPaletteResult('Sign out'),
+                            },
+                        ] satisfies CommandPaletteCommand[]
+                    }
+                />
             </section>
             <ToastHost />
         </div>
