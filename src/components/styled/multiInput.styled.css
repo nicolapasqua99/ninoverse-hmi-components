@@ -1,10 +1,12 @@
-/* OTPInput — N segmented cells laid out as a flex row. Each cell is
-   a single-character <input>; typing advances focus and Backspace on
-   an empty cell rolls back to the previous one. Pasting fills cells
-   from the current focus forward. */
+/* MultiInput — N segmented single-character cells, optionally grouped
+   with a visible separator between groups (e.g. license keys, IBAN).
+   Each cell is a one-character <input>; typing advances focus and
+   Backspace on an empty cell rolls back. Paste distributes characters
+   from the focused cell forward. */
 
-.otp-input {
+.multi-input {
     display: inline-flex;
+    align-items: center;
     gap: 0.75rem;
     border: 0;
     margin: 0;
@@ -12,7 +14,21 @@
     min-width: 0;
 }
 
-.otp-input__cell {
+.multi-input__slot {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.multi-input__separator {
+    color: var(--on-surface-variant);
+    font-family: var(--font-oxanium);
+    font-size: 2.5rem;
+    font-weight: 600;
+    user-select: none;
+}
+
+.multi-input__cell {
     width: 5rem;
     height: 6rem;
     text-align: center;
@@ -26,27 +42,28 @@
         var(--corner-bl);
     outline: none;
     font-variant-numeric: tabular-nums;
+    text-transform: uppercase;
     transition:
         border-color var(--duration-short-3) var(--easing-standard),
         box-shadow var(--duration-short-3) var(--easing-standard);
 }
 
-.otp-input__cell:focus,
-.otp-input__cell:focus-visible {
+.multi-input__cell:focus,
+.multi-input__cell:focus-visible {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 0.375rem var(--ring);
 }
 
-.otp-input__cell:hover:not(:focus):not(:disabled) {
+.multi-input__cell:hover:not(:focus):not(:disabled) {
     border-color: var(--outline);
 }
 
-.otp-input__cell:disabled {
+.multi-input__cell:disabled {
     opacity: var(--state-disabled-opacity);
     cursor: not-allowed;
 }
 
-.otp-input--disabled {
+.multi-input--disabled {
     cursor: not-allowed;
 }

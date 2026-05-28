@@ -5,37 +5,48 @@ import {
     useRef,
     useState,
 } from 'react';
-import './styled/otpInput.styled.css';
+import './styled/multiInput.styled.css';
 
-export type OTPInputType = 'numeric' | 'text';
+export type MultiInputType = 'numeric' | 'text';
 
-export type OTPInputProps = {
+export type MultiInputProps = {
     length?: number;
+    groupSize?: number;
+    separator?: string;
     value?: string;
     defaultValue?: string;
     onChange?: (value: string) => void;
     onComplete?: (value: string) => void;
-    type?: OTPInputType;
+    type?: MultiInputType;
+    pattern?: RegExp;
     mask?: boolean;
     disabled?: boolean;
     readOnly?: boolean;
     autoFocus?: boolean;
+    autoComplete?: string;
     'aria-label'?: string;
 };
 
-export function OTPInput({
+const NUMERIC_PATTERN = /^[0-9]$/;
+const NON_WHITESPACE_PATTERN = /^\S$/;
+
+export function MultiInput({
     length = 6,
+    groupSize,
+    separator = '–',
     value,
     defaultValue,
     onChange,
     onComplete,
     type = 'numeric',
+    pattern,
     mask = false,
     disabled = false,
     readOnly = false,
     autoFocus = false,
-    'aria-label': ariaLabel = 'One-time code',
-}: OTPInputProps) {
+    autoComplete = 'off',
+    'aria-label': ariaLabel = 'Segmented input',
+}: MultiInputProps) {
     const isControlled = value !== undefined;
     const [internal, setInternal] = useState<string>(defaultValue ?? '');
     const current = (isControlled ? value : internal).slice(0, length);
@@ -43,16 +54,18 @@ export function OTPInput({
     const refs = useRef<Array<HTMLInputElement | null>>([]);
     const cells: string[] = Array.from({ length }, (_, i) => current[i] ?? '');
 
-    const isValidChar = (ch: string): boolean => {
-        if (type === 'numeric') return /^[0-9]$/.test(ch);
-        return ch.length === 1 && ch !== ' ';
-    };
+    const validate: (ch: string) => boolean = pattern
+        ? (ch) => pattern.test(ch)
+        : type === 'numeric'
+          ? (ch) => NUMERIC_PATTERN.test(ch)
+          : (ch) => NON_WHITESPACE_PATTERN.test(ch);
 
     const setValue = (next: string) => {
         const clipped = next.slice(0, length);
         if (!isControlled) setInternal(clipped);
         onChange?.(clipped);
-        if (clipped.length === length && !clipped.includes('')) {
+        const filledCells = Array.from({ length }, (_, i) => clipped[i] ?? '');
+        if (filledCells.every((c) => c !== '')) {
             onComplete?.(clipped);
         }
     };
@@ -73,7 +86,7 @@ export function OTPInput({
             return;
         }
         const ch = raw.slice(-1);
-        if (!isValidChar(ch)) return;
+        if (!validate(ch)) return;
         const next = cells.slice();
         next[idx] = ch;
         setValue(next.join(''));
@@ -82,7 +95,7 @@ export function OTPInput({
 
     const onCellKey = (idx: number, event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Backspace') {
-            if (cells[idx]) return; // handled by onChange when input clears
+            if (cells[idx]) return;
             if (idx > 0) {
                 event.preventDefault();
                 const next = cells.slice();
@@ -108,7 +121,7 @@ export function OTPInput({
     const onPaste = (idx: number, event: ClipboardEvent<HTMLInputElement>) => {
         event.preventDefault();
         const text = event.clipboardData.getData('text');
-        const filtered = Array.from(text).filter(isValidChar).join('');
+        const filtered = Array.from(text).filter(validate).join('');
         if (!filtered) return;
         const next = cells.slice();
         let pos = idx;
@@ -126,33 +139,51 @@ export function OTPInput({
         if (autoFocus) focusCell(0);
     }, []);
 
-    const tokens: string[] = ['otp-input'];
-    if (disabled) tokens.push('otp-input--disabled');
+    const tokens: string[] = ['multi-input'];
+    if (disabled) tokens.push('multi-input--disabled');
 
     return (
         <fieldset className={tokens.join(' ')} aria-label={ariaLabel}>
-            {cells.map((cell, i) => (
-                <input
+            {cells.map((cell, i) => {
+                const showSeparatorBefore =
+                    groupSize !== undefined &&
+                    groupSize > 0 &&
+                    i > 0 &&
+                    i % groupSize === 0;
+                return (
                     // biome-ignore lint/suspicious/noArrayIndexKey: cells are positionally identified
-                    key={i}
-                    ref={(el) => {
-                        refs.current[i] = el;
-                    }}
-                    type={mask ? 'password' : 'text'}
-                    inputMode={type === 'numeric' ? 'numeric' : 'text'}
-                    autoComplete={i === 0 ? 'one-time-code' : 'off'}
-                    maxLength={1}
-                    className="otp-input__cell"
-                    aria-label={`Digit ${i + 1} of ${length}`}
-                    value={cell}
-                    disabled={disabled}
-                    readOnly={readOnly}
-                    onChange={(event) => onCellChange(i, event.target.value)}
-                    onKeyDown={(event) => onCellKey(i, event)}
-                    onPaste={(event) => onPaste(i, event)}
-                    onFocus={(event) => event.target.select()}
-                />
-            ))}
+                    <span key={i} className="multi-input__slot">
+                        {showSeparatorBefore && (
+                            <span
+                                className="multi-input__separator"
+                                aria-hidden="true"
+                            >
+                                {separator}
+                            </span>
+                        )}
+                        <input
+                            ref={(el) => {
+                                refs.current[i] = el;
+                            }}
+                            type={mask ? 'password' : 'text'}
+                            inputMode={type === 'numeric' ? 'numeric' : 'text'}
+                            autoComplete={i === 0 ? autoComplete : 'off'}
+                            maxLength={1}
+                            className="multi-input__cell"
+                            aria-label={`Segment ${i + 1} of ${length}`}
+                            value={cell}
+                            disabled={disabled}
+                            readOnly={readOnly}
+                            onChange={(event) =>
+                                onCellChange(i, event.target.value)
+                            }
+                            onKeyDown={(event) => onCellKey(i, event)}
+                            onPaste={(event) => onPaste(i, event)}
+                            onFocus={(event) => event.target.select()}
+                        />
+                    </span>
+                );
+            })}
         </fieldset>
     );
 }

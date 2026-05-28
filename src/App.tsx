@@ -20,9 +20,9 @@ import { Kbd } from './components/kbd';
 import { List, type ListItem } from './components/list';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
 import { Modal } from './components/modal';
+import { MultiInput } from './components/multiInput';
 import { Navbar } from './components/navbar';
 import { NumberInput } from './components/numberInput';
-import { OTPInput } from './components/otpInput';
 import { Pagination } from './components/pagination';
 import { PasswordInput } from './components/passwordInput';
 import { Popover } from './components/popover';
@@ -2339,7 +2339,7 @@ export default function App() {
                     gap: '2rem',
                 }}
             >
-                <h2 style={{ margin: 0, fontSize: '3rem' }}>OTP input</h2>
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Multi input</h2>
                 <div
                     style={{
                         display: 'flex',
@@ -2347,7 +2347,7 @@ export default function App() {
                         gap: '2rem',
                     }}
                 >
-                    <Field label="6-digit verification code">
+                    <Field label="6-digit verification code (numeric)">
                         <div
                             style={{
                                 display: 'flex',
@@ -2355,10 +2355,11 @@ export default function App() {
                                 gap: '2rem',
                             }}
                         >
-                            <OTPInput
+                            <MultiInput
                                 value={otpCode}
                                 onChange={setOtpCode}
                                 length={6}
+                                autoComplete="one-time-code"
                                 aria-label="Verification code"
                             />
                             <span
@@ -2371,8 +2372,18 @@ export default function App() {
                             </span>
                         </div>
                     </Field>
+                    <Field label="License key (3 × 4 alphanumeric)">
+                        <MultiInput
+                            length={12}
+                            groupSize={4}
+                            type="text"
+                            pattern={/^[A-Za-z0-9]$/}
+                            defaultValue="ABCD1234WXYZ"
+                            aria-label="License key"
+                        />
+                    </Field>
                     <Field label="4-digit PIN (masked)">
-                        <OTPInput
+                        <MultiInput
                             length={4}
                             mask
                             defaultValue="1234"

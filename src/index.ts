@@ -91,6 +91,11 @@ export {
     type ModalSize,
 } from './components/modal';
 export {
+    MultiInput,
+    type MultiInputProps,
+    type MultiInputType,
+} from './components/multiInput';
+export {
     Navbar,
     type NavbarLink,
     type NavbarProps,
@@ -99,11 +104,6 @@ export {
     NumberInput,
     type NumberInputProps,
 } from './components/numberInput';
-export {
-    OTPInput,
-    type OTPInputProps,
-    type OTPInputType,
-} from './components/otpInput';
 export {
     Pagination,
     type PaginationProps,

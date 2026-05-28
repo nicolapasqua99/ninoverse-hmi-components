@@ -47,9 +47,9 @@ export default defineConfig({
                 list: resolve(dirname, 'src/components/list.tsx'),
                 menu: resolve(dirname, 'src/components/menu.tsx'),
                 modal: resolve(dirname, 'src/components/modal.tsx'),
+                multiInput: resolve(dirname, 'src/components/multiInput.tsx'),
                 navbar: resolve(dirname, 'src/components/navbar.tsx'),
                 numberInput: resolve(dirname, 'src/components/numberInput.tsx'),
-                otpInput: resolve(dirname, 'src/components/otpInput.tsx'),
                 pagination: resolve(dirname, 'src/components/pagination.tsx'),
                 passwordInput: resolve(
                     dirname,
