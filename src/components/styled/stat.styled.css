@@ -1,0 +1,116 @@
+/* Stat — KPI / metric card with a big value, optional delta chip
+   showing trend direction (up / down / neutral), and an optional
+   chart slot (e.g. sparkline). Sits on a surface card with the
+   library's asymmetric notch. */
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 2rem 2.25rem;
+    background: var(--surface-container-lowest);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    font-family: var(--font-quicksand);
+    color: var(--on-surface);
+    min-width: 0;
+}
+
+.stat__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.stat__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--on-surface-variant);
+    flex-shrink: 0;
+}
+
+.stat__icon svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.stat__label {
+    font-size: 1.625rem;
+    font-weight: 500;
+    color: var(--on-surface-variant);
+    letter-spacing: 0.01em;
+}
+
+.stat__value-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.stat__value {
+    font-family: var(--font-oxanium);
+    font-weight: 700;
+    color: var(--on-surface);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+}
+
+.stat--medium .stat__value {
+    font-size: 3.5rem;
+}
+
+.stat--large .stat__value {
+    font-size: 5rem;
+}
+
+.stat__delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--corner-full);
+    font-family: var(--font-oxanium);
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat__delta[data-trend="up"] {
+    background: var(--success-container);
+    color: var(--on-success-container);
+}
+
+.stat__delta[data-trend="down"] {
+    background: var(--error-container);
+    color: var(--on-error-container);
+}
+
+.stat__delta[data-trend="neutral"] {
+    background: var(--surface-container-high);
+    color: var(--on-surface-variant);
+}
+
+.stat__delta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat__delta-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.stat__description {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--on-surface-variant);
+    line-height: 1.5;
+}
+
+.stat__chart {
+    margin-top: 0.5rem;
+}

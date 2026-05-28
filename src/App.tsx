@@ -41,6 +41,7 @@ import { Sidebar } from './components/sidebar';
 import { Skeleton } from './components/skeleton';
 import { Slider } from './components/slider';
 import { Spinner } from './components/spinner';
+import { Stat } from './components/stat';
 import { Stepper } from './components/stepper';
 import { Switch } from './components/switch';
 import { Table } from './components/table';
@@ -2712,6 +2713,52 @@ export default function App() {
                         ]}
                     />
                 </Field>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Stat</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns:
+                            'repeat(auto-fit, minmax(28rem, 1fr))',
+                        gap: '2rem',
+                    }}
+                >
+                    <Stat
+                        label="Active users"
+                        value="12,483"
+                        delta="+12.4%"
+                        trend="up"
+                        description="vs. previous 7 days"
+                    />
+                    <Stat
+                        label="Bounce rate"
+                        value="32.1%"
+                        delta="-3.1%"
+                        trend="down"
+                        description="Lower is better"
+                    />
+                    <Stat
+                        label="Avg. session"
+                        value="4m 12s"
+                        delta="No change"
+                        trend="neutral"
+                    />
+                    <Stat
+                        size="large"
+                        label="Revenue (MTD)"
+                        value="$48.2k"
+                        delta="+8.6%"
+                        trend="up"
+                        description="Closing the month strong"
+                    />
+                </div>
             </section>
             <ToastHost />
         </div>

@@ -167,6 +167,12 @@ export {
     type SpinnerSize,
 } from './components/spinner';
 export {
+    Stat,
+    type StatProps,
+    type StatSize,
+    type StatTrend,
+} from './components/stat';
+export {
     Stepper,
     type StepperItem,
     type StepperOrientation,
