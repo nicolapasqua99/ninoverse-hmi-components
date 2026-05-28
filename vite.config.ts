@@ -42,6 +42,10 @@ export default defineConfig({
                     dirname,
                     'src/components/commandPalette.tsx',
                 ),
+                confirmDialog: resolve(
+                    dirname,
+                    'src/components/confirmDialog.tsx',
+                ),
                 datePicker: resolve(dirname, 'src/components/datePicker.tsx'),
                 divider: resolve(dirname, 'src/components/divider.tsx'),
                 drawer: resolve(dirname, 'src/components/drawer.tsx'),

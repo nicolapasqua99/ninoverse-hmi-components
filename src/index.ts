@@ -59,6 +59,11 @@ export {
     type CommandPaletteProps,
 } from './components/commandPalette';
 export {
+    ConfirmDialog,
+    type ConfirmDialogProps,
+    type ConfirmDialogVariant,
+} from './components/confirmDialog';
+export {
     DatePicker,
     type DatePickerProps,
     type DateRange,

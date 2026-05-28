@@ -10,7 +10,7 @@ import './styled/modal.styled.css';
 
 export type ModalSize = 'medium' | 'large';
 
-export type ModalProps = HTMLAttributes<HTMLDivElement> & {
+export type ModalProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'> & {
     open: boolean;
     onClose: () => void;
     title?: ReactNode;

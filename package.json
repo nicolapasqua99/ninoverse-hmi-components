@@ -1,6 +1,6 @@
 {
     "name": "@ninoverse/hmi-components",
-    "version": "0.49.0",
+    "version": "0.50.0",
     "type": "module",
     "license": "MIT",
     "description": "React HMI component library with Material Design 3 token system and warm asymmetric styling.",
@@ -66,6 +66,10 @@
         "./command-palette": {
             "types": "./dist/components/commandPalette.d.ts",
             "import": "./dist/commandPalette.js"
+        },
+        "./confirm-dialog": {
+            "types": "./dist/components/confirmDialog.d.ts",
+            "import": "./dist/confirmDialog.js"
         },
         "./date-picker": {
             "types": "./dist/components/datePicker.d.ts",
