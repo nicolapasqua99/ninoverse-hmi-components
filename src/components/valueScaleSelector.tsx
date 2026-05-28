@@ -1,38 +1,47 @@
-import { type CSSProperties, type KeyboardEvent, useState } from 'react';
-import './styled/rating.styled.css';
+import {
+    type CSSProperties,
+    type KeyboardEvent,
+    type ReactNode,
+    useState,
+} from 'react';
+import './styled/valueScaleSelector.styled.css';
 
-export type RatingSize = 'small' | 'medium' | 'large';
+export type ValueScaleSelectorSize = 'small' | 'medium' | 'large';
 
-export type RatingProps = {
+export type ValueScaleSelectorProps = {
     value?: number;
     defaultValue?: number;
     onChange?: (value: number) => void;
     max?: number;
     allowHalf?: boolean;
+    icon?: ReactNode;
+    valueText?: (value: number, max: number) => string;
     readOnly?: boolean;
     disabled?: boolean;
-    size?: RatingSize;
+    size?: ValueScaleSelectorSize;
     'aria-label'?: string;
 };
 
-const StarSvg = () => (
+const DefaultIcon = () => (
     <svg viewBox="0 0 24 24" aria-hidden="true">
         <title>Star</title>
         <path d="M12 2.5l2.94 6.5 7.06.6-5.34 4.76 1.63 6.94L12 17.6 5.71 21.3 7.34 14.36 2 9.6l7.06-.6L12 2.5z" />
     </svg>
 );
 
-export function Rating({
+export function ValueScaleSelector({
     value,
     defaultValue,
     onChange,
     max = 5,
     allowHalf = false,
+    icon,
+    valueText,
     readOnly = false,
     disabled = false,
     size = 'medium',
-    'aria-label': ariaLabel = 'Rating',
-}: RatingProps) {
+    'aria-label': ariaLabel = 'Value selector',
+}: ValueScaleSelectorProps) {
     const isControlled = value !== undefined;
     const [internal, setInternal] = useState<number>(defaultValue ?? 0);
     const [hover, setHover] = useState<number | null>(null);
@@ -41,9 +50,12 @@ export function Rating({
     const display = hover ?? current;
     const fillPct = Math.max(0, Math.min(1, display / max)) * 100;
 
-    const tokens: string[] = ['rating', `rating--${size}`];
-    if (disabled) tokens.push('rating--disabled');
-    if (readOnly) tokens.push('rating--readonly');
+    const tokens: string[] = [
+        'value-scale-selector',
+        `value-scale-selector--${size}`,
+    ];
+    if (disabled) tokens.push('value-scale-selector--disabled');
+    if (readOnly) tokens.push('value-scale-selector--readonly');
 
     const commit = (next: number) => {
         if (!isControlled) setInternal(next);
@@ -70,11 +82,13 @@ export function Rating({
         }
     };
 
-    const stars = Array.from({ length: max }, (_, i) => i + 1);
+    const positions = Array.from({ length: max }, (_, i) => i + 1);
+    const fillStyle: CSSProperties = { width: `${fillPct}%` };
+    const cellIcon = icon ?? <DefaultIcon />;
 
-    const fillStyle: CSSProperties = {
-        width: `${fillPct}%`,
-    };
+    const computedValueText = valueText
+        ? valueText(current, max)
+        : `${current} out of ${max}`;
 
     return (
         <div
@@ -83,7 +97,7 @@ export function Rating({
             aria-valuemin={0}
             aria-valuemax={max}
             aria-valuenow={current}
-            aria-valuetext={`${current} out of ${max} stars`}
+            aria-valuetext={computedValueText}
             aria-disabled={disabled || undefined}
             aria-readonly={readOnly || undefined}
             tabIndex={interactive ? 0 : -1}
@@ -91,58 +105,67 @@ export function Rating({
             onKeyDown={onKey}
             onMouseLeave={() => setHover(null)}
         >
-            <div className="rating__row rating__row--bg" aria-hidden="true">
-                {stars.map((s) => (
-                    <span key={s} className="rating__star">
-                        <StarSvg />
+            <div
+                className="value-scale-selector__row value-scale-selector__row--bg"
+                aria-hidden="true"
+            >
+                {positions.map((p) => (
+                    <span key={p} className="value-scale-selector__item">
+                        {cellIcon}
                     </span>
                 ))}
             </div>
             <div
-                className="rating__row rating__row--fg"
+                className="value-scale-selector__row value-scale-selector__row--fg"
                 aria-hidden="true"
                 style={fillStyle}
             >
-                {stars.map((s) => (
-                    <span key={s} className="rating__star">
-                        <StarSvg />
+                {positions.map((p) => (
+                    <span key={p} className="value-scale-selector__item">
+                        {cellIcon}
                     </span>
                 ))}
             </div>
             {interactive && (
-                <div className="rating__overlay">
-                    {stars.map((s) => {
+                <div className="value-scale-selector__overlay">
+                    {positions.map((p) => {
                         if (allowHalf) {
                             return (
-                                <span key={s} className="rating__cell">
+                                <span
+                                    key={p}
+                                    className="value-scale-selector__cell"
+                                >
                                     <button
                                         type="button"
-                                        className="rating__half rating__half--left"
-                                        aria-label={`${s - 0.5} stars`}
+                                        className="value-scale-selector__half value-scale-selector__half--left"
+                                        aria-label={`${p - 0.5}`}
                                         tabIndex={-1}
-                                        onClick={() => commit(s - 0.5)}
-                                        onMouseEnter={() => setHover(s - 0.5)}
+                                        onClick={() => commit(p - 0.5)}
+                                        onMouseEnter={() => setHover(p - 0.5)}
                                     />
                                     <button
                                         type="button"
-                                        className="rating__half rating__half--right"
-                                        aria-label={`${s} stars`}
+                                        className="value-scale-selector__half value-scale-selector__half--right"
+                                        aria-label={`${p}`}
                                         tabIndex={-1}
-                                        onClick={() => commit(s)}
-                                        onMouseEnter={() => setHover(s)}
+                                        onClick={() => commit(p)}
+                                        onMouseEnter={() => setHover(p)}
                                     />
                                 </span>
                             );
                         }
                         return (
-                            <span key={s} className="rating__cell">
+                            <span
+                                key={p}
+                                className="value-scale-selector__cell"
+                            >
                                 <button
                                     type="button"
-                                    className="rating__full"
-                                    aria-label={`${s} stars`}
+                                    className="value-scale-selector__full"
+                                    aria-label={`${p}`}
                                     tabIndex={-1}
-                                    onClick={() => commit(s)}
-                                    onMouseEnter={() => setHover(s)}
+                                    onClick={() => commit(p)}
+                                    onMouseEnter={() => setHover(p)}
                                 />
                             </span>
                         );

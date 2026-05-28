@@ -29,7 +29,6 @@ import { Popover } from './components/popover';
 import { Progress } from './components/progress';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
-import { Rating } from './components/rating';
 import { SearchInput } from './components/searchInput';
 import { Select } from './components/select';
 import { Sidebar } from './components/sidebar';
@@ -42,6 +41,7 @@ import { Tabs } from './components/tabs';
 import { Textarea } from './components/textarea';
 import { ToastHost, toast } from './components/toast';
 import { Tooltip } from './components/tooltip';
+import { ValueScaleSelector } from './components/valueScaleSelector';
 
 const SearchIcon = () => (
     <svg
@@ -2265,7 +2265,9 @@ export default function App() {
                     gap: '2rem',
                 }}
             >
-                <h2 style={{ margin: 0, fontSize: '3rem' }}>Rating</h2>
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>
+                    Value scale selector
+                </h2>
                 <div
                     style={{
                         display: 'flex',
@@ -2273,7 +2275,7 @@ export default function App() {
                         gap: '2rem',
                     }}
                 >
-                    <Field label="Integer (default)">
+                    <Field label="Star scale (default icon)">
                         <div
                             style={{
                                 display: 'flex',
@@ -2281,7 +2283,7 @@ export default function App() {
                                 gap: '2rem',
                             }}
                         >
-                            <Rating
+                            <ValueScaleSelector
                                 value={productRating}
                                 onChange={setProductRating}
                                 aria-label="Product rating"
@@ -2296,7 +2298,7 @@ export default function App() {
                             </span>
                         </div>
                     </Field>
-                    <Field label="Half-star steps">
+                    <Field label="Heart scale (custom icon, half-step)">
                         <div
                             style={{
                                 display: 'flex',
@@ -2304,12 +2306,18 @@ export default function App() {
                                 gap: '2rem',
                             }}
                         >
-                            <Rating
+                            <ValueScaleSelector
                                 value={halfRating}
                                 onChange={setHalfRating}
                                 allowHalf
                                 size="large"
-                                aria-label="Half-star rating"
+                                aria-label="Affinity"
+                                icon={
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <title>Heart</title>
+                                        <path d="M12 21s-7-4.35-9.3-9.3C1.1 8 3 4 7 4c2.1 0 3.5 1.1 5 3 1.5-1.9 2.9-3 5-3 4 0 5.9 4 4.3 7.7C19 16.65 12 21 12 21z" />
+                                    </svg>
+                                }
                             />
                             <span
                                 style={{
@@ -2321,13 +2329,14 @@ export default function App() {
                             </span>
                         </div>
                     </Field>
-                    <Field label="Read-only">
-                        <Rating
+                    <Field label="Read-only star scale">
+                        <ValueScaleSelector
                             value={4.5}
                             allowHalf
                             readOnly
                             size="small"
                             aria-label="Read-only rating"
+                            valueText={(v, m) => `Rated ${v} out of ${m} stars`}
                         />
                     </Field>
                 </div>

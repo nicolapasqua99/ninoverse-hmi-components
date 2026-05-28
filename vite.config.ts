@@ -59,7 +59,6 @@ export default defineConfig({
                 progress: resolve(dirname, 'src/components/progress.tsx'),
                 radio: resolve(dirname, 'src/components/radio.tsx'),
                 radioGroup: resolve(dirname, 'src/components/radioGroup.tsx'),
-                rating: resolve(dirname, 'src/components/rating.tsx'),
                 searchInput: resolve(dirname, 'src/components/searchInput.tsx'),
                 select: resolve(dirname, 'src/components/select.tsx'),
                 sidebar: resolve(dirname, 'src/components/sidebar.tsx'),
@@ -72,6 +71,10 @@ export default defineConfig({
                 textarea: resolve(dirname, 'src/components/textarea.tsx'),
                 toast: resolve(dirname, 'src/components/toast.tsx'),
                 tooltip: resolve(dirname, 'src/components/tooltip.tsx'),
+                valueScaleSelector: resolve(
+                    dirname,
+                    'src/components/valueScaleSelector.tsx',
+                ),
             },
             formats: ['es'],
             cssFileName: 'style',

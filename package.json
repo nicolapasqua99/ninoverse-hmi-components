@@ -1,6 +1,6 @@
 {
     "name": "@ninoverse/hmi-components",
-    "version": "0.41.0",
+    "version": "0.42.0",
     "type": "module",
     "license": "MIT",
     "description": "React HMI component library with Material Design 3 token system and warm asymmetric styling.",
@@ -135,10 +135,6 @@
             "types": "./dist/components/radioGroup.d.ts",
             "import": "./dist/radioGroup.js"
         },
-        "./rating": {
-            "types": "./dist/components/rating.d.ts",
-            "import": "./dist/rating.js"
-        },
         "./search-input": {
             "types": "./dist/components/searchInput.d.ts",
             "import": "./dist/searchInput.js"
@@ -186,6 +182,10 @@
         "./tooltip": {
             "types": "./dist/components/tooltip.d.ts",
             "import": "./dist/tooltip.js"
+        },
+        "./value-scale-selector": {
+            "types": "./dist/components/valueScaleSelector.d.ts",
+            "import": "./dist/valueScaleSelector.js"
         },
         "./style.css": "./dist/style.css"
     },

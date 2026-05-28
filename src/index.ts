@@ -125,11 +125,6 @@ export {
     type RadioOption,
 } from './components/radioGroup';
 export {
-    Rating,
-    type RatingProps,
-    type RatingSize,
-} from './components/rating';
-export {
     SearchInput,
     type SearchInputProps,
 } from './components/searchInput';
@@ -179,5 +174,10 @@ export {
     type TooltipProps,
     type TooltipSide,
 } from './components/tooltip';
+export {
+    ValueScaleSelector,
+    type ValueScaleSelectorProps,
+    type ValueScaleSelectorSize,
+} from './components/valueScaleSelector';
 export { type ColorToken, colors } from './configs/colors';
 export { type FontToken, fonts, googleFontsHref } from './configs/fonts';
