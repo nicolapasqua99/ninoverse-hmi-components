@@ -9,15 +9,20 @@ import { Button } from './components/button';
 import { Card } from './components/card';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
+import { Combobox, type ComboboxOption } from './components/combobox';
+import { DatePicker, type DateRange } from './components/datePicker';
 import { Divider } from './components/divider';
 import { EmptyState } from './components/emptyState';
 import { Field } from './components/field';
+import { FileUpload } from './components/fileUpload';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
 import { List, type ListItem } from './components/list';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
 import { Modal } from './components/modal';
+import { MultiInput } from './components/multiInput';
 import { Navbar } from './components/navbar';
+import { NumberInput } from './components/numberInput';
 import { Pagination } from './components/pagination';
 import { PasswordInput } from './components/passwordInput';
 import { Popover } from './components/popover';
@@ -28,6 +33,7 @@ import { SearchInput } from './components/searchInput';
 import { Select } from './components/select';
 import { Sidebar } from './components/sidebar';
 import { Skeleton } from './components/skeleton';
+import { Slider } from './components/slider';
 import { Spinner } from './components/spinner';
 import { Switch } from './components/switch';
 import { Table } from './components/table';
@@ -35,6 +41,7 @@ import { Tabs } from './components/tabs';
 import { Textarea } from './components/textarea';
 import { ToastHost, toast } from './components/toast';
 import { Tooltip } from './components/tooltip';
+import { ValueScaleSelector } from './components/valueScaleSelector';
 
 const SearchIcon = () => (
     <svg
@@ -119,6 +126,31 @@ export default function App() {
     const [underlineTab, setUnderlineTab] = useState<
         'overview' | 'usage' | 'billing'
     >('overview');
+    const [volume, setVolume] = useState(64);
+    const [contrast, setContrast] = useState(50);
+    const [quantity, setQuantity] = useState<number | null>(1);
+    const [age, setAge] = useState<number | null>(28);
+    const [city, setCity] = useState<string | null>('paris');
+    const [pickedDate, setPickedDate] = useState<Date | null>(
+        new Date(2026, 4, 15),
+    );
+    const [pickedRange, setPickedRange] = useState<DateRange | null>(null);
+    const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+    const [productRating, setProductRating] = useState(3);
+    const [halfRating, setHalfRating] = useState(2.5);
+    const [otpCode, setOtpCode] = useState('');
+    const cityOptions: ComboboxOption[] = [
+        { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
+        { value: 'berlin', label: 'Berlin', description: 'Germany' },
+        { value: 'lisbon', label: 'Lisbon', description: 'Portugal' },
+        { value: 'london', label: 'London', description: 'United Kingdom' },
+        { value: 'madrid', label: 'Madrid', description: 'Spain' },
+        { value: 'milan', label: 'Milan', description: 'Italy' },
+        { value: 'paris', label: 'Paris', description: 'France' },
+        { value: 'rome', label: 'Rome', description: 'Italy' },
+        { value: 'vienna', label: 'Vienna', description: 'Austria' },
+        { value: 'warsaw', label: 'Warsaw', description: 'Poland' },
+    ];
     return (
         <div
             style={{
@@ -2042,6 +2074,331 @@ export default function App() {
                             </>
                         }
                     />
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Slider</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2rem',
+                        maxWidth: '60rem',
+                    }}
+                >
+                    <Field label="Volume">
+                        <Slider
+                            value={volume}
+                            onChange={setVolume}
+                            showValue
+                            aria-label="Volume"
+                            formatValue={(v) => `${v}%`}
+                        />
+                    </Field>
+                    <Field label="Contrast">
+                        <Slider
+                            value={contrast}
+                            onChange={setContrast}
+                            min={0}
+                            max={100}
+                            step={5}
+                            aria-label="Contrast"
+                        />
+                    </Field>
+                    <Field label="Disabled">
+                        <Slider
+                            defaultValue={30}
+                            disabled
+                            showValue
+                            aria-label="Disabled slider"
+                        />
+                    </Field>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Number input</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+                        gap: '2rem',
+                        maxWidth: '90rem',
+                    }}
+                >
+                    <Field label="Quantity">
+                        <NumberInput
+                            value={quantity}
+                            onChange={setQuantity}
+                            min={1}
+                            max={99}
+                            aria-label="Quantity"
+                        />
+                    </Field>
+                    <Field label="Age">
+                        <NumberInput
+                            value={age}
+                            onChange={setAge}
+                            min={0}
+                            max={120}
+                            step={1}
+                            aria-label="Age"
+                        />
+                    </Field>
+                    <Field label="Disabled">
+                        <NumberInput
+                            defaultValue={5}
+                            disabled
+                            aria-label="Disabled number"
+                        />
+                    </Field>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Combobox</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'flex-end',
+                    }}
+                >
+                    <Field label="City">
+                        <div style={{ width: '36rem' }}>
+                            <Combobox
+                                value={city}
+                                onChange={setCity}
+                                options={cityOptions}
+                                placeholder="Search cities…"
+                                aria-label="City"
+                            />
+                        </div>
+                    </Field>
+                    <p
+                        style={{
+                            margin: 0,
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Selected: <strong>{city ?? 'none'}</strong>
+                    </p>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Date picker</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        flexWrap: 'wrap',
+                    }}
+                >
+                    <Field label="Single date">
+                        <div style={{ width: '32rem' }}>
+                            <DatePicker
+                                value={pickedDate}
+                                onChange={setPickedDate}
+                                aria-label="Pick a date"
+                            />
+                        </div>
+                    </Field>
+                    <Field label="Date range">
+                        <div style={{ width: '40rem' }}>
+                            <DatePicker
+                                mode="range"
+                                value={pickedRange}
+                                onChange={setPickedRange}
+                                placeholder="Pick a range"
+                                aria-label="Pick a date range"
+                            />
+                        </div>
+                    </Field>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>File upload</h2>
+                <div style={{ maxWidth: '60rem' }}>
+                    <FileUpload
+                        value={uploadedFiles}
+                        onChange={setUploadedFiles}
+                        multiple
+                        hint="PNG, JPG, or PDF up to 10 MB each"
+                        aria-label="Project attachments"
+                    />
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>
+                    Value scale selector
+                </h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2rem',
+                    }}
+                >
+                    <Field label="Star scale (default icon)">
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '2rem',
+                            }}
+                        >
+                            <ValueScaleSelector
+                                value={productRating}
+                                onChange={setProductRating}
+                                aria-label="Product rating"
+                            />
+                            <span
+                                style={{
+                                    fontSize: '1.625rem',
+                                    color: 'var(--on-surface-variant)',
+                                }}
+                            >
+                                {productRating} / 5
+                            </span>
+                        </div>
+                    </Field>
+                    <Field label="Heart scale (custom icon, half-step)">
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '2rem',
+                            }}
+                        >
+                            <ValueScaleSelector
+                                value={halfRating}
+                                onChange={setHalfRating}
+                                allowHalf
+                                size="large"
+                                aria-label="Affinity"
+                                icon={
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <title>Heart</title>
+                                        <path d="M12 21s-7-4.35-9.3-9.3C1.1 8 3 4 7 4c2.1 0 3.5 1.1 5 3 1.5-1.9 2.9-3 5-3 4 0 5.9 4 4.3 7.7C19 16.65 12 21 12 21z" />
+                                    </svg>
+                                }
+                            />
+                            <span
+                                style={{
+                                    fontSize: '1.625rem',
+                                    color: 'var(--on-surface-variant)',
+                                }}
+                            >
+                                {halfRating} / 5
+                            </span>
+                        </div>
+                    </Field>
+                    <Field label="Read-only star scale">
+                        <ValueScaleSelector
+                            value={4.5}
+                            allowHalf
+                            readOnly
+                            size="small"
+                            aria-label="Read-only rating"
+                            valueText={(v, m) => `Rated ${v} out of ${m} stars`}
+                        />
+                    </Field>
+                </div>
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Multi input</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2rem',
+                    }}
+                >
+                    <Field label="6-digit verification code (numeric)">
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '2rem',
+                            }}
+                        >
+                            <MultiInput
+                                value={otpCode}
+                                onChange={setOtpCode}
+                                length={6}
+                                autoComplete="one-time-code"
+                                aria-label="Verification code"
+                            />
+                            <span
+                                style={{
+                                    fontSize: '1.625rem',
+                                    color: 'var(--on-surface-variant)',
+                                }}
+                            >
+                                Value: <strong>{otpCode || '(empty)'}</strong>
+                            </span>
+                        </div>
+                    </Field>
+                    <Field label="License key (3 × 4 alphanumeric)">
+                        <MultiInput
+                            length={12}
+                            groupSize={4}
+                            type="text"
+                            pattern={/^[A-Za-z0-9]$/}
+                            defaultValue="ABCD1234WXYZ"
+                            aria-label="License key"
+                        />
+                    </Field>
+                    <Field label="4-digit PIN (masked)">
+                        <MultiInput
+                            length={4}
+                            mask
+                            defaultValue="1234"
+                            aria-label="PIN"
+                        />
+                    </Field>
                 </div>
             </section>
             <ToastHost />

@@ -1,0 +1,99 @@
+/* ValueScaleSelector — two layers of icons stacked, with the foreground
+   layer clipped to width = (value / max) * 100%. A separate overlay
+   holds transparent click targets (one per position, or two halves if
+   allowHalf is set). The wrapper itself owns the slider semantics and
+   keyboard. The icon defaults to a star but consumers can supply any
+   ReactNode that uses currentColor for fill / stroke. */
+
+.value-scale-selector {
+    position: relative;
+    display: inline-flex;
+    color: var(--outline-variant);
+    line-height: 0;
+    outline: none;
+    border-radius: var(--corner-extra-small);
+}
+
+.value-scale-selector:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.375rem var(--ring);
+}
+
+.value-scale-selector__row {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.value-scale-selector__row--bg {
+    color: var(--outline-variant);
+}
+
+.value-scale-selector__row--fg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--primary);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.value-scale-selector__item {
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+.value-scale-selector__item svg {
+    fill: currentColor;
+}
+
+.value-scale-selector--small .value-scale-selector__item svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.value-scale-selector--medium .value-scale-selector__item svg {
+    width: 3rem;
+    height: 3rem;
+}
+
+.value-scale-selector--large .value-scale-selector__item svg {
+    width: 4rem;
+    height: 4rem;
+}
+
+.value-scale-selector__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.value-scale-selector__cell {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+}
+
+.value-scale-selector__full,
+.value-scale-selector__half {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+}
+
+.value-scale-selector__half--left,
+.value-scale-selector__half--right {
+    flex: 1 1 50%;
+}
+
+.value-scale-selector--readonly .value-scale-selector__overlay,
+.value-scale-selector--disabled .value-scale-selector__overlay {
+    display: none;
+}
+
+.value-scale-selector--disabled {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}

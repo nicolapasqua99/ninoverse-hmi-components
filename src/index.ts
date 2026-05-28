@@ -44,6 +44,16 @@ export {
 export { Checkbox, type CheckboxProps } from './components/checkbox';
 export { Chip, type ChipProps } from './components/chip';
 export {
+    Combobox,
+    type ComboboxOption,
+    type ComboboxProps,
+} from './components/combobox';
+export {
+    DatePicker,
+    type DatePickerProps,
+    type DateRange,
+} from './components/datePicker';
+export {
     Divider,
     type DividerAlign,
     type DividerOrientation,
@@ -54,6 +64,10 @@ export {
     type EmptyStateProps,
 } from './components/emptyState';
 export { Field, type FieldProps } from './components/field';
+export {
+    FileUpload,
+    type FileUploadProps,
+} from './components/fileUpload';
 export { Input, type InputProps } from './components/input';
 export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
 export {
@@ -77,10 +91,19 @@ export {
     type ModalSize,
 } from './components/modal';
 export {
+    MultiInput,
+    type MultiInputProps,
+    type MultiInputType,
+} from './components/multiInput';
+export {
     Navbar,
     type NavbarLink,
     type NavbarProps,
 } from './components/navbar';
+export {
+    NumberInput,
+    type NumberInputProps,
+} from './components/numberInput';
 export {
     Pagination,
     type PaginationProps,
@@ -121,6 +144,7 @@ export {
     type SkeletonProps,
     type SkeletonVariant,
 } from './components/skeleton';
+export { Slider, type SliderProps } from './components/slider';
 export {
     Spinner,
     type SpinnerProps,
@@ -150,5 +174,10 @@ export {
     type TooltipProps,
     type TooltipSide,
 } from './components/tooltip';
+export {
+    ValueScaleSelector,
+    type ValueScaleSelectorProps,
+    type ValueScaleSelectorSize,
+} from './components/valueScaleSelector';
 export { type ColorToken, colors } from './configs/colors';
 export { type FontToken, fonts, googleFontsHref } from './configs/fonts';

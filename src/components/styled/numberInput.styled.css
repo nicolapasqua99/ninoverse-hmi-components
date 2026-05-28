@@ -1,0 +1,121 @@
+/* NumberInput — wraps <input type="number"> and adds visible stepper
+   buttons since native spinners are inconsistent across browsers. The
+   field itself still owns ArrowUp/ArrowDown keyboard stepping. Visuals
+   mirror Input so the two compose well in a form. */
+
+.number-input {
+    display: flex;
+    align-items: stretch;
+    height: 5rem;
+    padding: 0 0 0 1.5rem;
+    background: var(--surface-container-lowest);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    overflow: hidden;
+    transition:
+        border-color var(--duration-short-3) var(--easing-standard),
+        box-shadow var(--duration-short-3) var(--easing-standard);
+}
+
+.number-input:hover {
+    border-color: var(--outline);
+}
+
+.number-input:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.5rem var(--ring);
+}
+
+.number-input--error {
+    border-color: var(--error);
+}
+
+.number-input--error:focus-within {
+    box-shadow: 0 0 0 0.5rem color-mix(in oklab, var(--error) 35%, transparent);
+}
+
+.number-input__field {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    font-family: var(--font-quicksand);
+    font-size: 1.75rem;
+    color: var(--on-background);
+    height: 100%;
+    padding: 0;
+    outline: none;
+    font-variant-numeric: tabular-nums;
+}
+
+.number-input__field:focus-visible {
+    outline: none;
+}
+
+/* Hide native browser spinners — we provide our own */
+.number-input__field::-webkit-outer-spin-button,
+.number-input__field::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.number-input__field {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.number-input__steppers {
+    display: flex;
+    flex-direction: column;
+    width: 3.5rem;
+    border-left: 0.125rem solid var(--outline-variant);
+}
+
+.number-input__step {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-container);
+    border: 0;
+    cursor: pointer;
+    color: var(--on-surface-variant);
+    transition: background var(--duration-short-2) var(--easing-standard);
+}
+
+.number-input__step:hover:not(:disabled) {
+    background: var(--surface-container-high);
+    color: var(--primary);
+}
+
+.number-input__step:active:not(:disabled) {
+    background: var(--surface-container-highest);
+}
+
+.number-input__step:disabled {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.number-input__step--up {
+    border-bottom: 0.0625rem solid var(--outline-variant);
+}
+
+.number-input__step svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.number-input--disabled {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.number-input--disabled:hover {
+    border-color: var(--outline-variant);
+}
+
+.number-input__field:disabled {
+    cursor: not-allowed;
+}

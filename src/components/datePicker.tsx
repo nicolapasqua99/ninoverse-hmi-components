@@ -1,0 +1,411 @@
+import { type KeyboardEvent, useEffect, useMemo, useState } from 'react';
+import { Popover } from './popover';
+import './styled/datePicker.styled.css';
+
+export type DateRange = { start: Date; end: Date | null };
+
+type CommonProps = {
+    min?: Date;
+    max?: Date;
+    placeholder?: string;
+    disabled?: boolean;
+    'aria-label'?: string;
+};
+
+type SingleProps = CommonProps & {
+    mode?: 'single';
+    value?: Date | null;
+    defaultValue?: Date;
+    onChange?: (date: Date | null) => void;
+};
+
+type RangeProps = CommonProps & {
+    mode: 'range';
+    value?: DateRange | null;
+    defaultValue?: DateRange;
+    onChange?: (range: DateRange | null) => void;
+};
+
+export type DatePickerProps = SingleProps | RangeProps;
+
+const MONTH_NAMES = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+];
+
+// Week starts Monday. Index 0 = Mon, 6 = Sun.
+const WEEKDAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+const isSameDay = (a: Date, b: Date) =>
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate();
+
+const dayKey = (d: Date) => `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+
+const startOfDay = (d: Date) => {
+    const c = new Date(d);
+    c.setHours(0, 0, 0, 0);
+    return c;
+};
+
+const before = (a: Date, b: Date) => startOfDay(a) < startOfDay(b);
+const after = (a: Date, b: Date) => startOfDay(a) > startOfDay(b);
+
+const formatShort = (d: Date) =>
+    `${d.getDate()} ${MONTH_NAMES[d.getMonth()]?.slice(0, 3)} ${d.getFullYear()}`;
+
+const buildGrid = (viewMonth: Date): Date[] => {
+    const first = new Date(viewMonth.getFullYear(), viewMonth.getMonth(), 1);
+    const firstWeekday = (first.getDay() + 6) % 7;
+    const start = new Date(first);
+    start.setDate(start.getDate() - firstWeekday);
+    return Array.from({ length: 42 }, (_, i) => {
+        const d = new Date(start);
+        d.setDate(start.getDate() + i);
+        return d;
+    });
+};
+
+const isOutOfBounds = (d: Date, min?: Date, max?: Date) => {
+    if (min && before(d, min)) return true;
+    if (max && after(d, max)) return true;
+    return false;
+};
+
+export function DatePicker(props: DatePickerProps) {
+    const {
+        min,
+        max,
+        placeholder = 'Pick a date',
+        disabled = false,
+        'aria-label': ariaLabel = 'Date picker',
+    } = props;
+
+    const isRange = props.mode === 'range';
+    const isControlled = props.value !== undefined;
+
+    // Single-mode state
+    const [internalSingle, setInternalSingle] = useState<Date | null>(
+        !isRange ? (props.defaultValue ?? null) : null,
+    );
+    const currentSingle = !isRange
+        ? isControlled
+            ? (props.value ?? null)
+            : internalSingle
+        : null;
+
+    // Range-mode state
+    const [internalRange, setInternalRange] = useState<DateRange | null>(
+        isRange ? (props.defaultValue ?? null) : null,
+    );
+    const currentRange: DateRange | null = isRange
+        ? isControlled
+            ? (props.value ?? null)
+            : internalRange
+        : null;
+
+    const initialView = currentSingle ?? currentRange?.start ?? new Date();
+    const [viewMonth, setViewMonth] = useState(
+        new Date(initialView.getFullYear(), initialView.getMonth(), 1),
+    );
+    const [open, setOpen] = useState(false);
+    const [hoverEnd, setHoverEnd] = useState<Date | null>(null);
+    const [focusDate, setFocusDate] = useState<Date>(
+        currentSingle ?? currentRange?.start ?? new Date(),
+    );
+
+    useEffect(() => {
+        if (!open) setHoverEnd(null);
+    }, [open]);
+
+    const today = useMemo(() => startOfDay(new Date()), []);
+    const grid = useMemo(() => buildGrid(viewMonth), [viewMonth]);
+
+    const selectSingle = (d: Date) => {
+        if (isOutOfBounds(d, min, max)) return;
+        if (!isControlled) setInternalSingle(d);
+        if (!isRange) props.onChange?.(d);
+        setOpen(false);
+    };
+
+    const selectRange = (d: Date) => {
+        if (isOutOfBounds(d, min, max)) return;
+        const next: DateRange =
+            !currentRange || currentRange.end !== null
+                ? { start: d, end: null }
+                : before(d, currentRange.start)
+                  ? { start: d, end: currentRange.start }
+                  : { start: currentRange.start, end: d };
+        if (!isControlled) setInternalRange(next);
+        if (isRange) props.onChange?.(next);
+        if (next.end !== null) setOpen(false);
+    };
+
+    const onPick = (d: Date) => {
+        setFocusDate(d);
+        if (isRange) selectRange(d);
+        else selectSingle(d);
+    };
+
+    const isSelected = (d: Date): boolean => {
+        if (isRange) {
+            if (!currentRange) return false;
+            if (isSameDay(d, currentRange.start)) return true;
+            if (currentRange.end && isSameDay(d, currentRange.end)) return true;
+            return false;
+        }
+        return currentSingle ? isSameDay(d, currentSingle) : false;
+    };
+
+    const isInRange = (d: Date): boolean => {
+        if (!isRange) return false;
+        if (!currentRange) return false;
+        const start = currentRange.start;
+        const end =
+            currentRange.end ??
+            (hoverEnd && before(currentRange.start, hoverEnd)
+                ? hoverEnd
+                : null);
+        if (!end) return false;
+        if (before(d, start)) return false;
+        if (after(d, end)) return false;
+        return true;
+    };
+
+    const triggerLabel: string = isRange
+        ? currentRange
+            ? currentRange.end
+                ? `${formatShort(currentRange.start)} – ${formatShort(currentRange.end)}`
+                : formatShort(currentRange.start)
+            : placeholder
+        : currentSingle
+          ? formatShort(currentSingle)
+          : placeholder;
+
+    const clear = () => {
+        if (!isControlled) {
+            if (isRange) setInternalRange(null);
+            else setInternalSingle(null);
+        }
+        if (isRange) props.onChange?.(null);
+        else props.onChange?.(null);
+    };
+
+    const goPrevMonth = () =>
+        setViewMonth(
+            new Date(viewMonth.getFullYear(), viewMonth.getMonth() - 1, 1),
+        );
+    const goNextMonth = () =>
+        setViewMonth(
+            new Date(viewMonth.getFullYear(), viewMonth.getMonth() + 1, 1),
+        );
+    const goPrevYear = () =>
+        setViewMonth(
+            new Date(viewMonth.getFullYear() - 1, viewMonth.getMonth(), 1),
+        );
+    const goNextYear = () =>
+        setViewMonth(
+            new Date(viewMonth.getFullYear() + 1, viewMonth.getMonth(), 1),
+        );
+
+    const moveFocus = (deltaDays: number) => {
+        const next = new Date(focusDate);
+        next.setDate(next.getDate() + deltaDays);
+        if (
+            next.getMonth() !== viewMonth.getMonth() ||
+            next.getFullYear() !== viewMonth.getFullYear()
+        ) {
+            setViewMonth(new Date(next.getFullYear(), next.getMonth(), 1));
+        }
+        setFocusDate(next);
+    };
+
+    const onGridKey = (event: KeyboardEvent<HTMLDivElement>) => {
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            moveFocus(-1);
+        } else if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            moveFocus(1);
+        } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            moveFocus(-7);
+        } else if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            moveFocus(7);
+        } else if (event.key === 'PageUp') {
+            event.preventDefault();
+            if (event.shiftKey) goPrevYear();
+            else goPrevMonth();
+        } else if (event.key === 'PageDown') {
+            event.preventDefault();
+            if (event.shiftKey) goNextYear();
+            else goNextMonth();
+        } else if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            onPick(focusDate);
+        }
+    };
+
+    return (
+        <Popover
+            open={open && !disabled}
+            onOpenChange={setOpen}
+            width={360}
+            trigger={
+                <button
+                    type="button"
+                    className="date-picker__trigger"
+                    disabled={disabled}
+                    aria-label={ariaLabel}
+                >
+                    <span className="date-picker__icon" aria-hidden="true">
+                        <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.6"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <title>Calendar</title>
+                            <rect
+                                x="2"
+                                y="3.5"
+                                width="12"
+                                height="10"
+                                rx="1.2"
+                            />
+                            <path d="M2 6.5h12M5.5 2v3M10.5 2v3" />
+                        </svg>
+                    </span>
+                    <span
+                        className={
+                            triggerLabel === placeholder
+                                ? 'date-picker__placeholder'
+                                : 'date-picker__value'
+                        }
+                    >
+                        {triggerLabel}
+                    </span>
+                </button>
+            }
+        >
+            <div className="date-picker">
+                <div className="date-picker__header">
+                    <button
+                        type="button"
+                        className="date-picker__nav"
+                        onClick={goPrevYear}
+                        aria-label="Previous year"
+                    >
+                        «
+                    </button>
+                    <button
+                        type="button"
+                        className="date-picker__nav"
+                        onClick={goPrevMonth}
+                        aria-label="Previous month"
+                    >
+                        ‹
+                    </button>
+                    <div className="date-picker__title" aria-live="polite">
+                        {MONTH_NAMES[viewMonth.getMonth()]}{' '}
+                        {viewMonth.getFullYear()}
+                    </div>
+                    <button
+                        type="button"
+                        className="date-picker__nav"
+                        onClick={goNextMonth}
+                        aria-label="Next month"
+                    >
+                        ›
+                    </button>
+                    <button
+                        type="button"
+                        className="date-picker__nav"
+                        onClick={goNextYear}
+                        aria-label="Next year"
+                    >
+                        »
+                    </button>
+                </div>
+                <div className="date-picker__weekdays">
+                    {WEEKDAY_LABELS.map((label) => (
+                        <div key={label} className="date-picker__weekday">
+                            {label.slice(0, 1)}
+                        </div>
+                    ))}
+                </div>
+                {/* biome-ignore lint/a11y/useSemanticElements: ARIA grid pattern for date picker — keyboard handler lives on the wrapper since cells are focused via aria-activedescendant-style focusDate tracking */}
+                <div
+                    role="grid"
+                    className="date-picker__grid"
+                    onKeyDown={onGridKey}
+                    tabIndex={0}
+                >
+                    {grid.map((d) => {
+                        const outOfMonth =
+                            d.getMonth() !== viewMonth.getMonth();
+                        const disabledDay = isOutOfBounds(d, min, max);
+                        const selected = isSelected(d);
+                        const inRange = isInRange(d);
+                        const isToday = isSameDay(d, today);
+                        const isFocus = isSameDay(d, focusDate);
+                        return (
+                            // biome-ignore lint/a11y/useSemanticElements: the calendar grid uses CSS grid (not <table>); each cell stays a real <button> so Enter/Space activate it
+                            <button
+                                key={dayKey(d)}
+                                type="button"
+                                role="gridcell"
+                                aria-selected={selected}
+                                aria-disabled={disabledDay || undefined}
+                                tabIndex={-1}
+                                disabled={disabledDay}
+                                data-outside={outOfMonth || undefined}
+                                data-today={isToday || undefined}
+                                data-selected={selected || undefined}
+                                data-in-range={inRange || undefined}
+                                data-focus={isFocus || undefined}
+                                className="date-picker__day"
+                                onMouseEnter={
+                                    isRange ? () => setHoverEnd(d) : undefined
+                                }
+                                onClick={() => onPick(d)}
+                            >
+                                {d.getDate()}
+                            </button>
+                        );
+                    })}
+                </div>
+                <div className="date-picker__footer">
+                    <button
+                        type="button"
+                        className="date-picker__footer-btn"
+                        onClick={() => onPick(today)}
+                    >
+                        Today
+                    </button>
+                    <button
+                        type="button"
+                        className="date-picker__footer-btn"
+                        onClick={clear}
+                    >
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </Popover>
+    );
+}

@@ -1,0 +1,147 @@
+/* Combobox — input + portal listbox with search-as-you-type filtering.
+   The input owns the role="combobox" + aria-activedescendant so keyboard
+   nav stays inside it. The listbox renders into document.body so it can
+   escape parent overflow / stacking contexts. */
+
+.combobox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 5rem;
+    padding: 0 1.5rem;
+    background: var(--surface-container-lowest);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    transition:
+        border-color var(--duration-short-3) var(--easing-standard),
+        box-shadow var(--duration-short-3) var(--easing-standard);
+}
+
+.combobox:hover {
+    border-color: var(--outline);
+}
+
+.combobox:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.5rem var(--ring);
+}
+
+.combobox--disabled {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.combobox__input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    font-family: var(--font-quicksand);
+    font-size: 1.75rem;
+    color: var(--on-background);
+    height: 100%;
+    padding: 0;
+    outline: none;
+}
+
+.combobox__input:focus-visible {
+    outline: none;
+}
+
+.combobox__input::placeholder {
+    color: var(--ref-neutral-60);
+}
+
+.combobox__clear {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--on-surface-variant);
+    transition: background var(--duration-short-2) var(--easing-standard);
+}
+
+.combobox__clear:hover {
+    background: var(--surface-container-high);
+    color: var(--on-surface);
+}
+
+.combobox__clear svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+}
+
+.combobox__chevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--on-surface-variant);
+    pointer-events: none;
+}
+
+.combobox__chevron svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Listbox — portal-rendered below the input. Width is set inline to
+   match the trigger, so columns stay aligned across the viewport. */
+.combobox__listbox {
+    z-index: 1000;
+    max-height: 28rem;
+    overflow-y: auto;
+    background: var(--surface-container-lowest);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    box-shadow: var(--elevation-2);
+    padding: 0.5rem;
+    font-family: var(--font-quicksand);
+}
+
+.combobox__option {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    padding: 1rem 1.5rem;
+    border-radius: var(--corner-extra-small);
+    cursor: pointer;
+    color: var(--on-surface);
+    transition: background var(--duration-short-1) var(--easing-standard);
+}
+
+.combobox__option[data-highlighted="true"] {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+}
+
+.combobox__option[data-disabled="true"] {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.combobox__option-label {
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.combobox__option-desc {
+    font-size: 1.5rem;
+    color: var(--on-surface-variant);
+}
+
+.combobox__empty {
+    padding: 1.5rem 1.5rem;
+    color: var(--on-surface-variant);
+    font-size: 1.625rem;
+    text-align: center;
+}
