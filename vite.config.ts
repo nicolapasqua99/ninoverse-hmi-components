@@ -65,6 +65,10 @@ export default defineConfig({
                 radio: resolve(dirname, 'src/components/radio.tsx'),
                 radioGroup: resolve(dirname, 'src/components/radioGroup.tsx'),
                 searchInput: resolve(dirname, 'src/components/searchInput.tsx'),
+                segmentedControl: resolve(
+                    dirname,
+                    'src/components/segmentedControl.tsx',
+                ),
                 select: resolve(dirname, 'src/components/select.tsx'),
                 sidebar: resolve(dirname, 'src/components/sidebar.tsx'),
                 skeleton: resolve(dirname, 'src/components/skeleton.tsx'),

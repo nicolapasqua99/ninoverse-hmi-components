@@ -139,6 +139,12 @@ export {
     type SearchInputProps,
 } from './components/searchInput';
 export {
+    SegmentedControl,
+    type SegmentedControlOption,
+    type SegmentedControlProps,
+    type SegmentedControlSize,
+} from './components/segmentedControl';
+export {
     Select,
     type SelectOption,
     type SelectProps,

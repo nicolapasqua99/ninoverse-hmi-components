@@ -35,6 +35,7 @@ import { Progress } from './components/progress';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
 import { SearchInput } from './components/searchInput';
+import { SegmentedControl } from './components/segmentedControl';
 import { Select } from './components/select';
 import { Sidebar } from './components/sidebar';
 import { Skeleton } from './components/skeleton';
@@ -153,6 +154,10 @@ export default function App() {
     >('payment');
     const [paletteOpen, setPaletteOpen] = useState(false);
     const [paletteResult, setPaletteResult] = useState<string>('none');
+    const [view, setView] = useState<'list' | 'board' | 'calendar'>('list');
+    const [density, setDensity] = useState<'compact' | 'cozy' | 'spacious'>(
+        'cozy',
+    );
     const cityOptions: ComboboxOption[] = [
         { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
         { value: 'berlin', label: 'Berlin', description: 'Germany' },
@@ -2666,6 +2671,47 @@ export default function App() {
                         ] satisfies CommandPaletteCommand[]
                     }
                 />
+            </section>
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>
+                    Segmented control
+                </h2>
+                <Field label="View">
+                    <SegmentedControl
+                        value={view}
+                        onChange={setView}
+                        aria-label="View"
+                        options={[
+                            { value: 'list', label: 'List' },
+                            { value: 'board', label: 'Board' },
+                            { value: 'calendar', label: 'Calendar' },
+                        ]}
+                    />
+                </Field>
+                <Field label="Density (full width, small)">
+                    <SegmentedControl
+                        value={density}
+                        onChange={setDensity}
+                        size="small"
+                        fullWidth
+                        aria-label="Density"
+                        options={[
+                            { value: 'compact', label: 'Compact' },
+                            { value: 'cozy', label: 'Cozy' },
+                            {
+                                value: 'spacious',
+                                label: 'Spacious',
+                                disabled: true,
+                            },
+                        ]}
+                    />
+                </Field>
             </section>
             <ToastHost />
         </div>
