@@ -75,6 +75,10 @@
             "types": "./dist/components/code.d.ts",
             "import": "./dist/code.js"
         },
+        "./color-picker": {
+            "types": "./dist/components/colorPicker.d.ts",
+            "import": "./dist/colorPicker.js"
+        },
         "./combobox": {
             "types": "./dist/components/combobox.d.ts",
             "import": "./dist/combobox.js"

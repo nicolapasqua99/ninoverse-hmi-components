@@ -14,6 +14,7 @@ import { Card } from './components/card';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
 import { Code } from './components/code';
+import { ColorPicker } from './components/colorPicker';
 import { Combobox, type ComboboxOption } from './components/combobox';
 import {
     CommandPalette,
@@ -82,6 +83,7 @@ const SearchIcon = () => (
 
 export default function App() {
     const [plan, setPlan] = useState<'free' | 'pro' | 'team'>('pro');
+    const [brandColor, setBrandColor] = useState('#e87a5d');
     const [filters, setFilters] = useState<Set<string>>(
         () => new Set(['react', 'typescript']),
     );
@@ -660,6 +662,40 @@ export default function App() {
 export function Example() {
     return <Code block>{'const x = 42;'}</Code>;
 }`}</Code>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Color picker</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '2rem',
+                        flexWrap: 'wrap',
+                    }}
+                >
+                    <ColorPicker
+                        aria-label="Brand color"
+                        onChange={setBrandColor}
+                        value={brandColor}
+                    />
+                    <span
+                        style={{
+                            fontSize: '1.625rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Selected: {brandColor}
+                    </span>
+                    <ColorPicker defaultValue="#5c9a6a" showInput={false} />
+                    <ColorPicker defaultValue="#6b86b3" disabled />
+                </div>
             </section>
 
             <section

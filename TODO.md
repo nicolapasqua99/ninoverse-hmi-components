@@ -123,3 +123,29 @@ than the current clean, lint-passing code.
 Leave as-is unless a concrete AT/screen-reader requirement appears. The
 trade-off (suppressing the project's a11y lint vs. a missing-but-harmless
 separator semantic) favors the cleaner code today.
+
+---
+
+## Phase 3 plan reconciliation — redundant components
+
+During Phase 3 (`pinInput`, `rating`, `colorPicker`) two of the three planned
+"new" components turned out to already exist under different names. Decisions:
+
+### `pinInput` — SKIP (covered by `MultiInput`)
+`MultiInput` already implements segmented PIN/OTP entry: per-cell auto-advance,
+backspace-to-previous, arrow/Home/End navigation, paste-to-fill, `numeric`/`text`
+types, `groupSize`/`separator`, `mask` (password dots), and `onComplete`. A
+dedicated `PinInput` would duplicate it almost entirely. **Decision (confirmed
+with the maintainer): do not build `PinInput`.** If a PIN/OTP preset is ever
+wanted, add a thin wrapper over `MultiInput` (defaulting `mask` +
+`autoComplete="one-time-code"`) rather than a new component.
+
+### `rating` — SKIP (covered by `ValueScaleSelector`)
+`ValueScaleSelector` is already a rating widget: star scale by default, custom
+icon support (e.g. hearts), `allowHalf` half-steps, `readOnly`, sizes,
+controlled/uncontrolled, full ARIA `slider` semantics + keyboard nav. A `Rating`
+component would substantially duplicate it. **Decision (confirmed with the
+maintainer): do not build `Rating`.** If the `rating` name is wanted publicly,
+alias/rename `ValueScaleSelector` rather than adding a second widget.
+
+### `colorPicker` — genuinely new, still to build.
