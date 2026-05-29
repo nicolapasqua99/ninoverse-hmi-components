@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Accordion } from './components/accordion';
 import { Alert } from './components/alert';
+import { AspectRatio } from './components/aspectRatio';
 import { Avatar } from './components/avatar';
 import { AvatarStack } from './components/avatarStack';
 import { Badge } from './components/badge';
@@ -402,6 +403,45 @@ export default function App() {
                     <Spacer grow />
                     <span>End (pushed by grow spacer)</span>
                 </Flex>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>AspectRatio</h2>
+                <Grid columns={3} gap="medium">
+                    <AspectRatio
+                        ratio={16 / 9}
+                        style={{ borderRadius: 'var(--corner-medium)' }}
+                    >
+                        <Box
+                            background="surface-container-high"
+                            padding="medium"
+                        >
+                            16 / 9
+                        </Box>
+                    </AspectRatio>
+                    <AspectRatio
+                        ratio={1}
+                        style={{ borderRadius: 'var(--corner-medium)' }}
+                    >
+                        <Box background="surface-variant" padding="medium">
+                            1 / 1
+                        </Box>
+                    </AspectRatio>
+                    <AspectRatio
+                        ratio={4 / 3}
+                        style={{ borderRadius: 'var(--corner-medium)' }}
+                    >
+                        <Box background="surface-container" padding="medium">
+                            4 / 3
+                        </Box>
+                    </AspectRatio>
+                </Grid>
             </section>
 
             <section

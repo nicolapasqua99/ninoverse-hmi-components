@@ -23,6 +23,10 @@
             "types": "./dist/components/alert.d.ts",
             "import": "./dist/alert.js"
         },
+        "./aspect-ratio": {
+            "types": "./dist/components/aspectRatio.d.ts",
+            "import": "./dist/aspectRatio.js"
+        },
         "./avatar": {
             "types": "./dist/components/avatar.d.ts",
             "import": "./dist/avatar.js"

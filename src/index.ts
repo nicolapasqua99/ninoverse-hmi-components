@@ -11,6 +11,10 @@ export {
     type AlertVariant,
 } from './components/alert';
 export {
+    AspectRatio,
+    type AspectRatioProps,
+} from './components/aspectRatio';
+export {
     Avatar,
     type AvatarProps,
     type AvatarSize,
