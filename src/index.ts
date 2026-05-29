@@ -65,6 +65,10 @@ export { Checkbox, type CheckboxProps } from './components/checkbox';
 export { Chip, type ChipProps } from './components/chip';
 export { Code, type CodeProps } from './components/code';
 export {
+    ColorPicker,
+    type ColorPickerProps,
+} from './components/colorPicker';
+export {
     Combobox,
     type ComboboxOption,
     type ComboboxProps,

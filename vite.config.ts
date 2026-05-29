@@ -41,6 +41,7 @@ export default defineConfig({
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
                 chip: resolve(dirname, 'src/components/chip.tsx'),
                 code: resolve(dirname, 'src/components/code.tsx'),
+                colorPicker: resolve(dirname, 'src/components/colorPicker.tsx'),
                 combobox: resolve(dirname, 'src/components/combobox.tsx'),
                 commandPalette: resolve(
                     dirname,

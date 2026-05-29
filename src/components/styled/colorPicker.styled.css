@@ -1,0 +1,101 @@
+/* ColorPicker — a swatch trigger that opens a Popover with a preset
+   palette, a hex text field and a native color sampler. Zero-dependency:
+   relies on the existing Popover and the browser's <input type="color">
+   for fine selection rather than a custom canvas. */
+
+.color-picker__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    background: var(--surface-container-high);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-small);
+    font-family: var(--font-quicksand);
+    font-size: 1.625rem;
+    color: var(--on-surface);
+    cursor: pointer;
+}
+
+.color-picker__trigger:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.color-picker__preview {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--corner-extra-small);
+    border: 0.125rem solid var(--outline-variant);
+}
+
+.color-picker__trigger-value {
+    font-variant-numeric: tabular-nums;
+    text-transform: uppercase;
+}
+
+.color-picker__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 24rem;
+}
+
+.color-picker__swatches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.color-picker__swatch {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-small);
+    cursor: pointer;
+    transition: transform 0.12s var(--easing-standard);
+}
+
+.color-picker__swatch:hover {
+    transform: scale(1.08);
+}
+
+.color-picker__swatch--selected {
+    outline: 0.25rem solid var(--primary);
+    outline-offset: 0.25rem;
+}
+
+.color-picker__inputs {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.color-picker__hex {
+    flex: 1;
+    min-width: 0;
+    padding: 0.75rem 1rem;
+    background: var(--surface-container-high);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-small);
+    font-family: var(--font-oxanium);
+    font-size: 1.625rem;
+    color: var(--on-surface);
+    text-transform: uppercase;
+}
+
+.color-picker__hex:focus-visible {
+    outline: 0.25rem solid var(--ring);
+    outline-offset: 0.125rem;
+    border-color: var(--primary);
+}
+
+.color-picker__native {
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-small);
+    background: none;
+    cursor: pointer;
+}
