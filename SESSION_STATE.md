@@ -152,10 +152,35 @@ screenshot it, surface anything broken. No commits unless a real fix is needed
 
 ---
 
-## How to change the network policy (to unblock Playwright)
-The screenshot step needs Playwright's browser binary from `cdn.playwright.dev`,
-which the current egress policy blocks. Outbound access is set **per environment**
-when it's created/configured. Docs:
+## Screenshots — WORKING method (no network-policy change needed)
+Playwright's browser CDN is blocked, but a chromium binary that ships **inside an
+npm tarball** works because `registry.npmjs.org` is allowlisted. Reproduce in any
+session (tooling lives in `/tmp`, wiped on reset — just re-run):
+
+```bash
+mkdir -p /tmp/shot && cd /tmp/shot && npm init -y
+npm i @sparticuz/chromium puppeteer-core   # binary is bundled in the package
+```
+Driver `/tmp/shot/shot.js` (puppeteer-core + sparticuz chromium):
+- `const chromium = require('@sparticuz/chromium').default || require('@sparticuz/chromium');`
+- `launch({ args: [...chromium.args, '--no-sandbox', '--disable-dev-shm-usage'],
+  executablePath: await chromium.executablePath(), headless: true,
+  defaultViewport: { width: 1400, height: 1000, deviceScaleFactor: 2 } })`
+- `page.goto(url, { waitUntil: 'networkidle0' })`, then full-page or
+  `page.$(selector).screenshot()`.
+Run: start `pnpm dev`, then `node /tmp/shot/shot.js http://localhost:5173/ out.png`.
+Chromium runtime libs (`libnss3`, `libgbm1`, …) were already present in the
+container; if a fresh image lacks them: `apt-get install -y --no-install-recommends
+libnss3 libnspr4 libatk1.0-0t64 libatk-bridge2.0-0t64 libcups2t64 libdrm2 libgbm1
+libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libasound2t64
+libatspi2.0-0t64 libpango-1.0-0 fonts-liberation` (archive.ubuntu.com is reachable).
+
+This makes screenshot-backed verification possible **without** widening egress.
+
+## (Optional) How to change the network policy instead
+If you prefer Playwright proper, the screenshot step needs its browser binary from
+`cdn.playwright.dev`, which the current egress policy blocks. Outbound access is set
+**per environment** when it's created/configured. Docs:
 https://code.claude.com/docs/en/claude-code-on-the-web
 
 To widen it:
