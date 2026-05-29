@@ -45,6 +45,7 @@ import { Select } from './components/select';
 import { Sidebar } from './components/sidebar';
 import { Skeleton } from './components/skeleton';
 import { Slider } from './components/slider';
+import { Spacer } from './components/spacer';
 import { Spinner } from './components/spinner';
 import { Stepper } from './components/stepper';
 import { Switch } from './components/switch';
@@ -353,6 +354,54 @@ export default function App() {
                         1fr (aside)
                     </Box>
                 </Grid>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Spacer</h2>
+                <Box
+                    background="surface-variant"
+                    padding="medium"
+                    radius="medium"
+                >
+                    Above
+                    <Spacer size="large" />
+                    Below (vertical large spacer between)
+                </Box>
+                <Flex align="center">
+                    <Box
+                        background="surface-container-high"
+                        padding="small"
+                        radius="small"
+                    >
+                        Left
+                    </Box>
+                    <Spacer axis="horizontal" size="large" />
+                    <Box
+                        background="surface-container-high"
+                        padding="small"
+                        radius="small"
+                    >
+                        Right (horizontal spacer)
+                    </Box>
+                </Flex>
+                <Flex
+                    align="center"
+                    style={{
+                        background: 'var(--surface-container)',
+                        borderRadius: 'var(--corner-medium)',
+                        padding: '1rem 2rem',
+                    }}
+                >
+                    <span>Start</span>
+                    <Spacer grow />
+                    <span>End (pushed by grow spacer)</span>
+                </Flex>
             </section>
 
             <section

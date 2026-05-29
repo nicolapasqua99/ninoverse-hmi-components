@@ -81,6 +81,7 @@ export default defineConfig({
                 sidebar: resolve(dirname, 'src/components/sidebar.tsx'),
                 skeleton: resolve(dirname, 'src/components/skeleton.tsx'),
                 slider: resolve(dirname, 'src/components/slider.tsx'),
+                spacer: resolve(dirname, 'src/components/spacer.tsx'),
                 spinner: resolve(dirname, 'src/components/spinner.tsx'),
                 stepper: resolve(dirname, 'src/components/stepper.tsx'),
                 switch: resolve(dirname, 'src/components/switch.tsx'),

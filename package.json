@@ -187,6 +187,10 @@
             "types": "./dist/components/slider.d.ts",
             "import": "./dist/slider.js"
         },
+        "./spacer": {
+            "types": "./dist/components/spacer.d.ts",
+            "import": "./dist/spacer.js"
+        },
         "./spinner": {
             "types": "./dist/components/spinner.d.ts",
             "import": "./dist/spinner.js"

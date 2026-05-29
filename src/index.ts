@@ -191,6 +191,12 @@ export {
 } from './components/skeleton';
 export { Slider, type SliderProps } from './components/slider';
 export {
+    Spacer,
+    type SpacerAxis,
+    type SpacerProps,
+    type SpacerSize,
+} from './components/spacer';
+export {
     Spinner,
     type SpinnerProps,
     type SpinnerSize,
