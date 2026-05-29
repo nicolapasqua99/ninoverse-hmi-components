@@ -1,0 +1,43 @@
+/* ScrollArea — a constrained, scrollable container with themed scrollbars.
+   Orientation picks which axis scrolls (the other is hidden). Scrollbars
+   use the standard scrollbar-* properties plus a WebKit fallback so the
+   thumb/track match the warm surface palette. Size the box via maxHeight
+   (vertical) or a width/maxWidth on the element (horizontal). */
+
+.scroll-area {
+    scrollbar-width: thin;
+    scrollbar-color: var(--outline) transparent;
+}
+
+.scroll-area--vertical {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.scroll-area--horizontal {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.scroll-area--both {
+    overflow: auto;
+}
+
+.scroll-area::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+}
+
+.scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scroll-area::-webkit-scrollbar-thumb {
+    background: var(--outline-variant);
+    border: 0.25rem solid transparent;
+    background-clip: padding-box;
+    border-radius: var(--corner-full);
+}
+
+.scroll-area::-webkit-scrollbar-thumb:hover {
+    background: var(--outline);
+    background-clip: padding-box;
+}

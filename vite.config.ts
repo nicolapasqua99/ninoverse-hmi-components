@@ -77,6 +77,7 @@ export default defineConfig({
                 progress: resolve(dirname, 'src/components/progress.tsx'),
                 radio: resolve(dirname, 'src/components/radio.tsx'),
                 radioGroup: resolve(dirname, 'src/components/radioGroup.tsx'),
+                scrollArea: resolve(dirname, 'src/components/scrollArea.tsx'),
                 searchInput: resolve(dirname, 'src/components/searchInput.tsx'),
                 segmentedControl: resolve(
                     dirname,

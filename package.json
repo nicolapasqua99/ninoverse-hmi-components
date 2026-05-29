@@ -183,6 +183,10 @@
             "types": "./dist/components/radioGroup.d.ts",
             "import": "./dist/radioGroup.js"
         },
+        "./scroll-area": {
+            "types": "./dist/components/scrollArea.d.ts",
+            "import": "./dist/scrollArea.js"
+        },
         "./search-input": {
             "types": "./dist/components/searchInput.d.ts",
             "import": "./dist/searchInput.js"

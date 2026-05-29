@@ -186,6 +186,11 @@ export {
     type RadioOption,
 } from './components/radioGroup';
 export {
+    ScrollArea,
+    type ScrollAreaOrientation,
+    type ScrollAreaProps,
+} from './components/scrollArea';
+export {
     SearchInput,
     type SearchInputProps,
 } from './components/searchInput';
