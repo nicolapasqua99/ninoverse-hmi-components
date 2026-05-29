@@ -83,11 +83,14 @@ export {
     EmptyState,
     type EmptyStateProps,
 } from './components/emptyState';
-export { Field, type FieldProps } from './components/field';
 export {
     FileUpload,
     type FileUploadProps,
 } from './components/fileUpload';
+export {
+    FormControl,
+    type FormControlProps,
+} from './components/formControl';
 export { Input, type InputProps } from './components/input';
 export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
 export {

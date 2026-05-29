@@ -1,32 +1,34 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import './styled/field.styled.css';
+import './styled/formControl.styled.css';
 
-export type FieldProps = HTMLAttributes<HTMLDivElement> & {
+export type FormControlProps = HTMLAttributes<HTMLDivElement> & {
     label?: ReactNode;
     hint?: ReactNode;
     error?: ReactNode;
 };
 
-export function Field({
+export function FormControl({
     label,
     hint,
     error,
     className,
     children,
     ...rest
-}: FieldProps) {
-    const tokens: string[] = ['field'];
+}: FormControlProps) {
+    const tokens: string[] = ['form-control'];
     if (className) tokens.push(className);
     const message = error ?? hint;
 
     return (
         <div className={tokens.join(' ')} {...rest}>
-            {label && <span className="field__label">{label}</span>}
+            {label && <span className="form-control__label">{label}</span>}
             {children}
             {message && (
                 <span
                     className={
-                        error ? 'field__hint field__hint--error' : 'field__hint'
+                        error
+                            ? 'form-control__hint form-control__hint--error'
+                            : 'form-control__hint'
                     }
                 >
                     {message}

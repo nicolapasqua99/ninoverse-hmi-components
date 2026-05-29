@@ -1,12 +1,12 @@
-/* Field — vertical stack of label, control, and hint/error message. */
+/* FormControl — vertical stack of label, control, and hint/error message. */
 
-.field {
+.form-control {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 }
 
-.field__label {
+.form-control__label {
     font-family: var(--font-quicksand);
     font-size: 1.75rem;
     font-weight: 600;
@@ -14,12 +14,12 @@
     letter-spacing: -0.005em;
 }
 
-.field__hint {
+.form-control__hint {
     font-family: var(--font-quicksand);
     font-size: 1.5rem;
     color: var(--on-surface-variant);
 }
 
-.field__hint--error {
+.form-control__hint--error {
     color: var(--error);
 }

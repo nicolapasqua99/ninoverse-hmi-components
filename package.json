@@ -87,13 +87,13 @@
             "types": "./dist/components/emptyState.d.ts",
             "import": "./dist/emptyState.js"
         },
-        "./field": {
-            "types": "./dist/components/field.d.ts",
-            "import": "./dist/field.js"
-        },
         "./file-upload": {
             "types": "./dist/components/fileUpload.d.ts",
             "import": "./dist/fileUpload.js"
+        },
+        "./form-control": {
+            "types": "./dist/components/formControl.d.ts",
+            "import": "./dist/formControl.js"
         },
         "./input": {
             "types": "./dist/components/input.d.ts",
