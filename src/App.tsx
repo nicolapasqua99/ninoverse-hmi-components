@@ -52,6 +52,7 @@ import { Stepper } from './components/stepper';
 import { Switch } from './components/switch';
 import { Table } from './components/table';
 import { Tabs } from './components/tabs';
+import { Text } from './components/text';
 import { Textarea } from './components/textarea';
 import { ToastHost, toast } from './components/toast';
 import { Tooltip } from './components/tooltip';
@@ -442,6 +443,35 @@ export default function App() {
                         </Box>
                     </AspectRatio>
                 </Grid>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Text</h2>
+                <Text size="xlarge" weight="bold">
+                    Extra-large bold body text
+                </Text>
+                <Text size="large" weight="semibold">
+                    Large semibold body text
+                </Text>
+                <Text>Default medium regular body text</Text>
+                <Text size="small" tone="muted">
+                    Small muted helper text
+                </Text>
+                <Text size="xsmall" tone="primary" weight="medium">
+                    Extra-small primary caption
+                </Text>
+                <Text tone="error">Error-tone message text</Text>
+                <Text align="center">Center-aligned text</Text>
+                <Text style={{ maxWidth: '32rem' }} truncate>
+                    Truncated single line that is far too long to fit within the
+                    constrained width and should end with an ellipsis
+                </Text>
             </section>
 
             <section

@@ -223,6 +223,14 @@ export {
     type TabsProps,
     type TabsVariant,
 } from './components/tabs';
+export {
+    Text,
+    type TextAlign,
+    type TextProps,
+    type TextSize,
+    type TextTone,
+    type TextWeight,
+} from './components/text';
 export { Textarea, type TextareaProps } from './components/textarea';
 export {
     ToastHost,

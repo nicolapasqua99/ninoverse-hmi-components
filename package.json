@@ -215,6 +215,10 @@
             "types": "./dist/components/tabs.d.ts",
             "import": "./dist/tabs.js"
         },
+        "./text": {
+            "types": "./dist/components/text.d.ts",
+            "import": "./dist/text.js"
+        },
         "./textarea": {
             "types": "./dist/components/textarea.d.ts",
             "import": "./dist/textarea.js"
