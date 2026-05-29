@@ -22,6 +22,7 @@ import { Divider } from './components/divider';
 import { Drawer } from './components/drawer';
 import { EmptyState } from './components/emptyState';
 import { FileUpload } from './components/fileUpload';
+import { Flex } from './components/flex';
 import { FormControl } from './components/formControl';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
@@ -239,6 +240,78 @@ export default function App() {
                         as=&quot;section&quot;
                     </Box>
                 </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Flex</h2>
+                <Flex gap="medium" wrap>
+                    <Box
+                        background="surface-variant"
+                        padding="medium"
+                        radius="medium"
+                    >
+                        Row
+                    </Box>
+                    <Box
+                        background="surface-variant"
+                        padding="medium"
+                        radius="medium"
+                    >
+                        with
+                    </Box>
+                    <Box
+                        background="surface-variant"
+                        padding="medium"
+                        radius="medium"
+                    >
+                        gap
+                    </Box>
+                </Flex>
+                <Flex align="center" gap="medium" justify="between">
+                    <Box
+                        background="surface-container-high"
+                        padding="small"
+                        radius="small"
+                    >
+                        space-between
+                    </Box>
+                    <Box
+                        background="surface-container-high"
+                        padding="large"
+                        radius="small"
+                    >
+                        align-center
+                    </Box>
+                    <Box
+                        background="surface-container-high"
+                        padding="small"
+                        radius="small"
+                    >
+                        end
+                    </Box>
+                </Flex>
+                <Flex direction="column" gap="small">
+                    <Box
+                        background="surface-container"
+                        padding="small"
+                        radius="small"
+                    >
+                        column
+                    </Box>
+                    <Box
+                        background="surface-container"
+                        padding="small"
+                        radius="small"
+                    >
+                        direction
+                    </Box>
+                </Flex>
             </section>
 
             <section

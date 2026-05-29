@@ -95,6 +95,10 @@
             "types": "./dist/components/fileUpload.d.ts",
             "import": "./dist/fileUpload.js"
         },
+        "./flex": {
+            "types": "./dist/components/flex.d.ts",
+            "import": "./dist/flex.js"
+        },
         "./form-control": {
             "types": "./dist/components/formControl.d.ts",
             "import": "./dist/formControl.js"

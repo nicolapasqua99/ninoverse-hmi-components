@@ -1,0 +1,63 @@
+/* Flex — flexbox layout primitive. Defaults to a plain row with stretch
+   alignment and no gap; direction, alignment, justification, gap and
+   wrapping are opt-in via props. The gap scale matches Box padding. */
+
+.flex {
+    display: flex;
+}
+.flex--inline {
+    display: inline-flex;
+}
+
+.flex--column {
+    flex-direction: column;
+}
+.flex--row-reverse {
+    flex-direction: row-reverse;
+}
+.flex--column-reverse {
+    flex-direction: column-reverse;
+}
+
+.flex--align-start {
+    align-items: flex-start;
+}
+.flex--align-center {
+    align-items: center;
+}
+.flex--align-end {
+    align-items: flex-end;
+}
+.flex--align-baseline {
+    align-items: baseline;
+}
+
+.flex--justify-center {
+    justify-content: center;
+}
+.flex--justify-end {
+    justify-content: flex-end;
+}
+.flex--justify-between {
+    justify-content: space-between;
+}
+.flex--justify-around {
+    justify-content: space-around;
+}
+.flex--justify-evenly {
+    justify-content: space-evenly;
+}
+
+.flex--gap-small {
+    gap: 1rem;
+}
+.flex--gap-medium {
+    gap: 2rem;
+}
+.flex--gap-large {
+    gap: 3rem;
+}
+
+.flex--wrap {
+    flex-wrap: wrap;
+}

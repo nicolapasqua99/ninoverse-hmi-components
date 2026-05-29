@@ -52,6 +52,7 @@ export default defineConfig({
                 drawer: resolve(dirname, 'src/components/drawer.tsx'),
                 emptyState: resolve(dirname, 'src/components/emptyState.tsx'),
                 fileUpload: resolve(dirname, 'src/components/fileUpload.tsx'),
+                flex: resolve(dirname, 'src/components/flex.tsx'),
                 formControl: resolve(dirname, 'src/components/formControl.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 kbd: resolve(dirname, 'src/components/kbd.tsx'),

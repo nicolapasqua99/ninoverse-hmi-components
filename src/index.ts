@@ -95,6 +95,14 @@ export {
     type FileUploadProps,
 } from './components/fileUpload';
 export {
+    Flex,
+    type FlexAlign,
+    type FlexDirection,
+    type FlexGap,
+    type FlexJustify,
+    type FlexProps,
+} from './components/flex';
+export {
     FormControl,
     type FormControlProps,
 } from './components/formControl';
