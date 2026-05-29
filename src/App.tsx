@@ -20,8 +20,8 @@ import { DatePicker, type DateRange } from './components/datePicker';
 import { Divider } from './components/divider';
 import { Drawer } from './components/drawer';
 import { EmptyState } from './components/emptyState';
-import { Field } from './components/field';
 import { FileUpload } from './components/fileUpload';
+import { FormControl } from './components/formControl';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
 import { List, type ListItem } from './components/list';
@@ -272,30 +272,36 @@ export default function App() {
                         gap: '3rem',
                     }}
                 >
-                    <Field label="Full name" hint="As it appears on documents">
+                    <FormControl
+                        label="Full name"
+                        hint="As it appears on documents"
+                    >
                         <Input placeholder="Alex Morgan" />
-                    </Field>
-                    <Field label="Email" error="Hmm, that doesn't look right.">
+                    </FormControl>
+                    <FormControl
+                        label="Email"
+                        error="Hmm, that doesn't look right."
+                    >
                         <Input
                             type="email"
                             placeholder="you@studio.co"
                             defaultValue="not-an-email"
                             error
                         />
-                    </Field>
-                    <Field label="Search">
+                    </FormControl>
+                    <FormControl label="Search">
                         <Input
                             placeholder="Search…"
                             leftIcon={<SearchIcon />}
                         />
-                    </Field>
-                    <Field label="Disabled">
+                    </FormControl>
+                    <FormControl label="Disabled">
                         <Input
                             placeholder="Read-only"
                             defaultValue="Already filled"
                             disabled
                         />
-                    </Field>
+                    </FormControl>
                 </div>
             </section>
 
@@ -314,12 +320,18 @@ export default function App() {
                         gap: '3rem',
                     }}
                 >
-                    <Field label="About you" hint="A short bio, 240 chars max">
+                    <FormControl
+                        label="About you"
+                        hint="A short bio, 240 chars max"
+                    >
                         <Textarea placeholder="Tell us a bit about yourself…" />
-                    </Field>
-                    <Field label="Feedback" error="Please describe the issue.">
+                    </FormControl>
+                    <FormControl
+                        label="Feedback"
+                        error="Please describe the issue."
+                    >
                         <Textarea error defaultValue="" />
-                    </Field>
+                    </FormControl>
                 </div>
             </section>
 
@@ -338,7 +350,7 @@ export default function App() {
                         gap: '3rem',
                     }}
                 >
-                    <Field
+                    <FormControl
                         label="Single radios (shared name)"
                         hint="Native browser handles mutual exclusion."
                     >
@@ -364,8 +376,8 @@ export default function App() {
                                 disabled
                             />
                         </div>
-                    </Field>
-                    <Field
+                    </FormControl>
+                    <FormControl
                         label="Controlled RadioGroup"
                         hint={`Selected: ${plan}`}
                     >
@@ -383,7 +395,7 @@ export default function App() {
                                 },
                             ]}
                         />
-                    </Field>
+                    </FormControl>
                 </div>
             </section>
 
@@ -458,24 +470,27 @@ export default function App() {
                         gap: '3rem',
                     }}
                 >
-                    <Field label="Password" hint="Click the eye to reveal.">
+                    <FormControl
+                        label="Password"
+                        hint="Click the eye to reveal."
+                    >
                         <PasswordInput
                             placeholder="••••••••"
                             defaultValue="super-secret"
                         />
-                    </Field>
-                    <Field label="Search">
+                    </FormControl>
+                    <FormControl label="Search">
                         <SearchInput />
-                    </Field>
-                    <Field
+                    </FormControl>
+                    <FormControl
                         label="Password (error)"
                         error="Must include a number."
                     >
                         <PasswordInput defaultValue="letters-only" error />
-                    </Field>
-                    <Field label="Search (custom placeholder)">
+                    </FormControl>
+                    <FormControl label="Search (custom placeholder)">
                         <SearchInput placeholder="Find a component…" />
-                    </Field>
+                    </FormControl>
                 </div>
             </section>
 
@@ -537,7 +552,7 @@ export default function App() {
                 }}
             >
                 <h2 style={{ margin: 0, fontSize: '3rem' }}>Chip</h2>
-                <Field
+                <FormControl
                     label="Filters (toggle to select)"
                     hint={`Active: ${[...filters].join(', ') || 'none'}`}
                 >
@@ -560,8 +575,8 @@ export default function App() {
                             ),
                         )}
                     </div>
-                </Field>
-                <Field
+                </FormControl>
+                <FormControl
                     label="Removable tags"
                     hint={`Tags: ${tags.join(', ') || 'none'}`}
                 >
@@ -585,7 +600,7 @@ export default function App() {
                             </Chip>
                         ))}
                     </div>
-                </Field>
+                </FormControl>
             </section>
 
             <section
@@ -627,21 +642,21 @@ export default function App() {
                         gap: '3rem',
                     }}
                 >
-                    <Field label="Determinate (0%)">
+                    <FormControl label="Determinate (0%)">
                         <Progress value={0} />
-                    </Field>
-                    <Field label="Determinate (35%)">
+                    </FormControl>
+                    <FormControl label="Determinate (35%)">
                         <Progress value={35} />
-                    </Field>
-                    <Field label="Determinate (80%)">
+                    </FormControl>
+                    <FormControl label="Determinate (80%)">
                         <Progress value={80} />
-                    </Field>
-                    <Field label="Determinate (100%)">
+                    </FormControl>
+                    <FormControl label="Determinate (100%)">
                         <Progress value={100} />
-                    </Field>
-                    <Field label="Indeterminate">
+                    </FormControl>
+                    <FormControl label="Indeterminate">
                         <Progress indeterminate label="Syncing" />
-                    </Field>
+                    </FormControl>
                 </div>
             </section>
 
@@ -1054,7 +1069,10 @@ export default function App() {
                         paddingBottom: '24rem',
                     }}
                 >
-                    <Field label="Framework" hint={`Picked: ${framework}`}>
+                    <FormControl
+                        label="Framework"
+                        hint={`Picked: ${framework}`}
+                    >
                         <Select
                             value={framework}
                             onChange={setFramework}
@@ -1065,8 +1083,8 @@ export default function App() {
                                 { value: 'solid', label: 'Solid' },
                             ]}
                         />
-                    </Field>
-                    <Field label="Uncontrolled (with placeholder)">
+                    </FormControl>
+                    <FormControl label="Uncontrolled (with placeholder)">
                         <Select
                             placeholder="Pick a region…"
                             options={[
@@ -1075,14 +1093,14 @@ export default function App() {
                                 { value: 'ap-south', label: 'AP South' },
                             ]}
                         />
-                    </Field>
-                    <Field label="Disabled">
+                    </FormControl>
+                    <FormControl label="Disabled">
                         <Select
                             disabled
                             defaultValue="locked"
                             options={[{ value: 'locked', label: 'Locked' }]}
                         />
-                    </Field>
+                    </FormControl>
                 </div>
             </section>
 
@@ -1168,12 +1186,12 @@ export default function App() {
                             fontSize: '1.75rem',
                         }}
                     >
-                        <Field label="Display name">
+                        <FormControl label="Display name">
                             <Input defaultValue="Ninoverse" />
-                        </Field>
-                        <Field label="Notes">
+                        </FormControl>
+                        <FormControl label="Notes">
                             <Textarea defaultValue="Anything you'd like to remember about this workspace." />
-                        </Field>
+                        </FormControl>
                     </div>
                 </Modal>
             </section>
@@ -2118,7 +2136,7 @@ export default function App() {
                         maxWidth: '60rem',
                     }}
                 >
-                    <Field label="Volume">
+                    <FormControl label="Volume">
                         <Slider
                             value={volume}
                             onChange={setVolume}
@@ -2126,8 +2144,8 @@ export default function App() {
                             aria-label="Volume"
                             formatValue={(v) => `${v}%`}
                         />
-                    </Field>
-                    <Field label="Contrast">
+                    </FormControl>
+                    <FormControl label="Contrast">
                         <Slider
                             value={contrast}
                             onChange={setContrast}
@@ -2136,15 +2154,15 @@ export default function App() {
                             step={5}
                             aria-label="Contrast"
                         />
-                    </Field>
-                    <Field label="Disabled">
+                    </FormControl>
+                    <FormControl label="Disabled">
                         <Slider
                             defaultValue={30}
                             disabled
                             showValue
                             aria-label="Disabled slider"
                         />
-                    </Field>
+                    </FormControl>
                 </div>
             </section>
             <section
@@ -2163,7 +2181,7 @@ export default function App() {
                         maxWidth: '90rem',
                     }}
                 >
-                    <Field label="Quantity">
+                    <FormControl label="Quantity">
                         <NumberInput
                             value={quantity}
                             onChange={setQuantity}
@@ -2171,8 +2189,8 @@ export default function App() {
                             max={99}
                             aria-label="Quantity"
                         />
-                    </Field>
-                    <Field label="Age">
+                    </FormControl>
+                    <FormControl label="Age">
                         <NumberInput
                             value={age}
                             onChange={setAge}
@@ -2181,14 +2199,14 @@ export default function App() {
                             step={1}
                             aria-label="Age"
                         />
-                    </Field>
-                    <Field label="Disabled">
+                    </FormControl>
+                    <FormControl label="Disabled">
                         <NumberInput
                             defaultValue={5}
                             disabled
                             aria-label="Disabled number"
                         />
-                    </Field>
+                    </FormControl>
                 </div>
             </section>
             <section
@@ -2207,7 +2225,7 @@ export default function App() {
                         alignItems: 'flex-end',
                     }}
                 >
-                    <Field label="City">
+                    <FormControl label="City">
                         <div style={{ width: '36rem' }}>
                             <Combobox
                                 value={city}
@@ -2217,7 +2235,7 @@ export default function App() {
                                 aria-label="City"
                             />
                         </div>
-                    </Field>
+                    </FormControl>
                     <p
                         style={{
                             margin: 0,
@@ -2244,7 +2262,7 @@ export default function App() {
                         flexWrap: 'wrap',
                     }}
                 >
-                    <Field label="Single date">
+                    <FormControl label="Single date">
                         <div style={{ width: '32rem' }}>
                             <DatePicker
                                 value={pickedDate}
@@ -2252,8 +2270,8 @@ export default function App() {
                                 aria-label="Pick a date"
                             />
                         </div>
-                    </Field>
-                    <Field label="Date range">
+                    </FormControl>
+                    <FormControl label="Date range">
                         <div style={{ width: '40rem' }}>
                             <DatePicker
                                 mode="range"
@@ -2263,7 +2281,7 @@ export default function App() {
                                 aria-label="Pick a date range"
                             />
                         </div>
-                    </Field>
+                    </FormControl>
                 </div>
             </section>
             <section
@@ -2301,7 +2319,7 @@ export default function App() {
                         gap: '2rem',
                     }}
                 >
-                    <Field label="Star scale (default icon)">
+                    <FormControl label="Star scale (default icon)">
                         <div
                             style={{
                                 display: 'flex',
@@ -2323,8 +2341,8 @@ export default function App() {
                                 {productRating} / 5
                             </span>
                         </div>
-                    </Field>
-                    <Field label="Heart scale (custom icon, half-step)">
+                    </FormControl>
+                    <FormControl label="Heart scale (custom icon, half-step)">
                         <div
                             style={{
                                 display: 'flex',
@@ -2354,8 +2372,8 @@ export default function App() {
                                 {halfRating} / 5
                             </span>
                         </div>
-                    </Field>
-                    <Field label="Read-only star scale">
+                    </FormControl>
+                    <FormControl label="Read-only star scale">
                         <ValueScaleSelector
                             value={4.5}
                             allowHalf
@@ -2364,7 +2382,7 @@ export default function App() {
                             aria-label="Read-only rating"
                             valueText={(v, m) => `Rated ${v} out of ${m} stars`}
                         />
-                    </Field>
+                    </FormControl>
                 </div>
             </section>
             <section
@@ -2382,7 +2400,7 @@ export default function App() {
                         gap: '2rem',
                     }}
                 >
-                    <Field label="6-digit verification code (numeric)">
+                    <FormControl label="6-digit verification code (numeric)">
                         <div
                             style={{
                                 display: 'flex',
@@ -2406,8 +2424,8 @@ export default function App() {
                                 Value: <strong>{otpCode || '(empty)'}</strong>
                             </span>
                         </div>
-                    </Field>
-                    <Field label="License key (3 × 4 alphanumeric)">
+                    </FormControl>
+                    <FormControl label="License key (3 × 4 alphanumeric)">
                         <MultiInput
                             length={12}
                             groupSize={4}
@@ -2416,15 +2434,15 @@ export default function App() {
                             defaultValue="ABCD1234WXYZ"
                             aria-label="License key"
                         />
-                    </Field>
-                    <Field label="4-digit PIN (masked)">
+                    </FormControl>
+                    <FormControl label="4-digit PIN (masked)">
                         <MultiInput
                             length={4}
                             mask
                             defaultValue="1234"
                             aria-label="PIN"
                         />
-                    </Field>
+                    </FormControl>
                 </div>
             </section>
             <section
@@ -2689,7 +2707,7 @@ export default function App() {
                 <h2 style={{ margin: 0, fontSize: '3rem' }}>
                     Segmented control
                 </h2>
-                <Field label="View">
+                <FormControl label="View">
                     <SegmentedControl
                         value={view}
                         onChange={setView}
@@ -2700,8 +2718,8 @@ export default function App() {
                             { value: 'calendar', label: 'Calendar' },
                         ]}
                     />
-                </Field>
-                <Field label="Density (full width, small)">
+                </FormControl>
+                <FormControl label="Density (full width, small)">
                     <SegmentedControl
                         value={density}
                         onChange={setDensity}
@@ -2718,7 +2736,7 @@ export default function App() {
                             },
                         ]}
                     />
-                </Field>
+                </FormControl>
             </section>
             <section
                 style={{
