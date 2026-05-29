@@ -251,6 +251,10 @@
             "types": "./dist/components/valueScaleSelector.d.ts",
             "import": "./dist/valueScaleSelector.js"
         },
+        "./visually-hidden": {
+            "types": "./dist/components/visuallyHidden.d.ts",
+            "import": "./dist/visuallyHidden.js"
+        },
         "./style.css": "./dist/style.css"
     },
     "scripts": {

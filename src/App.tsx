@@ -61,6 +61,7 @@ import { Textarea } from './components/textarea';
 import { ToastHost, toast } from './components/toast';
 import { Tooltip } from './components/tooltip';
 import { ValueScaleSelector } from './components/valueScaleSelector';
+import { VisuallyHidden } from './components/visuallyHidden';
 
 const SearchIcon = () => (
     <svg
@@ -248,6 +249,46 @@ export default function App() {
                         as=&quot;section&quot;
                     </Box>
                 </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>VisuallyHidden</h2>
+                <Text tone="muted">
+                    Renders nothing visible — content stays available to screen
+                    readers. The icon-only button below carries a hidden label.
+                </Text>
+                <button
+                    style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '5rem',
+                        height: '5rem',
+                        borderRadius: 'var(--corner-medium)',
+                        border: '0.125rem solid var(--outline-variant)',
+                        background: 'var(--surface-container-high)',
+                        color: 'var(--on-surface)',
+                        cursor: 'pointer',
+                    }}
+                    type="button"
+                >
+                    <span
+                        style={{
+                            display: 'inline-flex',
+                            width: '2.5rem',
+                            height: '2.5rem',
+                        }}
+                    >
+                        <SearchIcon />
+                    </span>
+                    <VisuallyHidden>Search</VisuallyHidden>
+                </button>
             </section>
 
             <section

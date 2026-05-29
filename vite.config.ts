@@ -100,6 +100,10 @@ export default defineConfig({
                     dirname,
                     'src/components/valueScaleSelector.tsx',
                 ),
+                visuallyHidden: resolve(
+                    dirname,
+                    'src/components/visuallyHidden.tsx',
+                ),
             },
             formats: ['es'],
             cssFileName: 'style',
