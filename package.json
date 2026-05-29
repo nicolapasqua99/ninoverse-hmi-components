@@ -39,6 +39,10 @@
             "types": "./dist/components/banner.d.ts",
             "import": "./dist/banner.js"
         },
+        "./box": {
+            "types": "./dist/components/box.d.ts",
+            "import": "./dist/box.js"
+        },
         "./breadcrumbs": {
             "types": "./dist/components/breadcrumbs.d.ts",
             "import": "./dist/breadcrumbs.js"

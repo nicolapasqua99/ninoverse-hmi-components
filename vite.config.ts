@@ -32,6 +32,7 @@ export default defineConfig({
                 avatarStack: resolve(dirname, 'src/components/avatarStack.tsx'),
                 badge: resolve(dirname, 'src/components/badge.tsx'),
                 banner: resolve(dirname, 'src/components/banner.tsx'),
+                box: resolve(dirname, 'src/components/box.tsx'),
                 breadcrumbs: resolve(dirname, 'src/components/breadcrumbs.tsx'),
                 button: resolve(dirname, 'src/components/button.tsx'),
                 card: resolve(dirname, 'src/components/card.tsx'),

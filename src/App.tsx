@@ -5,6 +5,7 @@ import { Avatar } from './components/avatar';
 import { AvatarStack } from './components/avatarStack';
 import { Badge } from './components/badge';
 import { Banner } from './components/banner';
+import { Box } from './components/box';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { Button } from './components/button';
 import { Card } from './components/card';
@@ -187,6 +188,59 @@ export default function App() {
                 maxWidth: '120rem',
             }}
         >
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Box</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '2rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'flex-start',
+                    }}
+                >
+                    <Box
+                        background="surface-variant"
+                        padding="medium"
+                        radius="medium"
+                    >
+                        Surface variant
+                    </Box>
+                    <Box
+                        background="surface-container-high"
+                        padding="large"
+                        radius="leaf"
+                    >
+                        Container · leaf corners
+                    </Box>
+                    <Box bordered padding="medium" radius="medium">
+                        Bordered
+                    </Box>
+                    <Box
+                        background="surface-container"
+                        bordered
+                        padding="large"
+                        radius="full"
+                    >
+                        Pill
+                    </Box>
+                    <Box
+                        as="section"
+                        background="surface"
+                        bordered
+                        padding="small"
+                        radius="small"
+                    >
+                        as=&quot;section&quot;
+                    </Box>
+                </div>
+            </section>
+
             <section
                 style={{
                     display: 'flex',

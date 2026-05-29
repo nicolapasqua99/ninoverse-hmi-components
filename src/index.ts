@@ -31,6 +31,13 @@ export {
     type BannerVariant,
 } from './components/banner';
 export {
+    Box,
+    type BoxBackground,
+    type BoxPadding,
+    type BoxProps,
+    type BoxRadius,
+} from './components/box';
+export {
     type BreadcrumbItem,
     Breadcrumbs,
     type BreadcrumbsProps,

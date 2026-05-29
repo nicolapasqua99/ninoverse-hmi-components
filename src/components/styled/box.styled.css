@@ -1,0 +1,60 @@
+/* Box — the foundational layout container. By default it is an unstyled
+   block (just border-box sizing); background, padding, radius and border
+   are opt-in via props so it composes cleanly under every other surface.
+   The `leaf` radius mirrors the signature asymmetric corners used by Card. */
+
+.box {
+    box-sizing: border-box;
+}
+
+.box--bg-surface {
+    background: var(--surface);
+    color: var(--on-surface);
+}
+.box--bg-surface-variant {
+    background: var(--surface-variant);
+    color: var(--on-surface-variant);
+}
+.box--bg-surface-container {
+    background: var(--surface-container);
+    color: var(--on-surface);
+}
+.box--bg-surface-container-low {
+    background: var(--surface-container-low);
+    color: var(--on-surface);
+}
+.box--bg-surface-container-high {
+    background: var(--surface-container-high);
+    color: var(--on-surface);
+}
+
+.box--pad-small {
+    padding: 1rem;
+}
+.box--pad-medium {
+    padding: 2rem;
+}
+.box--pad-large {
+    padding: 3rem;
+}
+
+.box--radius-small {
+    border-radius: var(--corner-small);
+}
+.box--radius-medium {
+    border-radius: var(--corner-medium);
+}
+.box--radius-large {
+    border-radius: var(--corner-large);
+}
+.box--radius-full {
+    border-radius: var(--corner-full);
+}
+.box--radius-leaf {
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+}
+
+.box--bordered {
+    border: 0.125rem solid var(--outline-variant);
+}
