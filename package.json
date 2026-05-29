@@ -91,6 +91,10 @@
             "types": "./dist/components/confirmDialog.d.ts",
             "import": "./dist/confirmDialog.js"
         },
+        "./context-menu": {
+            "types": "./dist/components/contextMenu.d.ts",
+            "import": "./dist/contextMenu.js"
+        },
         "./date-picker": {
             "types": "./dist/components/datePicker.d.ts",
             "import": "./dist/datePicker.js"
@@ -126,6 +130,10 @@
         "./heading": {
             "types": "./dist/components/heading.d.ts",
             "import": "./dist/heading.js"
+        },
+        "./hover-card": {
+            "types": "./dist/components/hoverCard.d.ts",
+            "import": "./dist/hoverCard.js"
         },
         "./input": {
             "types": "./dist/components/input.d.ts",

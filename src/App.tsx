@@ -21,6 +21,7 @@ import {
     type CommandPaletteCommand,
 } from './components/commandPalette';
 import { ConfirmDialog } from './components/confirmDialog';
+import { ContextMenu } from './components/contextMenu';
 import { DatePicker, type DateRange } from './components/datePicker';
 import { Divider } from './components/divider';
 import { Drawer } from './components/drawer';
@@ -30,6 +31,7 @@ import { Flex } from './components/flex';
 import { FormControl } from './components/formControl';
 import { Grid } from './components/grid';
 import { Heading } from './components/heading';
+import { HoverCard } from './components/hoverCard';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
 import { Link } from './components/link';
@@ -104,6 +106,7 @@ export default function App() {
     const [popoverEndOpen, setPopoverEndOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [lastMenuAction, setLastMenuAction] = useState<string>('none');
+    const [ctxAction, setCtxAction] = useState<string>('none');
     const [framework, setFramework] = useState<
         'react' | 'vue' | 'svelte' | 'solid'
     >('react');
@@ -1615,6 +1618,174 @@ export function Example() {
                         }}
                     >
                         Last action: <strong>{lastMenuAction}</strong>
+                    </span>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>HoverCard</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '4rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '8rem 0 16rem',
+                    }}
+                >
+                    <HoverCard
+                        align="start"
+                        trigger={<Link href="#hovercard">@nino (bottom)</Link>}
+                    >
+                        <div
+                            style={{
+                                display: 'flex',
+                                gap: '1.5rem',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <Avatar name="Nino Verse" size="large" />
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '0.5rem',
+                                }}
+                            >
+                                <strong style={{ fontSize: '1.875rem' }}>
+                                    Nino Verse
+                                </strong>
+                                <span
+                                    style={{
+                                        fontSize: '1.625rem',
+                                        color: 'var(--on-surface-variant)',
+                                    }}
+                                >
+                                    Building the HMI component library. Hover
+                                    and move in — this card stays open so you
+                                    can click inside.
+                                </span>
+                            </div>
+                        </div>
+                    </HoverCard>
+                    <HoverCard
+                        side="top"
+                        align="start"
+                        trigger={<Button variant="ghost">Top / start</Button>}
+                    >
+                        <span style={{ fontSize: '1.75rem' }}>
+                            Anchored above the trigger, aligned to its left
+                            edge.
+                        </span>
+                    </HoverCard>
+                    <HoverCard
+                        side="right"
+                        align="center"
+                        width={280}
+                        trigger={
+                            <Button variant="ghost">Right / fixed width</Button>
+                        }
+                    >
+                        <span style={{ fontSize: '1.75rem' }}>
+                            Opens to the right, centred on the trigger, with a
+                            fixed 280px width.
+                        </span>
+                    </HoverCard>
+                    <HoverCard
+                        side="left"
+                        align="end"
+                        openDelay={0}
+                        closeDelay={0}
+                        trigger={<Button variant="ghost">Left / snappy</Button>}
+                    >
+                        <span style={{ fontSize: '1.75rem' }}>
+                            Zero open/close delay, to the left, end-aligned.
+                        </span>
+                    </HoverCard>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>ContextMenu</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        alignItems: 'center',
+                        paddingBottom: '24rem',
+                    }}
+                >
+                    <ContextMenu
+                        menu={
+                            <Menu>
+                                <MenuLabel>Edit</MenuLabel>
+                                <MenuItem
+                                    shortcut="⌘C"
+                                    onClick={() => setCtxAction('copy')}
+                                >
+                                    Copy
+                                </MenuItem>
+                                <MenuItem
+                                    shortcut="⌘V"
+                                    onClick={() => setCtxAction('paste')}
+                                >
+                                    Paste
+                                </MenuItem>
+                                <MenuItem
+                                    shortcut="⌘D"
+                                    onClick={() => setCtxAction('duplicate')}
+                                >
+                                    Duplicate
+                                </MenuItem>
+                                <MenuSeparator />
+                                <MenuItem
+                                    danger
+                                    shortcut="⌫"
+                                    onClick={() => setCtxAction('delete')}
+                                >
+                                    Delete
+                                </MenuItem>
+                            </Menu>
+                        }
+                    >
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                width: '48rem',
+                                height: '20rem',
+                                border: '0.25rem dashed var(--outline-variant)',
+                                borderRadius: 'var(--corner-large)',
+                                background: 'var(--surface-container-low)',
+                                color: 'var(--on-surface-variant)',
+                                fontSize: '1.875rem',
+                                userSelect: 'none',
+                            }}
+                        >
+                            Right-click anywhere in this area
+                        </div>
+                    </ContextMenu>
+                    <span
+                        style={{
+                            fontSize: '1.75rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Last action: <strong>{ctxAction}</strong>
                     </span>
                 </div>
             </section>

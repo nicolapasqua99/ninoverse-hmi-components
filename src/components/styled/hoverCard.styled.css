@@ -1,0 +1,40 @@
+/* HoverCard — portal-rendered into document.body. The anchor is placed
+   absolutely at the trigger's gap-offset point for the chosen side; the
+   inner card is then translated relative to that anchor by the inline
+   transform set from JS (combining side + align). Unlike Tooltip, the
+   card is interactive, so the anchor keeps pointer events. */
+
+.hover-card-anchor {
+    position: absolute;
+    z-index: 1000;
+}
+
+.hover-card {
+    min-width: 20rem;
+    max-width: 40rem;
+    padding: 1.5rem;
+    background: var(--surface-container-high);
+    color: var(--on-background);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    box-shadow: var(--elevation-3);
+    animation: hover-card-in var(--duration-short-4) var(--easing-spring) both;
+}
+
+@keyframes hover-card-in {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hover-card {
+        animation-duration: 0ms;
+    }
+}
