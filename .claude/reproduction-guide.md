@@ -369,124 +369,12 @@ Do not proceed to Step 4 until all four commands pass cleanly.
 
 ## Step 4 — Per-component build (repeat for each component)
 
-### 4.1 Pre-flight
-
-Before writing any code, ask: "Should I build `<ComponentName>` next?" State
-which component and wait for confirmation.
-
-Check whether the file already exists:
-
-```bash
-ls src/components/<name>.tsx 2>/dev/null && echo EXISTS || echo MISSING
-```
-
-If it exists, report and ask: skip / overwrite / modify. Do not silently overwrite.
-
-### 4.2 Component checklist (9 steps, in order)
-
-1. **`src/components/<name>.tsx`** (camelCase filename).
-   - Export a named function component (PascalCase).
-   - Props type in the same file or `src/models/<name>.model.ts` if reused.
-   - Import side-effect CSS at the top: `import './styled/<name>.styled.css';`
-   - Use only `var(--token)` references — no hardcoded colors, radii, or shadows.
-   - Use `rem` units; remember `1rem = 8px` at the project base.
-
-2. **`src/components/styled/<name>.styled.css`**.
-   - Use MD3 short-name tokens exclusively.
-   - Use `--corner-{tl,tr,br,bl}` for asymmetric radii; `--elevation-N` for shadows.
-   - Class names: BEM-style, scoped to the component (`.<name>`, `.<name>__part`, `.<name>--modifier`).
-
-3. **`src/index.ts`** — add a named re-export, keeping alphabetical order.
-
-4. **`vite.config.ts`** — add the component to the `build.lib.entry` map (alphabetical):
-   ```ts
-   <name>: resolve(dirname, 'src/components/<name>.tsx'),
-   ```
-
-5. **`package.json` `"exports"`** — add a subpath entry (kebab-case, alphabetical):
-   ```json
-   "./<kebab-name>": {
-       "types": "./dist/<name>.d.ts",
-       "import": "./dist/<name>.js"
-   }
-   ```
-
-6. **`src/App.tsx`** — import the component and render at least one variant per
-   prop combination. Example:
-   ```tsx
-   import { Button } from './index';
-   // inside App return:
-   <Button variant="primary">Primary</Button>
-   <Button variant="ghost" size="small">Ghost SM</Button>
-   ```
-
-7. **`pnpm dev` + visual check** — start the dev server, open the browser, confirm
-   the component renders correctly in `App.tsx`. Take a screenshot if possible
-   (see screenshot method below).
-
-8. **Commit** using Conventional Commits:
-   ```
-   feat(ui): add <ComponentName> component
-   ```
-   One commit per component. Never batch multiple components in one commit.
-
-9. **Push**. If this is the group's first component, open a draft PR immediately.
-   Otherwise push to the existing group PR. Then stop and ask before the next
-   component.
-
-### 4.3 Screenshot method (no egress restriction needed)
-
-```bash
-mkdir -p /tmp/shot && cd /tmp/shot && npm init -y
-npm i @sparticuz/chromium puppeteer-core
-```
-
-Driver script `/tmp/shot/shot.js`:
-
-```js
-const chromium = require('@sparticuz/chromium');
-const puppeteer = require('puppeteer-core');
-
-(async () => {
-    const browser = await puppeteer.launch({
-        args: [...chromium.args, '--no-sandbox', '--disable-dev-shm-usage'],
-        executablePath: await chromium.executablePath(),
-        headless: true,
-        defaultViewport: { width: 1400, height: 1000, deviceScaleFactor: 2 },
-    });
-    const page = await browser.newPage();
-    await page.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
-    await page.screenshot({ path: 'out.png', fullPage: true });
-    await browser.close();
-})();
-```
-
-Start `pnpm dev`, then `node /tmp/shot/shot.js`.
-
-> Note: `/tmp` is wiped on container reset — re-run the install each session.
+See **`.claude/component-workflow.md`** for the full procedure:
+pre-flight check, 9-step checklist, group verification gate, and screenshot method.
 
 ---
 
-## Step 5 — Component group verification gate
-
-After every group of components (a branch / PR):
-
-```bash
-pnpm lint    # zero warnings, zero errors
-pnpm build   # dist/ emits all new entries; no stale references
-```
-
-Check `dist/` for each new component:
-```bash
-ls dist/<name>.js dist/<name>.d.ts
-```
-
-Verify `src/index.ts` re-exports and `package.json` exports are alphabetically sorted
-and consistent with `vite.config.ts` entries.
-
----
-
-## Step 6 — Design token update (re-theming an existing build)
+## Step 5 — Design token update (re-theming an existing build)
 
 When a new design file is provided for a **different theme** (not a full rebuild):
 
@@ -503,36 +391,7 @@ component hardcoded a color (which it should never do — if found, fix it).
 
 ---
 
-## Branching and PR strategy
+## Branching, PR strategy, and execution order
 
-See `.claude/branch-naming.md` for branch format rules.
-
-| Work | Branch prefix | One PR per |
-|------|--------------|-----------|
-| Foundation scaffold | `chore/` | whole scaffold |
-| Token update / re-theme | `chore/` | one PR |
-| Component group (Phase N) | `feat/` | group (e.g. `feat/phase1-layout`) |
-| Single isolated component | `feat/` | component |
-| Rename / refactor | `refactor/` | logical rename unit |
-
-**Draft PR rule:** open a draft PR at the group's first commit. Push each subsequent
-component commit to the same PR. Mark ready only when `pnpm lint` + `pnpm build` pass.
-
----
-
-## Execution order (current project)
-
-Components are built in phase order. Phases map to component categories:
-
-| Phase | Category | Priority |
-|-------|----------|----------|
-| 0 | Reconciliation / renaming | Do first, before any new builds |
-| 1 | Layout + Typography + Utilities | Foundational — blocks visual testing of all others |
-| 2 | Form primitives (meter, etc.) | After Phase 1 |
-| 3 | Inputs (pinInput, rating, colorPicker) | After Phase 2 |
-| 4 | Overlays (hoverCard, contextMenu) | After Phase 3 |
-| 5 | Navigation (tree) | After Phase 4 |
-| 6 | Content (image, carousel, timeline, stat) | After Phase 5 |
-| 7 | Data viz (charts) | Last — most complex; split across multiple PRs |
-
-Within each phase, build one component at a time, confirm with the user between each.
+See **`.claude/execution-order.md`** for the full phase table, branching strategy,
+current gap list, and audit-pass checklist for existing components.

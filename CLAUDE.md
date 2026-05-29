@@ -72,3 +72,6 @@ Use your file-reading capabilities to read the exact rules in the `.claude/` dir
 - **Testing/Verifying:** Read `.claude/testing-requirements.md`
 - **Opening PRs:** Read `.claude/pr-guidelines.md`
 - **Creating new files:** Read `.claude/file-naming.md`
+- **Building a component:** Read `.claude/component-workflow.md`
+- **Deciding what to build next / branching strategy:** Read `.claude/execution-order.md`
+- **Reproducing the library from a new design file:** Read `.claude/reproduction-guide.md`
