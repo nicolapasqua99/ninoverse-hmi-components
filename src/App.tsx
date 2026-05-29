@@ -13,6 +13,7 @@ import { Button } from './components/button';
 import { Card } from './components/card';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
+import { Code } from './components/code';
 import { Combobox, type ComboboxOption } from './components/combobox';
 import {
     CommandPalette,
@@ -547,6 +548,25 @@ export default function App() {
                     A quotation without an attribution renders just the quote
                     body.
                 </Blockquote>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Code</h2>
+                <Text>
+                    Install with <Code>pnpm add @ninoverse/hmi-components</Code>{' '}
+                    then import the <Code>Code</Code> component.
+                </Text>
+                <Code block>{`import { Code } from '@ninoverse/hmi-components';
+
+export function Example() {
+    return <Code block>{'const x = 42;'}</Code>;
+}`}</Code>
             </section>
 
             <section

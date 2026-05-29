@@ -63,6 +63,7 @@ export {
 } from './components/card';
 export { Checkbox, type CheckboxProps } from './components/checkbox';
 export { Chip, type ChipProps } from './components/chip';
+export { Code, type CodeProps } from './components/code';
 export {
     Combobox,
     type ComboboxOption,

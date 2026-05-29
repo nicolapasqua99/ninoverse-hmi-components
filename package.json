@@ -71,6 +71,10 @@
             "types": "./dist/components/chip.d.ts",
             "import": "./dist/chip.js"
         },
+        "./code": {
+            "types": "./dist/components/code.d.ts",
+            "import": "./dist/code.js"
+        },
         "./combobox": {
             "types": "./dist/components/combobox.d.ts",
             "import": "./dist/combobox.js"

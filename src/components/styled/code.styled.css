@@ -1,0 +1,33 @@
+/* Code — monospace code rendering in two modes. Inline is a tinted
+   <code> chip that sits within running text; block wraps a <pre><code>
+   for multi-line snippets with horizontal scroll. The mono stack matches
+   the one already used in menu shortcuts. */
+
+.code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+    color: var(--on-surface);
+}
+
+.code:not(.code--block) {
+    padding: 0.125rem 0.625rem;
+    font-size: 0.9em;
+    background: var(--surface-container-high);
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--corner-extra-small);
+    white-space: nowrap;
+}
+
+.code--block {
+    margin: 0;
+    padding: 1.5rem 2rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    background: var(--surface-container-high);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-medium);
+    overflow-x: auto;
+}
+
+.code__content {
+    font-family: inherit;
+}

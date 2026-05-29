@@ -40,6 +40,7 @@ export default defineConfig({
                 card: resolve(dirname, 'src/components/card.tsx'),
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
                 chip: resolve(dirname, 'src/components/chip.tsx'),
+                code: resolve(dirname, 'src/components/code.tsx'),
                 combobox: resolve(dirname, 'src/components/combobox.tsx'),
                 commandPalette: resolve(
                     dirname,
