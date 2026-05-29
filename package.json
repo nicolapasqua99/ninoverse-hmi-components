@@ -267,6 +267,10 @@
             "types": "./dist/components/tooltip.d.ts",
             "import": "./dist/tooltip.js"
         },
+        "./tree": {
+            "types": "./dist/components/tree.d.ts",
+            "import": "./dist/tree.js"
+        },
         "./value-scale-selector": {
             "types": "./dist/components/valueScaleSelector.d.ts",
             "import": "./dist/valueScaleSelector.js"

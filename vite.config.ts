@@ -101,6 +101,7 @@ export default defineConfig({
                 textarea: resolve(dirname, 'src/components/textarea.tsx'),
                 toast: resolve(dirname, 'src/components/toast.tsx'),
                 tooltip: resolve(dirname, 'src/components/tooltip.tsx'),
+                tree: resolve(dirname, 'src/components/tree.tsx'),
                 valueScaleSelector: resolve(
                     dirname,
                     'src/components/valueScaleSelector.tsx',

@@ -65,6 +65,7 @@ import { Text } from './components/text';
 import { Textarea } from './components/textarea';
 import { ToastHost, toast } from './components/toast';
 import { Tooltip } from './components/tooltip';
+import { Tree, type TreeNode } from './components/tree';
 import { ValueScaleSelector } from './components/valueScaleSelector';
 import { VisuallyHidden } from './components/visuallyHidden';
 
@@ -107,6 +108,7 @@ export default function App() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [lastMenuAction, setLastMenuAction] = useState<string>('none');
     const [ctxAction, setCtxAction] = useState<string>('none');
+    const [treeSelected, setTreeSelected] = useState<string>('button.tsx');
     const [framework, setFramework] = useState<
         'react' | 'vue' | 'svelte' | 'solid'
     >('react');
@@ -1786,6 +1788,100 @@ export function Example() {
                         }}
                     >
                         Last action: <strong>{ctxAction}</strong>
+                    </span>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Tree</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '4rem',
+                        alignItems: 'flex-start',
+                        paddingBottom: '24rem',
+                    }}
+                >
+                    <div style={{ width: '44rem' }}>
+                        <Tree
+                            aria-label="Project files"
+                            selected={treeSelected}
+                            onSelect={setTreeSelected}
+                            defaultExpanded={['src', 'src/components']}
+                            nodes={
+                                [
+                                    {
+                                        value: 'src',
+                                        label: 'src',
+                                        children: [
+                                            {
+                                                value: 'src/components',
+                                                label: 'components',
+                                                children: [
+                                                    {
+                                                        value: 'button.tsx',
+                                                        label: 'button.tsx',
+                                                    },
+                                                    {
+                                                        value: 'tree.tsx',
+                                                        label: 'tree.tsx',
+                                                    },
+                                                ],
+                                            },
+                                            {
+                                                value: 'src/index.ts',
+                                                label: 'index.ts',
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        value: 'public',
+                                        label: 'public',
+                                        children: [
+                                            {
+                                                value: 'public/themes',
+                                                label: 'themes',
+                                                children: [
+                                                    {
+                                                        value: 'default.css',
+                                                        label: 'default.css',
+                                                    },
+                                                ],
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        value: 'package.json',
+                                        label: 'package.json',
+                                    },
+                                    {
+                                        value: 'node_modules',
+                                        label: 'node_modules',
+                                        disabled: true,
+                                        children: [
+                                            {
+                                                value: 'nm/react',
+                                                label: 'react',
+                                            },
+                                        ],
+                                    },
+                                ] satisfies TreeNode[]
+                            }
+                        />
+                    </div>
+                    <span
+                        style={{
+                            fontSize: '1.75rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Selected: <strong>{treeSelected}</strong>
                     </span>
                 </div>
             </section>
