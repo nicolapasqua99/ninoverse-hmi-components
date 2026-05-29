@@ -127,6 +127,12 @@ export {
     type HeadingSize,
     type HeadingTone,
 } from './components/heading';
+export {
+    HoverCard,
+    type HoverCardAlign,
+    type HoverCardProps,
+    type HoverCardSide,
+} from './components/hoverCard';
 export { Input, type InputProps } from './components/input';
 export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
 export {

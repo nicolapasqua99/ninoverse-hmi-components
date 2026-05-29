@@ -60,6 +60,7 @@ export default defineConfig({
                 formControl: resolve(dirname, 'src/components/formControl.tsx'),
                 grid: resolve(dirname, 'src/components/grid.tsx'),
                 heading: resolve(dirname, 'src/components/heading.tsx'),
+                hoverCard: resolve(dirname, 'src/components/hoverCard.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 kbd: resolve(dirname, 'src/components/kbd.tsx'),
                 link: resolve(dirname, 'src/components/link.tsx'),

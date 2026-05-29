@@ -127,6 +127,10 @@
             "types": "./dist/components/heading.d.ts",
             "import": "./dist/heading.js"
         },
+        "./hover-card": {
+            "types": "./dist/components/hoverCard.d.ts",
+            "import": "./dist/hoverCard.js"
+        },
         "./input": {
             "types": "./dist/components/input.d.ts",
             "import": "./dist/input.js"
