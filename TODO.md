@@ -84,3 +84,42 @@ tradeoff before pursuing.
 Prefer **C** (or do nothing) for the library; reach for **B** only if built-in
 highlighting is wanted without asking consumers to wire up a highlighter; avoid
 **A** unless the zero-dependency design is intentionally being abandoned.
+
+---
+
+## Divider labeled-variant accessibility
+
+Surfaced during the Phase 1 utilities audit-pass. **Not a defect — left as-is.**
+
+### The gap
+The plain `Divider` renders a semantic `<hr>` (implicit `role="separator"` +
+`aria-orientation`). The **labeled** variant (e.g. `<Divider>OR</Divider>`)
+instead renders a `<div>` with the rule lines `aria-hidden` and a visible text
+label — it is **not announced as a separator** to assistive technology.
+
+### Why the obvious fix doesn't work
+Adding `role="separator"` to the labeled `<div>` is rejected by the project's
+own Biome a11y rules, and the rejections are correct:
+- `useSemanticElements` — `role="separator"` should be a real `<hr>`, but `<hr>`
+  is a void element and **cannot contain a label**, so a labeled separator
+  fundamentally can't be an `<hr>`.
+- `useFocusableInteractive` — Biome treats `role="separator"` as interactive and
+  demands a `tabIndex`, which would create a bogus keyboard tab stop on a purely
+  decorative element.
+
+Forcing it through would require `biome-ignore` suppressions — strictly worse
+than the current clean, lint-passing code.
+
+### Options if revisited
+- **Do nothing** (current): the visible label is real text and reads fine in
+  context; only the explicit "separator" semantic is missing.
+- Use `role="separator"` **plus** `aria-label`/`aria-hidden` restructuring and a
+  single scoped `biome-ignore` for `useFocusableInteractive`, documenting why a
+  decorative separator is intentionally non-focusable.
+- Revisit if/when the labeled divider needs to participate in a `menu`/`listbox`
+  pattern where a separator role is actually consumed by AT.
+
+### Recommendation
+Leave as-is unless a concrete AT/screen-reader requirement appears. The
+trade-off (suppressing the project's a11y lint vs. a missing-but-harmless
+separator semantic) favors the cleaner code today.
