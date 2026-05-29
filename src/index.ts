@@ -121,6 +121,12 @@ export {
 export { Input, type InputProps } from './components/input';
 export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
 export {
+    Link,
+    type LinkProps,
+    type LinkTone,
+    type LinkUnderline,
+} from './components/link';
+export {
     List,
     type ListItem,
     type ListProps,

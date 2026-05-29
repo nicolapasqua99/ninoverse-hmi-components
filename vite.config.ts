@@ -59,6 +59,7 @@ export default defineConfig({
                 heading: resolve(dirname, 'src/components/heading.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 kbd: resolve(dirname, 'src/components/kbd.tsx'),
+                link: resolve(dirname, 'src/components/link.tsx'),
                 list: resolve(dirname, 'src/components/list.tsx'),
                 menu: resolve(dirname, 'src/components/menu.tsx'),
                 modal: resolve(dirname, 'src/components/modal.tsx'),

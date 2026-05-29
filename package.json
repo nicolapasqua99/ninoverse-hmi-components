@@ -123,6 +123,10 @@
             "types": "./dist/components/kbd.d.ts",
             "import": "./dist/kbd.js"
         },
+        "./link": {
+            "types": "./dist/components/link.d.ts",
+            "import": "./dist/link.js"
+        },
         "./list": {
             "types": "./dist/components/list.d.ts",
             "import": "./dist/list.js"

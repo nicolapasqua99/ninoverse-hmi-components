@@ -29,6 +29,7 @@ import { Grid } from './components/grid';
 import { Heading } from './components/heading';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
+import { Link } from './components/link';
 import { List, type ListItem } from './components/list';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
 import { Modal } from './components/modal';
@@ -494,6 +495,39 @@ export default function App() {
                 <Heading level={3} tone="muted">
                     Level 3, muted tone
                 </Heading>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Link</h2>
+                <Text>
+                    Read the <Link href="#docs">documentation</Link> for more,
+                    or{' '}
+                    <Link href="#hover" underline="hover">
+                        hover to underline
+                    </Link>
+                    , or a{' '}
+                    <Link href="#plain" underline="none">
+                        plain link
+                    </Link>
+                    .
+                </Text>
+                <Text tone="muted">
+                    A{' '}
+                    <Link href="#muted" tone="muted">
+                        muted secondary link
+                    </Link>{' '}
+                    and an{' '}
+                    <Link href="https://example.com" target="_blank">
+                        external link
+                    </Link>{' '}
+                    (auto rel).
+                </Text>
             </section>
 
             <section
