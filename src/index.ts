@@ -84,6 +84,10 @@ export {
     type ConfirmDialogVariant,
 } from './components/confirmDialog';
 export {
+    ContextMenu,
+    type ContextMenuProps,
+} from './components/contextMenu';
+export {
     DatePicker,
     type DatePickerProps,
     type DateRange,

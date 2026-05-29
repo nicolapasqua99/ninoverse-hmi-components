@@ -21,6 +21,7 @@ import {
     type CommandPaletteCommand,
 } from './components/commandPalette';
 import { ConfirmDialog } from './components/confirmDialog';
+import { ContextMenu } from './components/contextMenu';
 import { DatePicker, type DateRange } from './components/datePicker';
 import { Divider } from './components/divider';
 import { Drawer } from './components/drawer';
@@ -105,6 +106,7 @@ export default function App() {
     const [popoverEndOpen, setPopoverEndOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [lastMenuAction, setLastMenuAction] = useState<string>('none');
+    const [ctxAction, setCtxAction] = useState<string>('none');
     const [framework, setFramework] = useState<
         'react' | 'vue' | 'svelte' | 'solid'
     >('react');
@@ -1707,6 +1709,84 @@ export function Example() {
                             Zero open/close delay, to the left, end-aligned.
                         </span>
                     </HoverCard>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>ContextMenu</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        alignItems: 'center',
+                        paddingBottom: '24rem',
+                    }}
+                >
+                    <ContextMenu
+                        menu={
+                            <Menu>
+                                <MenuLabel>Edit</MenuLabel>
+                                <MenuItem
+                                    shortcut="⌘C"
+                                    onClick={() => setCtxAction('copy')}
+                                >
+                                    Copy
+                                </MenuItem>
+                                <MenuItem
+                                    shortcut="⌘V"
+                                    onClick={() => setCtxAction('paste')}
+                                >
+                                    Paste
+                                </MenuItem>
+                                <MenuItem
+                                    shortcut="⌘D"
+                                    onClick={() => setCtxAction('duplicate')}
+                                >
+                                    Duplicate
+                                </MenuItem>
+                                <MenuSeparator />
+                                <MenuItem
+                                    danger
+                                    shortcut="⌫"
+                                    onClick={() => setCtxAction('delete')}
+                                >
+                                    Delete
+                                </MenuItem>
+                            </Menu>
+                        }
+                    >
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                width: '48rem',
+                                height: '20rem',
+                                border: '0.25rem dashed var(--outline-variant)',
+                                borderRadius: 'var(--corner-large)',
+                                background: 'var(--surface-container-low)',
+                                color: 'var(--on-surface-variant)',
+                                fontSize: '1.875rem',
+                                userSelect: 'none',
+                            }}
+                        >
+                            Right-click anywhere in this area
+                        </div>
+                    </ContextMenu>
+                    <span
+                        style={{
+                            fontSize: '1.75rem',
+                            color: 'var(--on-surface-variant)',
+                        }}
+                    >
+                        Last action: <strong>{ctxAction}</strong>
+                    </span>
                 </div>
             </section>
 
