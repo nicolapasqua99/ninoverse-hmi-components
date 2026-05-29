@@ -26,6 +26,7 @@ import { FileUpload } from './components/fileUpload';
 import { Flex } from './components/flex';
 import { FormControl } from './components/formControl';
 import { Grid } from './components/grid';
+import { Heading } from './components/heading';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
 import { List, type ListItem } from './components/list';
@@ -472,6 +473,27 @@ export default function App() {
                     Truncated single line that is far too long to fit within the
                     constrained width and should end with an ellipsis
                 </Text>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Heading</h2>
+                <Heading level={1}>Heading level 1 (xlarge)</Heading>
+                <Heading level={2}>Heading level 2 (large)</Heading>
+                <Heading level={3}>Heading level 3 (medium)</Heading>
+                <Heading level={4}>Heading level 4 (small)</Heading>
+                <Heading level={6}>Heading level 6 (xsmall)</Heading>
+                <Heading level={2} size="medium" tone="primary">
+                    Level 2 styled as medium, primary tone
+                </Heading>
+                <Heading level={3} tone="muted">
+                    Level 3, muted tone
+                </Heading>
             </section>
 
             <section

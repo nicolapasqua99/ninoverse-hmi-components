@@ -111,6 +111,10 @@
             "types": "./dist/components/grid.d.ts",
             "import": "./dist/grid.js"
         },
+        "./heading": {
+            "types": "./dist/components/heading.d.ts",
+            "import": "./dist/heading.js"
+        },
         "./input": {
             "types": "./dist/components/input.d.ts",
             "import": "./dist/input.js"

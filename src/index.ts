@@ -111,6 +111,13 @@ export {
     type FormControlProps,
 } from './components/formControl';
 export { Grid, type GridGap, type GridProps } from './components/grid';
+export {
+    Heading,
+    type HeadingLevel,
+    type HeadingProps,
+    type HeadingSize,
+    type HeadingTone,
+} from './components/heading';
 export { Input, type InputProps } from './components/input';
 export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
 export {

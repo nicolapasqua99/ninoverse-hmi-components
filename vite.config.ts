@@ -56,6 +56,7 @@ export default defineConfig({
                 flex: resolve(dirname, 'src/components/flex.tsx'),
                 formControl: resolve(dirname, 'src/components/formControl.tsx'),
                 grid: resolve(dirname, 'src/components/grid.tsx'),
+                heading: resolve(dirname, 'src/components/heading.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 kbd: resolve(dirname, 'src/components/kbd.tsx'),
                 list: resolve(dirname, 'src/components/list.tsx'),

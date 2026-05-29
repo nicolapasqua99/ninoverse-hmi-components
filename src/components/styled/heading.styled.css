@@ -1,0 +1,44 @@
+/* Heading — display-level titles in the Oxanium family (matching
+   EmptyState/navbar titles). Semantic level (h1–h6) is decoupled from
+   visual size: each level picks a sensible default size, but `size`
+   can override it independently. Tones reuse the standard text roles. */
+
+.heading {
+    margin: 0;
+    font-family: var(--font-oxanium);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--on-surface);
+}
+
+.heading--size-xsmall {
+    font-size: 2rem;
+}
+.heading--size-small {
+    font-size: 2.5rem;
+}
+.heading--size-medium {
+    font-size: 3rem;
+}
+.heading--size-large {
+    font-size: 3.75rem;
+}
+.heading--size-xlarge {
+    font-size: 4.5rem;
+}
+
+.heading--tone-muted {
+    color: var(--on-surface-variant);
+}
+.heading--tone-primary {
+    color: var(--primary);
+}
+.heading--tone-inherit {
+    color: inherit;
+}
+
+.heading--truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
