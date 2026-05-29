@@ -34,6 +34,7 @@ import { Kbd } from './components/kbd';
 import { Link } from './components/link';
 import { List, type ListItem } from './components/list';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
+import { Meter } from './components/meter';
 import { Modal } from './components/modal';
 import { MultiInput } from './components/multiInput';
 import { Navbar } from './components/navbar';
@@ -1131,6 +1132,61 @@ export function Example() {
                     <FormControl label="Indeterminate">
                         <Progress indeterminate label="Syncing" />
                     </FormControl>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Meter</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'minmax(0, 60rem)',
+                        gap: '3rem',
+                    }}
+                >
+                    <Meter
+                        high={80}
+                        label="Disk usage"
+                        low={50}
+                        max={100}
+                        optimum={20}
+                        showValue
+                        value={35}
+                    />
+                    <Meter
+                        high={80}
+                        label="Disk usage (suboptimal)"
+                        low={50}
+                        max={100}
+                        optimum={20}
+                        showValue
+                        value={65}
+                    />
+                    <Meter
+                        high={80}
+                        label="Disk usage (poor)"
+                        low={50}
+                        max={100}
+                        optimum={20}
+                        showValue
+                        value={92}
+                    />
+                    <Meter
+                        label="Battery (optimum high)"
+                        high={80}
+                        low={20}
+                        max={100}
+                        optimum={100}
+                        showValue
+                        value={90}
+                    />
+                    <Meter label="Plain 0–1 ratio" showValue value={0.6} />
                 </div>
             </section>
 

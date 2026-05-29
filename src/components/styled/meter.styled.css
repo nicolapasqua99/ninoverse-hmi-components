@@ -1,0 +1,52 @@
+/* Meter — a static scalar measurement within a known range (unlike
+   Progress, which tracks task completion). The fill color reflects the
+   value's quality band relative to low/high/optimum, mirroring the
+   native <meter> element: optimal=success, suboptimal=warning,
+   poor=error. */
+
+.meter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: var(--font-quicksand);
+}
+
+.meter__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.meter__label {
+    color: var(--on-surface);
+}
+
+.meter__value {
+    color: var(--on-surface-variant);
+    font-variant-numeric: tabular-nums;
+}
+
+.meter__track {
+    height: 1rem;
+    background: var(--surface-container-high);
+    border-radius: var(--corner-full);
+    overflow: hidden;
+}
+
+.meter__fill {
+    height: 100%;
+    border-radius: var(--corner-full);
+    transition: width var(--duration-long-1) var(--easing-standard);
+}
+
+.meter--optimal .meter__fill {
+    background: var(--success);
+}
+.meter--suboptimal .meter__fill {
+    background: var(--warning);
+}
+.meter--poor .meter__fill {
+    background: var(--error);
+}

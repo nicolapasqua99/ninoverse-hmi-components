@@ -64,6 +64,7 @@ export default defineConfig({
                 link: resolve(dirname, 'src/components/link.tsx'),
                 list: resolve(dirname, 'src/components/list.tsx'),
                 menu: resolve(dirname, 'src/components/menu.tsx'),
+                meter: resolve(dirname, 'src/components/meter.tsx'),
                 modal: resolve(dirname, 'src/components/modal.tsx'),
                 multiInput: resolve(dirname, 'src/components/multiInput.tsx'),
                 navbar: resolve(dirname, 'src/components/navbar.tsx'),

@@ -146,6 +146,7 @@ export {
     MenuSeparator,
     type MenuSeparatorProps,
 } from './components/menu';
+export { Meter, type MeterProps } from './components/meter';
 export {
     Modal,
     type ModalProps,
