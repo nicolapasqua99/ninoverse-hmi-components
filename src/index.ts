@@ -35,6 +35,10 @@ export {
     type BannerVariant,
 } from './components/banner';
 export {
+    Blockquote,
+    type BlockquoteProps,
+} from './components/blockquote';
+export {
     Box,
     type BoxBackground,
     type BoxPadding,

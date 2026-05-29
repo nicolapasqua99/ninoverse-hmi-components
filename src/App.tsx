@@ -6,6 +6,7 @@ import { Avatar } from './components/avatar';
 import { AvatarStack } from './components/avatarStack';
 import { Badge } from './components/badge';
 import { Banner } from './components/banner';
+import { Blockquote } from './components/blockquote';
 import { Box } from './components/box';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { Button } from './components/button';
@@ -528,6 +529,24 @@ export default function App() {
                     </Link>{' '}
                     (auto rel).
                 </Text>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Blockquote</h2>
+                <Blockquote cite="— Antoine de Saint-Exupéry, The Little Prince">
+                    What is essential is invisible to the eye. It is only with
+                    the heart that one can see rightly.
+                </Blockquote>
+                <Blockquote>
+                    A quotation without an attribution renders just the quote
+                    body.
+                </Blockquote>
             </section>
 
             <section
