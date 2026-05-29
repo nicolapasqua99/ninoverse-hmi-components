@@ -143,6 +143,10 @@
             "types": "./dist/components/menu.d.ts",
             "import": "./dist/menu.js"
         },
+        "./meter": {
+            "types": "./dist/components/meter.d.ts",
+            "import": "./dist/meter.js"
+        },
         "./modal": {
             "types": "./dist/components/modal.d.ts",
             "import": "./dist/modal.js"
