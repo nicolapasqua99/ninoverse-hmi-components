@@ -43,6 +43,10 @@
             "types": "./dist/components/banner.d.ts",
             "import": "./dist/banner.js"
         },
+        "./blockquote": {
+            "types": "./dist/components/blockquote.d.ts",
+            "import": "./dist/blockquote.js"
+        },
         "./box": {
             "types": "./dist/components/box.d.ts",
             "import": "./dist/box.js"
@@ -66,6 +70,10 @@
         "./chip": {
             "types": "./dist/components/chip.d.ts",
             "import": "./dist/chip.js"
+        },
+        "./code": {
+            "types": "./dist/components/code.d.ts",
+            "import": "./dist/code.js"
         },
         "./combobox": {
             "types": "./dist/components/combobox.d.ts",
@@ -111,6 +119,10 @@
             "types": "./dist/components/grid.d.ts",
             "import": "./dist/grid.js"
         },
+        "./heading": {
+            "types": "./dist/components/heading.d.ts",
+            "import": "./dist/heading.js"
+        },
         "./input": {
             "types": "./dist/components/input.d.ts",
             "import": "./dist/input.js"
@@ -118,6 +130,10 @@
         "./kbd": {
             "types": "./dist/components/kbd.d.ts",
             "import": "./dist/kbd.js"
+        },
+        "./link": {
+            "types": "./dist/components/link.d.ts",
+            "import": "./dist/link.js"
         },
         "./list": {
             "types": "./dist/components/list.d.ts",
@@ -214,6 +230,10 @@
         "./tabs": {
             "types": "./dist/components/tabs.d.ts",
             "import": "./dist/tabs.js"
+        },
+        "./text": {
+            "types": "./dist/components/text.d.ts",
+            "import": "./dist/text.js"
         },
         "./textarea": {
             "types": "./dist/components/textarea.d.ts",

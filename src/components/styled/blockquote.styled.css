@@ -1,0 +1,27 @@
+/* Blockquote — a quotation block with a primary accent rule on the
+   leading edge and a soft surface tint. An optional citation footer sits
+   below the quote in the muted on-surface-variant tone. */
+
+.blockquote {
+    margin: 0;
+    padding: 1.5rem 2rem;
+    border-inline-start: 0.375rem solid var(--primary);
+    border-radius: 0 var(--corner-medium) var(--corner-medium) 0;
+    background: var(--surface-container);
+    color: var(--on-surface);
+    font-family: var(--font-quicksand);
+}
+
+.blockquote__body {
+    margin: 0;
+    font-size: 1.875rem;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.blockquote__cite {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-style: normal;
+    color: var(--on-surface-variant);
+}

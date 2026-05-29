@@ -35,6 +35,10 @@ export {
     type BannerVariant,
 } from './components/banner';
 export {
+    Blockquote,
+    type BlockquoteProps,
+} from './components/blockquote';
+export {
     Box,
     type BoxBackground,
     type BoxPadding,
@@ -59,6 +63,7 @@ export {
 } from './components/card';
 export { Checkbox, type CheckboxProps } from './components/checkbox';
 export { Chip, type ChipProps } from './components/chip';
+export { Code, type CodeProps } from './components/code';
 export {
     Combobox,
     type ComboboxOption,
@@ -111,8 +116,21 @@ export {
     type FormControlProps,
 } from './components/formControl';
 export { Grid, type GridGap, type GridProps } from './components/grid';
+export {
+    Heading,
+    type HeadingLevel,
+    type HeadingProps,
+    type HeadingSize,
+    type HeadingTone,
+} from './components/heading';
 export { Input, type InputProps } from './components/input';
 export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
+export {
+    Link,
+    type LinkProps,
+    type LinkTone,
+    type LinkUnderline,
+} from './components/link';
 export {
     List,
     type ListItem,
@@ -223,6 +241,14 @@ export {
     type TabsProps,
     type TabsVariant,
 } from './components/tabs';
+export {
+    Text,
+    type TextAlign,
+    type TextProps,
+    type TextSize,
+    type TextTone,
+    type TextWeight,
+} from './components/text';
 export { Textarea, type TextareaProps } from './components/textarea';
 export {
     ToastHost,

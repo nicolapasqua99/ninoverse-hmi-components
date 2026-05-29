@@ -1,0 +1,58 @@
+/* Link — inline anchor matching the Button `link` variant: primary accent
+   with a thick, offset underline that fades when idle and solidifies on
+   hover. Underline can be always-on, hover-only or off; a muted tone
+   reuses the on-surface-variant role for secondary links. */
+
+.link {
+    color: var(--ref-primary-40);
+    font: inherit;
+    cursor: pointer;
+    text-decoration-thickness: 0.125rem;
+    text-underline-offset: 0.375rem;
+    transition: text-decoration-color 0.15s ease;
+}
+
+.link--underline-always,
+.link--underline-hover:hover {
+    text-decoration-line: underline;
+}
+
+.link--underline-always {
+    text-decoration-color: color-mix(
+        in oklab,
+        var(--ref-primary-40) 40%,
+        transparent
+    );
+}
+
+.link--underline-hover {
+    text-decoration-line: none;
+}
+
+.link--underline-none {
+    text-decoration-line: none;
+}
+
+.link:hover {
+    text-decoration-color: var(--ref-primary-40);
+}
+
+.link--tone-muted {
+    color: var(--on-surface-variant);
+}
+.link--tone-muted.link--underline-always {
+    text-decoration-color: color-mix(
+        in oklab,
+        var(--on-surface-variant) 40%,
+        transparent
+    );
+}
+.link--tone-muted:hover {
+    text-decoration-color: var(--on-surface-variant);
+}
+
+.link:focus-visible {
+    outline: 0.25rem solid var(--ring);
+    outline-offset: 0.25rem;
+    border-radius: var(--corner-extra-small);
+}

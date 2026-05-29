@@ -6,12 +6,14 @@ import { Avatar } from './components/avatar';
 import { AvatarStack } from './components/avatarStack';
 import { Badge } from './components/badge';
 import { Banner } from './components/banner';
+import { Blockquote } from './components/blockquote';
 import { Box } from './components/box';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { Button } from './components/button';
 import { Card } from './components/card';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
+import { Code } from './components/code';
 import { Combobox, type ComboboxOption } from './components/combobox';
 import {
     CommandPalette,
@@ -26,8 +28,10 @@ import { FileUpload } from './components/fileUpload';
 import { Flex } from './components/flex';
 import { FormControl } from './components/formControl';
 import { Grid } from './components/grid';
+import { Heading } from './components/heading';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
+import { Link } from './components/link';
 import { List, type ListItem } from './components/list';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
 import { Modal } from './components/modal';
@@ -52,6 +56,7 @@ import { Stepper } from './components/stepper';
 import { Switch } from './components/switch';
 import { Table } from './components/table';
 import { Tabs } from './components/tabs';
+import { Text } from './components/text';
 import { Textarea } from './components/textarea';
 import { ToastHost, toast } from './components/toast';
 import { Tooltip } from './components/tooltip';
@@ -442,6 +447,126 @@ export default function App() {
                         </Box>
                     </AspectRatio>
                 </Grid>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Text</h2>
+                <Text size="xlarge" weight="bold">
+                    Extra-large bold body text
+                </Text>
+                <Text size="large" weight="semibold">
+                    Large semibold body text
+                </Text>
+                <Text>Default medium regular body text</Text>
+                <Text size="small" tone="muted">
+                    Small muted helper text
+                </Text>
+                <Text size="xsmall" tone="primary" weight="medium">
+                    Extra-small primary caption
+                </Text>
+                <Text tone="error">Error-tone message text</Text>
+                <Text align="center">Center-aligned text</Text>
+                <Text style={{ maxWidth: '32rem' }} truncate>
+                    Truncated single line that is far too long to fit within the
+                    constrained width and should end with an ellipsis
+                </Text>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Heading</h2>
+                <Heading level={1}>Heading level 1 (xlarge)</Heading>
+                <Heading level={2}>Heading level 2 (large)</Heading>
+                <Heading level={3}>Heading level 3 (medium)</Heading>
+                <Heading level={4}>Heading level 4 (small)</Heading>
+                <Heading level={6}>Heading level 6 (xsmall)</Heading>
+                <Heading level={2} size="medium" tone="primary">
+                    Level 2 styled as medium, primary tone
+                </Heading>
+                <Heading level={3} tone="muted">
+                    Level 3, muted tone
+                </Heading>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Link</h2>
+                <Text>
+                    Read the <Link href="#docs">documentation</Link> for more,
+                    or{' '}
+                    <Link href="#hover" underline="hover">
+                        hover to underline
+                    </Link>
+                    , or a{' '}
+                    <Link href="#plain" underline="none">
+                        plain link
+                    </Link>
+                    .
+                </Text>
+                <Text tone="muted">
+                    A{' '}
+                    <Link href="#muted" tone="muted">
+                        muted secondary link
+                    </Link>{' '}
+                    and an{' '}
+                    <Link href="https://example.com" target="_blank">
+                        external link
+                    </Link>{' '}
+                    (auto rel).
+                </Text>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Blockquote</h2>
+                <Blockquote cite="— Antoine de Saint-Exupéry, The Little Prince">
+                    What is essential is invisible to the eye. It is only with
+                    the heart that one can see rightly.
+                </Blockquote>
+                <Blockquote>
+                    A quotation without an attribution renders just the quote
+                    body.
+                </Blockquote>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Code</h2>
+                <Text>
+                    Install with <Code>pnpm add @ninoverse/hmi-components</Code>{' '}
+                    then import the <Code>Code</Code> component.
+                </Text>
+                <Code block>{`import { Code } from '@ninoverse/hmi-components';
+
+export function Example() {
+    return <Code block>{'const x = 42;'}</Code>;
+}`}</Code>
             </section>
 
             <section
