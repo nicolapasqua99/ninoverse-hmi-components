@@ -103,6 +103,10 @@
             "types": "./dist/components/formControl.d.ts",
             "import": "./dist/formControl.js"
         },
+        "./grid": {
+            "types": "./dist/components/grid.d.ts",
+            "import": "./dist/grid.js"
+        },
         "./input": {
             "types": "./dist/components/input.d.ts",
             "import": "./dist/input.js"

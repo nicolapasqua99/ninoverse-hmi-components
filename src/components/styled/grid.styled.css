@@ -1,0 +1,17 @@
+/* Grid — CSS grid layout primitive. The column template is set inline
+   (a number becomes equal minmax(0, 1fr) tracks; a string is used as-is),
+   while the gap scale matches Box padding and Flex gap. */
+
+.grid {
+    display: grid;
+}
+
+.grid--gap-small {
+    gap: 1rem;
+}
+.grid--gap-medium {
+    gap: 2rem;
+}
+.grid--gap-large {
+    gap: 3rem;
+}

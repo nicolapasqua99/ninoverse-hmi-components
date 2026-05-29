@@ -24,6 +24,7 @@ import { EmptyState } from './components/emptyState';
 import { FileUpload } from './components/fileUpload';
 import { Flex } from './components/flex';
 import { FormControl } from './components/formControl';
+import { Grid } from './components/grid';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
 import { List, type ListItem } from './components/list';
@@ -312,6 +313,46 @@ export default function App() {
                         direction
                     </Box>
                 </Flex>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Grid</h2>
+                <Grid columns={3} gap="medium">
+                    {['One', 'Two', 'Three', 'Four', 'Five', 'Six'].map(
+                        (label) => (
+                            <Box
+                                background="surface-variant"
+                                key={label}
+                                padding="medium"
+                                radius="medium"
+                            >
+                                {label}
+                            </Box>
+                        ),
+                    )}
+                </Grid>
+                <Grid columns="2fr 1fr" gap="medium">
+                    <Box
+                        background="surface-container-high"
+                        padding="large"
+                        radius="small"
+                    >
+                        2fr (main)
+                    </Box>
+                    <Box
+                        background="surface-container-high"
+                        padding="large"
+                        radius="small"
+                    >
+                        1fr (aside)
+                    </Box>
+                </Grid>
             </section>
 
             <section

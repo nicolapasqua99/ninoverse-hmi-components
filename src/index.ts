@@ -106,6 +106,7 @@ export {
     FormControl,
     type FormControlProps,
 } from './components/formControl';
+export { Grid, type GridGap, type GridProps } from './components/grid';
 export { Input, type InputProps } from './components/input';
 export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
 export {

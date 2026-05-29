@@ -54,6 +54,7 @@ export default defineConfig({
                 fileUpload: resolve(dirname, 'src/components/fileUpload.tsx'),
                 flex: resolve(dirname, 'src/components/flex.tsx'),
                 formControl: resolve(dirname, 'src/components/formControl.tsx'),
+                grid: resolve(dirname, 'src/components/grid.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 kbd: resolve(dirname, 'src/components/kbd.tsx'),
                 list: resolve(dirname, 'src/components/list.tsx'),
