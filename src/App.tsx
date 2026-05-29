@@ -44,6 +44,7 @@ import { Popover } from './components/popover';
 import { Progress } from './components/progress';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
+import { ScrollArea } from './components/scrollArea';
 import { SearchInput } from './components/searchInput';
 import { SegmentedControl } from './components/segmentedControl';
 import { Select } from './components/select';
@@ -61,6 +62,7 @@ import { Textarea } from './components/textarea';
 import { ToastHost, toast } from './components/toast';
 import { Tooltip } from './components/tooltip';
 import { ValueScaleSelector } from './components/valueScaleSelector';
+import { VisuallyHidden } from './components/visuallyHidden';
 
 const SearchIcon = () => (
     <svg
@@ -248,6 +250,96 @@ export default function App() {
                         as=&quot;section&quot;
                     </Box>
                 </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>VisuallyHidden</h2>
+                <Text tone="muted">
+                    Renders nothing visible — content stays available to screen
+                    readers. The icon-only button below carries a hidden label.
+                </Text>
+                <button
+                    style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '5rem',
+                        height: '5rem',
+                        borderRadius: 'var(--corner-medium)',
+                        border: '0.125rem solid var(--outline-variant)',
+                        background: 'var(--surface-container-high)',
+                        color: 'var(--on-surface)',
+                        cursor: 'pointer',
+                    }}
+                    type="button"
+                >
+                    <span
+                        style={{
+                            display: 'inline-flex',
+                            width: '2.5rem',
+                            height: '2.5rem',
+                        }}
+                    >
+                        <SearchIcon />
+                    </span>
+                    <VisuallyHidden>Search</VisuallyHidden>
+                </button>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>ScrollArea</h2>
+                <Grid columns={2} gap="medium">
+                    <ScrollArea maxHeight="18rem">
+                        <Box
+                            background="surface-container"
+                            padding="medium"
+                            radius="medium"
+                        >
+                            {Array.from(
+                                { length: 12 },
+                                (_, i) => `Vertical scroll row ${i + 1}`,
+                            ).map((label) => (
+                                <Text key={label}>{label}</Text>
+                            ))}
+                        </Box>
+                    </ScrollArea>
+                    <ScrollArea orientation="horizontal">
+                        <Flex
+                            gap="medium"
+                            style={{
+                                width: 'max-content',
+                                paddingBottom: '1rem',
+                            }}
+                        >
+                            {Array.from(
+                                { length: 10 },
+                                (_, i) => `Card ${i + 1}`,
+                            ).map((label) => (
+                                <Box
+                                    background="surface-container-high"
+                                    key={label}
+                                    padding="large"
+                                    radius="medium"
+                                    style={{ whiteSpace: 'nowrap' }}
+                                >
+                                    {label}
+                                </Box>
+                            ))}
+                        </Flex>
+                    </ScrollArea>
+                </Grid>
             </section>
 
             <section

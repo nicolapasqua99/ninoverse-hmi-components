@@ -186,6 +186,11 @@ export {
     type RadioOption,
 } from './components/radioGroup';
 export {
+    ScrollArea,
+    type ScrollAreaOrientation,
+    type ScrollAreaProps,
+} from './components/scrollArea';
+export {
     SearchInput,
     type SearchInputProps,
 } from './components/searchInput';
@@ -266,5 +271,9 @@ export {
     type ValueScaleSelectorProps,
     type ValueScaleSelectorSize,
 } from './components/valueScaleSelector';
+export {
+    VisuallyHidden,
+    type VisuallyHiddenProps,
+} from './components/visuallyHidden';
 export { type ColorToken, colors } from './configs/colors';
 export { type FontToken, fonts, googleFontsHref } from './configs/fonts';

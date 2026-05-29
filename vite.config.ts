@@ -77,6 +77,7 @@ export default defineConfig({
                 progress: resolve(dirname, 'src/components/progress.tsx'),
                 radio: resolve(dirname, 'src/components/radio.tsx'),
                 radioGroup: resolve(dirname, 'src/components/radioGroup.tsx'),
+                scrollArea: resolve(dirname, 'src/components/scrollArea.tsx'),
                 searchInput: resolve(dirname, 'src/components/searchInput.tsx'),
                 segmentedControl: resolve(
                     dirname,
@@ -99,6 +100,10 @@ export default defineConfig({
                 valueScaleSelector: resolve(
                     dirname,
                     'src/components/valueScaleSelector.tsx',
+                ),
+                visuallyHidden: resolve(
+                    dirname,
+                    'src/components/visuallyHidden.tsx',
                 ),
             },
             formats: ['es'],

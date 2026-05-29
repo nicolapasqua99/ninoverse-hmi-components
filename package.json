@@ -183,6 +183,10 @@
             "types": "./dist/components/radioGroup.d.ts",
             "import": "./dist/radioGroup.js"
         },
+        "./scroll-area": {
+            "types": "./dist/components/scrollArea.d.ts",
+            "import": "./dist/scrollArea.js"
+        },
         "./search-input": {
             "types": "./dist/components/searchInput.d.ts",
             "import": "./dist/searchInput.js"
@@ -250,6 +254,10 @@
         "./value-scale-selector": {
             "types": "./dist/components/valueScaleSelector.d.ts",
             "import": "./dist/valueScaleSelector.js"
+        },
+        "./visually-hidden": {
+            "types": "./dist/components/visuallyHidden.d.ts",
+            "import": "./dist/visuallyHidden.js"
         },
         "./style.css": "./dist/style.css"
     },
