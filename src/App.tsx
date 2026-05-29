@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Accordion } from './components/accordion';
 import { Alert } from './components/alert';
+import { AspectRatio } from './components/aspectRatio';
 import { Avatar } from './components/avatar';
 import { AvatarStack } from './components/avatarStack';
 import { Badge } from './components/badge';
 import { Banner } from './components/banner';
+import { Box } from './components/box';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { Button } from './components/button';
 import { Card } from './components/card';
@@ -21,7 +23,9 @@ import { Divider } from './components/divider';
 import { Drawer } from './components/drawer';
 import { EmptyState } from './components/emptyState';
 import { FileUpload } from './components/fileUpload';
+import { Flex } from './components/flex';
 import { FormControl } from './components/formControl';
+import { Grid } from './components/grid';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
 import { List, type ListItem } from './components/list';
@@ -42,6 +46,7 @@ import { Select } from './components/select';
 import { Sidebar } from './components/sidebar';
 import { Skeleton } from './components/skeleton';
 import { Slider } from './components/slider';
+import { Spacer } from './components/spacer';
 import { Spinner } from './components/spinner';
 import { Stepper } from './components/stepper';
 import { Switch } from './components/switch';
@@ -187,6 +192,258 @@ export default function App() {
                 maxWidth: '120rem',
             }}
         >
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Box</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '2rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'flex-start',
+                    }}
+                >
+                    <Box
+                        background="surface-variant"
+                        padding="medium"
+                        radius="medium"
+                    >
+                        Surface variant
+                    </Box>
+                    <Box
+                        background="surface-container-high"
+                        padding="large"
+                        radius="leaf"
+                    >
+                        Container · leaf corners
+                    </Box>
+                    <Box bordered padding="medium" radius="medium">
+                        Bordered
+                    </Box>
+                    <Box
+                        background="surface-container"
+                        bordered
+                        padding="large"
+                        radius="full"
+                    >
+                        Pill
+                    </Box>
+                    <Box
+                        as="section"
+                        background="surface"
+                        bordered
+                        padding="small"
+                        radius="small"
+                    >
+                        as=&quot;section&quot;
+                    </Box>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Flex</h2>
+                <Flex gap="medium" wrap>
+                    <Box
+                        background="surface-variant"
+                        padding="medium"
+                        radius="medium"
+                    >
+                        Row
+                    </Box>
+                    <Box
+                        background="surface-variant"
+                        padding="medium"
+                        radius="medium"
+                    >
+                        with
+                    </Box>
+                    <Box
+                        background="surface-variant"
+                        padding="medium"
+                        radius="medium"
+                    >
+                        gap
+                    </Box>
+                </Flex>
+                <Flex align="center" gap="medium" justify="between">
+                    <Box
+                        background="surface-container-high"
+                        padding="small"
+                        radius="small"
+                    >
+                        space-between
+                    </Box>
+                    <Box
+                        background="surface-container-high"
+                        padding="large"
+                        radius="small"
+                    >
+                        align-center
+                    </Box>
+                    <Box
+                        background="surface-container-high"
+                        padding="small"
+                        radius="small"
+                    >
+                        end
+                    </Box>
+                </Flex>
+                <Flex direction="column" gap="small">
+                    <Box
+                        background="surface-container"
+                        padding="small"
+                        radius="small"
+                    >
+                        column
+                    </Box>
+                    <Box
+                        background="surface-container"
+                        padding="small"
+                        radius="small"
+                    >
+                        direction
+                    </Box>
+                </Flex>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Grid</h2>
+                <Grid columns={3} gap="medium">
+                    {['One', 'Two', 'Three', 'Four', 'Five', 'Six'].map(
+                        (label) => (
+                            <Box
+                                background="surface-variant"
+                                key={label}
+                                padding="medium"
+                                radius="medium"
+                            >
+                                {label}
+                            </Box>
+                        ),
+                    )}
+                </Grid>
+                <Grid columns="2fr 1fr" gap="medium">
+                    <Box
+                        background="surface-container-high"
+                        padding="large"
+                        radius="small"
+                    >
+                        2fr (main)
+                    </Box>
+                    <Box
+                        background="surface-container-high"
+                        padding="large"
+                        radius="small"
+                    >
+                        1fr (aside)
+                    </Box>
+                </Grid>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Spacer</h2>
+                <Box
+                    background="surface-variant"
+                    padding="medium"
+                    radius="medium"
+                >
+                    Above
+                    <Spacer size="large" />
+                    Below (vertical large spacer between)
+                </Box>
+                <Flex align="center">
+                    <Box
+                        background="surface-container-high"
+                        padding="small"
+                        radius="small"
+                    >
+                        Left
+                    </Box>
+                    <Spacer axis="horizontal" size="large" />
+                    <Box
+                        background="surface-container-high"
+                        padding="small"
+                        radius="small"
+                    >
+                        Right (horizontal spacer)
+                    </Box>
+                </Flex>
+                <Flex
+                    align="center"
+                    style={{
+                        background: 'var(--surface-container)',
+                        borderRadius: 'var(--corner-medium)',
+                        padding: '1rem 2rem',
+                    }}
+                >
+                    <span>Start</span>
+                    <Spacer grow />
+                    <span>End (pushed by grow spacer)</span>
+                </Flex>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>AspectRatio</h2>
+                <Grid columns={3} gap="medium">
+                    <AspectRatio
+                        ratio={16 / 9}
+                        style={{ borderRadius: 'var(--corner-medium)' }}
+                    >
+                        <Box
+                            background="surface-container-high"
+                            padding="medium"
+                        >
+                            16 / 9
+                        </Box>
+                    </AspectRatio>
+                    <AspectRatio
+                        ratio={1}
+                        style={{ borderRadius: 'var(--corner-medium)' }}
+                    >
+                        <Box background="surface-variant" padding="medium">
+                            1 / 1
+                        </Box>
+                    </AspectRatio>
+                    <AspectRatio
+                        ratio={4 / 3}
+                        style={{ borderRadius: 'var(--corner-medium)' }}
+                    >
+                        <Box background="surface-container" padding="medium">
+                            4 / 3
+                        </Box>
+                    </AspectRatio>
+                </Grid>
+            </section>
+
             <section
                 style={{
                     display: 'flex',

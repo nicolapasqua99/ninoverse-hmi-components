@@ -11,6 +11,10 @@ export {
     type AlertVariant,
 } from './components/alert';
 export {
+    AspectRatio,
+    type AspectRatioProps,
+} from './components/aspectRatio';
+export {
     Avatar,
     type AvatarProps,
     type AvatarSize,
@@ -30,6 +34,13 @@ export {
     type BannerProps,
     type BannerVariant,
 } from './components/banner';
+export {
+    Box,
+    type BoxBackground,
+    type BoxPadding,
+    type BoxProps,
+    type BoxRadius,
+} from './components/box';
 export {
     type BreadcrumbItem,
     Breadcrumbs,
@@ -88,9 +99,18 @@ export {
     type FileUploadProps,
 } from './components/fileUpload';
 export {
+    Flex,
+    type FlexAlign,
+    type FlexDirection,
+    type FlexGap,
+    type FlexJustify,
+    type FlexProps,
+} from './components/flex';
+export {
     FormControl,
     type FormControlProps,
 } from './components/formControl';
+export { Grid, type GridGap, type GridProps } from './components/grid';
 export { Input, type InputProps } from './components/input';
 export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
 export {
@@ -174,6 +194,12 @@ export {
     type SkeletonVariant,
 } from './components/skeleton';
 export { Slider, type SliderProps } from './components/slider';
+export {
+    Spacer,
+    type SpacerAxis,
+    type SpacerProps,
+    type SpacerSize,
+} from './components/spacer';
 export {
     Spinner,
     type SpinnerProps,

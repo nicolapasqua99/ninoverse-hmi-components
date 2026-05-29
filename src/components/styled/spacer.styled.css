@@ -1,0 +1,34 @@
+/* Spacer — inserts empty space between siblings. A fixed size applies on
+   the chosen axis (height for vertical, width for horizontal) using the
+   shared spacing scale; `grow` instead expands to fill free space in a
+   flex container, pushing neighbours apart. Purely presentational. */
+
+.spacer {
+    display: block;
+    flex: 0 0 auto;
+}
+
+.spacer--grow {
+    flex: 1 1 0;
+    align-self: stretch;
+}
+
+.spacer--v-small {
+    height: 1rem;
+}
+.spacer--v-medium {
+    height: 2rem;
+}
+.spacer--v-large {
+    height: 3rem;
+}
+
+.spacer--h-small {
+    width: 1rem;
+}
+.spacer--h-medium {
+    width: 2rem;
+}
+.spacer--h-large {
+    width: 3rem;
+}
