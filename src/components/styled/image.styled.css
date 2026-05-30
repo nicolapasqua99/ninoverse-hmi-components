@@ -1,0 +1,88 @@
+/* Image — wrapper around a single <img> that reserves space (optional
+   aspect-ratio / explicit size), masks loading with a shimmer, applies
+   object-fit + token-based rounding, and swaps to a fallback on error.
+   The wrapper is the positioning context; the img and overlays fill it. */
+
+.image {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    background: var(--surface-container-highest);
+}
+
+.image__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity var(--duration-short-4) var(--easing-standard);
+}
+
+.image[data-status="loading"] .image__img {
+    opacity: 0;
+}
+
+.image__loader {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        var(--surface-container-high) 0%,
+        var(--surface-container-highest) 50%,
+        var(--surface-container-high) 100%
+    );
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: image-shimmer 1400ms linear infinite;
+}
+
+@keyframes image-shimmer {
+    to {
+        background-position: -100% 0;
+    }
+}
+
+.image__fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--on-surface-variant);
+}
+
+.image__fallback svg {
+    width: 30%;
+    max-width: 6rem;
+    min-width: 3rem;
+    height: auto;
+}
+
+.image--radius-none {
+    border-radius: 0;
+}
+
+.image--radius-small {
+    border-radius: var(--corner-small);
+}
+
+.image--radius-medium {
+    border-radius: var(--corner-medium);
+}
+
+.image--radius-large {
+    border-radius: var(--corner-large);
+}
+
+.image--radius-full {
+    border-radius: var(--corner-full);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .image__img {
+        transition: none;
+    }
+    .image__loader {
+        animation-duration: 4200ms;
+    }
+}

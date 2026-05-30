@@ -32,6 +32,7 @@ import { FormControl } from './components/formControl';
 import { Grid } from './components/grid';
 import { Heading } from './components/heading';
 import { HoverCard } from './components/hoverCard';
+import { Image } from './components/image';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
 import { Link } from './components/link';
@@ -109,6 +110,10 @@ export default function App() {
     const [lastMenuAction, setLastMenuAction] = useState<string>('none');
     const [ctxAction, setCtxAction] = useState<string>('none');
     const [treeSelected, setTreeSelected] = useState<string>('button.tsx');
+    const sampleImage =
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='360'%3E%3Crect width='480' height='360' fill='%23e87a5d'/%3E%3Ctext x='240' y='195' font-size='44' text-anchor='middle' fill='white' font-family='sans-serif'%3ENinoverse%3C/text%3E%3C/svg%3E";
+    const sampleImageTall =
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='420'%3E%3Crect width='300' height='420' fill='%231f5b58'/%3E%3Ctext x='150' y='220' font-size='40' text-anchor='middle' fill='white' font-family='sans-serif'%3EHMI%3C/text%3E%3C/svg%3E";
     const [framework, setFramework] = useState<
         'react' | 'vue' | 'svelte' | 'solid'
     >('react');
@@ -1883,6 +1888,55 @@ export function Example() {
                     >
                         Selected: <strong>{treeSelected}</strong>
                     </span>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Image</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '3rem',
+                        flexWrap: 'wrap',
+                        alignItems: 'flex-start',
+                        paddingBottom: '24rem',
+                    }}
+                >
+                    <Image
+                        src={sampleImage}
+                        alt="Ninoverse cover"
+                        ratio={4 / 3}
+                        width={280}
+                        radius="large"
+                    />
+                    <Image
+                        src={sampleImageTall}
+                        alt="HMI poster, contained"
+                        ratio={4 / 3}
+                        width={280}
+                        fit="contain"
+                        radius="medium"
+                    />
+                    <Image
+                        src={sampleImage}
+                        alt="Circular crop"
+                        width={180}
+                        height={180}
+                        radius="full"
+                    />
+                    <Image
+                        src="/this-image-does-not-exist.png"
+                        alt="Missing image"
+                        ratio={4 / 3}
+                        width={280}
+                        radius="large"
+                    />
                 </div>
             </section>
 

@@ -135,6 +135,10 @@
             "types": "./dist/components/hoverCard.d.ts",
             "import": "./dist/hoverCard.js"
         },
+        "./image": {
+            "types": "./dist/components/image.d.ts",
+            "import": "./dist/image.js"
+        },
         "./input": {
             "types": "./dist/components/input.d.ts",
             "import": "./dist/input.js"

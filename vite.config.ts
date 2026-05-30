@@ -62,6 +62,7 @@ export default defineConfig({
                 grid: resolve(dirname, 'src/components/grid.tsx'),
                 heading: resolve(dirname, 'src/components/heading.tsx'),
                 hoverCard: resolve(dirname, 'src/components/hoverCard.tsx'),
+                image: resolve(dirname, 'src/components/image.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 kbd: resolve(dirname, 'src/components/kbd.tsx'),
                 link: resolve(dirname, 'src/components/link.tsx'),
