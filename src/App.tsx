@@ -50,6 +50,7 @@ import { Popover } from './components/popover';
 import { Progress } from './components/progress';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
+import { ResponsiveContainer } from './components/responsiveContainer';
 import { ScrollArea } from './components/scrollArea';
 import { SearchInput } from './components/searchInput';
 import { SegmentedControl } from './components/segmentedControl';
@@ -2075,6 +2076,52 @@ export function Example() {
                         helpText="flat week over week"
                     />
                     <Stat label="Open tickets" value="37" />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>
+                    Chart primitives
+                </h2>
+                <div style={{ maxWidth: '70rem', paddingBottom: '24rem' }}>
+                    <ResponsiveContainer height={160}>
+                        {({ width, height }) => (
+                            <svg
+                                width={width}
+                                height={height}
+                                role="img"
+                                aria-label={`Measured ${Math.round(width)} by ${Math.round(height)} pixels`}
+                            >
+                                <rect
+                                    x={0}
+                                    y={0}
+                                    width={width}
+                                    height={height}
+                                    rx={12}
+                                    fill="var(--surface-container-high)"
+                                    stroke="var(--outline-variant)"
+                                />
+                                <text
+                                    x={width / 2}
+                                    y={height / 2}
+                                    textAnchor="middle"
+                                    dominantBaseline="middle"
+                                    fill="var(--on-surface-variant)"
+                                    fontSize={20}
+                                    fontFamily="var(--font-oxanium)"
+                                >
+                                    {Math.round(width)} × {Math.round(height)}{' '}
+                                    px
+                                </text>
+                            </svg>
+                        )}
+                    </ResponsiveContainer>
                 </div>
             </section>
 

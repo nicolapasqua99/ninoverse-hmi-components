@@ -208,6 +208,11 @@ export {
     type RadioOption,
 } from './components/radioGroup';
 export {
+    ResponsiveContainer,
+    type ResponsiveContainerProps,
+    type ResponsiveContainerSize,
+} from './components/responsiveContainer';
+export {
     ScrollArea,
     type ScrollAreaOrientation,
     type ScrollAreaProps,

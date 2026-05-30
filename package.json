@@ -207,6 +207,10 @@
             "types": "./dist/components/radioGroup.d.ts",
             "import": "./dist/radioGroup.js"
         },
+        "./responsive-container": {
+            "types": "./dist/components/responsiveContainer.d.ts",
+            "import": "./dist/responsiveContainer.js"
+        },
         "./scroll-area": {
             "types": "./dist/components/scrollArea.d.ts",
             "import": "./dist/scrollArea.js"
