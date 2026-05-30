@@ -63,6 +63,10 @@
             "types": "./dist/components/card.d.ts",
             "import": "./dist/card.js"
         },
+        "./carousel": {
+            "types": "./dist/components/carousel.d.ts",
+            "import": "./dist/carousel.js"
+        },
         "./checkbox": {
             "types": "./dist/components/checkbox.d.ts",
             "import": "./dist/checkbox.js"

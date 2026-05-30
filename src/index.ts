@@ -61,6 +61,7 @@ export {
     type CardProps,
     type CardVariant,
 } from './components/card';
+export { Carousel, type CarouselProps } from './components/carousel';
 export { Checkbox, type CheckboxProps } from './components/checkbox';
 export { Chip, type ChipProps } from './components/chip';
 export { Code, type CodeProps } from './components/code';

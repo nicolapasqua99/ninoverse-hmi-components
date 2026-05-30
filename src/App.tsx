@@ -11,6 +11,7 @@ import { Box } from './components/box';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { Button } from './components/button';
 import { Card } from './components/card';
+import { Carousel } from './components/carousel';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
 import { Code } from './components/code';
@@ -1936,6 +1937,51 @@ export function Example() {
                         ratio={4 / 3}
                         width={280}
                         radius="large"
+                    />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Carousel</h2>
+                <div style={{ maxWidth: '60rem', paddingBottom: '24rem' }}>
+                    <Carousel
+                        aria-label="Highlights"
+                        slides={[
+                            <Image
+                                key="a"
+                                src={sampleImage}
+                                alt="Ninoverse cover"
+                                ratio={16 / 9}
+                            />,
+                            <div
+                                key="b"
+                                style={{
+                                    aspectRatio: '16 / 9',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    background: 'var(--secondary-container)',
+                                    color: 'var(--on-secondary-container)',
+                                    fontSize: '3rem',
+                                    fontWeight: 600,
+                                }}
+                            >
+                                Rich slide content
+                            </div>,
+                            <Image
+                                key="c"
+                                src={sampleImageTall}
+                                alt="HMI poster"
+                                ratio={16 / 9}
+                                fit="contain"
+                            />,
+                        ]}
                     />
                 </div>
             </section>
