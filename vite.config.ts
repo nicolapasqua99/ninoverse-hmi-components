@@ -70,6 +70,7 @@ export default defineConfig({
                 image: resolve(dirname, 'src/components/image.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 kbd: resolve(dirname, 'src/components/kbd.tsx'),
+                legend: resolve(dirname, 'src/components/legend.tsx'),
                 link: resolve(dirname, 'src/components/link.tsx'),
                 list: resolve(dirname, 'src/components/list.tsx'),
                 menu: resolve(dirname, 'src/components/menu.tsx'),

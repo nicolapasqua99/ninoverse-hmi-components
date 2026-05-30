@@ -155,6 +155,10 @@
             "types": "./dist/components/kbd.d.ts",
             "import": "./dist/kbd.js"
         },
+        "./legend": {
+            "types": "./dist/components/legend.d.ts",
+            "import": "./dist/legend.js"
+        },
         "./link": {
             "types": "./dist/components/link.d.ts",
             "import": "./dist/link.js"

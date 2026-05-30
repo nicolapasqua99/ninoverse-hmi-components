@@ -151,6 +151,12 @@ export {
 export { Input, type InputProps } from './components/input';
 export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
 export {
+    Legend,
+    type LegendAlign,
+    type LegendItem,
+    type LegendProps,
+} from './components/legend';
+export {
     Link,
     type LinkProps,
     type LinkTone,

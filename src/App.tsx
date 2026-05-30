@@ -37,6 +37,7 @@ import { HoverCard } from './components/hoverCard';
 import { Image } from './components/image';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
+import { Legend } from './components/legend';
 import { Link } from './components/link';
 import { List, type ListItem } from './components/list';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
@@ -2130,6 +2131,20 @@ export function Example() {
                             </svg>
                         )}
                     </ResponsiveContainer>
+                    <div style={{ marginTop: '2rem' }}>
+                        <Legend
+                            align="start"
+                            items={[
+                                { label: 'Revenue', color: 'var(--primary)' },
+                                { label: 'Costs', color: 'var(--tertiary)' },
+                                {
+                                    label: 'Forecast',
+                                    color: 'var(--secondary)',
+                                    inactive: true,
+                                },
+                            ]}
+                        />
+                    </div>
                 </div>
             </section>
 
