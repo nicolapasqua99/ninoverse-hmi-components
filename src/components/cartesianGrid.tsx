@@ -41,7 +41,7 @@ export function CartesianGrid({
         : [];
 
     return (
-        <g className="cartesian-grid" aria-hidden="true">
+        <g className="cartesian-grid">
             {hLines.map((y) => (
                 <line
                     key={`h-${y}`}

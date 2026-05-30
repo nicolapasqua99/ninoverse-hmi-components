@@ -11,7 +11,7 @@ export type LegendItem = {
 
 export type LegendAlign = 'start' | 'center' | 'end';
 
-export type LegendProps = HTMLAttributes<HTMLDivElement> & {
+export type LegendProps = HTMLAttributes<HTMLUListElement> & {
     items: ReadonlyArray<LegendItem>;
     align?: LegendAlign;
 };
