@@ -62,6 +62,15 @@ export {
     type CardVariant,
 } from './components/card';
 export { Carousel, type CarouselProps } from './components/carousel';
+export {
+    CartesianGrid,
+    type CartesianGridProps,
+} from './components/cartesianGrid';
+export {
+    ChartTooltip,
+    type ChartTooltipItem,
+    type ChartTooltipProps,
+} from './components/chartTooltip';
 export { Checkbox, type CheckboxProps } from './components/checkbox';
 export { Chip, type ChipProps } from './components/chip';
 export { Code, type CodeProps } from './components/code';
@@ -147,6 +156,12 @@ export {
 export { Input, type InputProps } from './components/input';
 export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
 export {
+    Legend,
+    type LegendAlign,
+    type LegendItem,
+    type LegendProps,
+} from './components/legend';
+export {
     Link,
     type LinkProps,
     type LinkTone,
@@ -207,6 +222,11 @@ export {
     type RadioGroupProps,
     type RadioOption,
 } from './components/radioGroup';
+export {
+    ResponsiveContainer,
+    type ResponsiveContainerProps,
+    type ResponsiveContainerSize,
+} from './components/responsiveContainer';
 export {
     ScrollArea,
     type ScrollAreaOrientation,

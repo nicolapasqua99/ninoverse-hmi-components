@@ -1,0 +1,9 @@
+/* CartesianGrid — evenly spaced grid lines for a chart plot area.
+   Rendered as SVG <line>s inside a chart's <svg>. Stroke must come from a
+   CSS class (SVG presentation attributes can't resolve CSS custom
+   properties), so the colour lives here. */
+
+.cartesian-grid__line {
+    stroke: var(--outline-variant);
+    stroke-width: 1;
+}

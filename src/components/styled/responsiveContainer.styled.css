@@ -1,0 +1,8 @@
+/* ResponsiveContainer — a full-width block that reports its measured
+   pixel size to a render-prop child. Height is either fixed or derived
+   from an aspect ratio against the measured width. */
+
+.responsive-container {
+    position: relative;
+    width: 100%;
+}

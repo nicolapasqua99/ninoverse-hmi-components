@@ -39,6 +39,14 @@ export default defineConfig({
                 button: resolve(dirname, 'src/components/button.tsx'),
                 card: resolve(dirname, 'src/components/card.tsx'),
                 carousel: resolve(dirname, 'src/components/carousel.tsx'),
+                cartesianGrid: resolve(
+                    dirname,
+                    'src/components/cartesianGrid.tsx',
+                ),
+                chartTooltip: resolve(
+                    dirname,
+                    'src/components/chartTooltip.tsx',
+                ),
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
                 chip: resolve(dirname, 'src/components/chip.tsx'),
                 code: resolve(dirname, 'src/components/code.tsx'),
@@ -66,6 +74,7 @@ export default defineConfig({
                 image: resolve(dirname, 'src/components/image.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),
                 kbd: resolve(dirname, 'src/components/kbd.tsx'),
+                legend: resolve(dirname, 'src/components/legend.tsx'),
                 link: resolve(dirname, 'src/components/link.tsx'),
                 list: resolve(dirname, 'src/components/list.tsx'),
                 menu: resolve(dirname, 'src/components/menu.tsx'),
@@ -83,6 +92,10 @@ export default defineConfig({
                 progress: resolve(dirname, 'src/components/progress.tsx'),
                 radio: resolve(dirname, 'src/components/radio.tsx'),
                 radioGroup: resolve(dirname, 'src/components/radioGroup.tsx'),
+                responsiveContainer: resolve(
+                    dirname,
+                    'src/components/responsiveContainer.tsx',
+                ),
                 scrollArea: resolve(dirname, 'src/components/scrollArea.tsx'),
                 searchInput: resolve(dirname, 'src/components/searchInput.tsx'),
                 segmentedControl: resolve(

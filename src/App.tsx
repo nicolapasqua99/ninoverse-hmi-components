@@ -12,6 +12,8 @@ import { Breadcrumbs } from './components/breadcrumbs';
 import { Button } from './components/button';
 import { Card } from './components/card';
 import { Carousel } from './components/carousel';
+import { CartesianGrid } from './components/cartesianGrid';
+import { ChartTooltip } from './components/chartTooltip';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
 import { Code } from './components/code';
@@ -36,6 +38,7 @@ import { HoverCard } from './components/hoverCard';
 import { Image } from './components/image';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
+import { Legend } from './components/legend';
 import { Link } from './components/link';
 import { List, type ListItem } from './components/list';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
@@ -50,6 +53,7 @@ import { Popover } from './components/popover';
 import { Progress } from './components/progress';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
+import { ResponsiveContainer } from './components/responsiveContainer';
 import { ScrollArea } from './components/scrollArea';
 import { SearchInput } from './components/searchInput';
 import { SegmentedControl } from './components/segmentedControl';
@@ -2075,6 +2079,90 @@ export function Example() {
                         helpText="flat week over week"
                     />
                     <Stat label="Open tickets" value="37" />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>
+                    Chart primitives
+                </h2>
+                <div style={{ maxWidth: '70rem', paddingBottom: '24rem' }}>
+                    <ResponsiveContainer height={160}>
+                        {({ width, height }) => (
+                            <svg
+                                width={width}
+                                height={height}
+                                role="img"
+                                aria-label={`Measured ${Math.round(width)} by ${Math.round(height)} pixels`}
+                            >
+                                <rect
+                                    x={0}
+                                    y={0}
+                                    width={width}
+                                    height={height}
+                                    rx={12}
+                                    fill="var(--surface-container-high)"
+                                    stroke="var(--outline-variant)"
+                                />
+                                <CartesianGrid
+                                    width={width}
+                                    height={height}
+                                    rows={4}
+                                    cols={6}
+                                    padding={16}
+                                />
+                                <text
+                                    x={width / 2}
+                                    y={height / 2}
+                                    textAnchor="middle"
+                                    dominantBaseline="middle"
+                                    fill="var(--on-surface-variant)"
+                                    fontSize={20}
+                                    fontFamily="var(--font-oxanium)"
+                                >
+                                    {Math.round(width)} × {Math.round(height)}{' '}
+                                    px
+                                </text>
+                            </svg>
+                        )}
+                    </ResponsiveContainer>
+                    <div style={{ marginTop: '2rem' }}>
+                        <Legend
+                            align="start"
+                            items={[
+                                { label: 'Revenue', color: 'var(--primary)' },
+                                { label: 'Costs', color: 'var(--tertiary)' },
+                                {
+                                    label: 'Forecast',
+                                    color: 'var(--secondary)',
+                                    inactive: true,
+                                },
+                            ]}
+                        />
+                    </div>
+                    <div style={{ marginTop: '2rem' }}>
+                        <ChartTooltip
+                            title="Jan 2026"
+                            items={[
+                                {
+                                    label: 'Revenue',
+                                    value: '$48.2k',
+                                    color: 'var(--primary)',
+                                },
+                                {
+                                    label: 'Costs',
+                                    value: '$31.7k',
+                                    color: 'var(--tertiary)',
+                                },
+                            ]}
+                        />
+                    </div>
                 </div>
             </section>
 

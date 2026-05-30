@@ -67,6 +67,14 @@
             "types": "./dist/components/carousel.d.ts",
             "import": "./dist/carousel.js"
         },
+        "./cartesian-grid": {
+            "types": "./dist/components/cartesianGrid.d.ts",
+            "import": "./dist/cartesianGrid.js"
+        },
+        "./chart-tooltip": {
+            "types": "./dist/components/chartTooltip.d.ts",
+            "import": "./dist/chartTooltip.js"
+        },
         "./checkbox": {
             "types": "./dist/components/checkbox.d.ts",
             "import": "./dist/checkbox.js"
@@ -151,6 +159,10 @@
             "types": "./dist/components/kbd.d.ts",
             "import": "./dist/kbd.js"
         },
+        "./legend": {
+            "types": "./dist/components/legend.d.ts",
+            "import": "./dist/legend.js"
+        },
         "./link": {
             "types": "./dist/components/link.d.ts",
             "import": "./dist/link.js"
@@ -206,6 +218,10 @@
         "./radio-group": {
             "types": "./dist/components/radioGroup.d.ts",
             "import": "./dist/radioGroup.js"
+        },
+        "./responsive-container": {
+            "types": "./dist/components/responsiveContainer.d.ts",
+            "import": "./dist/responsiveContainer.js"
         },
         "./scroll-area": {
             "types": "./dist/components/scrollArea.d.ts",
