@@ -43,6 +43,10 @@
             "types": "./dist/components/banner.d.ts",
             "import": "./dist/banner.js"
         },
+        "./bar-chart": {
+            "types": "./dist/components/barChart.d.ts",
+            "import": "./dist/barChart.js"
+        },
         "./blockquote": {
             "types": "./dist/components/blockquote.d.ts",
             "import": "./dist/blockquote.js"

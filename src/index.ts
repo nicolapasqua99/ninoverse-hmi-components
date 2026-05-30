@@ -35,6 +35,11 @@ export {
     type BannerVariant,
 } from './components/banner';
 export {
+    BarChart,
+    type BarChartProps,
+    type BarChartSeries,
+} from './components/barChart';
+export {
     Blockquote,
     type BlockquoteProps,
 } from './components/blockquote';

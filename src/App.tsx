@@ -6,6 +6,7 @@ import { Avatar } from './components/avatar';
 import { AvatarStack } from './components/avatarStack';
 import { Badge } from './components/badge';
 import { Banner } from './components/banner';
+import { BarChart } from './components/barChart';
 import { Blockquote } from './components/blockquote';
 import { Box } from './components/box';
 import { Breadcrumbs } from './components/breadcrumbs';
@@ -2232,6 +2233,48 @@ export function Example() {
                             items={[
                                 { label: 'Revenue', color: 'var(--primary)' },
                                 { label: 'Costs', color: 'var(--tertiary)' },
+                            ]}
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>BarChart</h2>
+                <div style={{ paddingBottom: '4rem' }}>
+                    <BarChart
+                        aria-label="Quarterly units by product"
+                        width={560}
+                        height={280}
+                        labels={['Q1', 'Q2', 'Q3', 'Q4']}
+                        series={[
+                            {
+                                name: 'Product A',
+                                data: [42, 55, 48, 63],
+                                color: 'var(--primary)',
+                            },
+                            {
+                                name: 'Product B',
+                                data: [30, 38, 44, 40],
+                                color: 'var(--tertiary)',
+                            },
+                        ]}
+                    />
+                    <div style={{ marginTop: '1rem' }}>
+                        <Legend
+                            align="start"
+                            items={[
+                                { label: 'Product A', color: 'var(--primary)' },
+                                {
+                                    label: 'Product B',
+                                    color: 'var(--tertiary)',
+                                },
                             ]}
                         />
                     </div>
