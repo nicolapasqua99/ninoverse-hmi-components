@@ -162,6 +162,11 @@ export {
     type LegendProps,
 } from './components/legend';
 export {
+    LineChart,
+    type LineChartProps,
+    type LineChartSeries,
+} from './components/lineChart';
+export {
     Link,
     type LinkProps,
     type LinkTone,

@@ -75,6 +75,7 @@ export default defineConfig({
                 input: resolve(dirname, 'src/components/input.tsx'),
                 kbd: resolve(dirname, 'src/components/kbd.tsx'),
                 legend: resolve(dirname, 'src/components/legend.tsx'),
+                lineChart: resolve(dirname, 'src/components/lineChart.tsx'),
                 link: resolve(dirname, 'src/components/link.tsx'),
                 list: resolve(dirname, 'src/components/list.tsx'),
                 menu: resolve(dirname, 'src/components/menu.tsx'),

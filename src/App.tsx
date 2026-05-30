@@ -39,6 +39,7 @@ import { Image } from './components/image';
 import { Input } from './components/input';
 import { Kbd } from './components/kbd';
 import { Legend } from './components/legend';
+import { LineChart } from './components/lineChart';
 import { Link } from './components/link';
 import { List, type ListItem } from './components/list';
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from './components/menu';
@@ -2192,6 +2193,46 @@ export function Example() {
                             strokeWidth={3}
                             area
                             aria-label="Flat trend, larger"
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>LineChart</h2>
+                <div style={{ paddingBottom: '4rem' }}>
+                    <LineChart
+                        aria-label="Monthly revenue and costs"
+                        width={560}
+                        height={280}
+                        showDots
+                        labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']}
+                        series={[
+                            {
+                                name: 'Revenue',
+                                data: [32, 40, 38, 50, 47, 60],
+                                color: 'var(--primary)',
+                            },
+                            {
+                                name: 'Costs',
+                                data: [28, 30, 33, 31, 36, 38],
+                                color: 'var(--tertiary)',
+                            },
+                        ]}
+                    />
+                    <div style={{ marginTop: '1rem' }}>
+                        <Legend
+                            align="start"
+                            items={[
+                                { label: 'Revenue', color: 'var(--primary)' },
+                                { label: 'Costs', color: 'var(--tertiary)' },
+                            ]}
                         />
                     </div>
                 </div>
