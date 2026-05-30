@@ -59,6 +59,7 @@ import { Skeleton } from './components/skeleton';
 import { Slider } from './components/slider';
 import { Spacer } from './components/spacer';
 import { Spinner } from './components/spinner';
+import { Stat } from './components/stat';
 import { Stepper } from './components/stepper';
 import { Switch } from './components/switch';
 import { Table } from './components/table';
@@ -2032,6 +2033,48 @@ export function Example() {
                             },
                         ]}
                     />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Stat</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns:
+                            'repeat(auto-fit, minmax(28rem, 1fr))',
+                        gap: '2rem',
+                        paddingBottom: '24rem',
+                    }}
+                >
+                    <Stat
+                        label="Revenue"
+                        value="$48.2k"
+                        trend="up"
+                        delta="12.5%"
+                        helpText="vs last month"
+                    />
+                    <Stat
+                        label="Churn"
+                        value="2.4%"
+                        trend="down"
+                        delta="0.8%"
+                        helpText="vs last month"
+                    />
+                    <Stat
+                        label="Active users"
+                        value="1,284"
+                        trend="neutral"
+                        delta="0.0%"
+                        helpText="flat week over week"
+                    />
+                    <Stat label="Open tickets" value="37" />
                 </div>
             </section>
 

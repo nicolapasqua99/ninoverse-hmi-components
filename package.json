@@ -243,6 +243,10 @@
             "types": "./dist/components/spinner.d.ts",
             "import": "./dist/spinner.js"
         },
+        "./stat": {
+            "types": "./dist/components/stat.d.ts",
+            "import": "./dist/stat.js"
+        },
         "./stepper": {
             "types": "./dist/components/stepper.d.ts",
             "import": "./dist/stepper.js"
