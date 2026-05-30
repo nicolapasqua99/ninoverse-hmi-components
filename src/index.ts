@@ -137,6 +137,12 @@ export {
     type HoverCardProps,
     type HoverCardSide,
 } from './components/hoverCard';
+export {
+    Image,
+    type ImageFit,
+    type ImageProps,
+    type ImageRadius,
+} from './components/image';
 export { Input, type InputProps } from './components/input';
 export { Kbd, type KbdProps, type KbdSize } from './components/kbd';
 export {
