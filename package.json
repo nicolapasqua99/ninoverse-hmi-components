@@ -67,6 +67,10 @@
             "types": "./dist/components/carousel.d.ts",
             "import": "./dist/carousel.js"
         },
+        "./cartesian-grid": {
+            "types": "./dist/components/cartesianGrid.d.ts",
+            "import": "./dist/cartesianGrid.js"
+        },
         "./checkbox": {
             "types": "./dist/components/checkbox.d.ts",
             "import": "./dist/checkbox.js"

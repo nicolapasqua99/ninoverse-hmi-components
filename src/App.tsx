@@ -12,6 +12,7 @@ import { Breadcrumbs } from './components/breadcrumbs';
 import { Button } from './components/button';
 import { Card } from './components/card';
 import { Carousel } from './components/carousel';
+import { CartesianGrid } from './components/cartesianGrid';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
 import { Code } from './components/code';
@@ -2106,6 +2107,13 @@ export function Example() {
                                     rx={12}
                                     fill="var(--surface-container-high)"
                                     stroke="var(--outline-variant)"
+                                />
+                                <CartesianGrid
+                                    width={width}
+                                    height={height}
+                                    rows={4}
+                                    cols={6}
+                                    padding={16}
                                 />
                                 <text
                                     x={width / 2}

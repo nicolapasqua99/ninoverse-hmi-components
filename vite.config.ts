@@ -39,6 +39,10 @@ export default defineConfig({
                 button: resolve(dirname, 'src/components/button.tsx'),
                 card: resolve(dirname, 'src/components/card.tsx'),
                 carousel: resolve(dirname, 'src/components/carousel.tsx'),
+                cartesianGrid: resolve(
+                    dirname,
+                    'src/components/cartesianGrid.tsx',
+                ),
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
                 chip: resolve(dirname, 'src/components/chip.tsx'),
                 code: resolve(dirname, 'src/components/code.tsx'),
