@@ -1,0 +1,84 @@
+/* Stat — a single KPI block: a label + optional icon header, a large
+   value, and an optional footer carrying a colored trend delta and/or
+   help text. Self-contained surface so it can sit alone or be tiled in
+   a Grid. */
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 2rem 2.25rem;
+    background: var(--surface-container-low);
+    border: 0.125rem solid var(--outline-variant);
+    border-radius: var(--corner-tl) var(--corner-tr) var(--corner-br)
+        var(--corner-bl);
+    font-family: var(--font-quicksand);
+}
+
+.stat__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.stat__label {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+}
+
+.stat__icon {
+    display: inline-flex;
+    flex: none;
+    color: var(--on-surface-variant);
+}
+
+.stat__icon svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.stat__value {
+    font-family: var(--font-oxanium);
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--on-background);
+}
+
+.stat__footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+}
+
+.stat__delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.625rem;
+    font-weight: 600;
+    color: var(--on-surface-variant);
+}
+
+.stat__delta svg {
+    width: 1.625rem;
+    height: 1.625rem;
+}
+
+.stat__delta[data-trend="up"] {
+    color: var(--success);
+}
+
+.stat__delta[data-trend="down"] {
+    color: var(--error);
+}
+
+.stat__help {
+    font-size: 1.5rem;
+    color: var(--on-surface-variant);
+}

@@ -63,6 +63,10 @@
             "types": "./dist/components/card.d.ts",
             "import": "./dist/card.js"
         },
+        "./carousel": {
+            "types": "./dist/components/carousel.d.ts",
+            "import": "./dist/carousel.js"
+        },
         "./checkbox": {
             "types": "./dist/components/checkbox.d.ts",
             "import": "./dist/checkbox.js"
@@ -239,6 +243,10 @@
             "types": "./dist/components/spinner.d.ts",
             "import": "./dist/spinner.js"
         },
+        "./stat": {
+            "types": "./dist/components/stat.d.ts",
+            "import": "./dist/stat.js"
+        },
         "./stepper": {
             "types": "./dist/components/stepper.d.ts",
             "import": "./dist/stepper.js"
@@ -262,6 +270,10 @@
         "./textarea": {
             "types": "./dist/components/textarea.d.ts",
             "import": "./dist/textarea.js"
+        },
+        "./timeline": {
+            "types": "./dist/components/timeline.d.ts",
+            "import": "./dist/timeline.js"
         },
         "./toast": {
             "types": "./dist/components/toast.d.ts",

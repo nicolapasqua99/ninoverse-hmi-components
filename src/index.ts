@@ -61,6 +61,7 @@ export {
     type CardProps,
     type CardVariant,
 } from './components/card';
+export { Carousel, type CarouselProps } from './components/carousel';
 export { Checkbox, type CheckboxProps } from './components/checkbox';
 export { Chip, type ChipProps } from './components/chip';
 export { Code, type CodeProps } from './components/code';
@@ -250,6 +251,11 @@ export {
     type SpinnerSize,
 } from './components/spinner';
 export {
+    Stat,
+    type StatProps,
+    type StatTrend,
+} from './components/stat';
+export {
     Stepper,
     type StepperItem,
     type StepperOrientation,
@@ -276,6 +282,12 @@ export {
     type TextWeight,
 } from './components/text';
 export { Textarea, type TextareaProps } from './components/textarea';
+export {
+    Timeline,
+    type TimelineColor,
+    type TimelineItem,
+    type TimelineProps,
+} from './components/timeline';
 export {
     ToastHost,
     type ToastOptions,

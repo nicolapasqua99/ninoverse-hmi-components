@@ -11,6 +11,7 @@ import { Box } from './components/box';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { Button } from './components/button';
 import { Card } from './components/card';
+import { Carousel } from './components/carousel';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
 import { Code } from './components/code';
@@ -58,12 +59,14 @@ import { Skeleton } from './components/skeleton';
 import { Slider } from './components/slider';
 import { Spacer } from './components/spacer';
 import { Spinner } from './components/spinner';
+import { Stat } from './components/stat';
 import { Stepper } from './components/stepper';
 import { Switch } from './components/switch';
 import { Table } from './components/table';
 import { Tabs } from './components/tabs';
 import { Text } from './components/text';
 import { Textarea } from './components/textarea';
+import { Timeline } from './components/timeline';
 import { ToastHost, toast } from './components/toast';
 import { Tooltip } from './components/tooltip';
 import { Tree, type TreeNode } from './components/tree';
@@ -1937,6 +1940,141 @@ export function Example() {
                         width={280}
                         radius="large"
                     />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Carousel</h2>
+                <div style={{ maxWidth: '60rem', paddingBottom: '24rem' }}>
+                    <Carousel
+                        aria-label="Highlights"
+                        slides={[
+                            <Image
+                                key="a"
+                                src={sampleImage}
+                                alt="Ninoverse cover"
+                                ratio={16 / 9}
+                            />,
+                            <div
+                                key="b"
+                                style={{
+                                    aspectRatio: '16 / 9',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    background: 'var(--secondary-container)',
+                                    color: 'var(--on-secondary-container)',
+                                    fontSize: '3rem',
+                                    fontWeight: 600,
+                                }}
+                            >
+                                Rich slide content
+                            </div>,
+                            <Image
+                                key="c"
+                                src={sampleImageTall}
+                                alt="HMI poster"
+                                ratio={16 / 9}
+                                fit="contain"
+                            />,
+                        ]}
+                    />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Timeline</h2>
+                <div style={{ maxWidth: '60rem', paddingBottom: '24rem' }}>
+                    <Timeline
+                        items={[
+                            {
+                                title: 'Project created',
+                                time: '09:24',
+                                description:
+                                    'Repository scaffolded and first commit pushed.',
+                                color: 'primary',
+                            },
+                            {
+                                title: 'CI pipeline green',
+                                time: '10:02',
+                                description:
+                                    'Lint, build, and tests all passing.',
+                                color: 'success',
+                            },
+                            {
+                                title: 'Flaky test detected',
+                                time: '11:47',
+                                description:
+                                    'Intermittent failure in the carousel autoplay spec.',
+                                color: 'warning',
+                            },
+                            {
+                                title: 'Deploy rolled back',
+                                time: '12:15',
+                                description:
+                                    'Production deploy reverted after error spike.',
+                                color: 'error',
+                            },
+                            {
+                                title: 'Awaiting review',
+                                time: '13:30',
+                            },
+                        ]}
+                    />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Stat</h2>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns:
+                            'repeat(auto-fit, minmax(28rem, 1fr))',
+                        gap: '2rem',
+                        paddingBottom: '24rem',
+                    }}
+                >
+                    <Stat
+                        label="Revenue"
+                        value="$48.2k"
+                        trend="up"
+                        delta="12.5%"
+                        helpText="vs last month"
+                    />
+                    <Stat
+                        label="Churn"
+                        value="2.4%"
+                        trend="down"
+                        delta="0.8%"
+                        helpText="vs last month"
+                    />
+                    <Stat
+                        label="Active users"
+                        value="1,284"
+                        trend="neutral"
+                        delta="0.0%"
+                        helpText="flat week over week"
+                    />
+                    <Stat label="Open tickets" value="37" />
                 </div>
             </section>
 
