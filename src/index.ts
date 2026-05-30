@@ -282,6 +282,11 @@ export {
     type TooltipSide,
 } from './components/tooltip';
 export {
+    Tree,
+    type TreeNode,
+    type TreeProps,
+} from './components/tree';
+export {
     ValueScaleSelector,
     type ValueScaleSelectorProps,
     type ValueScaleSelectorSize,
