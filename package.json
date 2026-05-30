@@ -71,6 +71,10 @@
             "types": "./dist/components/cartesianGrid.d.ts",
             "import": "./dist/cartesianGrid.js"
         },
+        "./chart-tooltip": {
+            "types": "./dist/components/chartTooltip.d.ts",
+            "import": "./dist/chartTooltip.js"
+        },
         "./checkbox": {
             "types": "./dist/components/checkbox.d.ts",
             "import": "./dist/checkbox.js"

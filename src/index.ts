@@ -66,6 +66,11 @@ export {
     CartesianGrid,
     type CartesianGridProps,
 } from './components/cartesianGrid';
+export {
+    ChartTooltip,
+    type ChartTooltipItem,
+    type ChartTooltipProps,
+} from './components/chartTooltip';
 export { Checkbox, type CheckboxProps } from './components/checkbox';
 export { Chip, type ChipProps } from './components/chip';
 export { Code, type CodeProps } from './components/code';

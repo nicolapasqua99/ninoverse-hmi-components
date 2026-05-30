@@ -13,6 +13,7 @@ import { Button } from './components/button';
 import { Card } from './components/card';
 import { Carousel } from './components/carousel';
 import { CartesianGrid } from './components/cartesianGrid';
+import { ChartTooltip } from './components/chartTooltip';
 import { Checkbox } from './components/checkbox';
 import { Chip } from './components/chip';
 import { Code } from './components/code';
@@ -2141,6 +2142,23 @@ export function Example() {
                                     label: 'Forecast',
                                     color: 'var(--secondary)',
                                     inactive: true,
+                                },
+                            ]}
+                        />
+                    </div>
+                    <div style={{ marginTop: '2rem' }}>
+                        <ChartTooltip
+                            title="Jan 2026"
+                            items={[
+                                {
+                                    label: 'Revenue',
+                                    value: '$48.2k',
+                                    color: 'var(--primary)',
+                                },
+                                {
+                                    label: 'Costs',
+                                    value: '$31.7k',
+                                    color: 'var(--tertiary)',
                                 },
                             ]}
                         />

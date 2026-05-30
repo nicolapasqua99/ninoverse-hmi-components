@@ -43,6 +43,10 @@ export default defineConfig({
                     dirname,
                     'src/components/cartesianGrid.tsx',
                 ),
+                chartTooltip: resolve(
+                    dirname,
+                    'src/components/chartTooltip.tsx',
+                ),
                 checkbox: resolve(dirname, 'src/components/checkbox.tsx'),
                 chip: resolve(dirname, 'src/components/chip.tsx'),
                 code: resolve(dirname, 'src/components/code.tsx'),
