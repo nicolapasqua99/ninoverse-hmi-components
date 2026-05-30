@@ -255,6 +255,10 @@
             "types": "./dist/components/spacer.d.ts",
             "import": "./dist/spacer.js"
         },
+        "./sparkline": {
+            "types": "./dist/components/sparkline.d.ts",
+            "import": "./dist/sparkline.js"
+        },
         "./spinner": {
             "types": "./dist/components/spinner.d.ts",
             "import": "./dist/spinner.js"

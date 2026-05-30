@@ -1,0 +1,12 @@
+/* Sparkline — compact, axis-less trend line. Line and dot take the
+   consumer colour directly; the area fill reuses the same colour at low
+   opacity so it reads as a tint under the line. */
+
+.sparkline {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sparkline__area {
+    opacity: 0.15;
+}

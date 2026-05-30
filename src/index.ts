@@ -265,6 +265,7 @@ export {
     type SpacerProps,
     type SpacerSize,
 } from './components/spacer';
+export { Sparkline, type SparklineProps } from './components/sparkline';
 export {
     Spinner,
     type SpinnerProps,
