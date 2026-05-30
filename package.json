@@ -163,6 +163,10 @@
             "types": "./dist/components/legend.d.ts",
             "import": "./dist/legend.js"
         },
+        "./line-chart": {
+            "types": "./dist/components/lineChart.d.ts",
+            "import": "./dist/lineChart.js"
+        },
         "./link": {
             "types": "./dist/components/link.d.ts",
             "import": "./dist/link.js"
