@@ -278,6 +278,12 @@ export {
 } from './components/text';
 export { Textarea, type TextareaProps } from './components/textarea';
 export {
+    Timeline,
+    type TimelineColor,
+    type TimelineItem,
+    type TimelineProps,
+} from './components/timeline';
+export {
     ToastHost,
     type ToastOptions,
     type ToastVariant,

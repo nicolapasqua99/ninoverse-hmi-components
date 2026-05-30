@@ -267,6 +267,10 @@
             "types": "./dist/components/textarea.d.ts",
             "import": "./dist/textarea.js"
         },
+        "./timeline": {
+            "types": "./dist/components/timeline.d.ts",
+            "import": "./dist/timeline.js"
+        },
         "./toast": {
             "types": "./dist/components/toast.d.ts",
             "import": "./dist/toast.js"

@@ -101,6 +101,7 @@ export default defineConfig({
                 tabs: resolve(dirname, 'src/components/tabs.tsx'),
                 text: resolve(dirname, 'src/components/text.tsx'),
                 textarea: resolve(dirname, 'src/components/textarea.tsx'),
+                timeline: resolve(dirname, 'src/components/timeline.tsx'),
                 toast: resolve(dirname, 'src/components/toast.tsx'),
                 tooltip: resolve(dirname, 'src/components/tooltip.tsx'),
                 tree: resolve(dirname, 'src/components/tree.tsx'),

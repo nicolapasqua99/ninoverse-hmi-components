@@ -65,6 +65,7 @@ import { Table } from './components/table';
 import { Tabs } from './components/tabs';
 import { Text } from './components/text';
 import { Textarea } from './components/textarea';
+import { Timeline } from './components/timeline';
 import { ToastHost, toast } from './components/toast';
 import { Tooltip } from './components/tooltip';
 import { Tree, type TreeNode } from './components/tree';
@@ -1981,6 +1982,54 @@ export function Example() {
                                 ratio={16 / 9}
                                 fit="contain"
                             />,
+                        ]}
+                    />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Timeline</h2>
+                <div style={{ maxWidth: '60rem', paddingBottom: '24rem' }}>
+                    <Timeline
+                        items={[
+                            {
+                                title: 'Project created',
+                                time: '09:24',
+                                description:
+                                    'Repository scaffolded and first commit pushed.',
+                                color: 'primary',
+                            },
+                            {
+                                title: 'CI pipeline green',
+                                time: '10:02',
+                                description:
+                                    'Lint, build, and tests all passing.',
+                                color: 'success',
+                            },
+                            {
+                                title: 'Flaky test detected',
+                                time: '11:47',
+                                description:
+                                    'Intermittent failure in the carousel autoplay spec.',
+                                color: 'warning',
+                            },
+                            {
+                                title: 'Deploy rolled back',
+                                time: '12:15',
+                                description:
+                                    'Production deploy reverted after error spike.',
+                                color: 'error',
+                            },
+                            {
+                                title: 'Awaiting review',
+                                time: '13:30',
+                            },
                         ]}
                     />
                 </div>
