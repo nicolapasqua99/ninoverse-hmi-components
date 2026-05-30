@@ -62,6 +62,7 @@ import { Sidebar } from './components/sidebar';
 import { Skeleton } from './components/skeleton';
 import { Slider } from './components/slider';
 import { Spacer } from './components/spacer';
+import { Sparkline } from './components/sparkline';
 import { Spinner } from './components/spinner';
 import { Stat } from './components/stat';
 import { Stepper } from './components/stepper';
@@ -2161,6 +2162,36 @@ export function Example() {
                                     color: 'var(--tertiary)',
                                 },
                             ]}
+                        />
+                    </div>
+                    <div
+                        style={{
+                            marginTop: '2rem',
+                            display: 'flex',
+                            gap: '2rem',
+                            alignItems: 'center',
+                            flexWrap: 'wrap',
+                        }}
+                    >
+                        <Sparkline
+                            data={[4, 8, 5, 10, 7, 12, 9, 14]}
+                            aria-label="Upward trend"
+                        />
+                        <Sparkline
+                            data={[14, 9, 11, 6, 8, 4, 5, 2]}
+                            color="var(--error)"
+                            area
+                            showDot
+                            aria-label="Downward trend with area"
+                        />
+                        <Sparkline
+                            data={[6, 6, 7, 6, 8, 6, 7, 6]}
+                            width={200}
+                            height={48}
+                            color="var(--tertiary)"
+                            strokeWidth={3}
+                            area
+                            aria-label="Flat trend, larger"
                         />
                     </div>
                 </div>

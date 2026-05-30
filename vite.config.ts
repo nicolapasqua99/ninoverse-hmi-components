@@ -107,6 +107,7 @@ export default defineConfig({
                 skeleton: resolve(dirname, 'src/components/skeleton.tsx'),
                 slider: resolve(dirname, 'src/components/slider.tsx'),
                 spacer: resolve(dirname, 'src/components/spacer.tsx'),
+                sparkline: resolve(dirname, 'src/components/sparkline.tsx'),
                 spinner: resolve(dirname, 'src/components/spinner.tsx'),
                 stat: resolve(dirname, 'src/components/stat.tsx'),
                 stepper: resolve(dirname, 'src/components/stepper.tsx'),
