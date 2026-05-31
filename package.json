@@ -123,6 +123,10 @@
             "types": "./dist/components/divider.d.ts",
             "import": "./dist/divider.js"
         },
+        "./donut-chart": {
+            "types": "./dist/components/donutChart.d.ts",
+            "import": "./dist/donutChart.js"
+        },
         "./drawer": {
             "types": "./dist/components/drawer.d.ts",
             "import": "./dist/drawer.js"

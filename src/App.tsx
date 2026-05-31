@@ -29,6 +29,7 @@ import { ConfirmDialog } from './components/confirmDialog';
 import { ContextMenu } from './components/contextMenu';
 import { DatePicker, type DateRange } from './components/datePicker';
 import { Divider } from './components/divider';
+import { DonutChart } from './components/donutChart';
 import { Drawer } from './components/drawer';
 import { EmptyState } from './components/emptyState';
 import { FileUpload } from './components/fileUpload';
@@ -2318,6 +2319,51 @@ export function Example() {
                             ]}
                         />
                     </div>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>DonutChart</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '4rem',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        paddingBottom: '4rem',
+                    }}
+                >
+                    <DonutChart
+                        aria-label="Traffic by source"
+                        centerLabel={
+                            <span>
+                                1.2k
+                                <br />
+                                visits
+                            </span>
+                        }
+                        segments={[
+                            { label: 'Direct', value: 45 },
+                            { label: 'Search', value: 30 },
+                            { label: 'Social', value: 15 },
+                            { label: 'Referral', value: 10 },
+                        ]}
+                    />
+                    <Legend
+                        align="start"
+                        items={[
+                            { label: 'Direct', color: 'var(--primary)' },
+                            { label: 'Search', color: 'var(--tertiary)' },
+                            { label: 'Social', color: 'var(--secondary)' },
+                            { label: 'Referral', color: 'var(--success)' },
+                        ]}
+                    />
                 </div>
             </section>
 
