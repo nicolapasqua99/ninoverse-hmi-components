@@ -163,6 +163,10 @@
             "types": "./dist/components/heading.d.ts",
             "import": "./dist/heading.js"
         },
+        "./heatmap": {
+            "types": "./dist/components/heatmap.d.ts",
+            "import": "./dist/heatmap.js"
+        },
         "./hover-card": {
             "types": "./dist/components/hoverCard.d.ts",
             "import": "./dist/hoverCard.js"

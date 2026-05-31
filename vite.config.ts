@@ -75,6 +75,7 @@ export default defineConfig({
                 gauge: resolve(dirname, 'src/components/gauge.tsx'),
                 grid: resolve(dirname, 'src/components/grid.tsx'),
                 heading: resolve(dirname, 'src/components/heading.tsx'),
+                heatmap: resolve(dirname, 'src/components/heatmap.tsx'),
                 hoverCard: resolve(dirname, 'src/components/hoverCard.tsx'),
                 image: resolve(dirname, 'src/components/image.tsx'),
                 input: resolve(dirname, 'src/components/input.tsx'),

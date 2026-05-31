@@ -161,6 +161,7 @@ export {
     type HeadingSize,
     type HeadingTone,
 } from './components/heading';
+export { Heatmap, type HeatmapProps } from './components/heatmap';
 export {
     HoverCard,
     type HoverCardAlign,
