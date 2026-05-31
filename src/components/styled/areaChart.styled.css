@@ -1,0 +1,25 @@
+/* AreaChart — self-contained Cartesian area chart SVG. The line and area
+   fill take the consumer colour directly; the area sits at low opacity so
+   overlapping series stay legible. Axis tick labels are tokenised. */
+
+.area-chart {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.area-chart__area {
+    opacity: 0.18;
+}
+
+.area-chart__line {
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.area-chart__axis-label {
+    fill: var(--on-surface-variant);
+    font-family: var(--font-oxanium);
+    font-size: 1.25rem;
+}

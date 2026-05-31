@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Accordion } from './components/accordion';
 import { Alert } from './components/alert';
+import { AreaChart } from './components/areaChart';
 import { AspectRatio } from './components/aspectRatio';
 import { Avatar } from './components/avatar';
 import { AvatarStack } from './components/avatarStack';
@@ -2275,6 +2276,45 @@ export function Example() {
                                     label: 'Product B',
                                     color: 'var(--tertiary)',
                                 },
+                            ]}
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>AreaChart</h2>
+                <div style={{ paddingBottom: '4rem' }}>
+                    <AreaChart
+                        aria-label="Monthly active users by tier"
+                        width={560}
+                        height={280}
+                        labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']}
+                        series={[
+                            {
+                                name: 'Pro',
+                                data: [20, 28, 26, 35, 40, 52],
+                                color: 'var(--primary)',
+                            },
+                            {
+                                name: 'Free',
+                                data: [12, 15, 18, 16, 22, 25],
+                                color: 'var(--tertiary)',
+                            },
+                        ]}
+                    />
+                    <div style={{ marginTop: '1rem' }}>
+                        <Legend
+                            align="start"
+                            items={[
+                                { label: 'Pro', color: 'var(--primary)' },
+                                { label: 'Free', color: 'var(--tertiary)' },
                             ]}
                         />
                     </div>

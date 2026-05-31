@@ -11,6 +11,11 @@ export {
     type AlertVariant,
 } from './components/alert';
 export {
+    AreaChart,
+    type AreaChartProps,
+    type AreaChartSeries,
+} from './components/areaChart';
+export {
     AspectRatio,
     type AspectRatioProps,
 } from './components/aspectRatio';
