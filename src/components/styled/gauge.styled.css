@@ -1,0 +1,13 @@
+/* Gauge — semicircular dial. The track and value arcs take their colours
+   from props; the label is tokenised. */
+
+.gauge {
+    display: block;
+}
+
+.gauge__label {
+    fill: var(--on-background);
+    font-family: var(--font-oxanium);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
