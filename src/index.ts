@@ -253,6 +253,12 @@ export {
     type ResponsiveContainerSize,
 } from './components/responsiveContainer';
 export {
+    ScatterPlot,
+    type ScatterPlotPoint,
+    type ScatterPlotProps,
+    type ScatterPlotSeries,
+} from './components/scatterPlot';
+export {
     ScrollArea,
     type ScrollAreaOrientation,
     type ScrollAreaProps,

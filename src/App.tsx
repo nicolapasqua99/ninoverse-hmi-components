@@ -60,6 +60,7 @@ import { Progress } from './components/progress';
 import { Radio } from './components/radio';
 import { RadioGroup } from './components/radioGroup';
 import { ResponsiveContainer } from './components/responsiveContainer';
+import { ScatterPlot } from './components/scatterPlot';
 import { ScrollArea } from './components/scrollArea';
 import { SearchInput } from './components/searchInput';
 import { SegmentedControl } from './components/segmentedControl';
@@ -2444,6 +2445,58 @@ export function Example() {
                         thickness={0.34}
                         size={160}
                     />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>ScatterPlot</h2>
+                <div style={{ paddingBottom: '4rem' }}>
+                    <ScatterPlot
+                        aria-label="Height versus weight by group"
+                        width={560}
+                        height={280}
+                        series={[
+                            {
+                                name: 'Group A',
+                                data: [
+                                    { x: 12, y: 22 },
+                                    { x: 20, y: 35 },
+                                    { x: 28, y: 30 },
+                                    { x: 35, y: 48 },
+                                    { x: 42, y: 44 },
+                                    { x: 50, y: 60 },
+                                ],
+                                color: 'var(--primary)',
+                            },
+                            {
+                                name: 'Group B',
+                                data: [
+                                    { x: 15, y: 12 },
+                                    { x: 24, y: 18 },
+                                    { x: 30, y: 16 },
+                                    { x: 38, y: 26 },
+                                    { x: 46, y: 22 },
+                                    { x: 55, y: 33 },
+                                ],
+                                color: 'var(--tertiary)',
+                            },
+                        ]}
+                    />
+                    <div style={{ marginTop: '1rem' }}>
+                        <Legend
+                            align="start"
+                            items={[
+                                { label: 'Group A', color: 'var(--primary)' },
+                                { label: 'Group B', color: 'var(--tertiary)' },
+                            ]}
+                        />
+                    </div>
                 </div>
             </section>
 
