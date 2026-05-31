@@ -39,6 +39,7 @@ import { FormControl } from './components/formControl';
 import { Gauge } from './components/gauge';
 import { Grid } from './components/grid';
 import { Heading } from './components/heading';
+import { Heatmap } from './components/heatmap';
 import { HoverCard } from './components/hoverCard';
 import { Image } from './components/image';
 import { Input } from './components/input';
@@ -2497,6 +2498,29 @@ export function Example() {
                             ]}
                         />
                     </div>
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Heatmap</h2>
+                <div style={{ paddingBottom: '4rem' }}>
+                    <Heatmap
+                        aria-label="Weekly activity by hour"
+                        showValues
+                        xLabels={['Mon', 'Tue', 'Wed', 'Thu', 'Fri']}
+                        yLabels={['Morning', 'Midday', 'Evening']}
+                        data={[
+                            [4, 8, 6, 12, 9],
+                            [14, 18, 22, 20, 16],
+                            [7, 11, 9, 15, 24],
+                        ]}
+                    />
                 </div>
             </section>
 

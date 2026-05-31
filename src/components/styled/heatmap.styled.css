@@ -1,0 +1,21 @@
+/* Heatmap — matrix of intensity cells. The cell fill takes the consumer
+   colour directly (opacity carries intensity); labels are tokenised. */
+
+.heatmap {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.heatmap__axis-label {
+    fill: var(--on-surface-variant);
+    font-family: var(--font-oxanium);
+    font-size: 1.25rem;
+}
+
+.heatmap__value {
+    fill: var(--on-surface);
+    font-family: var(--font-oxanium);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
