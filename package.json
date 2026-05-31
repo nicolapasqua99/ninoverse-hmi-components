@@ -23,6 +23,10 @@
             "types": "./dist/components/alert.d.ts",
             "import": "./dist/alert.js"
         },
+        "./area-chart": {
+            "types": "./dist/components/areaChart.d.ts",
+            "import": "./dist/areaChart.js"
+        },
         "./aspect-ratio": {
             "types": "./dist/components/aspectRatio.d.ts",
             "import": "./dist/aspectRatio.js"
