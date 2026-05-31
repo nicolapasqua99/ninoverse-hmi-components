@@ -65,6 +65,7 @@ export default defineConfig({
                 contextMenu: resolve(dirname, 'src/components/contextMenu.tsx'),
                 datePicker: resolve(dirname, 'src/components/datePicker.tsx'),
                 divider: resolve(dirname, 'src/components/divider.tsx'),
+                donutChart: resolve(dirname, 'src/components/donutChart.tsx'),
                 drawer: resolve(dirname, 'src/components/drawer.tsx'),
                 emptyState: resolve(dirname, 'src/components/emptyState.tsx'),
                 fileUpload: resolve(dirname, 'src/components/fileUpload.tsx'),

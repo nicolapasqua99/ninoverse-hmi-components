@@ -119,6 +119,11 @@ export {
     type DividerProps,
 } from './components/divider';
 export {
+    DonutChart,
+    type DonutChartProps,
+    type DonutChartSegment,
+} from './components/donutChart';
+export {
     Drawer,
     type DrawerProps,
     type DrawerSide,

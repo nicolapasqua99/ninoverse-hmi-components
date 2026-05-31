@@ -1,0 +1,20 @@
+/* DonutChart — ring of arc segments with a centre hole. Segment fills
+   take the consumer/palette colour directly; the centre label is a
+   tokenised flex box rendered via foreignObject. */
+
+.donut-chart {
+    display: block;
+}
+
+.donut-chart__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-family: var(--font-oxanium);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--on-background);
+}
