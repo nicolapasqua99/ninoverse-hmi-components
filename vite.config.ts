@@ -102,6 +102,7 @@ export default defineConfig({
                     dirname,
                     'src/components/responsiveContainer.tsx',
                 ),
+                scatterPlot: resolve(dirname, 'src/components/scatterPlot.tsx'),
                 scrollArea: resolve(dirname, 'src/components/scrollArea.tsx'),
                 searchInput: resolve(dirname, 'src/components/searchInput.tsx'),
                 segmentedControl: resolve(

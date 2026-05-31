@@ -247,6 +247,10 @@
             "types": "./dist/components/responsiveContainer.d.ts",
             "import": "./dist/responsiveContainer.js"
         },
+        "./scatter-plot": {
+            "types": "./dist/components/scatterPlot.d.ts",
+            "import": "./dist/scatterPlot.js"
+        },
         "./scroll-area": {
             "types": "./dist/components/scrollArea.d.ts",
             "import": "./dist/scrollArea.js"

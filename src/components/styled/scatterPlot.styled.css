@@ -1,0 +1,18 @@
+/* ScatterPlot — self-contained Cartesian chart SVG. The point fill takes the
+   consumer colour directly; axis tick labels are tokenised. */
+
+.scatter-plot {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.scatter-plot__point {
+    fill-opacity: 0.75;
+}
+
+.scatter-plot__axis-label {
+    fill: var(--on-surface-variant);
+    font-family: var(--font-oxanium);
+    font-size: 1.25rem;
+}
