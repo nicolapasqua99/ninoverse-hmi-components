@@ -152,6 +152,11 @@ export {
     FormControl,
     type FormControlProps,
 } from './components/formControl';
+export {
+    FunnelChart,
+    type FunnelChartProps,
+    type FunnelChartStage,
+} from './components/funnelChart';
 export { Gauge, type GaugeProps } from './components/gauge';
 export { Grid, type GridGap, type GridProps } from './components/grid';
 export {

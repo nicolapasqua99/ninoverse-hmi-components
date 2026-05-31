@@ -36,6 +36,7 @@ import { EmptyState } from './components/emptyState';
 import { FileUpload } from './components/fileUpload';
 import { Flex } from './components/flex';
 import { FormControl } from './components/formControl';
+import { FunnelChart } from './components/funnelChart';
 import { Gauge } from './components/gauge';
 import { Grid } from './components/grid';
 import { Heading } from './components/heading';
@@ -2519,6 +2520,28 @@ export function Example() {
                             [4, 8, 6, 12, 9],
                             [14, 18, 22, 20, 16],
                             [7, 11, 9, 15, 24],
+                        ]}
+                    />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>FunnelChart</h2>
+                <div style={{ paddingBottom: '4rem' }}>
+                    <FunnelChart
+                        aria-label="Signup conversion funnel"
+                        showValues
+                        stages={[
+                            { label: 'Visited', value: 1200 },
+                            { label: 'Signed up', value: 820 },
+                            { label: 'Activated', value: 540 },
+                            { label: 'Subscribed', value: 210 },
                         ]}
                     />
                 </div>
