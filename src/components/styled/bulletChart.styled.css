@@ -1,0 +1,21 @@
+/* BulletChart — horizontal KPI gauge. Range bands use tokenised surface
+   shades; the measure bar takes the consumer colour; the target marker is
+   a strong vertical tick. */
+
+.bullet-chart {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.bullet-chart__label {
+    fill: var(--on-surface-variant);
+    font-family: var(--font-quicksand);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.bullet-chart__target {
+    stroke: var(--on-background);
+    stroke-width: 3;
+}

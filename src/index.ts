@@ -61,6 +61,10 @@ export {
     type BreadcrumbsProps,
 } from './components/breadcrumbs';
 export {
+    BulletChart,
+    type BulletChartProps,
+} from './components/bulletChart';
+export {
     Button,
     type ButtonProps,
     type ButtonSize,

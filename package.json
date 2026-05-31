@@ -63,6 +63,10 @@
             "types": "./dist/components/breadcrumbs.d.ts",
             "import": "./dist/breadcrumbs.js"
         },
+        "./bullet-chart": {
+            "types": "./dist/components/bulletChart.d.ts",
+            "import": "./dist/bulletChart.js"
+        },
         "./button": {
             "types": "./dist/components/button.d.ts",
             "import": "./dist/button.js"

@@ -11,6 +11,7 @@ import { BarChart } from './components/barChart';
 import { Blockquote } from './components/blockquote';
 import { Box } from './components/box';
 import { Breadcrumbs } from './components/breadcrumbs';
+import { BulletChart } from './components/bulletChart';
 import { Button } from './components/button';
 import { Card } from './components/card';
 import { Carousel } from './components/carousel';
@@ -2363,6 +2364,49 @@ export function Example() {
                             { label: 'Social', color: 'var(--secondary)' },
                             { label: 'Referral', color: 'var(--success)' },
                         ]}
+                    />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>BulletChart</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '1.5rem',
+                        maxWidth: '46rem',
+                        paddingBottom: '4rem',
+                    }}
+                >
+                    <BulletChart
+                        label="Revenue"
+                        value={78}
+                        target={85}
+                        max={100}
+                        ranges={[50, 75]}
+                    />
+                    <BulletChart
+                        label="Profit"
+                        value={62}
+                        target={55}
+                        max={100}
+                        ranges={[40, 70]}
+                        color="var(--success)"
+                    />
+                    <BulletChart
+                        label="Cost"
+                        value={92}
+                        target={70}
+                        max={100}
+                        ranges={[60, 80]}
+                        color="var(--error)"
                     />
                 </div>
             </section>
