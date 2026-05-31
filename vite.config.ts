@@ -38,6 +38,7 @@ export default defineConfig({
                 blockquote: resolve(dirname, 'src/components/blockquote.tsx'),
                 box: resolve(dirname, 'src/components/box.tsx'),
                 breadcrumbs: resolve(dirname, 'src/components/breadcrumbs.tsx'),
+                bulletChart: resolve(dirname, 'src/components/bulletChart.tsx'),
                 button: resolve(dirname, 'src/components/button.tsx'),
                 card: resolve(dirname, 'src/components/card.tsx'),
                 carousel: resolve(dirname, 'src/components/carousel.tsx'),
