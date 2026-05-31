@@ -151,6 +151,10 @@
             "types": "./dist/components/formControl.d.ts",
             "import": "./dist/formControl.js"
         },
+        "./gauge": {
+            "types": "./dist/components/gauge.d.ts",
+            "import": "./dist/gauge.js"
+        },
         "./grid": {
             "types": "./dist/components/grid.d.ts",
             "import": "./dist/grid.js"

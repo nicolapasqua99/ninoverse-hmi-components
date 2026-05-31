@@ -72,6 +72,7 @@ export default defineConfig({
                 fileUpload: resolve(dirname, 'src/components/fileUpload.tsx'),
                 flex: resolve(dirname, 'src/components/flex.tsx'),
                 formControl: resolve(dirname, 'src/components/formControl.tsx'),
+                gauge: resolve(dirname, 'src/components/gauge.tsx'),
                 grid: resolve(dirname, 'src/components/grid.tsx'),
                 heading: resolve(dirname, 'src/components/heading.tsx'),
                 hoverCard: resolve(dirname, 'src/components/hoverCard.tsx'),

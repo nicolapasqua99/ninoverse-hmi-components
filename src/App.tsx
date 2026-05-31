@@ -36,6 +36,7 @@ import { EmptyState } from './components/emptyState';
 import { FileUpload } from './components/fileUpload';
 import { Flex } from './components/flex';
 import { FormControl } from './components/formControl';
+import { Gauge } from './components/gauge';
 import { Grid } from './components/grid';
 import { Heading } from './components/heading';
 import { HoverCard } from './components/hoverCard';
@@ -2407,6 +2408,41 @@ export function Example() {
                         max={100}
                         ranges={[60, 80]}
                         color="var(--error)"
+                    />
+                </div>
+            </section>
+
+            <section
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                }}
+            >
+                <h2 style={{ margin: 0, fontSize: '3rem' }}>Gauge</h2>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '4rem',
+                        alignItems: 'flex-end',
+                        flexWrap: 'wrap',
+                        paddingBottom: '4rem',
+                    }}
+                >
+                    <Gauge value={72} label="72%" />
+                    <Gauge
+                        value={45}
+                        label="45"
+                        color="var(--success)"
+                        size={160}
+                    />
+                    <Gauge
+                        value={88}
+                        max={100}
+                        label="88"
+                        color="var(--error)"
+                        thickness={0.34}
+                        size={160}
                     />
                 </div>
             </section>
