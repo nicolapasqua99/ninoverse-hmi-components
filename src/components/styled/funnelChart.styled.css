@@ -1,0 +1,16 @@
+/* FunnelChart — stacked trapezoid bands. The band fill takes the consumer
+   colour directly; labels sit in a right-hand column over the page surface,
+   so they use the on-surface token for contrast. */
+
+.funnel-chart {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.funnel-chart__label {
+    fill: var(--on-surface);
+    font-family: var(--font-oxanium);
+    font-size: 1.5rem;
+    font-weight: 600;
+}

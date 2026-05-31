@@ -151,6 +151,10 @@
             "types": "./dist/components/formControl.d.ts",
             "import": "./dist/formControl.js"
         },
+        "./funnel-chart": {
+            "types": "./dist/components/funnelChart.d.ts",
+            "import": "./dist/funnelChart.js"
+        },
         "./gauge": {
             "types": "./dist/components/gauge.d.ts",
             "import": "./dist/gauge.js"
