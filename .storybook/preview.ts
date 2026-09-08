@@ -10,10 +10,22 @@ const AXES = [
     { global: 'material', attribute: 'data-material', values: materials },
 ] as const;
 
+/* TypeDoc's {@link Foo} syntax is meaningful to `pnpm docs`, but Storybook has
+   no resolver for it and prints the braces verbatim. Unwrap to the bare symbol
+   name for the docs page and leave the source comments alone. */
+type Docgen = { __docgenInfo?: { description?: string } };
+
+function unwrapLinks(component: unknown): string | null {
+    const raw = (component as Docgen | null)?.__docgenInfo?.description;
+    if (!raw) return null;
+    return raw.replace(/\{@link\s+([^}|]+?)\s*\}/g, '$1');
+}
+
 const preview: Preview = {
     parameters: {
         controls: { matchers: { color: /(background|color)$/i } },
         options: { storySort: { order: ['Overview', 'Components', 'Charts'] } },
+        docs: { extractComponentDescription: unwrapLinks },
     },
     globalTypes: Object.fromEntries(
         AXES.map(({ global, values }) => [
