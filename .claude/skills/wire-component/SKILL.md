@@ -1,13 +1,13 @@
 ---
 name: wire-component
-description: Wire an already-scaffolded HMI component into the project's index.ts, vite.config.ts, package.json exports, and App.tsx — alphabetically. Phase 2 of the component workflow; run after scaffold-component and before verify-component.
+description: Wire an already-scaffolded HMI component into the project's index.ts, vite.config.ts, package.json exports, App.tsx, and its Storybook story. Phase 2 of the component workflow; run after scaffold-component and before verify-component.
 ---
 
 # Wire Component
 
-Registers a scaffolded component in the four project-level files so it is
-exported, bundled, and demonstrated. This is **phase 2 of 4** — run
-`verify-component` next.
+Registers a scaffolded component in the project-level files so it is exported,
+bundled, and documented. This is **phase 2 of 4** — run `verify-component`
+next.
 
 ## Inputs
 
@@ -56,7 +56,43 @@ Add a kebab-case subpath entry. Keep entries **alphabetically sorted**:
 - Render **at least one variant per meaningful prop** so type errors, missing
   CSS, and render failures surface immediately.
 
+## Step 7 — `src/components/<name>.stories.tsx`
+
+Storybook is the root of the deployed docs site, so every component needs a
+story file.
+
+- Import the component from `'./<name>'`.
+- Title: `Components/<ComponentName>` — chart components go under `Charts/`.
+- Tag `['autodocs']` so the props table is generated from the prop doc
+  comments. No manual `argTypes` unless a prop needs a control the inferred
+  type cannot express.
+- One story per meaningful prop axis, mirroring the variants added to
+  `App.tsx`. Stateful components need a `render` that owns the state.
+
+```tsx
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Rating } from './rating';
+
+const meta = {
+    title: 'Components/Rating',
+    component: Rating,
+    tags: ['autodocs'],
+} satisfies Meta<typeof Rating>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
+```
+
+The docs page pulls its description from the JSDoc block **directly above the
+exported function**. If that block sits above a local helper (an icon, a
+constant), the page renders without a description — move it.
+
+**Modifying an existing component:** update its existing story to cover the new
+or changed props. Do not add a parallel story file.
+
 ## Done
 
-After all four files are updated, tell the user wiring is complete and prompt
+After all five files are updated, tell the user wiring is complete and prompt
 them to run `verify-component` to lint, build, and screenshot the result.

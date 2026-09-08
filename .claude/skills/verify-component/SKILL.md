@@ -34,6 +34,17 @@ Also confirm that `src/index.ts`, `vite.config.ts`, and `package.json`
 `"exports"` are all **alphabetically sorted and mutually consistent** — every
 new entry must appear in all three.
 
+Then confirm the story compiles and its docs page has a description:
+
+```bash
+pnpm build:storybook
+```
+
+`pnpm build` already typechecks `src/components/<name>.stories.tsx` via
+`tsc -b`; this catches the Storybook-specific failures it cannot see. If the
+component's docs page renders without a description, its JSDoc block is sitting
+above a local helper rather than the exported function — move it.
+
 ## Screenshot
 
 `/tmp` is wiped on container reset — install once per session:

@@ -21,9 +21,9 @@ Before writing any code:
 
 ---
 
-## 9-step checklist (one component, one commit)
+## 10-step checklist (one component, one commit)
 
-Complete all nine steps before committing. Never commit a partial component.
+Complete all ten steps before committing. Never commit a partial component.
 
 ### 1. `src/components/<name>.tsx`
 
@@ -79,13 +79,36 @@ import { Button } from './index';
 <Button variant="ghost" size="small">Ghost SM</Button>
 ```
 
-### 7. Visual check
+### 7. `src/components/<name>.stories.tsx`
+
+Storybook is the root of the deployed docs site, so every component needs a
+story file. Import from `'./<name>'`, title it `Components/<ComponentName>`
+(charts go under `Charts/`), and tag it `autodocs` so the props table is
+generated from the prop doc comments.
+
+```tsx
+const meta = {
+    title: 'Components/Rating',
+    component: Rating,
+    tags: ['autodocs'],
+} satisfies Meta<typeof Rating>;
+```
+
+One story per meaningful prop axis — the same variants exercised in `App.tsx`.
+The autodocs page reads the JSDoc block **directly above the exported
+function**; if it sits above a local helper instead, the page renders without a
+description.
+
+When modifying an existing component, update its story rather than adding a
+second one.
+
+### 8. Visual check
 
 Start the dev server (`pnpm dev`) and confirm the component renders correctly in
 the browser. Take a screenshot using the method below. Present it for review
 before committing.
 
-### 8. Commit
+### 9. Commit
 
 ```
 feat(ui): add <ComponentName> component
@@ -93,7 +116,7 @@ feat(ui): add <ComponentName> component
 
 One commit per component. Never batch multiple components in one commit.
 
-### 9. Push + PR
+### 10. Push + PR
 
 - Push the commit to the current group branch.
 - If this is the **group's first commit**: open a draft PR immediately.
@@ -107,8 +130,9 @@ One commit per component. Never batch multiple components in one commit.
 Run before marking any group PR ready for review:
 
 ```bash
-pnpm lint    # zero warnings, zero errors
-pnpm build   # dist/ emits all new entries; no stale references
+pnpm lint            # zero warnings, zero errors
+pnpm build           # dist/ emits all new entries; no stale references
+pnpm build:storybook # every story compiles
 ```
 
 Spot-check `dist/` for every component added in the group:

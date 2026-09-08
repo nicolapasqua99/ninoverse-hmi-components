@@ -21,9 +21,10 @@ screenshot.
 - One commit per component — never batch multiple components.
 - Touch only the files created or modified in the previous phases:
   `src/components/<name>.tsx`, `src/components/styled/<name>.styled.css`,
-  `src/index.ts`, `vite.config.ts`, `package.json`, `src/App.tsx`.
+  `src/components/<name>.stories.tsx`, `src/index.ts`, `vite.config.ts`,
+  `package.json`, `src/App.tsx`.
 
-## Step 8 — Commit
+## Step 9 — Commit
 
 Commit message format (exact):
 
@@ -31,9 +32,9 @@ Commit message format (exact):
 feat(ui): add <ComponentName> component
 ```
 
-Stage only the six files listed above; do not stage anything else.
+Stage only the seven files listed above; do not stage anything else.
 
-## Step 9 — Push + draft PR
+## Step 10 — Push + draft PR
 
 ```bash
 git push -u origin feat/<kebab-name>

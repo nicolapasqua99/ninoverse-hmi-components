@@ -142,7 +142,11 @@ export default defineConfig({
         dts({
             tsconfigPath: './tsconfig.app.json',
             include: ['src'],
-            exclude: ['src/App.tsx', 'src/main.tsx'],
+            exclude: [
+                'src/App.tsx',
+                'src/main.tsx',
+                'src/**/*.stories.tsx',
+            ],
             entryRoot: 'src',
         }),
     ],
@@ -370,7 +374,7 @@ Do not proceed to Step 4 until all four commands pass cleanly.
 ## Step 4 — Per-component build (repeat for each component)
 
 See **`.claude/component-workflow.md`** for the full procedure:
-pre-flight check, 9-step checklist, group verification gate, and screenshot method.
+pre-flight check, 10-step checklist, group verification gate, and screenshot method.
 
 ---
 
