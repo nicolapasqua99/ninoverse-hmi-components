@@ -29,15 +29,6 @@ export type SelectProps<T extends string = string> = {
     disabled?: boolean;
 };
 
-/**
- * Single-select dropdown built on {@link Popover} + {@link Menu}. For
- * type-ahead filtering over many options, use {@link Combobox}. Works
- * controlled or uncontrolled.
- *
- * @example
- * <Select options={options} value={val} onChange={setVal} />
- */
-
 const ChevronIcon = () => (
     <svg
         viewBox="0 0 16 16"
@@ -68,6 +59,14 @@ const CheckIcon = () => (
     </svg>
 );
 
+/**
+ * Single-select dropdown built on {@link Popover} + {@link Menu}. For
+ * type-ahead filtering over many options, use {@link Combobox}. Works
+ * controlled or uncontrolled.
+ *
+ * @example
+ * <Select options={options} value={val} onChange={setVal} />
+ */
 export function Select<T extends string = string>({
     value,
     defaultValue,

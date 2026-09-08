@@ -42,6 +42,9 @@ export type MultiInputProps = {
     'aria-label'?: string;
 };
 
+const NUMERIC_PATTERN = /^[0-9]$/;
+const NON_WHITESPACE_PATTERN = /^\S$/;
+
 /**
  * Segmented single-character input for codes/OTP/PIN, with auto-advance,
  * paste-to-fill, keyboard navigation and optional grouping. Works controlled
@@ -50,10 +53,6 @@ export type MultiInputProps = {
  * @example
  * <MultiInput length={6} groupSize={3} onComplete={verify} />
  */
-
-const NUMERIC_PATTERN = /^[0-9]$/;
-const NON_WHITESPACE_PATTERN = /^\S$/;
-
 export function MultiInput({
     length = 6,
     groupSize,

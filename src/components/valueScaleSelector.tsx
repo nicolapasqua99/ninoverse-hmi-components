@@ -38,6 +38,13 @@ export type ValueScaleSelectorProps = {
     'aria-label'?: string;
 };
 
+const DefaultIcon = () => (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <title>Star</title>
+        <path d="M12 2.5l2.94 6.5 7.06.6-5.34 4.76 1.63 6.94L12 17.6 5.71 21.3 7.34 14.36 2 9.6l7.06-.6L12 2.5z" />
+    </svg>
+);
+
 /**
  * Icon-based rating/scale selector (e.g. star rating) exposed as an accessible
  * slider, with optional half-steps, custom icon and keyboard support. Works
@@ -46,14 +53,6 @@ export type ValueScaleSelectorProps = {
  * @example
  * <ValueScaleSelector max={5} allowHalf value={rating} onChange={setRating} />
  */
-
-const DefaultIcon = () => (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-        <title>Star</title>
-        <path d="M12 2.5l2.94 6.5 7.06.6-5.34 4.76 1.63 6.94L12 17.6 5.71 21.3 7.34 14.36 2 9.6l7.06-.6L12 2.5z" />
-    </svg>
-);
-
 export function ValueScaleSelector({
     value,
     defaultValue,
