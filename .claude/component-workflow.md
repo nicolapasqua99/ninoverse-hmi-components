@@ -82,13 +82,28 @@ import { Button } from './index';
 ### 7. `src/components/<name>.stories.tsx`
 
 Storybook is the root of the deployed docs site, so every component needs a
-story file. Import from `'./<name>'`, title it `Components/<ComponentName>`
-(charts go under `Charts/`), and tag it `autodocs` so the props table is
-generated from the prop doc comments.
+story file. Import from `'./<name>'`, title it
+`Components/<Category>/<ComponentName>`, and tag it `autodocs` so the props
+table is generated from the prop doc comments.
+
+Categories — pick the one the component belongs to:
+
+| Category | Covers |
+|----------|--------|
+| `Layout` | Structure and spacing: Box, Flex, Grid, Card, Divider, Spacer, ScrollArea, AspectRatio, VisuallyHidden |
+| `Typography` | Text, Heading, Link, Blockquote, Code |
+| `Forms` | Anything the user types into or picks from, plus Button |
+| `Feedback` | Status and progress: Alert, Banner, Progress, Skeleton, Spinner, Toast, Stat, Meter, EmptyState |
+| `Overlays` | Anything that portals: Modal, Drawer, Popover, Tooltip, Menu, HoverCard, ContextMenu, CommandPalette, ConfirmDialog |
+| `Navigation` | Breadcrumbs, Navbar, Pagination, Sidebar, Stepper, Tabs, Tree |
+| `Data display` | Presenting existing data: Table, List, Avatar, Badge, Chip, Timeline, Accordion, Carousel, Image, Kbd |
+
+Charts are the exception — they sit at the **top level** under `Charts/`, not
+under `Components/`.
 
 ```tsx
 const meta = {
-    title: 'Components/Rating',
+    title: 'Components/Forms/Rating',
     component: Rating,
     tags: ['autodocs'],
 } satisfies Meta<typeof Rating>;

@@ -62,7 +62,10 @@ Storybook is the root of the deployed docs site, so every component needs a
 story file.
 
 - Import the component from `'./<name>'`.
-- Title: `Components/<ComponentName>` — chart components go under `Charts/`.
+- Title: `Components/<Category>/<ComponentName>`, where category is one of
+  `Layout`, `Typography`, `Forms`, `Feedback`, `Overlays`, `Navigation`,
+  `Data display` — see the table in `.claude/component-workflow.md` step 7 for
+  what each covers. Chart components are the exception: top-level `Charts/`.
 - Tag `['autodocs']` so the props table is generated from the prop doc
   comments. No manual `argTypes` unless a prop needs a control the inferred
   type cannot express.
@@ -74,7 +77,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Rating } from './rating';
 
 const meta = {
-    title: 'Components/Rating',
+    title: 'Components/Forms/Rating',
     component: Rating,
     tags: ['autodocs'],
 } satisfies Meta<typeof Rating>;
