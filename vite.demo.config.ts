@@ -6,6 +6,8 @@ import { defineConfig } from 'vite';
 const dirname = fileURLToPath(new URL('.', import.meta.url));
 
 export default defineConfig({
+    // Storybook owns the site root; the demo page is deployed under /demo/.
+    base: '/demo/',
     plugins: [react()],
     resolve: {
         alias: {
@@ -13,7 +15,7 @@ export default defineConfig({
         },
     },
     build: {
-        outDir: 'dist-demo',
+        outDir: 'dist-site/demo',
         emptyOutDir: true,
     },
 });

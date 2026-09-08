@@ -13,6 +13,7 @@ const AXES = [
 const preview: Preview = {
     parameters: {
         controls: { matchers: { color: /(background|color)$/i } },
+        options: { storySort: { order: ['Overview', 'Components', 'Charts'] } },
     },
     globalTypes: Object.fromEntries(
         AXES.map(({ global, values }) => [

@@ -10,8 +10,7 @@
 
 # production
 /dist
-/dist-demo
-/dist-storybook
+/dist-site
 
 # misc
 .DS_Store

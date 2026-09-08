@@ -2,9 +2,12 @@
     "hosting": [
         {
             "target": "demo",
-            "public": "dist-demo",
+            "public": "dist-site",
             "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-            "rewrites": [{ "source": "**", "destination": "/index.html" }]
+            "rewrites": [
+                { "source": "/demo/**", "destination": "/demo/index.html" },
+                { "source": "**", "destination": "/index.html" }
+            ]
         }
     ]
 }
