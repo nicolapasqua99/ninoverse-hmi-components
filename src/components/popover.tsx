@@ -28,14 +28,6 @@ export type PopoverProps = {
     width?: number | string;
 };
 
-/**
- * Controlled popover anchored to a trigger, rendered in a portal and
- * repositioned on scroll/resize. Closes on outside click or Escape.
- *
- * @example
- * <Popover open={open} onOpenChange={setOpen} trigger={<Button>Menu</Button>}>…</Popover>
- */
-
 type AnchorPosition = {
     left: number;
     right: number;
@@ -43,6 +35,13 @@ type AnchorPosition = {
     width: number;
 };
 
+/**
+ * Controlled popover anchored to a trigger, rendered in a portal and
+ * repositioned on scroll/resize. Closes on outside click or Escape.
+ *
+ * @example
+ * <Popover open={open} onOpenChange={setOpen} trigger={<Button>Menu</Button>}>…</Popover>
+ */
 export function Popover({
     open,
     onOpenChange,
