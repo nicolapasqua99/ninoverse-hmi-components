@@ -23,6 +23,8 @@ export type TooltipProps = {
     children: ReactNode;
 };
 
+type Position = { x: number; y: number; transform: string };
+
 /**
  * Text tooltip shown on hover/focus, positioned in a portal and wired to the
  * trigger via `aria-describedby`.
@@ -30,9 +32,6 @@ export type TooltipProps = {
  * @example
  * <Tooltip label="Copy"><Button asIcon><CopyIcon /></Button></Tooltip>
  */
-
-type Position = { x: number; y: number; transform: string };
-
 export function Tooltip({
     label,
     side = 'top',

@@ -30,14 +30,6 @@ export type HoverCardProps = {
     width?: number | string;
 };
 
-/**
- * Rich hover/focus popover that stays open while the pointer is over its
- * content, with configurable side, alignment and open/close delays.
- *
- * @example
- * <HoverCard trigger={<a>@ada</a>}><Profile /></HoverCard>
- */
-
 type Position = { x: number; y: number; transform: string };
 
 // Cross-axis translate fraction for the chosen alignment.
@@ -47,6 +39,13 @@ const ALIGN_SHIFT: Record<HoverCardAlign, string> = {
     end: '-100%',
 };
 
+/**
+ * Rich hover/focus popover that stays open while the pointer is over its
+ * content, with configurable side, alignment and open/close delays.
+ *
+ * @example
+ * <HoverCard trigger={<a>@ada</a>}><Profile /></HoverCard>
+ */
 export function HoverCard({
     trigger,
     children,
