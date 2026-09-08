@@ -39,15 +39,6 @@ export type TreeProps<T extends string = string> = {
     'aria-label'?: string;
 };
 
-/**
- * Accessible (WAI-ARIA) tree view with expand/collapse, single selection and
- * full keyboard navigation. Expansion and selection each work controlled or
- * uncontrolled.
- *
- * @example
- * <Tree nodes={nodes} defaultExpanded={['root']} onSelect={setSelected} />
- */
-
 const ChevronIcon = () => (
     <svg
         viewBox="0 0 16 16"
@@ -94,6 +85,14 @@ function flatten<T extends string>(
     return out;
 }
 
+/**
+ * Accessible (WAI-ARIA) tree view with expand/collapse, single selection and
+ * full keyboard navigation. Expansion and selection each work controlled or
+ * uncontrolled.
+ *
+ * @example
+ * <Tree nodes={nodes} defaultExpanded={['root']} onSelect={setSelected} />
+ */
 export function Tree<T extends string = string>({
     nodes,
     expanded,

@@ -10,14 +10,6 @@ export type PaginationProps = Omit<HTMLAttributes<HTMLElement>, 'onChange'> & {
     onChange: (page: number) => void;
 };
 
-/**
- * Page navigation with prev/next buttons and truncated page numbers (ellipses
- * for large ranges). Controlled via `page`/`onChange`.
- *
- * @example
- * <Pagination page={page} total={20} onChange={setPage} />
- */
-
 type PageEntry = number | 'ellipsis-start' | 'ellipsis-end';
 
 const ELLIPSIS = '…';
@@ -69,6 +61,13 @@ const ChevRightIcon = () => (
     </svg>
 );
 
+/**
+ * Page navigation with prev/next buttons and truncated page numbers (ellipses
+ * for large ranges). Controlled via `page`/`onChange`.
+ *
+ * @example
+ * <Pagination page={page} total={20} onChange={setPage} />
+ */
 export function Pagination({
     page,
     total,

@@ -37,6 +37,8 @@ export type TabsProps<T extends string = string> = Omit<
     variant?: TabsVariant;
 };
 
+type Indicator = { left: number; width: number; opacity: number };
+
 /**
  * Tab switcher with an animated active indicator. Renders the tab strip only —
  * pair it with your own panel switching keyed on the active value. Works
@@ -45,9 +47,6 @@ export type TabsProps<T extends string = string> = Omit<
  * @example
  * <Tabs options={tabs} value={tab} onChange={setTab} variant="underline" />
  */
-
-type Indicator = { left: number; width: number; opacity: number };
-
 export function Tabs<T extends string = string>({
     value,
     defaultValue,
