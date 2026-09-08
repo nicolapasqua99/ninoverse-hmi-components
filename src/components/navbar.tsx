@@ -24,14 +24,6 @@ export type NavbarProps<T extends string = string> =
         right?: ReactNode;
     };
 
-/**
- * Responsive top navigation bar with a brand, links, an active state and a
- * trailing slot. Collapses behind a menu toggle on narrow viewports.
- *
- * @example
- * <Navbar brand="Ninoverse" links={links} current={tab} onNav={setTab} />
- */
-
 const MenuIcon = () => (
     <svg
         viewBox="0 0 16 16"
@@ -60,6 +52,13 @@ const CloseIcon = () => (
     </svg>
 );
 
+/**
+ * Responsive top navigation bar with a brand, links, an active state and a
+ * trailing slot. Collapses behind a menu toggle on narrow viewports.
+ *
+ * @example
+ * <Navbar brand="Ninoverse" links={links} current={tab} onNav={setTab} />
+ */
 export function Navbar<T extends string = string>({
     brand,
     links,

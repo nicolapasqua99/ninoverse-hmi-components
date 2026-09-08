@@ -30,15 +30,6 @@ export type StepperProps<T extends string = string> = Omit<
     spacing?: string | number;
 };
 
-/**
- * Step progress indicator. Marks steps before `current` as completed (and
- * clickable), the current step active, and the rest upcoming. Works controlled
- * or uncontrolled.
- *
- * @example
- * <Stepper steps={steps} current={step} onChange={setStep} />
- */
-
 const CheckIcon = () => (
     <svg
         viewBox="0 0 24 24"
@@ -54,6 +45,14 @@ const CheckIcon = () => (
     </svg>
 );
 
+/**
+ * Step progress indicator. Marks steps before `current` as completed (and
+ * clickable), the current step active, and the rest upcoming. Works controlled
+ * or uncontrolled.
+ *
+ * @example
+ * <Stepper steps={steps} current={step} onChange={setStep} />
+ */
 export function Stepper<T extends string = string>({
     steps,
     current,
