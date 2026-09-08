@@ -11,6 +11,7 @@
 # production
 /dist
 /dist-demo
+/dist-storybook
 
 # misc
 .DS_Store
