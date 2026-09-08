@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview" />
+
+# @ninoverse/hmi-components
+
+A React component library providing Human-Machine Interface (HMI) UI
+components — built on Material Design 3 color tokens with a warm, asymmetric
+styling system.
+
+Browse the components in the sidebar. Every page is generated from the props
+and doc comments in the source, so the tables stay in step with the code.
+
+## The full demo page
+
+Storybook shows one component at a time. To see all of them together under a
+single theme — which is where layout and stylesheet interactions actually
+show up — open the demo page.
+
+{/* A plain markdown link would be rewritten into a story path, and docs render
+    inside an iframe — hence the explicit anchor and target. */}
+<a href="/demo/" target="_top">Open the full demo page →</a>
+
+## Theming
+
+Three axes switch independently from the toolbar above, and they compose.
+(Markdown tables need remark-gfm, which is not wired up — hence the list.)
+
+- **Color** — `html[data-theme]` — `default`, `ocean`, `forest`
+- **Structure** — `html[data-structure]` — `default`, `rounded`, `sharp`,
+  `pixel`, `journal`
+- **Material** — `html[data-material]` — `solid`, `glass`, `liquid`
+
+Light and dark follow the OS setting via `prefers-color-scheme`.
+
+## Installation
+
+```bash
+pnpm add @ninoverse/hmi-components
+```
+
+Requires React ^19 and react-dom ^19 as peer dependencies. Import the
+stylesheet once at your app entry point:
+
+```tsx
+import { Button } from '@ninoverse/hmi-components';
+import '@ninoverse/hmi-components/style.css';
+```
+
+Every component is also available on its own subpath —
+`@ninoverse/hmi-components/button` — for finer-grained imports.

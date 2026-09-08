@@ -309,6 +309,9 @@ export default function App() {
                 >
                     Light/dark follows your OS automatically.
                 </span>
+                <Link href="/" underline="hover">
+                    Storybook — per-component docs and props
+                </Link>
             </div>
             <section
                 style={{

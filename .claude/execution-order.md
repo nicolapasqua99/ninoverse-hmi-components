@@ -43,7 +43,7 @@ phases are merged to `main`.
 ### Within each phase
 
 - Build **one component at a time**.
-- Follow the 9-step checklist in `.claude/component-workflow.md` for each.
+- Follow the 10-step checklist in `.claude/component-workflow.md` for each.
 - Stop and confirm with the user after each component before starting the next.
 - Existing components in a phase get an **audit-pass** (review + screenshot);
   only commit if a real defect is found.
@@ -51,7 +51,8 @@ phases are merged to `main`.
 ### Audit-pass checklist (existing components)
 
 1. Open the `.tsx` file — check for hardcoded colors, radii, or shadows.
-2. Confirm the component is imported and rendered in `src/App.tsx`.
+2. Confirm the component is imported and rendered in `src/App.tsx`, and that
+   `src/components/<name>.stories.tsx` exists and covers its prop axes.
 3. Take a screenshot (`pnpm dev` + screenshot method in `component-workflow.md`).
 4. Surface anything broken. Only commit if a fix is needed; use an isolated commit.
 
@@ -77,7 +78,7 @@ to build**; the roadmap is complete.
 New components are no longer part of a phased roadmap — build each as a single
 isolated component on its own `feat/<name>` branch off `main`. Use the
 `/create-component` skill (`.claude/skills/create-component/`), which runs the
-full 9-step workflow from `.claude/component-workflow.md`.
+full 10-step workflow from `.claude/component-workflow.md`.
 
 Update this table if a new category of work is planned.
 

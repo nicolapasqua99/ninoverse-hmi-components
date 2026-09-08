@@ -1,6 +1,6 @@
 ---
 name: create-component
-description: Scaffold and ship one new component for the ninoverse-hmi-components library end to end — create the .tsx + styled CSS, wire it into index.ts / vite.config.ts / package.json / App.tsx alphabetically, verify with lint + build + screenshot, then commit and open a draft PR. Use when the user asks to "create / add / build a component" (e.g. "add a Rating component", "/create-component badge").
+description: Scaffold and ship one new component for the ninoverse-hmi-components library end to end — create the .tsx + styled CSS, wire it into index.ts / vite.config.ts / package.json / App.tsx alphabetically plus a Storybook story, verify with lint + build + screenshot, then commit and open a draft PR. Use when the user asks to "create / add / build a component" (e.g. "add a Rating component", "/create-component badge").
 ---
 
 # Create Component
@@ -22,7 +22,7 @@ component. Never batch two components in one run.
 | Phase | Skill | What it does |
 |-------|-------|--------------|
 | 1 | `scaffold-component` | Pre-flight, collision check, branch setup, create `.tsx` + `.styled.css` |
-| 2 | `wire-component` | Register in `index.ts`, `vite.config.ts`, `package.json`, `App.tsx` (all alphabetical) |
+| 2 | `wire-component` | Register in `index.ts`, `vite.config.ts`, `package.json`, `App.tsx` (all alphabetical) + write `<name>.stories.tsx` |
 | 3 | `verify-component` | `pnpm format` → `pnpm lint` → `pnpm build` → screenshot → user approval |
 | 4 | `ship-component` | `git commit` + `git push` + open draft PR → stop |
 
