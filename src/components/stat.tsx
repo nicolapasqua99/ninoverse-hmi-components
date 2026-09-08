@@ -18,14 +18,6 @@ export type StatProps = HTMLAttributes<HTMLDivElement> & {
     helpText?: ReactNode;
 };
 
-/**
- * Compact metric/KPI display with a label, value and an optional trend delta
- * and help text.
- *
- * @example
- * <Stat label="Revenue" value="$12.4k" trend="up" delta="8%" />
- */
-
 const TrendIcon = ({ trend }: { trend: StatTrend }) => {
     const path =
         trend === 'up'
@@ -49,6 +41,13 @@ const TrendIcon = ({ trend }: { trend: StatTrend }) => {
     );
 };
 
+/**
+ * Compact metric/KPI display with a label, value and an optional trend delta
+ * and help text.
+ *
+ * @example
+ * <Stat label="Revenue" value="$12.4k" trend="up" delta="8%" />
+ */
 export function Stat({
     label,
     value,
