@@ -2875,55 +2875,6 @@ export function Example() {
                     style={{
                         display: 'flex',
                         gap: '2rem',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Avatar name="Ada Lovelace" status="online" />
-                    <Avatar name="Alan Turing" status="away" />
-                    <Avatar name="Grace Hopper" status="offline" />
-                </div>
-                <div
-                    style={{
-                        display: 'flex',
-                        gap: '3rem',
-                        alignItems: 'center',
-                    }}
-                >
-                    <AvatarStack
-                        names={[
-                            'Ada Lovelace',
-                            'Alan Turing',
-                            'Grace Hopper',
-                            'Linus Torvalds',
-                        ]}
-                    />
-                    <AvatarStack
-                        names={[
-                            'Ada Lovelace',
-                            'Alan Turing',
-                            'Grace Hopper',
-                            'Linus Torvalds',
-                            'Margaret Hamilton',
-                            'Donald Knuth',
-                            'Edsger Dijkstra',
-                        ]}
-                        max={4}
-                    />
-                </div>
-            </section>
-
-            <section
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '2rem',
-                }}
-            >
-                <h2 style={{ margin: 0, fontSize: '3rem' }}>Toast</h2>
-                <div
-                    style={{
-                        display: 'flex',
-                        gap: '2rem',
                         flexWrap: 'wrap',
                         alignItems: 'center',
                     }}
