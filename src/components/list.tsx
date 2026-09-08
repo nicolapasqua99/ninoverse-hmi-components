@@ -31,14 +31,6 @@ export type ListProps = HTMLAttributes<HTMLDivElement> & {
     renderItem?: (item: ListItem, index: number) => ReactNode;
 };
 
-/**
- * Vertical list of rows with an optional avatar, title/subtitle and trailing
- * slot. Supports drag-and-drop reordering and a custom row renderer.
- *
- * @example
- * <List items={items} draggable onReorder={setItems} />
- */
-
 const DragIcon = () => (
     <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
         <title>Drag to reorder</title>
@@ -51,6 +43,13 @@ const DragIcon = () => (
     </svg>
 );
 
+/**
+ * Vertical list of rows with an optional avatar, title/subtitle and trailing
+ * slot. Supports drag-and-drop reordering and a custom row renderer.
+ *
+ * @example
+ * <List items={items} draggable onReorder={setItems} />
+ */
 export function List({
     items,
     draggable = false,

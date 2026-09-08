@@ -41,14 +41,6 @@ export type TableProps<T extends Record<string, unknown>> = Omit<
     getRowKey?: (row: T, index: number) => string | number;
 };
 
-/**
- * Data table with optional client-side click-to-sort columns and custom cell
- * renderers. Column keys are type-checked against the row shape `T`.
- *
- * @example
- * <Table columns={columns} rows={rows} getRowKey={(r) => r.id} />
- */
-
 type SortState = { key: string | null; dir: 'asc' | 'desc' };
 
 const SortIcon = () => (
@@ -74,6 +66,13 @@ function compare(a: unknown, b: unknown): number {
     return String(a).localeCompare(String(b));
 }
 
+/**
+ * Data table with optional client-side click-to-sort columns and custom cell
+ * renderers. Column keys are type-checked against the row shape `T`.
+ *
+ * @example
+ * <Table columns={columns} rows={rows} getRowKey={(r) => r.id} />
+ */
 export function Table<T extends Record<string, unknown>>({
     columns,
     rows,
