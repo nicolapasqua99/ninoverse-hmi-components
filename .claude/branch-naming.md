@@ -14,7 +14,8 @@
 
 | Prefix | When to use |
 |--------|-------------|
-| `feat/` | New feature |
+| `migrate/` | React → Lit migration of one element (`migrate/badge`) or a leaf batch (`migrate/phase-2-leaves`) |
+| `feat/` | New element or feature |
 | `fix/` | Bug fix |
 | `refactor/` | Refactor with no behaviour change |
 | `chore/` | Tooling, deps, CI, config |
@@ -24,16 +25,20 @@
 ## Examples
 
 ```
-feat/dnd-spell-slot-reset
-fix/auth-session-cookie-expiry
-refactor/vacation-hours-utils
-chore/upgrade-biome
-docs/update-firebase-setup
-wip/mack-iteration-7
+migrate/badge
+migrate/phase-2-leaves
+migrate/v6-flip
+feat/rating
+fix/modal-close-cancelable
+chore/vitest-browser-mode
+docs/lit-migration-playbook
 ```
 
 ## Rules
 
-- Branch off `main` unless working on a dependent feature; in that case branch off the parent feature branch.
+- **Always branch off a merged `main`.** Fetch first:
+  `git fetch origin main && git checkout -b migrate/<kebab> origin/main`.
+- **Never stack.** Do not branch off another open PR's branch; the next
+  element starts only after the previous PR has merged.
 - Delete branches after merging.
 - Never commit directly to `main`.

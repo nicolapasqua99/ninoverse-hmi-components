@@ -4,39 +4,53 @@
 
 | Path | Contents |
 |------|----------|
-| `src/components/` | Generated components  |
-| `src/components/styled/` | Shared Styled Component definitions |
-| `src/configs/` | Global static config (color tokens, etc.) |
-| `src/models/` | Shared TypeScript interfaces/types |
-| `src/lib/` | Shared Utilities |
-| 
+| `src/elements/<kebab>/` | One Lit element: `<kebab>.ts`, `<kebab>.styles.ts`, `<kebab>.react.ts`, `<kebab>.stories.ts`, `<kebab>.test.ts`, `<kebab>.ssr.test.ts` |
+| `src/elements/shared/` | Element infrastructure: `base.styles.ts`, `events.ts`, `dom.ts`, `form.ts`, `format.ts`, `panel.ts`, `chart.ts`, `positioning.ts`, `toast.ts`, `theme.ts` |
+| `src/elements/index.ts` | Barrel that registers every migrated element |
+| `src/react/` | `index.ts` barrel of React wrappers, `use-theme.ts` |
+| `src/components/` | **Legacy** React components (frozen; deleted at v6). Never add to it. |
+| `src/components/styled/` | **Legacy** plain CSS for the React components (`*.styled.css`) |
+| `src/configs/` | Global static config (color tokens, fonts, theme lists) |
+| `src/lib/` | Legacy React utilities (`*.utility.ts`) |
 
-## Within each `src/<component>/` directory
+There is no `src/models/`; types live next to the element that owns them and
+are re-exported through the barrels.
 
-| Folder | Contents |
-|--------|----------|
-| `src/components/styled/` | Styled Component definitions |
-| `src/configs/` | Static config (color tokens, etc.) |
-| `src/models/` | TypeScript interfaces/types |
-| `src/lib/` | Utilities |
+## Naming rules for `src/elements/`
 
-## File naming conventions
+Everything derives from one kebab-case name:
 
-| File type | Convention | Example |
-|-----------|-----------|---------|
-| Components | `camelCase.tsx` | `unorderedList.tsx` |
-| Component CSS (plain CSS, not a library) | `[name].styled.css` in `src/components/styled/` | `button.styled.css` |
-| Config objects | `camelCase.ts` | `socialIconsParallaxConfiguration.ts` |
-| TypeScript models | `[name].model.ts` / `[name].model.tsx` | `button.model.ts`, `button.model.tsx` |
-| Utilities | `[name].utility.ts` / `[name].utility.tsx` | `button.utility.ts`, `button.utility.tsx` |
+| Artifact | Form | Example |
+|----------|------|---------|
+| Folder and files | kebab | `src/elements/area-chart/area-chart.ts` |
+| Class | `Hmi` + PascalCase | `HmiAreaChart` |
+| Tag | `hmi-` + kebab | `hmi-area-chart` |
+| Package subpaths | `./wc/<kebab>`, `./react/<kebab>` | `./wc/area-chart` |
+| Dist files | `dist/wc/<kebab>.js`, `dist/react/<kebab>.js` | `dist/wc/area-chart.js` |
+| React wrapper export | PascalCase (the v5 name) | `AreaChart` |
+| Event detail types | `<Pascal><Event>Detail` | `AreaChartResizeDetail` |
+| Events | `hmi-` + kebab | `hmi-open-change` |
+| Slots | kebab | `left-icon` |
+| Parts | kebab | `base`, `panel` |
+| Attributes | kebab, declared explicitly for multi-word props | `as-icon` |
 
-## CSS import pattern
+## File suffixes
 
-Each component imports its own CSS as a side-effect at the top of the `.tsx` file:
+| Suffix | Purpose |
+|--------|---------|
+| `.ts` | the element |
+| `.styles.ts` | `export const styles = css\`…\`` |
+| `.react.ts` | `createComponent` wrapper |
+| `.stories.ts` | Storybook (`@storybook/web-components-vite`) |
+| `.test.ts` | Vitest browser tests |
+| `.ssr.test.ts` | Vitest node SSR smoke test |
 
-```tsx
-import './styled/button.styled.css';
-```
+Legacy React files keep their `camelCase.tsx` / `[name].styled.css` names
+until deletion.
 
-CSS files live in `src/components/styled/` and use MD3 short-name custom properties
-(`var(--primary)`, `var(--corner-tl)`, etc.) exclusively. No hardcoded color values.
+## CSS
+
+Elements never import CSS files. All styles live in `<kebab>.styles.ts` and
+are attached through `static override styles = [baseStyles, styles]`. Theme
+tokens (`var(--primary)`, `var(--corner-tl)`, …) are the only way colours,
+radii, shadows and spacing enter an element; no hardcoded values, no `rem`.
