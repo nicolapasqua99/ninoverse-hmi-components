@@ -7,6 +7,30 @@ A React component library providing Human-Machine Interface (HMI) UI components 
 [![react](https://img.shields.io/badge/react-%5E19-61dafb?logo=react&logoColor=white)](https://react.dev/)
 [![node](https://img.shields.io/badge/node-%E2%89%A520-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 
+> ## Migration to Lit (v6)
+>
+> The library is moving from React components to native Web Components built on
+> [Lit](https://lit.dev), one element per pull request. During 5.x both live side
+> by side: the React API at the root is **unchanged**, migrated Lit elements ship
+> under `@ninoverse/hmi-components/wc/<name>` and their React wrappers under
+> `@ninoverse/hmi-components/react/<name>`. At v6 the root becomes the Lit
+> elements and the React tree is removed.
+>
+> **What changes for React consumers at v6**
+>
+> - Import from `@ninoverse/hmi-components/react` (or `/react/<name>`).
+> - Callbacks receive a `CustomEvent`: `onChange={(e) => e.detail.value}`.
+>   Text inputs split into `onInput` (per keystroke) and `onChange` (commit).
+> - Rich-content props become slotted children: `<Icon slot="left-icon" />`
+>   instead of `leftIcon={<Icon />}`.
+> - `className` and `style` still work (they land on the host element).
+> - Load `base.css` plus one theme per axis instead of `style.css`.
+> - `ThemeProvider` is replaced by `setTheme` / `useTheme`.
+>
+> Progress: [`docs/migration/tracker.md`](./docs/migration/tracker.md) ·
+> Playbook: [`docs/migration/README.md`](./docs/migration/README.md) ·
+> Decisions: [`docs/migration/adr-0001-lit-web-components.md`](./docs/migration/adr-0001-lit-web-components.md)
+
 ## Installation
 
 ```bash
@@ -45,13 +69,15 @@ import { LineChart } from '@ninoverse/hmi-components/line-chart';
 
 Every component is also published as a native custom element, so the library works in **plain HTML, Vue, Angular, Svelte** — anywhere that renders HTML. Drop in a single self-contained `<script>` (React is bundled in) and the `<hmi-*>` elements register themselves on load. No build step required.
 
+> This is the v5 bundle built with `react-to-web-component`. Elements that have already been migrated to Lit ship separately as `dist/hmi-elements.iife.js` (`@ninoverse/hmi-components/elements`), without React. Never load both bundles on the same page: they define the same tags. See the [migration playbook](./docs/migration/README.md#3-package-layout).
+
 ```html
 <!doctype html>
 <html data-theme="default" data-structure="default">
     <head>
         <!-- Google Fonts the components use -->
         <link
-            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Oxanium:wght@200..800&family=Rubik+Glitch&family=Press+Start+2P&family=Pixelify+Sans:wght@400..700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Oxanium:wght@200..800&family=Rubik+Glitch&family=Press+Start+2P&family=Pixelify+Sans:wght@400..700&family=Caveat:wght@400..700&display=swap"
             rel="stylesheet"
         />
         <!-- Theme tokens: constants first, then one color + one structure theme -->
@@ -152,8 +178,9 @@ rsx! {
 
 ## Documentation
 
-- **[Theming guide](./docs/theming.md)** — the two theme axes, `ThemeProvider` / `useTheme`, the full design-token reference, and how to author custom themes.
+- **[Theming guide](./docs/theming.md)** — the three theme axes, `ThemeProvider` / `useTheme`, the full design-token reference, and how to author custom themes.
 - **[Component API reference](./docs/api/)** — generated per-component prop tables and examples (run `pnpm docs` to regenerate from source).
+- **[Lit migration](./docs/migration/README.md)** — playbook, [translation guide](./docs/migration/translation-guide.md), [decision record](./docs/migration/adr-0001-lit-web-components.md) and [tracker](./docs/migration/tracker.md).
 
 Every component and prop also ships JSDoc, so your editor shows the same descriptions on hover and autocomplete.
 
@@ -161,13 +188,14 @@ Every component and prop also ships JSDoc, so your editor shows the same descrip
 
 Color tokens follow Material Design 3 naming (`--primary`, `--surface-variant`, `--on-surface`, etc.) and are defined as CSS custom properties in `public/css/themes/`. Import `src/configs/colors.ts` to reference them from TypeScript. See the **[theming guide](./docs/theming.md)** for the complete token reference and runtime theme switching.
 
-**Typography.** Base font size is `8px` (defined in `globals.css`); all `rem` units scale from this base. Available font families:
+**Typography and scale.** The v5 React components size in `rem` against `html { font-size: 8px }` (set by `globals.css`); the Lit elements size from the `--hmi-base` token (8px by default) instead, so they need no root font-size. Available font families:
 
 - `--font-quicksand`
 - `--font-oxanium`
-- `--rubik-glitch`
+- `--font-rubik-glitch`
 - `--font-press-start-2p`
 - `--font-pixelify-sans`
+- `--font-caveat`
 
 ## Development
 
@@ -185,32 +213,40 @@ pnpm docs      # generate the component API reference (docs/api)
 
 ```
 src/
-├── components/         # React components (.tsx)
-│   └── styled/         # Component-scoped CSS (`*.styled.css`)
+├── elements/           # Lit elements, one folder per element (migration target)
+│   ├── <kebab>/        # <kebab>.ts, .styles.ts, .react.ts, .stories.ts, .test.ts, .ssr.test.ts
+│   └── shared/         # base styles, events, form, positioning, theme helpers
+├── react/              # React wrappers barrel + useTheme
+├── components/         # Legacy React components (.tsx) — frozen, removed at v6
+│   └── styled/         # Legacy component CSS (`*.styled.css`)
 ├── configs/            # Color/font tokens and theme config
-├── lib/                # Shared utilities
-└── theme.tsx           # ThemeProvider / useTheme
+├── lib/                # Legacy shared utilities
+└── theme.tsx           # Legacy ThemeProvider / useTheme
 
-docs/                   # Theming guide and generated API reference
+docs/                   # Theming guide, migration docs, generated API reference
 public/
-└── css/themes/         # Material Design 3 theme CSS variables
+└── css/themes/         # Material Design 3 theme CSS variables (tokens only)
 ```
 
 ## File naming
 
 | Type | Convention | Example |
 |------|-----------|---------|
-| Component | `camelCase.tsx` | `unorderedList.tsx` |
-| Component CSS | `[name].styled.css` | `button.styled.css` |
-| Config | `camelCase.ts` | `colorsConfig.ts` |
-| Model | `[name].model.ts` | `button.model.ts` |
-| Utility | `[name].utility.ts` | `button.utility.ts` |
+| Lit element folder and files | kebab-case | `src/elements/area-chart/area-chart.ts` |
+| Element class / tag | `Hmi<Pascal>` / `hmi-<kebab>` | `HmiAreaChart` / `hmi-area-chart` |
+| Legacy React component | `camelCase.tsx` | `areaChart.tsx` |
+| Legacy component CSS | `[name].styled.css` | `button.styled.css` |
+| Config | `camelCase.ts` | `colors.ts` |
+| Utility | `[name].utility.ts` | `formatTemplate.utility.ts` |
+
+Details: [`.claude/file-naming.md`](./.claude/file-naming.md).
 
 ## Contributing
 
-- Follow [Conventional Commits](https://www.conventionalcommits.org/): `feat(ui): add button component`
+- Follow [Conventional Commits](https://www.conventionalcommits.org/): `feat(ui): migrate badge to lit`
 - Run `pnpm lint` before opening a PR
 - Detailed rules live in `.claude/`:
+  - [`lit-migration.md`](./.claude/lit-migration.md) — the element rules
   - [`commit-conventions.md`](./.claude/commit-conventions.md)
   - [`branch-naming.md`](./.claude/branch-naming.md)
   - [`component-workflow.md`](./.claude/component-workflow.md)

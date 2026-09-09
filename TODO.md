@@ -2,6 +2,13 @@
 
 ## update-style-guide rule (`​.claude/update-style-guide.md`)
 
+> **Folded into the Lit migration.** The token-update procedure now lives in
+> `docs/migration/README.md` §11 (theme rules: token-only theme files, `--panel-*`,
+> `--hmi-base`). The open questions below remain valid and should be answered when
+> the rule is written after the v6 flip. Note that question 5 is stale: there are
+> now eleven theme files under `public/css/themes/{constants.css, color/*,
+> structure/*, material/*}`.
+
 A dedicated rule for updating design tokens when a new design file or style
 direction arrives — distinct from the full reproduction guide (build from scratch)
 and from component-workflow (build a single component).
@@ -49,10 +56,11 @@ Analysis of how hard it would be to add syntax highlighting to the `Code`
 typography primitive. **Deferred — no work done yet.**
 
 ### Key constraint
-The library has **zero runtime dependencies** (only `react`/`react-dom` as
-peers; Vite externalizes only those). Every component is hand-rolled. The
-current `Code` output is ~474 bytes. Any approach must be weighed against
-preserving that zero-dep, token-driven model.
+The library has **one runtime dependency (Lit) and zero framework
+dependencies** (`react`/`react-dom` are optional peers for the wrappers). Every
+component is hand-rolled. The current `Code` output is ~474 bytes. Any approach
+must be weighed against preserving that Lit-only, token-driven model
+(`.claude/lit-migration.md` R1).
 
 ### Scope note
 Highlighting is arguably **out of scope for a primitive**. `Code` is a Phase 1
@@ -76,14 +84,14 @@ docs/snippets, not an editor. New API: `<Code block language="ts">`.
 **Option A — real highlighter (Shiki / Prism / highlight.js)**
 Low to write, high in consequences. Adds a **heavy runtime dependency** (Shiki
 ships MB of TextMate grammars/themes; Prism/highlight.js lighter but still real
-deps with their own CSS), **breaks the zero-dep model**, and needs theme
+deps with their own CSS), **breaks the Lit-only rule**, and needs theme
 bridging to the MD3 palette. Requires explicit sign-off on the dependency
 tradeoff before pursuing.
 
 ### Recommendation
 Prefer **C** (or do nothing) for the library; reach for **B** only if built-in
 highlighting is wanted without asking consumers to wire up a highlighter; avoid
-**A** unless the zero-dependency design is intentionally being abandoned.
+**A** unless the Lit-only dependency rule is intentionally being abandoned.
 
 ---
 
