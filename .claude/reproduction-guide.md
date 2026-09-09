@@ -1,5 +1,14 @@
 # Library Reproduction Guide
 
+> **Status: v5 React reference — superseded at v6.** This guide reproduces the
+> React 19 implementation. The library is migrating to Lit web components
+> (`docs/migration/README.md`); the guide is rewritten in the v6 flip PR
+> (phase 11). Do not extend it. Known drift against the current repository:
+> the themes are eleven files under `public/css/themes/{constants.css, color/*,
+> structure/*, material/*}`, not one `default.css`; the embedded `biome.json`
+> snippet is stale (use the real file); the Google Fonts URL lacks `Caveat`
+> (needed by the `journal` structure).
+
 How to rebuild `@ninoverse/hmi-components` from scratch when a new design file
 or style guidance is provided. Follow every section in order; each step has an
 explicit verification gate before moving on.

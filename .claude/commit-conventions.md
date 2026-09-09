@@ -18,7 +18,7 @@ Follow the [Conventional Commits](https://www.conventionalcommits.org/) specific
 
 | Type | When to use |
 |------|-------------|
-| `feat` | New feature or user-visible behaviour |
+| `feat` | New feature or user-visible behaviour (including a migrated element: it adds public subpaths) |
 | `fix` | Bug fix |
 | `refactor` | Code change with no behaviour change |
 | `style` | Formatting, whitespace — no logic change |
@@ -27,25 +27,36 @@ Follow the [Conventional Commits](https://www.conventionalcommits.org/) specific
 | `perf` | Performance improvement |
 | `revert` | Reverts a previous commit |
 
-Append `!` after the type for breaking changes: `feat!: drop Node 16 support`.
+Append `!` after the type for breaking changes: `feat(ui)!: flip root exports to lit elements`.
 
-## Scopes (optional but recommended)
+The bump workflow reads the first line: `feat` → minor, `!` or
+`BREAKING CHANGE` → major, everything else → patch.
 
-Use the route or layer being changed: `auth`, `dnd`, `work`, `nini`, `mack`, `portfolio`, `firebase`, `api`, `ui`.
+## Scopes
+
+| Scope | Covers |
+|-------|--------|
+| `ui` | elements and legacy components |
+| `react` | React wrappers, `useTheme` |
+| `theme` | tokens and theme files |
+| `build` | vite, tsconfig, package exports, manifest |
+| `ci` | workflows |
+| `docs` | documentation and rules |
 
 ## Examples
 
 ```
-feat(dnd): add spell slot reset on long rest
-fix(auth): redirect loop when session cookie is expired
-refactor(work): extract vacation hours logic into utility
-chore: upgrade biome to 2.4.9
-docs: update CLAUDE.md with auth flow detail
-feat!: replace __session cookie with JWT-only flow
+feat(ui): migrate badge to lit
+feat(ui): add rating element
+feat(theme): add --panel-* tokens
+chore(build): add hmi-elements iife bundle
+docs(ui): update tracker for phase 2
+fix(ui): honour preventDefault on hmi-close in modal
+feat(ui)!: flip root exports to lit elements
 ```
 
 ## What to avoid
 
 - Vague messages: `fix stuff`, `update`, `wip`
 - Mixing unrelated changes in one commit
-- Committing `firebase-service-account.json` (it is gitignored for a reason)
+- Batching two elements in one commit

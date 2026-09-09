@@ -5,25 +5,56 @@ This file provides strict guidance and architectural rules for Claude Code (clau
 ## Commands & Tooling
 
 - **Package Manager:** You MUST strictly use `pnpm`. Never use `npm` or `yarn`.
-- **Maintain the Build:** Never leave the codebase in a state where build or linting fails. Run the relevant commands below to verify your work before concluding a task.
+- **Maintain the Build:** Never leave the codebase in a state where build, lint or tests fail. Run the relevant commands below to verify your work before concluding a task.
 
 ```bash
-pnpm install       # Install dependencies
-pnpm dev           # Start Vite dev server
-pnpm build         # Production build (outputs to /dist)
-pnpm preview       # Serve production build locally
-pnpm lint          # Biome check (lint + format check)
-pnpm format        # Biome format with auto-write
+pnpm install          # Install dependencies
+pnpm dev              # Start Vite dev server (legacy React demo, src/App.tsx)
+pnpm build            # tsc -b + ESM library + r2wc IIFE (+ Lit IIFE once PR 2 lands)
+pnpm build:wc         # r2wc IIFE only
+pnpm build:demo       # Demo page → dist-site/demo
+pnpm storybook        # Storybook dev server on :6006
+pnpm build:storybook  # Storybook → dist-site
+pnpm build:site       # Storybook + demo
+pnpm preview          # Serve production build locally
+pnpm lint             # Biome check (lint + format check)
+pnpm format           # Biome format with auto-write
+pnpm docs             # TypeDoc → docs/api (legacy React API)
+```
+
+Added by the tooling PR of the Lit migration (phase 0, see `docs/migration/README.md` §10):
+
+```bash
+pnpm test             # Vitest browser mode (Chromium via Playwright)
+pnpm test:ssr         # Vitest node project for *.ssr.test.ts
+pnpm cem              # Regenerate custom-elements.json
+pnpm build:elements   # Lit drop-in bundle dist/hmi-elements.iife.js
 ```
 
 ## Architecture & Framework Rules
 
-**ReactJS Web Components:** This project strictly uses the ReactJS.
+**Web Components on Lit.** Every component is a native custom element `hmi-<name>` built with Lit 3 (`LitElement`, Shadow DOM, `static styles`). React is supported only through `@lit/react` wrappers exported under `./react`. The React tree in `src/components/` is the **legacy** implementation being migrated one element per PR; it is frozen — never add to it, never edit it in a migration PR.
 
-### 4. Styling Conventions
+Read `.claude/lit-migration.md` before touching anything under `src/elements/`. Progress and phase gates: `docs/migration/tracker.md`.
 
-- **Design Tokens:** CSS custom properties follow Material Design 3 color token naming (`--primary`, `--surface-variant`, etc.). The active theme CSS is in `public/css/themes/`. Import `src/configs/colors.ts` to use these tokens imperatively in JS.
-- **Typography & Scaling:** Base font size is `8px` (`globals.css`); `rem` units scale from this base. Use those Google Fonts: `--font-quicksand`, `--font-oxanium`, `--rubik-glitch`, `--font-press-start-2p`, `--font-pixelify-sans`.
+### 1. Dependencies
+
+Lit is the single allowed runtime dependency. Zero framework dependency: hand-roll everything else (positioning, charts, date math, icons).
+
+### 2. Elements
+
+- One folder per element: `src/elements/<kebab>/` with `<kebab>.ts`, `.styles.ts`, `.react.ts`, `.stories.ts`, `.test.ts`, `.ssr.test.ts`.
+- Class `Hmi<Pascal>`, tag `hmi-<kebab>`, TC39 standard decorators with `accessor`.
+- Props → `@property`; rich content → slots; callbacks → `hmi-*` `CustomEvent`s with object `detail`; forms → `ElementInternals`; overlays → `<dialog>` and the Popover API.
+- SSR-safe: no `window`/`document` at import or constructor time; never mutate light DOM.
+
+### 3. Styling
+
+- **Design Tokens:** CSS custom properties follow Material Design 3 color token naming (`--primary`, `--surface-variant`, etc.). The theme CSS is in `public/css/themes/` and may define **only** custom properties. Import `src/configs/colors.ts` to use token names imperatively in JS.
+- **Encapsulation:** all element CSS lives in `<kebab>.styles.ts` inside the shadow root. No `.css` files for elements, no selectors that reach outside the root (`[data-structure=…]`, `:host-context()`), no `z-index` for overlays.
+- **Sizing:** never `rem`. Elements size from `--hmi-base` (8px by default) through `calc(var(--_base) * N)`; `--_base` is provided by `baseStyles`.
+- **Consumer styling surface:** tokens, a documented set of `part` names (`base`, `label`, `icon`, `panel`, …) and class/style on the host.
+- **Typography:** Google Fonts exposed as tokens: `--font-quicksand`, `--font-oxanium`, `--font-rubik-glitch`, `--font-press-start-2p`, `--font-pixelify-sans`, `--font-caveat`; elements use `--font-default` / `--font-display`.
 
 ## Behavioral Guidelines
 
@@ -66,12 +97,16 @@ pnpm format        # Biome format with auto-write
 
 Use your file-reading capabilities to read the exact rules in the `.claude/` directory **before** executing any of the following tasks:
 
+- **Migrating or building an element:** Read `.claude/lit-migration.md`, then `.claude/component-workflow.md`
+- **Deciding what to migrate next / branching strategy:** Read `.claude/execution-order.md` and `docs/migration/tracker.md`
 - **Committing code:** Read `.claude/commit-conventions.md`
 - **Creating branches:** Read `.claude/branch-naming.md`
 - **Reviewing PRs:** Read `.claude/code-review.md`
 - **Testing/Verifying:** Read `.claude/testing-requirements.md`
 - **Opening PRs:** Read `.claude/pr-guidelines.md`
 - **Creating new files:** Read `.claude/file-naming.md`
-- **Building a component:** Read `.claude/component-workflow.md`
-- **Deciding what to build next / branching strategy:** Read `.claude/execution-order.md`
-- **Reproducing the library from a new design file:** Read `.claude/reproduction-guide.md`
+- **Reproducing the v5 React library from a design file (legacy):** Read `.claude/reproduction-guide.md`
+
+Skills (`.claude/skills/*/SKILL.md`): `migrate-component` (existing React component → Lit element), `create-component` (new element), and the four phases they orchestrate: `scaffold-component`, `wire-component`, `verify-component`, `ship-component`.
+
+Human documentation: `docs/migration/README.md` (playbook), `docs/migration/translation-guide.md` (React → Lit patterns, templates, worked example), `docs/migration/adr-0001-lit-web-components.md` (decisions), `docs/theming.md`.

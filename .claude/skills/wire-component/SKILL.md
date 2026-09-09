@@ -1,101 +1,85 @@
 ---
 name: wire-component
-description: Wire an already-scaffolded HMI component into the project's index.ts, vite.config.ts, package.json exports, App.tsx, and its Storybook story. Phase 2 of the component workflow; run after scaffold-component and before verify-component.
+description: Wire an already-scaffolded Lit element of ninoverse-hmi-components into the element barrel, the React barrel, vite.config.ts entries, package.json exports (./wc/<kebab> and ./react/<kebab>), the Lit section of examples/web-components.html, and the migration tracker. Phase 2 of the element workflow; run after scaffold-component and before verify-component.
 ---
 
 # Wire Component
 
-Registers a scaffolded component in the project-level files so it is exported,
-bundled, and documented. This is **phase 2 of 4** — run `verify-component`
-next.
+Registers a scaffolded element in the project-level files so it is exported,
+bundled, documented and tracked. This is **phase 2 of 4** — run
+`verify-component` next.
 
 ## Inputs
 
-- **Component name** (required): camelCase stem or PascalCase. Derive:
-  - camelCase: `rating`
-  - PascalCase: `Rating`
-  - kebab-case subpath key: `./rating` or `./radar-chart`
-- Assumes `src/components/<name>.tsx` already exists (run `scaffold-component`
-  first).
+- **Element name** (required): derive `<kebab>`, `<Pascal>`.
+- Assumes `src/elements/<kebab>/` exists with all six files (run
+  `scaffold-component` first).
 
-## Step 3 — `src/index.ts`
+Every list below is kept **alphabetically sorted** by kebab name.
 
-Add the named re-export. Keep the file **alphabetically sorted** by export
-name:
+## Step 1 — `src/elements/index.ts`
 
 ```ts
-export { Rating } from './components/rating';
+export * from './<kebab>/<kebab>.js';
 ```
 
-## Step 4 — `vite.config.ts`
+Importing this barrel registers every migrated element (side effect).
 
-Add the component to the `build.lib.entry` map. Keep entries **alphabetically
-sorted** by key:
+## Step 2 — `src/react/index.ts`
 
 ```ts
-rating: resolve(dirname, 'src/components/rating.tsx'),
+export { <Pascal> } from '../elements/<kebab>/<kebab>.react.js';
+export type { <Pascal>ChangeDetail, <Pascal>Variant } from '../elements/<kebab>/<kebab>.react.js';
 ```
 
-## Step 5 — `package.json` → `"exports"`
+## Step 3 — `vite.config.ts`
 
-Add a kebab-case subpath entry. Keep entries **alphabetically sorted**:
+Add the two entries next to the existing `wc/badge` / `react/badge` pair
+(shape fixed by PR 2):
+
+```ts
+'wc/<kebab>': resolve(dirname, 'src/elements/<kebab>/<kebab>.ts'),
+'react/<kebab>': resolve(dirname, 'src/elements/<kebab>/<kebab>.react.ts'),
+```
+
+## Step 4 — `package.json` → `"exports"`
 
 ```json
-"./rating": {
-    "types": "./dist/components/rating.d.ts",
-    "import": "./dist/rating.js"
+"./wc/<kebab>": {
+    "types": "./dist/wc/<kebab>.d.ts",
+    "import": "./dist/wc/<kebab>.js"
+},
+"./react/<kebab>": {
+    "types": "./dist/react/<kebab>.d.ts",
+    "import": "./dist/react/<kebab>.js"
 }
 ```
 
-## Step 6 — `src/App.tsx`
+The root export and `./<kebab>` stay React until the v6 flip. `sideEffects`
+already covers `./dist/wc/*.js`.
 
-- Import from `'./components/<name>'` (match the convention already used in
-  this file, **not** `'./index'`).
-- Add a `<section>` with an `<h2>` matching the component name, following the
-  surrounding markup style.
-- Render **at least one variant per meaningful prop** so type errors, missing
-  CSS, and render failures surface immediately.
+## Step 5 — `examples/web-components.html`
 
-## Step 7 — `src/components/<name>.stories.tsx`
+Add a `<section>` for the element inside the "Lit elements" block (the block
+loads `../dist/hmi-elements.iife.js` + `base.css`; mirror the badge section).
+Exercise attributes, at least one slot, and log one event with
+`addEventListener('hmi-…', (e) => console.log(e.detail))`.
 
-Storybook is the root of the deployed docs site, so every component needs a
-story file.
+## Step 6 — Story
 
-- Import the component from `'./<name>'`.
-- Title: `Components/<Category>/<ComponentName>`, where category is one of
-  `Layout`, `Typography`, `Forms`, `Feedback`, `Overlays`, `Navigation`,
-  `Data display` — see the table in `.claude/component-workflow.md` step 7 for
-  what each covers. Chart components are the exception: top-level `Charts/`.
-- Tag `['autodocs']` so the props table is generated from the prop doc
-  comments. No manual `argTypes` unless a prop needs a control the inferred
-  type cannot express.
-- One story per meaningful prop axis, mirroring the variants added to
-  `App.tsx`. Stateful components need a `render` that owns the state.
+`src/elements/<kebab>/<kebab>.stories.ts` was scaffolded; confirm the title
+category, that every prop axis has a story, and that the class JSDoc sits
+directly above `export class` (the manifest reads it).
 
-```tsx
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Rating } from './rating';
+Categories: `Layout`, `Typography`, `Forms`, `Feedback`, `Overlays`,
+`Navigation`, `Data display` under `Components/`; charts under top-level
+`Charts/`. See `.claude/component-workflow.md`.
 
-const meta = {
-    title: 'Components/Forms/Rating',
-    component: Rating,
-    tags: ['autodocs'],
-} satisfies Meta<typeof Rating>;
+## Step 7 — Tracker
 
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {};
-```
-
-The docs page pulls its description from the JSDoc block **directly above the
-exported function**. If that block sits above a local helper (an icon, a
-constant), the page renders without a description — move it.
-
-**Modifying an existing component:** update its existing story to cover the new
-or changed props. Do not add a parallel story file.
+`docs/migration/tracker.md`: set the element's row to `In progress`.
 
 ## Done
 
-After all five files are updated, tell the user wiring is complete and prompt
-them to run `verify-component` to lint, build, and screenshot the result.
+After all files are updated, tell the user wiring is complete and prompt them
+to run `verify-component`.
