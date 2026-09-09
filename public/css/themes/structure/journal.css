@@ -8,11 +8,11 @@
 [data-structure='journal'] {
     /* Shape scale — generous, symmetric rounding */
     --corner-none: 0;
-    --corner-extra-small: 0.75rem;
-    --corner-small: 1.25rem;
-    --corner-medium: 2rem;
-    --corner-large: 2.75rem;
-    --corner-extra-large: 4rem;
+    --corner-extra-small: calc(var(--hmi-base, 8px) * 0.75);
+    --corner-small: calc(var(--hmi-base, 8px) * 1.25);
+    --corner-medium: calc(var(--hmi-base, 8px) * 2);
+    --corner-large: calc(var(--hmi-base, 8px) * 2.75);
+    --corner-extra-large: calc(var(--hmi-base, 8px) * 4);
     --corner-full: 9999px;
 
     /* Per-corner — symmetric (no asymmetric notch) */
@@ -51,20 +51,20 @@
 
     /* Density — comfortable (mirrors default) */
     --space-0: 0;
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.25rem;
-    --space-6: 1.5rem;
-    --space-7: 1.75rem;
-    --space-8: 2rem;
-    --space-9: 2.25rem;
-    --space-10: 2.5rem;
-    --space-11: 3rem;
-    --space-12: 4rem;
-    --space-13: 5rem;
-    --space-14: 7rem;
+    --space-1: calc(var(--hmi-base, 8px) * 0.25);
+    --space-2: calc(var(--hmi-base, 8px) * 0.5);
+    --space-3: calc(var(--hmi-base, 8px) * 0.75);
+    --space-4: calc(var(--hmi-base, 8px) * 1);
+    --space-5: calc(var(--hmi-base, 8px) * 1.25);
+    --space-6: calc(var(--hmi-base, 8px) * 1.5);
+    --space-7: calc(var(--hmi-base, 8px) * 1.75);
+    --space-8: calc(var(--hmi-base, 8px) * 2);
+    --space-9: calc(var(--hmi-base, 8px) * 2.25);
+    --space-10: calc(var(--hmi-base, 8px) * 2.5);
+    --space-11: calc(var(--hmi-base, 8px) * 3);
+    --space-12: calc(var(--hmi-base, 8px) * 4);
+    --space-13: calc(var(--hmi-base, 8px) * 5);
+    --space-14: calc(var(--hmi-base, 8px) * 7);
 
     /* Typography — handwriting display over a structured companion body */
     --font-default: var(--font-quicksand);
@@ -75,8 +75,15 @@
        constants.css for this structure only (wins on source order). */
     --elevation-0: none;
     --elevation-1: none;
-    --elevation-2: 0.375rem 0.375rem 0 0 var(--tertiary);
-    --elevation-3: 0.5rem 0.5rem 0 0 var(--tertiary);
-    --elevation-4: 0.625rem 0.625rem 0 0 var(--tertiary);
-    --elevation-5: 0.75rem 0.75rem 0 0 var(--tertiary);
+    --elevation-2: calc(var(--hmi-base, 8px) * 0.375) calc(var(--hmi-base, 8px) * 0.375) 0 0 var(--tertiary);
+    --elevation-3: calc(var(--hmi-base, 8px) * 0.5) calc(var(--hmi-base, 8px) * 0.5) 0 0 var(--tertiary);
+    --elevation-4: calc(var(--hmi-base, 8px) * 0.625) calc(var(--hmi-base, 8px) * 0.625) 0 0 var(--tertiary);
+    --elevation-5: calc(var(--hmi-base, 8px) * 0.75) calc(var(--hmi-base, 8px) * 0.75) 0 0 var(--tertiary);
+
+    /* Per-element hooks — penciled-in dividers, a bordered progress track, a
+       dashed rule under a stat's derived value, a flat switch thumb. */
+    --list-divider-style: dashed;
+    --progress-track-border: calc(var(--hmi-base, 8px) * 0.125) solid var(--outline);
+    --stat-rule: calc(var(--hmi-base, 8px) * 0.125) dashed var(--outline-variant);
+    --switch-thumb-shadow: none;
 }

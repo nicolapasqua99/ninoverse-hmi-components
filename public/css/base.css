@@ -1,0 +1,75 @@
+/* Base stylesheet for the Lit elements — the only global CSS a host page must
+   load besides the theme tokens (constants + one color + one structure, and
+   optionally one material). It never sets a root font-size: the elements size
+   from --hmi-base instead of rem, so the host keeps its own typography scale.
+   Scale the whole library with `:root { --hmi-base: 10px; }`. */
+
+:root {
+    --hmi-base: 8px;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--on-background);
+    font-family: var(--font-default, var(--font-quicksand));
+    font-size: calc(var(--hmi-base) * 2);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+}
+
+/* Material backdrops — palette-derived gradients so the translucent panels of
+   the glass and liquid materials have something to blur or refract. */
+[data-material='glass'] body {
+    background:
+        radial-gradient(
+            at 18% 12%,
+            color-mix(in srgb, var(--primary) 32%, transparent),
+            transparent 45%
+        ),
+        radial-gradient(
+            at 85% 8%,
+            color-mix(in srgb, var(--tertiary) 28%, transparent),
+            transparent 48%
+        ),
+        radial-gradient(
+            at 50% 100%,
+            color-mix(in srgb, var(--secondary) 22%, transparent),
+            transparent 55%
+        ),
+        var(--background);
+    background-attachment: fixed;
+}
+
+[data-material='liquid'] body {
+    background:
+        radial-gradient(
+            at 16% 10%,
+            color-mix(in srgb, var(--primary) 42%, transparent),
+            transparent 45%
+        ),
+        radial-gradient(
+            at 86% 6%,
+            color-mix(in srgb, var(--tertiary) 38%, transparent),
+            transparent 48%
+        ),
+        radial-gradient(
+            at 50% 100%,
+            color-mix(in srgb, var(--secondary) 30%, transparent),
+            transparent 55%
+        ),
+        var(--background);
+    background-attachment: fixed;
+}
+
+/* Pre-upgrade rules — generated from custom-elements.json by
+   scripts/gen-base-css.mjs (`pnpm cem`). Do not edit by hand. */
+/* @generated not-defined start */
+/* no elements declared yet */
+/* @generated not-defined end */

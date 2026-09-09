@@ -22,5 +22,14 @@
         "exactOptionalPropertyTypes": true,
         "noImplicitOverride": true
     },
-    "include": ["vite.config.ts", "postcss.config.js"]
+    "include": [
+        "vite.config.ts",
+        "vite.wc.config.ts",
+        "vite.demo.config.ts",
+        "vite.elements.config.ts",
+        "vitest.config.ts",
+        "scripts/*.ts",
+        ".storybook/main.ts",
+        "postcss.config.js"
+    ]
 }

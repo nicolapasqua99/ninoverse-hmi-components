@@ -116,31 +116,39 @@ The Lit elements render inside a Shadow DOM. Custom properties inherit through
 shadow boundaries, so every token below keeps working unchanged. Global selectors
 do **not** cross the boundary, which changes how themes may be written:
 
-- **Theme files define only custom properties.** A theme must never select a
-  component class or element. The v5 material files (`glass.css`, `liquid.css`)
-  still style `.card`, `.modal`, `.popover`, … directly; the tooling PR of the
-  migration converts those rules into the panel tokens below and removes the
-  selectors.
+- **Theme files define only custom properties.** A theme never selects a
+  component class, an element or `body`. The material files (`glass.css`,
+  `liquid.css`) are token-only since 5.7: they set the panel tokens below and
+  no longer style the v5 React components, which therefore render with the
+  solid look under `glass` and `liquid` until they are migrated.
 - **Panel tokens.** Panel-like elements (card, navbar, sidebar, popover, hover-card,
   context-menu, toast, modal, drawer, command-palette, combobox listbox, menu,
-  chart-tooltip) paint from `--panel-bg`, `--panel-border`, `--panel-blur`,
-  `--panel-shadow`, `--panel-filter`, `--panel-ink-bg`, `--panel-accent-bg`.
-  Defaults live in `constants.css`; `glass`, `liquid` and `journal` override them.
-  Each of those elements also exposes `part="panel"` for anything a token cannot
-  express: `hmi-card::part(panel) { … }`.
-- **Per-component hooks** replace the journal-specific rules that v5 keeps inside
-  component CSS: `--list-marker`, `--progress-track`, `--stat-rule`, `--switch-thumb`.
+  chart-tooltip) paint from `--panel-bg` (`--panel-bg-strong` for dialogs,
+  drawers and listboxes), `--panel-border`, `--panel-filter` (a `backdrop-filter`
+  value), `--panel-ink-bg` and `--panel-accent-bg`; shadows keep coming from
+  `--elevation-*`. Defaults live in `constants.css`; `glass` and `liquid`
+  override them. Each of those elements also exposes `part="panel"` for anything
+  a token cannot express: `hmi-card::part(panel) { … }`.
+- **Per-element hooks** replace the journal-specific rules that v5 keeps inside
+  component CSS: `--list-divider-style`, `--progress-track-border`, `--stat-rule`,
+  `--switch-thumb-shadow` (defaults in `constants.css`, overridden by
+  `structure/journal.css`).
 - **Sizing base.** The elements never use `rem`. They size from `--hmi-base`
   (`8px` by default, set in `base.css`), so a host app keeps its own root font
-  size. Scale the whole library with `:root { --hmi-base: 10px; }`. The structure
-  tokens (`--space-*`, `--corner-*`) are expressed against the same base.
+  size. Scale the whole library with `:root { --hmi-base: 10px; }`. Every theme
+  token that carries a length (`--space-*`, `--corner-*`, `--elevation-*`, the
+  material rims) is expressed as `calc(var(--hmi-base, 8px) * N)`. For the v5
+  React tree, whose `html { font-size: 8px }` makes `1rem = 8px`, the values are
+  identical.
 - **Liquid refraction.** The `liquid` material references an SVG filter
   (`url('#liquid-glass')`). Elements embed that filter inside their own shadow root
   so it resolves everywhere; the document-level copy in `index.html` is only needed
   for the v5 React components.
-- **`base.css`** (added by the tooling PR) is the only global stylesheet the Lit
-  elements need besides the themes: `--hmi-base`, `color-scheme`, `body` defaults,
-  `::selection`, the material body gradients and pre-upgrade `:not(:defined)` rules.
+- **`base.css`** (`public/css/base.css` → `dist/base.css`) is the only global
+  stylesheet the Lit elements need besides the themes: `--hmi-base`, `body`
+  defaults, `::selection`, the `glass`/`liquid` body backdrops and the pre-upgrade
+  `:not(:defined)` rules generated from `custom-elements.json` by `pnpm cem`. The
+  React demo and Storybook load it too.
 
 ## Token reference
 

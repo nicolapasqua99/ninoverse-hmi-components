@@ -52,10 +52,10 @@ Existing exports do not change. Each migrated element adds two subpaths.
     ".":                 { "types": "./dist/index.d.ts", "import": "./dist/index.js" },           // React, unchanged
     "./<kebab>":         { "types": "./dist/components/<camel>.d.ts", "import": "./dist/<camel>.js" }, // React, unchanged
     "./theme":           { "types": "./dist/theme.d.ts", "import": "./dist/theme.js" },           // unchanged
-    "./wc":              { "types": "./dist/wc/index.d.ts", "import": "./dist/wc/index.js" },      // registers all migrated elements
-    "./wc/<kebab>":      { "types": "./dist/wc/<kebab>.d.ts", "import": "./dist/wc/<kebab>.js" },
+    "./wc":              { "types": "./dist/elements/index.d.ts", "import": "./dist/wc/index.js" },   // registers all migrated elements
+    "./wc/<kebab>":      { "types": "./dist/elements/<kebab>/<kebab>.d.ts", "import": "./dist/wc/<kebab>.js" },
     "./react":           { "types": "./dist/react/index.d.ts", "import": "./dist/react/index.js" },
-    "./react/<kebab>":   { "types": "./dist/react/<kebab>.d.ts", "import": "./dist/react/<kebab>.js" },
+    "./react/<kebab>":   { "types": "./dist/elements/<kebab>/<kebab>.react.d.ts", "import": "./dist/react/<kebab>.js" },
     "./elements":        { "default": "./dist/hmi-elements.iife.js" },                             // Lit drop-in bundle
     "./base.css":        "./dist/base.css",
     "./themes/*":        "./dist/themes/*",                                                        // unchanged
@@ -68,6 +68,11 @@ Existing exports do not change. Each migrated element adds two subpaths.
   "peerDependenciesMeta": { "react": { "optional": true }, "react-dom": { "optional": true } }
 }
 ```
+
+Declaration files keep the source layout (`dist/elements/<kebab>/…d.ts`,
+emitted by `vite-plugin-dts` with `entryRoot: src`); only the JavaScript is
+renamed by the vite entries, exactly like the React exports pair
+`dist/components/badge.d.ts` with `dist/badge.js`.
 
 `sideEffects` must list `./dist/wc/*.js`: element modules register themselves
 in `@customElement`, and a bundler would otherwise tree-shake
@@ -84,11 +89,11 @@ page. Both define the same tags; the second `customElements.define` throws.
 {
   "exports": {
     ".":               { "types": "./dist/wc/index.d.ts", "import": "./dist/wc/index.js" },
-    "./<kebab>":       { "types": "./dist/wc/<kebab>.d.ts", "import": "./dist/wc/<kebab>.js" },
+    "./<kebab>":       { "types": "./dist/elements/<kebab>/<kebab>.d.ts", "import": "./dist/wc/<kebab>.js" },
     "./wc":            "./dist/wc/index.js",          // deprecated alias, one major
     "./wc/<kebab>":    "./dist/wc/<kebab>.js",        // deprecated alias, one major
     "./react":         { "types": "./dist/react/index.d.ts", "import": "./dist/react/index.js" },
-    "./react/<kebab>": { "types": "./dist/react/<kebab>.d.ts", "import": "./dist/react/<kebab>.js" },
+    "./react/<kebab>": { "types": "./dist/elements/<kebab>/<kebab>.react.d.ts", "import": "./dist/react/<kebab>.js" },
     "./theme":         { "types": "./dist/wc/theme.d.ts", "import": "./dist/wc/theme.js" },
     "./web-components": { "default": "./dist/hmi-components.iife.js" },   // now the Lit bundle
     "./base.css":      "./dist/base.css",
@@ -137,16 +142,16 @@ v5 PascalCase export (`AreaChart`).
 
 ## 5. Global CSS
 
-- **`dist/themes/*`** — unchanged. Theme files may only define custom
-  properties. The material files (`glass.css`, `liquid.css`) currently style
-  `.card`, `.modal`, … directly; PR 2 turns those rules into `--panel-*` tokens
-  and removes the class selectors.
-- **`dist/base.css`** (new, PR 2) — the only stylesheet a host page must load
-  besides themes:
-  - `:root { --hmi-base: 8px; }` and `color-scheme: light dark`
-  - `body` defaults (background, colour, `font-family: var(--font-default)`, line height) and `::selection`
+- **`dist/themes/*`** — token-only since 5.7. Every length token is
+  `calc(var(--hmi-base, 8px) * N)`; the material files set the `--panel-*`
+  tokens and no longer style component classes (the v5 React components render
+  solid under `glass`/`liquid` until migrated).
+- **`dist/base.css`** (`public/css/base.css`) — the only stylesheet a host page
+  must load besides themes:
+  - `:root { --hmi-base: 8px; }` (`color-scheme` stays in `constants.css`)
+  - `body` defaults (background, colour, `font-family: var(--font-default)`, `font-size: calc(var(--hmi-base) * 2)`, line height) and `::selection`
   - the `[data-material='glass'] body` / `[data-material='liquid'] body` gradients
-  - pre-upgrade rules `hmi-badge:not(:defined), hmi-button:not(:defined), … { visibility: hidden }` generated from `custom-elements.json`
+  - pre-upgrade rules `hmi-badge:not(:defined), … { visibility: hidden }` generated from `custom-elements.json` by `scripts/gen-base-css.mjs` (`pnpm cem`)
 - **Fonts** stay `<link>` tags in the document (`@font-face` cannot load from
   inside a shadow root). Include `Caveat` (used by the `journal` structure).
 - `dist/style.css` and `dist/hmi-components.css` remain until v6 for the
@@ -156,7 +161,7 @@ v5 PascalCase export (`AreaChart`).
 
 | Phase | Scope | Starts when |
 |-------|-------|-------------|
-| 0 | PR 1 (this docs PR); PR 2 tooling scaffold (see §10) | — |
+| 0 | PR 1 (docs, #113); PR 2 tooling scaffold (see §10) | — |
 | 1 | `badge` — the pilot that freezes the templates and the definition of done | PR 2 merged |
 | 2 | presentational leaves: alert, avatar, avatar-stack, banner, blockquote, card, chip, code, empty-state, kbd, meter, progress, skeleton, spinner, stat | phase 1 merged |
 | 3 | layout + typography: aspect-ratio, box, divider, flex, grid, heading, link, scroll-area, spacer, text, visually-hidden | phase 2 merged |
@@ -183,12 +188,12 @@ automates this. By hand:
 3. Read `src/components/<camel>.tsx`, `src/components/styled/<camel>.styled.css`, `src/components/<camel>.stories.tsx`, the `define('<kebab>', …)` block in `src/web-components.ts`, and `docs/api/components/<camel>.md`.
 4. Write the **API mapping sheet** (React prop → property/attribute, slot, event + detail, part) and the hazard list (portals, document listeners, `activeElement`, `useId`, `className` passthrough, `as`, cross-boundary CSS, `rem` count). Get it approved.
 5. Scaffold the six files from the templates in `translation-guide.md` §18.
-6. Wire: `src/elements/index.ts`, `src/react/index.ts`, `vite.config.ts` entries `wc/<kebab>` and `react/<kebab>`, `package.json` exports, the Lit section of `examples/web-components.html`, the story. Set the tracker row to *In progress*.
+6. Wire: `src/elements/index.ts`, `src/react/index.ts`, `vite.config.ts` entries `wc/<kebab>` and `react/<kebab>`, `package.json` exports, a section in `examples/elements.html`, the story. Set the tracker row to *In progress*.
 7. Verify:
    ```bash
    pnpm format && pnpm lint
    pnpm build
-   ls dist/wc/<kebab>.js dist/wc/<kebab>.d.ts dist/react/<kebab>.js dist/react/<kebab>.d.ts
+   ls dist/wc/<kebab>.js dist/react/<kebab>.js dist/elements/<kebab>/<kebab>.d.ts dist/elements/<kebab>/<kebab>.react.d.ts
    pnpm test -- src/elements/<kebab>
    pnpm test:ssr -- src/elements/<kebab>
    pnpm cem && git diff --stat custom-elements.json
@@ -203,7 +208,7 @@ An element is done only when it has been exercised in each host below.
 
 | Host | How to load | What to check |
 |------|-------------|---------------|
-| Plain HTML | `<script src="…/dist/hmi-elements.iife.js">` + `base.css` + `themes/*` (`examples/web-components.html`) | attributes, slots, `addEventListener('hmi-change', e => e.detail)`, theme switching by attribute |
+| Plain HTML | `<script src="…/dist/hmi-elements.iife.js">` + `base.css` + `themes/*` (`examples/elements.html`; `examples/web-components.html` is the r2wc page — never both bundles on one page) | attributes, slots, `addEventListener('hmi-change', e => e.detail)`, theme switching by attribute |
 | React 19 | `import { Badge } from '@ninoverse/hmi-components/react/badge'` | props set as properties, `onChange` receives `CustomEvent` (`e.detail.value`), children and `slot="…"` project, SSR via `@lit-labs/ssr-react` / `@lit-labs/nextjs` |
 | Dioxus web / desktop | IIFE in the HTML shell; `rsx! { hmi-badge { "variant": "success", "Live" } }` | attributes from strings, boolean presence (omit the attribute or set the property in `onmounted`), slotted children, events via `web_sys::EventTarget::add_event_listener_with_callback` |
 | Angular | `CUSTOM_ELEMENTS_SCHEMA`; `<hmi-tabs [options]="tabs" (hmi-change)="onTab($event.detail.value)">` | property binding of arrays, event typing from `custom-elements.json`, Angular SSR renders the tag and the element upgrades on the client |
@@ -224,27 +229,27 @@ or constructor time (`isServer` guard), deterministic `render()` from
 properties, no light-DOM mutation, reflected attributes for CSS state, and a
 `<kebab>.ssr.test.ts` per element proving `@lit-labs/ssr` can render it.
 
-## 10. Tooling added by PR 2
+## 10. Tooling (PR 2, landed in 5.7)
 
-PR 2 is the only infrastructure PR. It adds no elements. Its checklist:
+PR 2 was the only infrastructure PR; it added no elements. What it settled:
 
-- `lit`, `@lit/react` (dependencies); `@lit-labs/ssr`, `@custom-elements-manifest/analyzer`, `vitest`, `@vitest/browser`, `playwright`, `@storybook/web-components-vite` (dev).
-- `src/elements/shared/{base.styles,events,dom}.ts`, `src/elements/index.ts`, `src/react/index.ts`.
-- `public/css/base.css` and a `scripts/gen-base-css.mjs` that appends the `:not(:defined)` list from `custom-elements.json`.
-- Theme token rebase: every `rem` in `public/css/themes/constants.css` and `structure/*.css` becomes `calc(var(--hmi-base, 8px) * N)`; `--panel-*` tokens defined in `constants.css` and overridden in `material/glass.css`, `material/liquid.css`, `structure/journal.css`; the class selectors in the material files are deleted.
-- `vite.config.ts` entries `wc/<kebab>` and `react/<kebab>` (dts remapped to `dist/wc`, `dist/react`); `vite.elements.config.ts` for `dist/hmi-elements.iife.js`; the `copy-theme-css` plugin extracted to one module.
-- `custom-elements-manifest.config.mjs`; `pnpm cem` script; `custom-elements.json` committed.
-- `vitest.config.ts` with a browser project (Chromium via Playwright) and a node project for `*.ssr.test.ts`; `pnpm test`, `pnpm test:ssr`.
-- `.storybook/main.ts` framework → `@storybook/web-components-vite`; `setCustomElementsManifest` in `preview.ts`; decide whether React stories keep a second config during the migration.
-- `.github/workflows/ci-gate.yml` runs `lint`, `build`, `test`, `test:ssr`.
-- `tsconfig.node.json` includes every config file (`vite.*.config.ts`, `vitest.config.ts`, `.storybook/*.ts`).
-- Known risks to settle in PR 2: Biome formatting of `accessor` decorators; `vite-plugin-dts` output paths; `sideEffects` tree-shaking check with a consumer smoke bundle; `attachInternals()` under the SSR DOM shim; top-layer stacking order between toasts and modals.
+- `lit`, `@lit/react` (dependencies); `@lit-labs/ssr`, `@custom-elements-manifest/analyzer`, `vitest` 5 + `@vitest/browser-playwright`, `playwright` (pinned; CI installs its Chromium with `playwright install --with-deps chromium`), `@storybook/web-components-vite` (dev). `react`/`react-dom` are optional peers.
+- `src/elements/shared/{base.styles,events,dom}.ts` with browser smoke tests, `src/elements/index.ts`, `src/react/index.ts` (empty barrels), `src/elements/shared/ssr.ssr.test.ts` proving a form-associated element with `attachInternals()` in a field initializer renders under the SSR DOM shim (no guard needed).
+- `public/css/base.css` and `scripts/gen-base-css.mjs` (run by `pnpm cem`) that rewrites the `:not(:defined)` block from `custom-elements.json`; CI fails when either file is stale.
+- Theme token rebase: every `rem` in `constants.css`, `structure/*.css` and `material/*.css` is `calc(var(--hmi-base, 8px) * N)`; `--panel-*` and the journal hooks are defined in `constants.css` and overridden in `material/glass.css`, `material/liquid.css`, `structure/journal.css`; the material files no longer contain class or `body` selectors (backdrops moved to `base.css`).
+- `vite.config.ts` entries `wc/index` and `react/index` (element PRs add `wc/<kebab>`, `react/<kebab>`), `lit`/`@lit/*` external in the ESM build; declarations are **not** remapped — `exports.types` points at `dist/elements/…` (§3); `vite.elements.config.ts` builds `dist/hmi-elements.iife.js` with Lit bundled; `scripts/copy-css-plugin.ts` replaces the duplicated theme-copy plugin.
+- `custom-elements-manifest.config.mjs` (`litelement: true`, `packagejson: false`); `custom-elements.json` committed and excluded from Biome.
+- `vitest.config.ts`: `browser` project (Chromium, headless) for `*.test.ts`, `ssr` project (Node) for `*.ssr.test.ts`, `passWithNoTests`.
+- Storybook swapped to `@storybook/web-components-vite` with `setCustomElementsManifest` in `preview.ts`. The React `*.stories.tsx` are no longer built (one framework per config); they stay in the frozen tree, type-checked, and the React demo page remains at `/demo/`. `@storybook/react-vite` is kept only for their types until the flip.
+- `.github/workflows/ci-gate.yml`: `lint`, `build`, Playwright Chromium install, `test`, `test:ssr`, manifest/base.css drift check.
+- `tsconfig.node.json` covers every config file and `scripts/*.ts`; Biome formats `accessor` decorators without configuration.
+- Still open: `sideEffects` tree-shaking check with a consumer smoke bundle (needs a real element — Badge pilot); top-layer stacking of toasts under modals (phase 11); typedoc still documents the React API only.
 
 ## 11. Theme rules during the migration
 
 - Theme files define **only** custom properties. Never a component class, never an element selector.
-- Panel look: `--panel-bg`, `--panel-border`, `--panel-blur`, `--panel-shadow`, `--panel-filter`, `--panel-ink-bg`, `--panel-accent-bg` (defaults in `constants.css`; `glass`/`liquid`/`journal` override them). Panel-like elements expose `part="panel"` for anything a theme cannot express as a token.
-- Journal-specific looks that today live in component CSS become tokens: `--list-marker`, `--progress-track`, `--stat-rule`, `--switch-thumb`.
+- Panel look: `--panel-bg`, `--panel-bg-strong`, `--panel-border`, `--panel-filter` (a `backdrop-filter` value), `--panel-ink-bg`, `--panel-accent-bg` (defaults in `constants.css`; `glass` and `liquid` override them; shadows stay on `--elevation-*`). Panel-like elements expose `part="panel"` for anything a theme cannot express as a token.
+- Journal-specific looks that v5 keeps in component CSS are tokens: `--list-divider-style`, `--progress-track-border`, `--stat-rule`, `--switch-thumb-shadow` (defaults in `constants.css`, overrides in `structure/journal.css`).
 - `--hmi-base` (default `8px`) is the sizing base. Elements never use `rem`. A host may scale the whole library with `hmi-*, :root { --hmi-base: 10px }`.
 - The liquid refraction filter is embedded by each panel-like element (`renderLiquidFilter()`), so `url('#liquid-glass')` resolves inside the root.
 - Light/dark keeps following `prefers-color-scheme` inside each colour theme file.

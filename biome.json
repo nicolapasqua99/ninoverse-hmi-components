@@ -12,7 +12,10 @@
             "*.ts",
             "*.tsx",
             "*.js",
-            "*.json"
+            "*.json",
+            "*.mjs",
+            "scripts/**",
+            "!custom-elements.json"
         ]
     },
     "formatter": {

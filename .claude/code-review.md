@@ -40,7 +40,7 @@ Rule numbers refer to `.claude/lit-migration.md`.
 - `custom-elements.json` regenerated and shows the element
 - Story covers every prop axis; React snippet in docs
 - Tests cover the blocks listed in `.claude/testing-requirements.md`
-- `examples/web-components.html` exercises the element
+- `examples/elements.html` exercises the element
 - Tracker row updated; PR body carries the mapping sheet, behaviour differences, screenshots and the R12 checklist
 
 ## Code quality

@@ -408,12 +408,12 @@ Rules in R4. Mechanical translations:
 | `.button svg { … }` | `::slotted(svg) { … }` |
 | `.empty-state__icon > svg` | `.icon ::slotted(svg)` |
 | `.avatar-stack .avatar` (`avatar.styled.css:76,80`) | in `avatar-stack.styles.ts`: `::slotted(hmi-avatar) { … }` and `::slotted(hmi-avatar:not(:first-child)) { margin-inline-start: … }` |
-| `[data-structure="journal"] .list__item` (`list.styled.css:92`) | `.item { list-style: var(--list-marker, none); }` with `--list-marker` defined in `structure/journal.css` |
-| `[data-structure="journal"] .progress` / `.stat__footer` / `.switch__thumb` | `--progress-track`, `--stat-rule`, `--switch-thumb` tokens |
+| `[data-structure="journal"] .list__item` (`list.styled.css:92`) | `.item { border-bottom-style: var(--list-divider-style, solid); }` — `--list-divider-style` is `dashed` in `structure/journal.css` |
+| `[data-structure="journal"] .progress` / `.stat__footer` / `.switch__thumb` | `border: var(--progress-track-border, none)`, `border-top: var(--stat-rule, none)`, `box-shadow: var(--switch-thumb-shadow)` — defaults in `constants.css`, journal overrides in `structure/journal.css` |
 | `height: 5rem` | `height: calc(var(--_base) * 5)` |
 | `border: 0.125rem solid` | `border: calc(var(--_base) * 0.125) solid` |
 | `font-size: 1.75rem` | `font-size: calc(var(--_base) * 1.75)` |
-| `padding: 0 var(--space-8)` | unchanged (tokens are rebased in PR 2) |
+| `padding: 0 var(--space-8)` | unchanged (the tokens are already expressed against `--hmi-base`) |
 | `z-index: 1000` on an overlay | removed (top layer) |
 | `@keyframes modal-in { … }` | verbatim inside `css\`` |
 | `@media (prefers-reduced-motion: reduce)` | verbatim |

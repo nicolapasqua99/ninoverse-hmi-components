@@ -6,11 +6,11 @@
 [data-structure='default'] {
     /* Shape scale */
     --corner-none: 0;
-    --corner-extra-small: 0.5rem;
-    --corner-small: 1rem;
-    --corner-medium: 1.5rem;
-    --corner-large: 2rem;
-    --corner-extra-large: 3.5rem;
+    --corner-extra-small: calc(var(--hmi-base, 8px) * 0.5);
+    --corner-small: calc(var(--hmi-base, 8px) * 1);
+    --corner-medium: calc(var(--hmi-base, 8px) * 1.5);
+    --corner-large: calc(var(--hmi-base, 8px) * 2);
+    --corner-extra-large: calc(var(--hmi-base, 8px) * 3.5);
     --corner-full: 9999px;
 
     /* Per-corner overrides — drive the asymmetric "notch" look */
@@ -50,20 +50,20 @@
     /* Density — dense spacing scale (2dp grid). Components reference these;
        the legacy --spacing-0..9 are aliased onto this scale in constants.css. */
     --space-0: 0;
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.25rem;
-    --space-6: 1.5rem;
-    --space-7: 1.75rem;
-    --space-8: 2rem;
-    --space-9: 2.25rem;
-    --space-10: 2.5rem;
-    --space-11: 3rem;
-    --space-12: 4rem;
-    --space-13: 5rem;
-    --space-14: 7rem;
+    --space-1: calc(var(--hmi-base, 8px) * 0.25);
+    --space-2: calc(var(--hmi-base, 8px) * 0.5);
+    --space-3: calc(var(--hmi-base, 8px) * 0.75);
+    --space-4: calc(var(--hmi-base, 8px) * 1);
+    --space-5: calc(var(--hmi-base, 8px) * 1.25);
+    --space-6: calc(var(--hmi-base, 8px) * 1.5);
+    --space-7: calc(var(--hmi-base, 8px) * 1.75);
+    --space-8: calc(var(--hmi-base, 8px) * 2);
+    --space-9: calc(var(--hmi-base, 8px) * 2.25);
+    --space-10: calc(var(--hmi-base, 8px) * 2.5);
+    --space-11: calc(var(--hmi-base, 8px) * 3);
+    --space-12: calc(var(--hmi-base, 8px) * 4);
+    --space-13: calc(var(--hmi-base, 8px) * 5);
+    --space-14: calc(var(--hmi-base, 8px) * 7);
 
     /* Typography — active UI + display fonts */
     --font-default: var(--font-quicksand);

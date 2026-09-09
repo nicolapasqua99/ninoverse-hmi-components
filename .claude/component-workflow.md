@@ -79,7 +79,7 @@ All lists alphabetical by kebab name:
 2. `src/react/index.ts` — `export { <Pascal> } from '../elements/<kebab>/<kebab>.react.js';` (+ types)
 3. `vite.config.ts` — entries `wc/<kebab>` and `react/<kebab>`
 4. `package.json` `exports` — `./wc/<kebab>` and `./react/<kebab>`
-5. `examples/web-components.html` — a section in the "Lit elements" block
+5. `examples/elements.html` — a section in the elements block
 6. Story reviewed: category, one story per prop axis
 7. `docs/migration/tracker.md` — row → `In progress`
 
@@ -124,7 +124,7 @@ feat(ui): add <Pascal> element        # new element
 
 One commit per element. Stage only the element folder, the two barrels,
 `vite.config.ts`, `package.json`, `custom-elements.json`,
-`examples/web-components.html` and the tracker. Push, open a **draft** PR
+`examples/elements.html` and the tracker. Push, open a **draft** PR
 with the mapping sheet, screenshots and the R12 checklist, set the tracker row
 to `In review`, and **stop**.
 

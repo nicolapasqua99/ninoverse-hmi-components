@@ -1,9 +1,12 @@
 /* Glass material — a frosted, translucent finish that composes with ANY color
    theme and structure. Driven by html[data-material='glass']; the default
-   'solid' is a pure no-op, so every existing palette/structure is untouched.
-   All values derive from the active role tokens via color-mix, so the frost
-   adapts to each palette and to light/dark. Loaded last (after color +
-   structure) so its --elevation / body overrides win on source order. */
+   'solid' is the absence of a material file, so every palette/structure is
+   untouched. All values derive from the active role tokens via color-mix, so
+   the frost adapts to each palette and to light/dark. Loaded last (after color
+   + structure) so its --elevation overrides win on source order.
+
+   Token-only: the elements paint their panels from the --panel-* tokens below
+   (defaults in constants.css). The body backdrop lives in base.css. */
 
 [data-material='glass'] {
     /* Translucent surfaces (new tokens — never self-reference a role token) */
@@ -18,16 +21,24 @@
 
     /* Soft, diffuse glows replace the tight default shadows */
     --elevation-0: none;
-    --elevation-1: 0 0.25rem 0.75rem 0
+    --elevation-1: 0 calc(var(--hmi-base, 8px) * 0.25) calc(var(--hmi-base, 8px) * 0.75) 0
         color-mix(in srgb, var(--shadow) 10%, transparent);
-    --elevation-2: 0 0.375rem 1rem 0
+    --elevation-2: 0 calc(var(--hmi-base, 8px) * 0.375) calc(var(--hmi-base, 8px) * 1) 0
         color-mix(in srgb, var(--shadow) 12%, transparent);
-    --elevation-3: 0 0.75rem 1.75rem 0
+    --elevation-3: 0 calc(var(--hmi-base, 8px) * 0.75) calc(var(--hmi-base, 8px) * 1.75) 0
         color-mix(in srgb, var(--shadow) 16%, transparent);
-    --elevation-4: 0 1rem 2.5rem 0
+    --elevation-4: 0 calc(var(--hmi-base, 8px) * 1) calc(var(--hmi-base, 8px) * 2.5) 0
         color-mix(in srgb, var(--shadow) 20%, transparent);
-    --elevation-5: 0 1.5rem 3.5rem 0
+    --elevation-5: 0 calc(var(--hmi-base, 8px) * 1.5) calc(var(--hmi-base, 8px) * 3.5) 0
         color-mix(in srgb, var(--shadow) 24%, transparent);
+
+    /* Panel tokens consumed by the elements (see constants.css) */
+    --panel-bg: var(--glass-surface);
+    --panel-bg-strong: var(--glass-surface-strong);
+    --panel-ink-bg: color-mix(in srgb, var(--inverse-surface) 72%, transparent);
+    --panel-accent-bg: color-mix(in srgb, var(--primary-container) 72%, transparent);
+    --panel-border: var(--glass-stroke);
+    --panel-filter: var(--glass-blur);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,60 +55,4 @@
         );
         --glass-stroke: color-mix(in srgb, white 14%, transparent);
     }
-}
-
-/* Palette-derived gradient backdrop so the frosted panels have something to
-   blur. Soft mesh from the active accents; adapts to palette + mode. */
-[data-material='glass'] body {
-    background:
-        radial-gradient(
-            at 18% 12%,
-            color-mix(in srgb, var(--primary) 32%, transparent),
-            transparent 45%
-        ),
-        radial-gradient(
-            at 85% 8%,
-            color-mix(in srgb, var(--tertiary) 28%, transparent),
-            transparent 48%
-        ),
-        radial-gradient(
-            at 50% 100%,
-            color-mix(in srgb, var(--secondary) 22%, transparent),
-            transparent 55%
-        ),
-        var(--background);
-    background-attachment: fixed;
-}
-
-/* Frosted panels — translucent surface + hairline stroke + backdrop blur. */
-[data-material='glass'] .card,
-[data-material='glass'] .navbar,
-[data-material='glass'] .sidebar,
-[data-material='glass'] .popover,
-[data-material='glass'] .context-menu,
-[data-material='glass'] .hover-card,
-[data-material='glass'] .toast {
-    background: var(--glass-surface);
-    border-color: var(--glass-stroke);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-}
-
-/* Dialogs / drawers / floating listboxes — a touch more opaque for legibility. */
-[data-material='glass'] .modal,
-[data-material='glass'] .drawer,
-[data-material='glass'] .command-palette,
-[data-material='glass'] .combobox__listbox {
-    background: var(--glass-surface-strong);
-    border-color: var(--glass-stroke);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-}
-
-/* Keep the tonal card variants meaningful — frost their own fills. */
-[data-material='glass'] .card--ink {
-    background: color-mix(in srgb, var(--inverse-surface) 72%, transparent);
-}
-[data-material='glass'] .card--accent {
-    background: color-mix(in srgb, var(--primary-container) 72%, transparent);
 }

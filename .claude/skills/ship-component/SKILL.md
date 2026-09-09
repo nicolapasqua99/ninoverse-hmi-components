@@ -26,7 +26,7 @@ the screenshot pair.
   - `src/elements/index.ts`, `src/react/index.ts`
   - `vite.config.ts`, `package.json`
   - `custom-elements.json`
-  - `examples/web-components.html`
+  - `examples/elements.html`
   - `docs/migration/tracker.md`
   - `docs/migration/README.md` only if a rule changed (say so in the PR)
 

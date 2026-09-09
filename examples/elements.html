@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" data-theme="default" data-structure="default" data-material="solid">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HMI Lit elements — drop-in demo</title>
+
+        <!-- Google Fonts: @font-face cannot be declared inside a shadow root,
+             so the document loads the families (including Caveat for the
+             journal structure). -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Oxanium:wght@200..800&family=Rubik+Glitch&family=Press+Start+2P&family=Pixelify+Sans:wght@400..700&family=Caveat:wght@400..700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Theme tokens: constants first, then color, structure and material
+             themes. Theming is pure CSS — switch by changing the attributes
+             on <html>. -->
+        <link rel="stylesheet" href="../dist/themes/constants.css" />
+        <link rel="stylesheet" href="../dist/themes/color/default.css" />
+        <link rel="stylesheet" href="../dist/themes/color/ocean.css" />
+        <link rel="stylesheet" href="../dist/themes/structure/default.css" />
+        <link rel="stylesheet" href="../dist/themes/structure/journal.css" />
+        <link rel="stylesheet" href="../dist/themes/material/glass.css" />
+
+        <!-- The only other stylesheet the elements need: --hmi-base, body
+             defaults, material backdrops and the pre-upgrade rules. -->
+        <link rel="stylesheet" href="../dist/base.css" />
+
+        <style>
+            body {
+                padding: calc(var(--hmi-base) * 4);
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--hmi-base) * 2);
+                align-items: flex-start;
+            }
+            .row {
+                display: flex;
+                gap: calc(var(--hmi-base) * 1.5);
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            section {
+                display: contents;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Lit elements demo</h1>
+
+        <!-- Theme switching is pure CSS: flip the attributes on <html>. -->
+        <div class="row">
+            <button id="theme-toggle" type="button">Toggle ocean theme</button>
+            <button id="structure-toggle" type="button">
+                Toggle journal structure
+            </button>
+            <button id="material-toggle" type="button">
+                Toggle glass material
+            </button>
+        </div>
+
+        <!-- Elements: every migration PR adds one <section> below (attributes,
+             at least one slot, one logged hmi-* event). Keep them in the order
+             of docs/migration/tracker.md. -->
+
+        <!-- Lit IIFE bundle: registers every migrated <hmi-*> element on load.
+             Never load ../dist/hmi-components.iife.js (the r2wc bundle) on the
+             same page: both define the same tags. -->
+        <script src="../dist/hmi-elements.iife.js"></script>
+        <script>
+            const html = document.documentElement;
+            const toggle = (id, attribute, on, off) =>
+                document.getElementById(id).addEventListener('click', () => {
+                    const next = html.getAttribute(attribute) === on ? off : on;
+                    html.setAttribute(attribute, next);
+                });
+            toggle('theme-toggle', 'data-theme', 'ocean', 'default');
+            toggle('structure-toggle', 'data-structure', 'journal', 'default');
+            toggle('material-toggle', 'data-material', 'glass', 'solid');
+        </script>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+/* React barrel — every `@lit/react` wrapper is re-exported here (plus
+   `useTheme` once the theme module lands). Built to dist/react/index.js.
+   Keep the list alphabetical. */
+
+export {};

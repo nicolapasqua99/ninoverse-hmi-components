@@ -27,6 +27,12 @@ A React component library providing Human-Machine Interface (HMI) UI components 
 > - Load `base.css` plus one theme per axis instead of `style.css`.
 > - `ThemeProvider` is replaced by `setTheme` / `useTheme`.
 >
+> **Since 5.7 (tooling):** the Storybook site documents the Lit elements; the full
+> React demo stays at `/demo/`. Theme tokens are expressed against `--hmi-base`
+> (identical values for the React tree), and the `glass` / `liquid` materials are
+> token-only, so they no longer restyle the React components until those are
+> migrated. Runnable Lit host page: [`examples/elements.html`](./examples/elements.html).
+>
 > Progress: [`docs/migration/tracker.md`](./docs/migration/tracker.md) ·
 > Playbook: [`docs/migration/README.md`](./docs/migration/README.md) ·
 > Decisions: [`docs/migration/adr-0001-lit-web-components.md`](./docs/migration/adr-0001-lit-web-components.md)
