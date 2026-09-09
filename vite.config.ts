@@ -29,6 +29,10 @@ export default defineConfig({
             '@': resolve(dirname, 'src'),
         },
     },
+    // Standard decorators with `accessor` (the Lit elements) must be lowered by
+    // esbuild before Rollup parses the output: at the default `esnext` target
+    // esbuild passes them through and Rollup rejects the syntax.
+    esbuild: { target: 'es2022' },
     build: {
         copyPublicDir: false,
         lib: {
@@ -38,6 +42,11 @@ export default defineConfig({
                 // Element PRs add 'wc/<kebab>' and 'react/<kebab>' here.
                 'wc/index': resolve(dirname, 'src/elements/index.ts'),
                 'react/index': resolve(dirname, 'src/react/index.ts'),
+                'wc/badge': resolve(dirname, 'src/elements/badge/badge.ts'),
+                'react/badge': resolve(
+                    dirname,
+                    'src/elements/badge/badge.react.ts',
+                ),
                 accordion: resolve(dirname, 'src/components/accordion.tsx'),
                 alert: resolve(dirname, 'src/components/alert.tsx'),
                 areaChart: resolve(dirname, 'src/components/areaChart.tsx'),
