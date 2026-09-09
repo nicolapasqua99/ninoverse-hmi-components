@@ -1,5 +1,101 @@
 {
   "schemaVersion": "1.0.0",
   "readme": "",
-  "modules": []
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/badge/badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Compact status label, optionally with a leading status dot.",
+          "name": "HmiBadge",
+          "cssParts": [
+            {
+              "description": "The pill.",
+              "name": "base"
+            },
+            {
+              "description": "The leading status dot (present only when `dot` is set).",
+              "name": "dot"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Badge label content.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "BadgeVariant"
+              },
+              "default": "'default'",
+              "description": "Color/tone of the badge.",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dot",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Show a small leading status dot.",
+              "attribute": "dot",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "BadgeVariant"
+              },
+              "default": "'default'",
+              "description": "Color/tone of the badge.",
+              "fieldName": "variant"
+            },
+            {
+              "name": "dot",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Show a small leading status dot.",
+              "fieldName": "dot"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hmi-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HmiBadge",
+          "declaration": {
+            "name": "HmiBadge",
+            "module": "src/elements/badge/badge.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hmi-badge",
+          "declaration": {
+            "name": "HmiBadge",
+            "module": "src/elements/badge/badge.ts"
+          }
+        }
+      ]
+    }
+  ]
 }

@@ -2,4 +2,4 @@
    registration side effect and re-exported. Built to dist/wc/index.js and
    bundled as dist/hmi-elements.iife.js. Keep the list alphabetical. */
 
-export {};
+export * from './badge/badge.js';

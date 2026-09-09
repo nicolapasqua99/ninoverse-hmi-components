@@ -273,6 +273,10 @@
             "types": "./dist/react/index.d.ts",
             "import": "./dist/react/index.js"
         },
+        "./react/badge": {
+            "types": "./dist/elements/badge/badge.react.d.ts",
+            "import": "./dist/react/badge.js"
+        },
         "./responsive-container": {
             "types": "./dist/components/responsiveContainer.d.ts",
             "import": "./dist/responsiveContainer.js"
@@ -381,6 +385,10 @@
         "./wc": {
             "types": "./dist/elements/index.d.ts",
             "import": "./dist/wc/index.js"
+        },
+        "./wc/badge": {
+            "types": "./dist/elements/badge/badge.d.ts",
+            "import": "./dist/wc/badge.js"
         },
         "./style.css": "./dist/style.css",
         "./web-components": "./dist/hmi-components.iife.js",
