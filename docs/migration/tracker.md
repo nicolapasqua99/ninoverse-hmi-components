@@ -46,7 +46,7 @@ gated: a phase may start only when every PR of the previous phase is merged
 
 | Element tag | React source | Phase | Risk | Flags | Notes | Status | PR |
 |-------------|--------------|-------|------|-------|-------|--------|----|
-| `hmi-badge` | `badge.tsx` | 1 | low | | Pilot. Freezes the templates and the DoD. `dot` boolean, `variant`. | In progress | |
+| `hmi-badge` | `badge.tsx` | 1 | low | | Pilot. Freezes the templates and the DoD. `dot` boolean, `variant`. | In review | [#115](https://github.com/ninoverse/hmi-components/pull/115) |
 | `hmi-alert` | `alert.tsx` | 2 | low | S | Slots `icon`, `title`, `action`. | Todo | |
 | `hmi-avatar` | `avatar.tsx` | 2 | low | | Computed tint stays inline style. | Todo | |
 | `hmi-avatar-stack` | `avatarStack.tsx` | 2 | low | X | No own CSS today; `.avatar-stack .avatar` → `::slotted(hmi-avatar)`. Children are `<hmi-avatar>` in the default slot. | Todo | |
