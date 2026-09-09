@@ -1,6 +1,6 @@
 ---
 name: wire-component
-description: Wire an already-scaffolded Lit element of ninoverse-hmi-components into the element barrel, the React barrel, vite.config.ts entries, package.json exports (./wc/<kebab> and ./react/<kebab>), the Lit section of examples/web-components.html, and the migration tracker. Phase 2 of the element workflow; run after scaffold-component and before verify-component.
+description: Wire an already-scaffolded Lit element of ninoverse-hmi-components into the element barrel, the React barrel, vite.config.ts entries, package.json exports (./wc/<kebab> and ./react/<kebab>), examples/elements.html, and the migration tracker. Phase 2 of the element workflow; run after scaffold-component and before verify-component.
 ---
 
 # Wire Component
@@ -34,8 +34,7 @@ export type { <Pascal>ChangeDetail, <Pascal>Variant } from '../elements/<kebab>/
 
 ## Step 3 — `vite.config.ts`
 
-Add the two entries next to the existing `wc/badge` / `react/badge` pair
-(shape fixed by PR 2):
+Add the two entries after `wc/index` / `react/index`, alphabetical:
 
 ```ts
 'wc/<kebab>': resolve(dirname, 'src/elements/<kebab>/<kebab>.ts'),
@@ -46,22 +45,25 @@ Add the two entries next to the existing `wc/badge` / `react/badge` pair
 
 ```json
 "./wc/<kebab>": {
-    "types": "./dist/wc/<kebab>.d.ts",
+    "types": "./dist/elements/<kebab>/<kebab>.d.ts",
     "import": "./dist/wc/<kebab>.js"
 },
 "./react/<kebab>": {
-    "types": "./dist/react/<kebab>.d.ts",
+    "types": "./dist/elements/<kebab>/<kebab>.react.d.ts",
     "import": "./dist/react/<kebab>.js"
 }
 ```
 
-The root export and `./<kebab>` stay React until the v6 flip. `sideEffects`
-already covers `./dist/wc/*.js`.
+Declarations keep the source layout under `dist/elements/` (`vite-plugin-dts`
+with `entryRoot: src`); only the JS is renamed by the vite entry. The root
+export and `./<kebab>` stay React until the v6 flip. `sideEffects` already
+covers `./dist/wc/*.js`.
 
-## Step 5 — `examples/web-components.html`
+## Step 5 — `examples/elements.html`
 
-Add a `<section>` for the element inside the "Lit elements" block (the block
-loads `../dist/hmi-elements.iife.js` + `base.css`; mirror the badge section).
+Add a `<section>` for the element in the elements block (the page loads
+`../dist/hmi-elements.iife.js` + `base.css`; mirror the badge section). Never
+touch `examples/web-components.html`, which loads the r2wc bundle.
 Exercise attributes, at least one slot, and log one event with
 `addEventListener('hmi-…', (e) => console.log(e.detail))`.
 

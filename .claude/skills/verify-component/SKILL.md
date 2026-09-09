@@ -27,7 +27,7 @@ pnpm build    # tsc -b + ESM lib + r2wc IIFE + Lit IIFE
 Artifacts:
 
 ```bash
-ls dist/wc/<kebab>.js dist/wc/<kebab>.d.ts dist/react/<kebab>.js dist/react/<kebab>.d.ts
+ls dist/wc/<kebab>.js dist/react/<kebab>.js dist/elements/<kebab>/<kebab>.d.ts dist/elements/<kebab>/<kebab>.react.d.ts
 ```
 
 Tests:

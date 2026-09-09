@@ -1,10 +1,9 @@
 # Testing Requirements
 
 Legacy React components (`src/components/`) have no test suite and are
-frozen. Every Lit element under `src/elements/` ships tests; the runner and CI
-steps are added by the tooling PR (phase 0, see `docs/migration/README.md`
-§10). Until that PR merges, the gate below applies to docs and configuration
-changes only through `pnpm lint` and `pnpm build`.
+frozen. Every Lit element under `src/elements/` ships tests, run by Vitest
+(`vitest.config.ts`: a `browser` project in Chromium through Playwright and an
+`ssr` project in Node).
 
 ## Gate before "ready for review"
 

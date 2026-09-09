@@ -130,22 +130,22 @@ detailed choices, each with the alternatives rejected:
 
 ## Follow-ups
 
-Owned by PR 2 unless noted; listed in `README.md` §10:
+Owned by PR 2 unless noted; listed in `README.md` §10. Items marked *settled* were closed by PR 2 (5.7):
 
-1. Biome formatting of `accessor` decorators.
-2. `tsconfig.node.json` coverage of every config file.
-3. `vite-plugin-dts` output paths for `dist/wc` and `dist/react`.
-4. Storybook framework swap and the fate of React stories mid-migration.
-5. Custom-elements manifest configuration and commit policy.
-6. Vitest browser provider and CI Chromium install.
+1. Biome formatting of `accessor` decorators. *Settled: works unconfigured.*
+2. `tsconfig.node.json` coverage of every config file. *Settled.*
+3. `vite-plugin-dts` output paths for `dist/wc` and `dist/react`. *Settled: declarations stay under `dist/elements/`; `exports.types` points there.*
+4. Storybook framework swap and the fate of React stories mid-migration. *Settled: swapped to `web-components-vite`; React stories are not built until the flip, the React demo stays at `/demo/`.*
+5. Custom-elements manifest configuration and commit policy. *Settled: committed, drift checked in CI.*
+6. Vitest browser provider and CI Chromium install. *Settled: `@vitest/browser-playwright`, `playwright install --with-deps chromium`.*
 7. `sideEffects` verification with a consumer smoke bundle.
 8. Next.js example with `@lit-labs/ssr-react` (phase 11).
-9. Generated `:not(:defined)` rules in `base.css`.
-10. Rebase of `rem` theme tokens onto `--hmi-base`.
-11. `--panel-*` vocabulary and material/journal overrides before phase 2.
+9. Generated `:not(:defined)` rules in `base.css`. *Settled: `scripts/gen-base-css.mjs`.*
+10. Rebase of `rem` theme tokens onto `--hmi-base`. *Settled.*
+11. `--panel-*` vocabulary and material/journal overrides before phase 2. *Settled: `--panel-bg`, `--panel-bg-strong`, `--panel-border`, `--panel-filter`, `--panel-ink-bg`, `--panel-accent-bg`; journal hooks `--list-divider-style`, `--progress-track-border`, `--stat-rule`, `--switch-thumb-shadow`. The material files lost their class selectors immediately, so v5 React components render solid under glass/liquid until migrated.*
 12. Top-layer stacking of toasts under modals (phase 11).
-13. `attachInternals()` under the SSR DOM shim.
-14. Lit IIFE config and de-duplication of the theme-copy plugin.
+13. `attachInternals()` under the SSR DOM shim. *Settled: works in a field initializer (`ssr.ssr.test.ts`).*
+14. Lit IIFE config and de-duplication of the theme-copy plugin. *Settled.*
 15. Typedoc entry points or a manifest-driven `pnpm docs`.
 16. Button `formAssociated` for submit/reset (phase 4).
 17. Exact `hmi-input`/`hmi-change` shapes for combobox query text and slider drag (phases 5 and 10).

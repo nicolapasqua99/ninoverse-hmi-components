@@ -73,7 +73,7 @@ Produce, in this order, and then **WAIT for approval**:
 | Phase | Skill | What it does |
 |-------|-------|--------------|
 | 1 | `scaffold-component` (migration mode) | branch `migrate/<kebab>` from `origin/main`, collision check, create the six files from the templates pre-filled with the mapping sheet |
-| 2 | `wire-component` | `src/elements/index.ts`, `src/react/index.ts`, `vite.config.ts`, `package.json` exports, `examples/web-components.html`, story, tracker row → In progress |
+| 2 | `wire-component` | `src/elements/index.ts`, `src/react/index.ts`, `vite.config.ts`, `package.json` exports, `examples/elements.html`, story, tracker row → In progress |
 | 3 | `verify-component` | format → lint → build → artifacts → `test` → `test:ssr` → `cem` → storybook → side-by-side screenshot → user approval |
 | 4 | `ship-component` | commit `feat(ui): migrate <Name> to lit`, push, draft PR with mapping sheet + R12 checklist, tracker row → In review, stop |
 

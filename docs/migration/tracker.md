@@ -33,14 +33,14 @@ gated: a phase may start only when every PR of the previous phase is merged
 
 | Item | Location | Status | PR |
 |------|----------|--------|----|
-| `baseStyles` (`:host` box-sizing, `--_base`, hidden, focus ring) | `src/elements/shared/base.styles.ts` | Todo | |
-| `emit()` helper | `src/elements/shared/events.ts` | Todo | |
-| `activeElementDeep()` and `composedPath` helpers | `src/elements/shared/dom.ts` | Todo | |
-| `base.css` (`--hmi-base`, body defaults, `:not(:defined)`) | `public/css/base.css` → `dist/base.css` | Todo | |
-| Structure/constants tokens converted from `rem` to `calc(var(--hmi-base, 8px) * N)` | `public/css/themes/**` | Todo | |
-| `--panel-*` tokens + glass/liquid/journal overrides; class selectors removed from theme files | `public/css/themes/**` | Todo | |
-| Lit IIFE bundle `dist/hmi-elements.iife.js` | `vite.elements.config.ts` | Todo | |
-| Vitest browser + SSR projects, CEM analyzer, Storybook `web-components-vite`, `ci-gate` steps | root configs, `.github/workflows/ci-gate.yml` | Todo | |
+| `baseStyles` (`:host` box-sizing, `--_base`, hidden, focus ring) | `src/elements/shared/base.styles.ts` | Done | PR 2 |
+| `emit()` helper | `src/elements/shared/events.ts` | Done | PR 2 |
+| `activeElementDeep()` and `supportsPopover()` helpers | `src/elements/shared/dom.ts` | Done | PR 2 |
+| `base.css` (`--hmi-base`, body defaults, `:not(:defined)`) | `public/css/base.css` → `dist/base.css` | Done | PR 2 |
+| Structure/constants/material tokens converted from `rem` to `calc(var(--hmi-base, 8px) * N)` | `public/css/themes/**` | Done | PR 2 |
+| `--panel-*` tokens + glass/liquid overrides, journal hooks; class selectors removed from theme files | `public/css/themes/**` | Done | PR 2 |
+| Lit IIFE bundle `dist/hmi-elements.iife.js` | `vite.elements.config.ts` | Done | PR 2 |
+| Vitest browser + SSR projects, CEM analyzer, Storybook `web-components-vite`, `ci-gate` steps | root configs, `.github/workflows/ci-gate.yml` | Done | PR 2 |
 
 ## Elements
 
@@ -58,7 +58,7 @@ gated: a phase may start only when every PR of the previous phase is merged
 | `hmi-empty-state` | `emptyState.tsx` | 2 | low | S | Slots `icon`, `title`, `description`, `action`; `.empty-state__icon > svg` → `::slotted(svg)`. | Todo | |
 | `hmi-kbd` | `kbd.tsx` | 2 | low | | | Todo | |
 | `hmi-meter` | `meter.tsx` | 2 | low | S | Slot `label`. | Todo | |
-| `hmi-progress` | `progress.tsx` | 2 | low | X | `[data-structure="journal"] .progress` → `--progress-track` token. | Todo | |
+| `hmi-progress` | `progress.tsx` | 2 | low | X | `[data-structure="journal"] .progress` → `--progress-track-border` token (defined). | Todo | |
 | `hmi-skeleton` | `skeleton.tsx` | 2 | low | | Inline size styles stay. | Todo | |
 | `hmi-spinner` | `spinner.tsx` | 2 | low | | Keyframes move into `styles`. | Todo | |
 | `hmi-stat` | `stat.tsx` | 2 | low | S X | Slots `label`, `value`, `icon`, `delta`, `help-text`; `[data-structure="journal"] .stat__footer` → `--stat-rule` token. | Todo | |
@@ -85,14 +85,14 @@ gated: a phase may start only when every PR of the previous phase is merged
 | `hmi-checkbox` | `checkbox.tsx` | 5 | med | S F E | Checkable form kind; slot `label`; `hmi-change { value: boolean }`. | Todo | |
 | `hmi-radio` | `radio.tsx` | 5 | med | S F E | Checkable; group behaviour via `name` inside `hmi-radio-group`. | Todo | |
 | `hmi-radio-group` | `radioGroup.tsx` | 5 | med | A F E | No own CSS today; `name` required; options strings + `label-<value>` slots. | Todo | |
-| `hmi-switch` | `switch.tsx` | 5 | med | S F E X | `[data-structure="journal"] .switch__thumb` → `--switch-thumb` token. | Todo | |
+| `hmi-switch` | `switch.tsx` | 5 | med | S F E X | `[data-structure="journal"] .switch__thumb` → `--switch-thumb-shadow` token (defined). | Todo | |
 | `hmi-slider` | `slider.tsx` | 5 | med | F E | Numeric; `--slider-pct` set on host; `hmi-input` while dragging, `hmi-change` on release; `formatValue` → template string + `format` JS-only. | Todo | |
 | `hmi-segmented-control` | `segmentedControl.tsx` | 5 | med | A F E | Roving tabindex; options strings + `label-<value>` slots. | Todo | |
 | `hmi-value-scale-selector` | `valueScaleSelector.tsx` | 5 | med | S F E | Numeric; slot `icon`; `applyTemplate` for labels. | Todo | |
 | `hmi-accordion` | `accordion.tsx` | 6 | med | A E | Items `title`/`body` strings + `title-<index>`/`body-<index>` slots; idrefs stay inside the root; `hmi-open-change { open }`. | Todo | |
 | `hmi-carousel` | `carousel.tsx` | 6 | med | S E D | Slides = children with `slot="slide"`; `hmi-index-change`; resize listener via AbortController. | Todo | |
 | `hmi-image` | `image.tsx` | 6 | med | S R E | `renderImage` → default slot; `fallback` slot; `hmi-load`/`hmi-error`. | Todo | |
-| `hmi-list` | `list.tsx` | 6 | med | A R E X | `renderItem` → three tiers; `hmi-reorder { items }`; `[data-structure="journal"] .list__item` → `--list-marker` token. | Todo | |
+| `hmi-list` | `list.tsx` | 6 | med | A R E X | `renderItem` → three tiers; `hmi-reorder { items }`; `[data-structure="journal"] .list__item` → `--list-divider-style` token (defined). | Todo | |
 | `hmi-table` | `table.tsx` | 6 | high | A R E | Cell kinds `text`/`format`/`badge`/`link`/`actions`; `cell-<rowKey>-<columnKey>` slots; `render` JS-only; `getRowKey` → `row-key`; `hmi-sort`, `hmi-action { value, row }`. | Todo | |
 | `hmi-timeline` | `timeline.tsx` | 6 | low | A | Items strings + `title-<index>`/`description-<index>` slots. | Todo | |
 | `hmi-breadcrumbs` | `breadcrumbs.tsx` | 7 | low | A E | `items[].onClick` → `hmi-nav { value, index }`; `separator` slot. | Todo | |

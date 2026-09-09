@@ -109,7 +109,7 @@ stem (`AreaChart`), the tag is `hmi-<kebab>`, the class is `Hmi<Pascal>`,
 - **Units.** `rem` is forbidden in `src/elements/`. Translate `Nrem` to
   `calc(var(--_base) * N)` (`0.125rem` → `calc(var(--_base) * 0.125)`);
   font-relative values use `em`. Theme tokens (`--space-*`, `--corner-*`) are
-  used as-is; PR 2 converts them to the same base.
+  used as-is; they are expressed against the same base.
 - **Selectors.** BEM block `.button` → `:host`; modifier `.button--primary` →
   `:host([variant='primary'])`; sub-element `.button__dot` → `.dot` carrying
   `part="dot"`. Author-provided children are reached only through
@@ -121,12 +121,16 @@ stem (`AreaChart`), the tag is `hmi-<kebab>`, the class is `Hmi<Pascal>`,
   `var(--<element>-<prop>, <fallback>)`.
 - **Panel-like elements** (card, navbar, sidebar, popover, hover-card,
   context-menu, toast, modal, drawer, command-palette, combobox listbox, menu,
-  chart-tooltip) expose `part="panel"` and paint from `--panel-bg`,
-  `--panel-border`, `--panel-blur`, `--panel-shadow`, `--panel-filter` (defaults
-  in `constants.css`, overridden by material and structure themes). They embed
-  the shared liquid filter template (`renderLiquidFilter()` from
-  `src/elements/shared/panel.ts`) so `--panel-filter: url('#liquid-glass')`
-  resolves inside the root.
+  chart-tooltip) expose `part="panel"` and paint from `--panel-bg` (or
+  `--panel-bg-strong` for dialogs, drawers and listboxes), `--panel-border`,
+  `--panel-filter` (a `backdrop-filter` value), `--panel-ink-bg` and
+  `--panel-accent-bg` (defaults in `constants.css`, overridden by the material
+  themes). Shadows keep coming from `--elevation-*`. They embed the shared
+  liquid filter template (`renderLiquidFilter()` from
+  `src/elements/shared/panel.ts`) so the liquid material's
+  `--panel-filter: url('#liquid-glass') …` resolves inside the root.
+- **Per-element theme hooks** already defined (defaults in `constants.css`,
+  overridden by `structure/journal.css`): `--list-divider-style`, `--progress-track-border`, `--stat-rule`, `--switch-thumb-shadow`.
 - `part=` on every meaningful node: `base` (root interactive node), `label`,
   `icon`, `panel`, `control`, `input`, `list`, `item`, `header`, `body`,
   `footer`. Parts are public API; list them with `@csspart` in the class JSDoc.
@@ -278,13 +282,13 @@ Copy this list into the PR body and tick every box before leaving draft.
 ```
 - [ ] src/elements/<kebab>/ has <kebab>.ts, .styles.ts, .react.ts, .stories.ts, .test.ts, .ssr.test.ts
 - [ ] pnpm lint clean (no new biome-ignore)
-- [ ] pnpm build green: tsc -b, dist/wc/<kebab>.js + .d.ts, dist/react/<kebab>.js + .d.ts, r2wc IIFE, dist/hmi-elements.iife.js
+- [ ] pnpm build green: tsc -b, dist/wc/<kebab>.js, dist/react/<kebab>.js, dist/elements/<kebab>/<kebab>.d.ts + .react.d.ts, r2wc IIFE, dist/hmi-elements.iife.js
 - [ ] pnpm test green (browser): registers, renders, reflection, boolean presence, every hmi-* event with detail, slots, form value + reset (if form-associated), roles, React wrapper mount
 - [ ] pnpm test:ssr green: imports in Node, render() emits declarative shadow DOM
 - [ ] pnpm cem run; custom-elements.json lists the element with all props, slots, parts, events
 - [ ] Story in the right category, one story per prop axis, React usage snippet in docs
 - [ ] React wrapper exports every event as onX and re-exports detail/value types
-- [ ] examples/web-components.html Lit section exercises the element
+- [ ] examples/elements.html exercises the element
 - [ ] src/elements/index.ts, src/react/index.ts, vite.config.ts, package.json exports updated, alphabetical
 - [ ] No rem, no cross-root selectors, :host{display} set, part= on base/panel, --panel-* used if panel-like
 - [ ] No window/document at import or constructor time; listeners cleaned up in disconnectedCallback

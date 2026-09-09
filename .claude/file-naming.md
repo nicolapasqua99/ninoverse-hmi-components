@@ -26,7 +26,7 @@ Everything derives from one kebab-case name:
 | Class | `Hmi` + PascalCase | `HmiAreaChart` |
 | Tag | `hmi-` + kebab | `hmi-area-chart` |
 | Package subpaths | `./wc/<kebab>`, `./react/<kebab>` | `./wc/area-chart` |
-| Dist files | `dist/wc/<kebab>.js`, `dist/react/<kebab>.js` | `dist/wc/area-chart.js` |
+| Dist files | `dist/wc/<kebab>.js`, `dist/react/<kebab>.js`; declarations `dist/elements/<kebab>/<kebab>.d.ts`, `.react.d.ts` | `dist/wc/area-chart.js` |
 | React wrapper export | PascalCase (the v5 name) | `AreaChart` |
 | Event detail types | `<Pascal><Event>Detail` | `AreaChartResizeDetail` |
 | Events | `hmi-` + kebab | `hmi-open-change` |

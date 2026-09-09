@@ -10,7 +10,7 @@ This file provides strict guidance and architectural rules for Claude Code (clau
 ```bash
 pnpm install          # Install dependencies
 pnpm dev              # Start Vite dev server (legacy React demo, src/App.tsx)
-pnpm build            # tsc -b + ESM library + r2wc IIFE (+ Lit IIFE once PR 2 lands)
+pnpm build            # tsc -b + ESM library + r2wc IIFE + Lit IIFE
 pnpm build:wc         # r2wc IIFE only
 pnpm build:demo       # Demo page → dist-site/demo
 pnpm storybook        # Storybook dev server on :6006
@@ -22,7 +22,7 @@ pnpm format           # Biome format with auto-write
 pnpm docs             # TypeDoc → docs/api (legacy React API)
 ```
 
-Added by the tooling PR of the Lit migration (phase 0, see `docs/migration/README.md` §10):
+Lit element tooling (Vitest in Chromium through Playwright, Node SSR, manifest):
 
 ```bash
 pnpm test             # Vitest browser mode (Chromium via Playwright)
