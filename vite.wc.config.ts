@@ -1,8 +1,8 @@
-import { cpSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import { copyCss } from './scripts/copy-css-plugin';
 
 const dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -10,19 +10,7 @@ const dirname = fileURLToPath(new URL('.', import.meta.url));
    that auto-registers every <hmi-*> custom element on load. Built alongside the
    main ESM library (emptyOutDir: false) so it sits next to dist/index.js. */
 export default defineConfig({
-    plugins: [
-        react(),
-        {
-            name: 'copy-theme-css',
-            closeBundle() {
-                cpSync(
-                    resolve(dirname, 'public/css/themes'),
-                    resolve(dirname, 'dist/themes'),
-                    { recursive: true },
-                );
-            },
-        },
-    ],
+    plugins: [react(), copyCss()],
     resolve: {
         alias: {
             '@': resolve(dirname, 'src'),

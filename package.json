@@ -3,10 +3,14 @@
     "version": "5.6.8",
     "type": "module",
     "license": "MIT",
-    "description": "React HMI component library with Material Design 3 token system and warm asymmetric styling.",
+    "description": "HMI component library: Lit web components with React wrappers, Material Design 3 token system and warm asymmetric styling.",
     "sideEffects": [
-        "**/*.css"
+        "**/*.css",
+        "./dist/wc/*.js",
+        "./dist/hmi-elements.iife.js",
+        "./dist/hmi-components.iife.js"
     ],
+    "customElements": "custom-elements.json",
     "repository": {
         "type": "git",
         "url": "https://github.com/ninoverse/hmi-components"
@@ -15,7 +19,8 @@
         "access": "public"
     },
     "files": [
-        "dist"
+        "dist",
+        "custom-elements.json"
     ],
     "exports": {
         ".": {
@@ -58,6 +63,7 @@
             "types": "./dist/components/barChart.d.ts",
             "import": "./dist/barChart.js"
         },
+        "./base.css": "./dist/base.css",
         "./blockquote": {
             "types": "./dist/components/blockquote.d.ts",
             "import": "./dist/blockquote.js"
@@ -142,6 +148,7 @@
             "types": "./dist/components/drawer.d.ts",
             "import": "./dist/drawer.js"
         },
+        "./elements": "./dist/hmi-elements.iife.js",
         "./empty-state": {
             "types": "./dist/components/emptyState.d.ts",
             "import": "./dist/emptyState.js"
@@ -262,6 +269,10 @@
             "types": "./dist/components/radioGroup.d.ts",
             "import": "./dist/radioGroup.js"
         },
+        "./react": {
+            "types": "./dist/react/index.d.ts",
+            "import": "./dist/react/index.js"
+        },
         "./responsive-container": {
             "types": "./dist/components/responsiveContainer.d.ts",
             "import": "./dist/responsiveContainer.js"
@@ -367,14 +378,19 @@
             "types": "./dist/components/visuallyHidden.d.ts",
             "import": "./dist/visuallyHidden.js"
         },
+        "./wc": {
+            "types": "./dist/elements/index.d.ts",
+            "import": "./dist/wc/index.js"
+        },
         "./style.css": "./dist/style.css",
         "./web-components": "./dist/hmi-components.iife.js",
         "./web-components.css": "./dist/hmi-components.css"
     },
     "scripts": {
         "dev": "vite",
-        "build": "tsc -b && vite build && vite build --config vite.wc.config.ts",
+        "build": "tsc -b && vite build && vite build --config vite.wc.config.ts && vite build --config vite.elements.config.ts",
         "build:wc": "vite build --config vite.wc.config.ts",
+        "build:elements": "vite build --config vite.elements.config.ts",
         "build:demo": "vite build --config vite.demo.config.ts",
         "storybook": "storybook dev -p 6006",
         "build:storybook": "storybook build -o dist-site",
@@ -382,22 +398,42 @@
         "preview": "vite preview",
         "lint": "biome check .",
         "format": "biome format --write .",
+        "test": "vitest run --project browser",
+        "test:ssr": "vitest run --project ssr",
+        "cem": "cem analyze && node scripts/gen-base-css.mjs",
         "docs": "typedoc"
+    },
+    "dependencies": {
+        "@lit/react": "^1.0.8",
+        "lit": "^3.3.3"
     },
     "peerDependencies": {
         "react": "^19.0.0",
         "react-dom": "^19.0.0"
     },
+    "peerDependenciesMeta": {
+        "react": {
+            "optional": true
+        },
+        "react-dom": {
+            "optional": true
+        }
+    },
     "devDependencies": {
         "@biomejs/biome": "^2.4.9",
+        "@custom-elements-manifest/analyzer": "^0.11.0",
+        "@lit-labs/ssr": "^4.1.0",
         "@r2wc/react-to-web-component": "^2.1.1",
         "@storybook/addon-docs": "10.6.0",
         "@storybook/react-vite": "10.6.0",
+        "@storybook/web-components-vite": "10.6.0",
         "@types/node": "^22.10.5",
         "@types/react": "^19.0.7",
         "@types/react-dom": "^19.0.3",
         "@vitejs/plugin-react": "^5.0.0",
+        "@vitest/browser-playwright": "5.0.0",
         "autoprefixer": "^10.4.20",
+        "playwright": "1.56.0",
         "postcss": "^8.5.1",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
@@ -406,7 +442,8 @@
         "typedoc-plugin-markdown": "^4.12.0",
         "typescript": "^5.7.3",
         "vite": "^7.0.0",
-        "vite-plugin-dts": "^4.5.0"
+        "vite-plugin-dts": "^4.5.0",
+        "vitest": "5.0.0"
     },
     "browserslist": [
         "defaults",

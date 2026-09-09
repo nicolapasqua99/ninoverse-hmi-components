@@ -1,9 +1,9 @@
-import { cpSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import { copyCss } from './scripts/copy-css-plugin';
 
 const dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -13,19 +13,16 @@ export default defineConfig({
         dts({
             tsconfigPath: './tsconfig.app.json',
             include: ['src'],
-            exclude: ['src/App.tsx', 'src/main.tsx', 'src/**/*.stories.tsx'],
+            exclude: [
+                'src/App.tsx',
+                'src/main.tsx',
+                'src/**/*.stories.tsx',
+                'src/**/*.stories.ts',
+                'src/**/*.test.ts',
+            ],
             entryRoot: 'src',
         }),
-        {
-            name: 'copy-theme-css',
-            closeBundle() {
-                cpSync(
-                    resolve(dirname, 'public/css/themes'),
-                    resolve(dirname, 'dist/themes'),
-                    { recursive: true },
-                );
-            },
-        },
+        copyCss(),
     ],
     resolve: {
         alias: {
@@ -37,6 +34,10 @@ export default defineConfig({
         lib: {
             entry: {
                 index: resolve(dirname, 'src/index.ts'),
+                // Lit elements (dist/wc/*) and their React wrappers (dist/react/*).
+                // Element PRs add 'wc/<kebab>' and 'react/<kebab>' here.
+                'wc/index': resolve(dirname, 'src/elements/index.ts'),
+                'react/index': resolve(dirname, 'src/react/index.ts'),
                 accordion: resolve(dirname, 'src/components/accordion.tsx'),
                 alert: resolve(dirname, 'src/components/alert.tsx'),
                 areaChart: resolve(dirname, 'src/components/areaChart.tsx'),
@@ -155,7 +156,14 @@ export default defineConfig({
             cssFileName: 'style',
         },
         rollupOptions: {
-            external: ['react', 'react-dom', 'react/jsx-runtime'],
+            external: [
+                'react',
+                'react-dom',
+                'react/jsx-runtime',
+                /^lit(\/|$)/,
+                /^@lit\//,
+                /^@lit-labs\//,
+            ],
             output: {
                 preserveModules: false,
                 entryFileNames: '[name].js',
