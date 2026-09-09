@@ -1,19 +1,24 @@
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { StorybookConfig } from '@storybook/react-vite';
+import type { StorybookConfig } from '@storybook/web-components-vite';
 
 const dirname = fileURLToPath(new URL('.', import.meta.url));
 
+/* Documents the Lit elements (src/elements/**). The legacy React stories in
+   src/components/ are not built: Storybook runs one framework per config,
+   and the React tree is frozen until it is deleted at the v6 flip. The full
+   React demo page stays at /demo/. */
 const config: StorybookConfig = {
-    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(ts|tsx)'],
+    stories: ['../src/**/*.mdx', '../src/elements/**/*.stories.ts'],
     addons: ['@storybook/addon-docs'],
     framework: {
-        name: '@storybook/react-vite',
+        name: '@storybook/web-components-vite',
         options: {},
     },
     staticDirs: [resolve(dirname, '../public')],
-    // The root vite.config.ts is the library build (dts emit + 86 lib entries).
-    // Storybook merges it by default, so drop the parts that don't belong here.
+    // The root vite.config.ts is the library build (React plugin, dts emit,
+    // 88 lib entries). Storybook merges it by default, so drop the parts that
+    // don't belong here.
     viteFinal: async (viteConfig) => ({
         ...viteConfig,
         plugins: (viteConfig.plugins ?? []).filter(
@@ -23,20 +28,11 @@ const config: StorybookConfig = {
                     typeof plugin === 'object' &&
                     'name' in plugin &&
                     (plugin.name === 'vite:dts' ||
-                        plugin.name === 'copy-theme-css')
+                        plugin.name === 'copy-css' ||
+                        String(plugin.name).startsWith('vite:react'))
                 ),
         ),
     }),
-    typescript: {
-        reactDocgen: 'react-docgen-typescript',
-        reactDocgenTypescriptOptions: {
-            tsconfigPath: resolve(dirname, '../tsconfig.app.json'),
-            shouldExtractLiteralValuesFromEnum: true,
-            // Native DOM props come from @types/react — keep tables to our own props.
-            propFilter: (prop) =>
-                !prop.parent || !/node_modules/.test(prop.parent.fileName),
-        },
-    },
 };
 
 export default config;

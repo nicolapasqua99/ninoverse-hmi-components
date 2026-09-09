@@ -36,3 +36,15 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Test (browser)
+        run: pnpm test
+
+      - name: Test (SSR)
+        run: pnpm test:ssr
+
+      - name: Manifest and base.css are up to date
+        run: pnpm cem && git diff --exit-code custom-elements.json public/css/base.css
