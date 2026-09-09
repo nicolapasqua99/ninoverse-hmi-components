@@ -66,6 +66,29 @@
              at least one slot, one logged hmi-* event). Keep them in the order
              of docs/migration/tracker.md. -->
 
+        <section>
+            <h2>Badge</h2>
+            <div class="row">
+                <hmi-badge>Default</hmi-badge>
+                <hmi-badge variant="primary">Primary</hmi-badge>
+                <hmi-badge variant="success">Success</hmi-badge>
+                <hmi-badge variant="warning">Warning</hmi-badge>
+                <hmi-badge variant="danger">Danger</hmi-badge>
+                <hmi-badge variant="info">Info</hmi-badge>
+            </div>
+            <div class="row">
+                <hmi-badge dot>Live</hmi-badge>
+                <hmi-badge variant="primary" dot>New</hmi-badge>
+                <hmi-badge variant="success" dot>Online</hmi-badge>
+                <hmi-badge variant="warning" dot>Pending</hmi-badge>
+                <hmi-badge variant="danger" dot>Offline</hmi-badge>
+                <hmi-badge variant="info" dot>Beta</hmi-badge>
+                <hmi-badge id="badge-slot" variant="success"
+                    ><b>Slotted</b>&nbsp;content</hmi-badge
+                >
+            </div>
+        </section>
+
         <!-- Lit IIFE bundle: registers every migrated <hmi-*> element on load.
              Never load ../dist/hmi-components.iife.js (the r2wc bundle) on the
              same page: both define the same tags. -->

@@ -10,6 +10,17 @@ export default defineConfig({
         passWithNoTests: true,
         projects: [
             {
+                // Pre-bundle what every browser test imports so Vite does not
+                // discover them mid-run and reload the tests.
+                optimizeDeps: {
+                    include: [
+                        'lit',
+                        'lit/decorators.js',
+                        '@lit/react',
+                        'react',
+                        'react-dom/client',
+                    ],
+                },
                 test: {
                     name: 'browser',
                     include: ['src/elements/**/*.test.ts'],

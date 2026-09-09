@@ -2,4 +2,4 @@
    `useTheme` once the theme module lands). Built to dist/react/index.js.
    Keep the list alphabetical. */
 
-export {};
+export { Badge, type BadgeVariant } from '../elements/badge/badge.react.js';

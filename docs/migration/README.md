@@ -243,7 +243,8 @@ PR 2 was the only infrastructure PR; it added no elements. What it settled:
 - Storybook swapped to `@storybook/web-components-vite` with `setCustomElementsManifest` in `preview.ts`. The React `*.stories.tsx` are no longer built (one framework per config); they stay in the frozen tree, type-checked, and the React demo page remains at `/demo/`. `@storybook/react-vite` is kept only for their types until the flip.
 - `.github/workflows/ci-gate.yml`: `lint`, `build`, Playwright Chromium install, `test`, `test:ssr`, manifest/base.css drift check.
 - `tsconfig.node.json` covers every config file and `scripts/*.ts`; Biome formats `accessor` decorators without configuration.
-- Still open: `sideEffects` tree-shaking check with a consumer smoke bundle (needs a real element — Badge pilot); top-layer stacking of toasts under modals (phase 11); typedoc still documents the React API only.
+- Found by the Badge pilot: Rollup cannot parse the `accessor` keyword, so every vite config that bundles elements sets `esbuild: { target: 'es2022' }` to have esbuild lower the standard decorators first; the Vitest browser project pre-bundles `lit`, `@lit/react`, `react` and `react-dom/client` (`optimizeDeps.include`) so Vite does not reload tests mid-run. The `sideEffects` check passed: an esbuild consumer bundle that only side-effect imports `wc/badge` keeps the `customElements.define` call.
+- Still open: top-layer stacking of toasts under modals (phase 11); typedoc still documents the React API only.
 
 ## 11. Theme rules during the migration
 

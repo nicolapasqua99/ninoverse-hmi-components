@@ -9,6 +9,10 @@ const dirname = fileURLToPath(new URL('.', import.meta.url));
    next to the ESM library (emptyOutDir: false). Never load it on the same
    page as the r2wc bundle hmi-components.iife.js — both define the same tags. */
 export default defineConfig({
+    // Standard decorators with `accessor` (the Lit elements) must be lowered by
+    // esbuild before Rollup parses the output: at the default `esnext` target
+    // esbuild passes them through and Rollup rejects the syntax.
+    esbuild: { target: 'es2022' },
     build: {
         copyPublicDir: false,
         outDir: 'dist',
