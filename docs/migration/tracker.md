@@ -33,14 +33,14 @@ gated: a phase may start only when every PR of the previous phase is merged
 
 | Item | Location | Status | PR |
 |------|----------|--------|----|
-| `baseStyles` (`:host` box-sizing, `--_base`, hidden, focus ring) | `src/elements/shared/base.styles.ts` | Done | PR 2 |
-| `emit()` helper | `src/elements/shared/events.ts` | Done | PR 2 |
-| `activeElementDeep()` and `supportsPopover()` helpers | `src/elements/shared/dom.ts` | Done | PR 2 |
-| `base.css` (`--hmi-base`, body defaults, `:not(:defined)`) | `public/css/base.css` → `dist/base.css` | Done | PR 2 |
-| Structure/constants/material tokens converted from `rem` to `calc(var(--hmi-base, 8px) * N)` | `public/css/themes/**` | Done | PR 2 |
-| `--panel-*` tokens + glass/liquid overrides, journal hooks; class selectors removed from theme files | `public/css/themes/**` | Done | PR 2 |
-| Lit IIFE bundle `dist/hmi-elements.iife.js` | `vite.elements.config.ts` | Done | PR 2 |
-| Vitest browser + SSR projects, CEM analyzer, Storybook `web-components-vite`, `ci-gate` steps | root configs, `.github/workflows/ci-gate.yml` | Done | PR 2 |
+| `baseStyles` (`:host` box-sizing, `--_base`, hidden, focus ring) | `src/elements/shared/base.styles.ts` | Done | [#114](https://github.com/ninoverse/hmi-components/pull/114) |
+| `emit()` helper | `src/elements/shared/events.ts` | Done | [#114](https://github.com/ninoverse/hmi-components/pull/114) |
+| `activeElementDeep()` and `supportsPopover()` helpers | `src/elements/shared/dom.ts` | Done | [#114](https://github.com/ninoverse/hmi-components/pull/114) |
+| `base.css` (`--hmi-base`, body defaults, `:not(:defined)`) | `public/css/base.css` → `dist/base.css` | Done | [#114](https://github.com/ninoverse/hmi-components/pull/114) |
+| Structure/constants/material tokens converted from `rem` to `calc(var(--hmi-base, 8px) * N)` | `public/css/themes/**` | Done | [#114](https://github.com/ninoverse/hmi-components/pull/114) |
+| `--panel-*` tokens + glass/liquid overrides, journal hooks; class selectors removed from theme files | `public/css/themes/**` | Done | [#114](https://github.com/ninoverse/hmi-components/pull/114) |
+| Lit IIFE bundle `dist/hmi-elements.iife.js` | `vite.elements.config.ts` | Done | [#114](https://github.com/ninoverse/hmi-components/pull/114) |
+| Vitest browser + SSR projects, CEM analyzer, Storybook `web-components-vite`, `ci-gate` steps | root configs, `.github/workflows/ci-gate.yml` | Done | [#114](https://github.com/ninoverse/hmi-components/pull/114) |
 
 ## Elements
 
