@@ -47,6 +47,14 @@ export default defineConfig({
                     dirname,
                     'src/elements/avatar/avatar.react.ts',
                 ),
+                'wc/avatar-stack': resolve(
+                    dirname,
+                    'src/elements/avatar-stack/avatar-stack.ts',
+                ),
+                'react/avatar-stack': resolve(
+                    dirname,
+                    'src/elements/avatar-stack/avatar-stack.react.ts',
+                ),
                 'wc/badge': resolve(dirname, 'src/elements/badge/badge.ts'),
                 'react/badge': resolve(
                     dirname,

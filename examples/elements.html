@@ -103,6 +103,26 @@
         </section>
 
         <section>
+            <h2>AvatarStack</h2>
+            <div class="row">
+                <!-- `names` is a JS property, never an attribute (arrays are
+                     not serialised, R2), so the script below fills them in. -->
+                <hmi-avatar-stack id="stack-default"></hmi-avatar-stack>
+                <hmi-avatar-stack id="stack-overflow" max="4"></hmi-avatar-stack>
+            </div>
+            <div class="row">
+                <hmi-avatar-stack
+                    id="stack-small"
+                    size="small"
+                ></hmi-avatar-stack>
+                <hmi-avatar-stack
+                    id="stack-large"
+                    size="large"
+                ></hmi-avatar-stack>
+            </div>
+        </section>
+
+        <section>
             <h2>Badge</h2>
             <div class="row">
                 <hmi-badge>Default</hmi-badge>
@@ -175,6 +195,25 @@
             toggle('structure-toggle', 'data-structure', 'journal', 'default');
             toggle('material-toggle', 'data-material', 'glass', 'solid');
             toggle('liquid-toggle', 'data-material', 'liquid', 'solid');
+
+            // Array properties are set in JS, not markup.
+            const team = [
+                'Ada Lovelace',
+                'Alan Turing',
+                'Grace Hopper',
+                'Linus Torvalds',
+                'Barbara Liskov',
+                'Ken Thompson',
+                'Margaret Hamilton',
+            ];
+            for (const [id, names] of [
+                ['stack-default', team.slice(0, 4)],
+                ['stack-overflow', team],
+                ['stack-small', team],
+                ['stack-large', team],
+            ]) {
+                document.getElementById(id).names = names;
+            }
         </script>
     </body>
 </html>
