@@ -79,6 +79,30 @@
              of docs/migration/tracker.md. -->
 
         <section>
+            <h2>Avatar</h2>
+            <div class="row">
+                <hmi-avatar name="Ada Lovelace" size="small"></hmi-avatar>
+                <hmi-avatar name="Ada Lovelace"></hmi-avatar>
+                <hmi-avatar name="Ada Lovelace" size="large"></hmi-avatar>
+                <hmi-avatar name="Ada Lovelace" size="xlarge"></hmi-avatar>
+            </div>
+            <div class="row">
+                <!-- The colour is hashed from the name, so each person is
+                     consistently tinted across reloads. -->
+                <hmi-avatar name="Alan Turing"></hmi-avatar>
+                <hmi-avatar name="Grace Hopper"></hmi-avatar>
+                <hmi-avatar name="Linus Torvalds"></hmi-avatar>
+                <hmi-avatar name="Ada Lovelace" status="online"></hmi-avatar>
+                <hmi-avatar name="Alan Turing" status="away"></hmi-avatar>
+                <hmi-avatar name="Grace Hopper" status="offline"></hmi-avatar>
+                <hmi-avatar
+                    name="Ada Lovelace"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Crect width='96' height='96' fill='%231F5B58'/%3E%3Ccircle cx='48' cy='38' r='16' fill='%23DEEFEC'/%3E%3Ccircle cx='48' cy='86' r='28' fill='%23DEEFEC'/%3E%3C/svg%3E"
+                ></hmi-avatar>
+            </div>
+        </section>
+
+        <section>
             <h2>Badge</h2>
             <div class="row">
                 <hmi-badge>Default</hmi-badge>
