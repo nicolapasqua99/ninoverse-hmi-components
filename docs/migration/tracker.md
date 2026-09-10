@@ -52,7 +52,7 @@ gated: a phase may start only when every PR of the previous phase is merged
 | `hmi-avatar-stack` | `avatarStack.tsx` | 2 | low | X | No own CSS today; `.avatar-stack .avatar` → `::slotted(hmi-avatar)`. Children are `<hmi-avatar>` in the default slot. | Todo | |
 | `hmi-banner` | `banner.tsx` | 2 | low | S E | Slots `icon`, `title`, `action`; `hmi-dismiss` (cancelable). | Todo | |
 | `hmi-blockquote` | `blockquote.tsx` | 2 | low | S | Slot `cite`. | Todo | |
-| `hmi-card` | `card.tsx` | 2 | low | P | First `--panel-*` consumer; lands `shared/panel.ts` (`renderLiquidFilter()`). Slots `header`, `footer` are **new API** — the React card took only `children`, so no `S` conversion. Variants `ink`/`accent` map to `--panel-ink-bg`/`--panel-accent-bg`. | In progress | |
+| `hmi-card` | `card.tsx` | 2 | low | P | First `--panel-*` consumer; lands `shared/panel.ts` (`renderLiquidFilter()`). Slots `header`, `footer` are **new API** — the React card took only `children`, so no `S` conversion. Variants `ink`/`accent` map to `--panel-ink-bg`/`--panel-accent-bg`. | In review | [#116](https://github.com/ninoverse/hmi-components/pull/116) |
 | `hmi-chip` | `chip.tsx` | 2 | low | S E | Slot `icon`; `hmi-select { selected }`, `hmi-close` (cancelable). | Todo | |
 | `hmi-code` | `code.tsx` | 2 | low | | | Todo | |
 | `hmi-empty-state` | `emptyState.tsx` | 2 | low | S | Slots `icon`, `title`, `description`, `action`; `.empty-state__icon > svg` → `::slotted(svg)`. | Todo | |
