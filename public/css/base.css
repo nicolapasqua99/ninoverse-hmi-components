@@ -71,7 +71,8 @@ body {
 /* Pre-upgrade rules — generated from custom-elements.json by
    scripts/gen-base-css.mjs (`pnpm cem`). Do not edit by hand. */
 /* @generated not-defined start */
-hmi-badge:not(:defined) {
+hmi-badge:not(:defined),
+hmi-card:not(:defined) {
     visibility: hidden;
 }
 /* @generated not-defined end */

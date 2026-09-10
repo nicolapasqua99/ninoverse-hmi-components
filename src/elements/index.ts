@@ -3,3 +3,4 @@
    bundled as dist/hmi-elements.iife.js. Keep the list alphabetical. */
 
 export * from './badge/badge.js';
+export * from './card/card.js';

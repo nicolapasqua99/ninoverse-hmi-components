@@ -96,6 +96,117 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/card/card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Elevated surface container for grouping related content.\n\nThe three slots flow in normal block order inside the card's padding; an\nunused `header` or `footer` takes up no space and carries no rule or spacing\nof its own.",
+          "name": "HmiCard",
+          "cssParts": [
+            {
+              "description": "The card surface.",
+              "name": "base"
+            },
+            {
+              "description": "The card surface, under its panel-group name.",
+              "name": "panel"
+            },
+            {
+              "description": "The header slot.",
+              "name": "header"
+            },
+            {
+              "description": "The footer slot.",
+              "name": "footer"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Card body.",
+              "name": ""
+            },
+            {
+              "description": "Content pinned above the body.",
+              "name": "header"
+            },
+            {
+              "description": "Content pinned below the body.",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "CardVariant"
+              },
+              "default": "'default'",
+              "description": "Surface treatment of the card.",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Lifts the card off the page to mark it active/selected.",
+              "attribute": "active",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "CardVariant"
+              },
+              "default": "'default'",
+              "description": "Surface treatment of the card.",
+              "fieldName": "variant"
+            },
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Lifts the card off the page to mark it active/selected.",
+              "fieldName": "active"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hmi-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HmiCard",
+          "declaration": {
+            "name": "HmiCard",
+            "module": "src/elements/card/card.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hmi-card",
+          "declaration": {
+            "name": "HmiCard",
+            "module": "src/elements/card/card.ts"
+          }
+        }
+      ]
     }
   ]
 }
