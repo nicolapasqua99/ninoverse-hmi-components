@@ -48,7 +48,7 @@ gated: a phase may start only when every PR of the previous phase is merged
 |-------------|--------------|-------|------|-------|-------|--------|----|
 | `hmi-badge` | `badge.tsx` | 1 | low | | Pilot. Freezes the templates and the DoD. `dot` boolean, `variant`. | Done | [#115](https://github.com/ninoverse/hmi-components/pull/115) |
 | `hmi-alert` | `alert.tsx` | 2 | low | S | Slots `icon`, `title`, `action`. | Todo | |
-| `hmi-avatar` | `avatar.tsx` | 2 | low | | Computed tint stays inline style, on `part="base"`. Host carries the circle's box so `hmi-avatar-stack` can rim it via `::slotted(hmi-avatar)`. | In progress | |
+| `hmi-avatar` | `avatar.tsx` | 2 | low | | Computed tint stays inline style, on `part="base"`. Host carries the circle's box so `hmi-avatar-stack` can rim it via `::slotted(hmi-avatar)`. | In review | [#118](https://github.com/ninoverse/hmi-components/pull/118) |
 | `hmi-avatar-stack` | `avatarStack.tsx` | 2 | low | X | No own CSS today; `.avatar-stack .avatar` → `::slotted(hmi-avatar)`. Children are `<hmi-avatar>` in the default slot. | Todo | |
 | `hmi-banner` | `banner.tsx` | 2 | low | S E | Slots `icon`, `title`, `action`; `hmi-dismiss` (cancelable). | Todo | |
 | `hmi-blockquote` | `blockquote.tsx` | 2 | low | S | Slot `cite`. | Todo | |
