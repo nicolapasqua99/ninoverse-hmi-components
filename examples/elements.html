@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="../dist/themes/structure/default.css" />
         <link rel="stylesheet" href="../dist/themes/structure/journal.css" />
         <link rel="stylesheet" href="../dist/themes/material/glass.css" />
+        <link rel="stylesheet" href="../dist/themes/material/liquid.css" />
 
         <!-- The only other stylesheet the elements need: --hmi-base, body
              defaults, material backdrops and the pre-upgrade rules. -->
@@ -46,6 +47,14 @@
             section {
                 display: contents;
             }
+            .demo-card {
+                max-width: calc(var(--hmi-base) * 40);
+            }
+            .demo-card h3,
+            .demo-card h4,
+            .demo-card p {
+                margin: 0;
+            }
         </style>
     </head>
     <body>
@@ -59,6 +68,9 @@
             </button>
             <button id="material-toggle" type="button">
                 Toggle glass material
+            </button>
+            <button id="liquid-toggle" type="button">
+                Toggle liquid material
             </button>
         </div>
 
@@ -89,6 +101,41 @@
             </div>
         </section>
 
+        <section>
+            <h2>Card</h2>
+            <div class="row">
+                <hmi-card class="demo-card">
+                    <h3>Default</h3>
+                    <p>Elevated warm surface with the leaf corner shape.</p>
+                </hmi-card>
+                <hmi-card class="demo-card" variant="flat">
+                    <h3>Flat</h3>
+                    <p>No elevation — reads as part of the page.</p>
+                </hmi-card>
+                <hmi-card class="demo-card" variant="ink">
+                    <h3>Ink</h3>
+                    <p>Inverted surface for high-contrast emphasis.</p>
+                </hmi-card>
+                <hmi-card class="demo-card" variant="accent">
+                    <h3>Accent</h3>
+                    <p>Primary-tinted surface for a highlighted item.</p>
+                </hmi-card>
+            </div>
+            <div class="row">
+                <hmi-card class="demo-card" active>
+                    <h3>Active</h3>
+                    <p>Lifted off the page to mark the current selection.</p>
+                </hmi-card>
+                <!-- header and footer render above and below the body whatever
+                     their DOM order; the card adds no rule or spacing itself. -->
+                <hmi-card class="demo-card" id="card-slots">
+                    <span slot="footer">Updated 3 minutes ago</span>
+                    <p>Slotted last in the DOM, still rendered in the middle.</p>
+                    <h4 slot="header">Telemetry</h4>
+                </hmi-card>
+            </div>
+        </section>
+
         <!-- Lit IIFE bundle: registers every migrated <hmi-*> element on load.
              Never load ../dist/hmi-components.iife.js (the r2wc bundle) on the
              same page: both define the same tags. -->
@@ -103,6 +150,7 @@
             toggle('theme-toggle', 'data-theme', 'ocean', 'default');
             toggle('structure-toggle', 'data-structure', 'journal', 'default');
             toggle('material-toggle', 'data-material', 'glass', 'solid');
+            toggle('liquid-toggle', 'data-material', 'liquid', 'solid');
         </script>
     </body>
 </html>

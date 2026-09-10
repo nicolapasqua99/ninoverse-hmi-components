@@ -6,6 +6,7 @@
     "description": "HMI component library: Lit web components with React wrappers, Material Design 3 token system and warm asymmetric styling.",
     "sideEffects": [
         "**/*.css",
+        "./src/elements/**/*.ts",
         "./dist/wc/*.js",
         "./dist/hmi-elements.iife.js",
         "./dist/hmi-components.iife.js"
@@ -277,6 +278,10 @@
             "types": "./dist/elements/badge/badge.react.d.ts",
             "import": "./dist/react/badge.js"
         },
+        "./react/card": {
+            "types": "./dist/elements/card/card.react.d.ts",
+            "import": "./dist/react/card.js"
+        },
         "./responsive-container": {
             "types": "./dist/components/responsiveContainer.d.ts",
             "import": "./dist/responsiveContainer.js"
@@ -389,6 +394,10 @@
         "./wc/badge": {
             "types": "./dist/elements/badge/badge.d.ts",
             "import": "./dist/wc/badge.js"
+        },
+        "./wc/card": {
+            "types": "./dist/elements/card/card.d.ts",
+            "import": "./dist/wc/card.js"
         },
         "./style.css": "./dist/style.css",
         "./web-components": "./dist/hmi-components.iife.js",

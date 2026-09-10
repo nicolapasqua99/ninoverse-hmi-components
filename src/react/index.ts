@@ -3,3 +3,4 @@
    Keep the list alphabetical. */
 
 export { Badge, type BadgeVariant } from '../elements/badge/badge.react.js';
+export { Card, type CardVariant } from '../elements/card/card.react.js';
